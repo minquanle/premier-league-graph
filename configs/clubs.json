@@ -1,0 +1,320 @@
+{
+  "note": "Curated alias vocabulary for matching, not evidence that an entity or relation exists in the corpus. Short ambiguous aliases require exact case; do not infer affiliations from this list. Core = every club that has played in the Premier League (51).",
+  "core": {
+    "Manchester United": [
+      "Manchester United",
+      "Man United",
+      "Man Utd",
+      "MU",
+      "M.U"
+    ],
+    "Manchester City": [
+      "Manchester City",
+      "Man City"
+    ],
+    "Arsenal": [
+      "Arsenal"
+    ],
+    "Chelsea": [
+      "Chelsea"
+    ],
+    "Liverpool": [
+      "Liverpool"
+    ],
+    "Tottenham Hotspur": [
+      "Tottenham Hotspur",
+      "Tottenham",
+      "Spurs"
+    ],
+    "Everton": [
+      "Everton"
+    ],
+    "Newcastle United": [
+      "Newcastle United",
+      "Newcastle"
+    ],
+    "Aston Villa": [
+      "Aston Villa"
+    ],
+    "West Ham United": [
+      "West Ham United",
+      "West Ham"
+    ],
+    "Leicester City": [
+      "Leicester City",
+      "Leicester"
+    ],
+    "Southampton": [
+      "Southampton"
+    ],
+    "Wolverhampton Wanderers": [
+      "Wolverhampton Wanderers",
+      "Wolverhampton",
+      "Wolves"
+    ],
+    "Crystal Palace": [
+      "Crystal Palace"
+    ],
+    "Fulham": [
+      "Fulham"
+    ],
+    "Brighton and Hove Albion": [
+      "Brighton & Hove Albion",
+      "Brighton and Hove Albion",
+      "Brighton"
+    ],
+    "AFC Bournemouth": [
+      "AFC Bournemouth",
+      "Bournemouth"
+    ],
+    "Brentford": [
+      "Brentford"
+    ],
+    "Nottingham Forest": [
+      "Nottingham Forest"
+    ],
+    "Leeds United": [
+      "Leeds United",
+      "Leeds"
+    ],
+    "Burnley": [
+      "Burnley"
+    ],
+    "Sunderland": [
+      "Sunderland"
+    ],
+    "Ipswich Town": [
+      "Ipswich Town",
+      "Ipswich"
+    ],
+    "Norwich City": [
+      "Norwich City",
+      "Norwich"
+    ],
+    "Watford": [
+      "Watford"
+    ],
+    "West Bromwich Albion": [
+      "West Bromwich Albion",
+      "West Brom"
+    ],
+    "Swansea City": [
+      "Swansea City",
+      "Swansea"
+    ],
+    "Stoke City": [
+      "Stoke City",
+      "Stoke"
+    ],
+    "Hull City": [
+      "Hull City"
+    ],
+    "Cardiff City": [
+      "Cardiff City",
+      "Cardiff"
+    ],
+    "Queens Park Rangers": [
+      "Queens Park Rangers",
+      "QPR"
+    ],
+    "Reading": [
+      "Reading FC",
+      "Reading"
+    ],
+    "Wigan Athletic": [
+      "Wigan Athletic",
+      "Wigan"
+    ],
+    "Bolton Wanderers": [
+      "Bolton Wanderers",
+      "Bolton"
+    ],
+    "Blackburn Rovers": [
+      "Blackburn Rovers",
+      "Blackburn"
+    ],
+    "Blackpool": [
+      "Blackpool"
+    ],
+    "Birmingham City": [
+      "Birmingham City"
+    ],
+    "Portsmouth": [
+      "Portsmouth"
+    ],
+    "Coventry City": [
+      "Coventry City",
+      "Coventry"
+    ],
+    "Middlesbrough": [
+      "Middlesbrough"
+    ],
+    "Sheffield United": [
+      "Sheffield United"
+    ],
+    "Huddersfield Town": [
+      "Huddersfield Town",
+      "Huddersfield"
+    ],
+    "Derby County": [
+      "Derby County",
+      "Derby"
+    ],
+    "Luton Town": [
+      "Luton Town",
+      "Luton"
+    ],
+    "Charlton Athletic": [
+      "Charlton Athletic",
+      "Charlton"
+    ],
+    "Sheffield Wednesday": [
+      "Sheffield Wednesday",
+      "Sheff Wed"
+    ],
+    "Barnsley": [
+      "Barnsley"
+    ],
+    "Bradford City": [
+      "Bradford City"
+    ],
+    "Oldham Athletic": [
+      "Oldham Athletic",
+      "Oldham"
+    ],
+    "Swindon Town": [
+      "Swindon Town",
+      "Swindon"
+    ],
+    "Wimbledon F.C.": [
+      "Wimbledon F.C.",
+      "Wimbledon FC"
+    ]
+  },
+  "context": {
+    "Real Madrid": [
+      "Real Madrid",
+      "Real"
+    ],
+    "FC Barcelona": [
+      "FC Barcelona",
+      "Barcelona",
+      "Barca",
+      "Barça"
+    ],
+    "Atletico Madrid": [
+      "Atletico Madrid",
+      "Atlético Madrid",
+      "Atletico"
+    ],
+    "Bayern Munich": [
+      "Bayern Munich",
+      "Bayern München",
+      "Bayern"
+    ],
+    "Borussia Dortmund": [
+      "Borussia Dortmund",
+      "Dortmund"
+    ],
+    "Bayer Leverkusen": [
+      "Bayer Leverkusen",
+      "Leverkusen"
+    ],
+    "RB Leipzig": [
+      "RB Leipzig",
+      "Leipzig"
+    ],
+    "Paris Saint-Germain": [
+      "Paris Saint-Germain",
+      "Paris St Germain",
+      "PSG"
+    ],
+    "Juventus": [
+      "Juventus"
+    ],
+    "Inter Milan": [
+      "Inter Milan",
+      "Internazionale"
+    ],
+    "AC Milan": [
+      "AC Milan",
+      "AC.Milan"
+    ],
+    "Napoli": [
+      "Napoli"
+    ],
+    "AS Roma": [
+      "AS Roma",
+      "Roma"
+    ],
+    "Ajax": [
+      "Ajax"
+    ],
+    "Benfica": [
+      "Benfica"
+    ],
+    "FC Porto": [
+      "FC Porto",
+      "Porto"
+    ],
+    "Sporting CP": [
+      "Sporting CP",
+      "Sporting Lisbon"
+    ],
+    "Sevilla": [
+      "Sevilla"
+    ],
+    "Valencia": [
+      "Valencia"
+    ],
+    "Villarreal": [
+      "Villarreal"
+    ],
+    "Real Sociedad": [
+      "Real Sociedad"
+    ],
+    "Real Betis": [
+      "Real Betis"
+    ],
+    "Olympique Lyonnais": [
+      "Olympique Lyonnais",
+      "Lyon"
+    ],
+    "Olympique Marseille": [
+      "Olympique Marseille",
+      "Marseille"
+    ],
+    "Bordeaux": [
+      "Girondins Bordeaux",
+      "Bordeaux"
+    ],
+    "Monaco": [
+      "AS Monaco",
+      "Monaco"
+    ],
+    "Celtic": [
+      "Celtic"
+    ],
+    "Rangers": [
+      "Rangers"
+    ],
+    "Al Nassr": [
+      "Al Nassr",
+      "Al-Nassr"
+    ],
+    "Al Hilal": [
+      "Al Hilal",
+      "Al-Hilal"
+    ],
+    "Al Ittihad": [
+      "Al Ittihad",
+      "Al-Ittihad"
+    ],
+    "Inter Miami": [
+      "Inter Miami"
+    ],
+    "Como": [
+      "Como"
+    ]
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "status": "pilot_completed_quality_not_verified",
+  "updated_on": "2026-10-29",
+  "timezone": "Asia/Saigon",
+  "topic": "Premier League centered football relations from bilingual journalism",
+  "languages": [
+    "vi",
+    "en"
+  ],
+  "publication_window": {
+    "start": "2010-01-01",
+    "end": "2026-10-29",
+    "status": "proposed_initial_snapshot"
+  },
+  "targets": {
+    "distinct_eligible_entities_after_resolution": 2000,
+    "distinct_accepted_relations_after_deduplication": 5000,
+    "observed_relation_types": 10,
+    "assignment_quality_threshold": ">0.90; metric not specified in assignment",
+    "proposed_internal_metric": "end_to_end_relation_precision",
+    "proposed_internal_precision_target": 0.95,
+    "report_minimum_pages": 10,
+    "submission_deadline_local": "2026-11-11T23:59:00+07:00"
+  },
+  "counting_policy": {
+    "count_articles_as_domain_entities": false,
+    "count_aliases_as_separate_entities": false,
+    "count_person_roles_as_separate_people": false,
+    "count_duplicate_mentions_as_new_relations": false,
+    "count_inverse_labels_as_new_relation_types": false,
+    "report_core_and_context_separately": true,
+    "require_evidence_and_scope_membership": true,
+    "exclude_rumor_negated_hypothetical_uncertain_from_acceptance_counts": true
+  },
+  "pilot": {
+    "target_clean_articles": 300,
+    "target_vi": 150,
+    "target_en": 150,
+    "status": "completed",
+    "actual_clean_articles": 300,
+    "actual_vi": 150,
+    "actual_en": 150,
+    "summary": "reports/pilot_summary.json",
+    "extractor_version": "spacy-local-rules-0.3"
+  },
+  "evaluation": {
+    "random_edge_audit_target": 400,
+    "additional_diagnostic_edges_per_type_target": 20,
+    "group_splits_by_event_and_near_duplicate_cluster": true,
+    "report_precision_recall_f1_on_fully_annotated_documents": true,
+    "confidence_interval": "95% Wilson for simple random edge audit",
+    "status": "structural_checks_passed_internal_development_audit_done_no_independent_human_gold"
+  },
+  "technology": {
+    "python": "3.11 isolated .venv",
+    "graph_database": "Neo4j Community 5.26.32",
+    "database_running": true
+  },
+  "llm": {
+    "provider": "9Router optional",
+    "enabled": false,
+    "base_url": null,
+    "model": null,
+    "max_requests": 0,
+    "budget_usd": null,
+    "unit_prices": null,
+    "status": "disabled_by_user_for_this_pilot"
+  },
+  "relation_schema_status": "candidate_types_require_pilot_validation",
+  "relation_types": [
+    {
+      "name": "PLAYS_FOR",
+      "subject": "Person:Player",
+      "object": "Club",
+      "meaning_vi": "Cầu thủ thi đấu cho CLB trong thời gian được văn bản xác định",
+      "kind": "state"
+    },
+    {
+      "name": "MANAGES",
+      "subject": "Person:Coach",
+      "object": "Club",
+      "meaning_vi": "HLV dẫn dắt CLB",
+      "kind": "state"
+    },
+    {
+      "name": "REPRESENTS",
+      "subject": "Person:Agent",
+      "object": "Person:Player|Coach",
+      "meaning_vi": "Người đại diện đại diện cho cầu thủ hoặc HLV",
+      "kind": "state"
+    },
+    {
+      "name": "TRANSFERRED_TO",
+      "subject": "Person:Player",
+      "object": "Club",
+      "meaning_vi": "Cầu thủ đã chuyển đến CLB theo giao dịch chính thức được bài báo khẳng định",
+      "kind": "event"
+    },
+    {
+      "name": "LOANED_TO",
+      "subject": "Person:Player",
+      "object": "Club",
+      "meaning_vi": "Cầu thủ gia nhập CLB theo hợp đồng cho mượn",
+      "kind": "event"
+    },
+    {
+      "name": "NEGOTIATES_TO_SIGN",
+      "subject": "Club",
+      "object": "Person:Player",
+      "meaning_vi": "CLB thực sự đang đàm phán chiêu mộ cầu thủ theo văn bản; không chỉ được đồn quan tâm",
+      "kind": "event"
+    },
+    {
+      "name": "EXTENDED_CONTRACT_WITH",
+      "subject": "Person:Player|Coach",
+      "object": "Club",
+      "meaning_vi": "Cầu thủ hoặc HLV đã gia hạn hợp đồng với CLB",
+      "kind": "event"
+    },
+    {
+      "name": "APPOINTED_MANAGER_OF",
+      "subject": "Person:Coach",
+      "object": "Club",
+      "meaning_vi": "HLV được bổ nhiệm tại CLB",
+      "kind": "event"
+    },
+    {
+      "name": "DISMISSED_MANAGER",
+      "subject": "Club",
+      "object": "Person:Coach",
+      "meaning_vi": "CLB sa thải HLV; không gộp từ chức hoặc chia tay đồng thuận",
+      "kind": "event"
+    },
+    {
+      "name": "RESIGNED_FROM",
+      "subject": "Person:Coach",
+      "object": "Club",
+      "meaning_vi": "HLV chủ động từ chức theo bằng chứng trong bài",
+      "kind": "event"
+    },
+    {
+      "name": "CRITICIZES",
+      "subject": "Person:Player|Coach|Agent",
+      "object": "Person|Club",
+      "meaning_vi": "Cá nhân trực tiếp chỉ trích đối tượng xác định; không lấy nhận xét của tác giả làm lời người được nhắc",
+      "kind": "statement"
+    },
+    {
+      "name": "CONFLICTS_WITH",
+      "subject": "Person:Player|Coach|Agent",
+      "object": "Person|Club",
+      "meaning_vi": "Bài báo khẳng định có xung đột cụ thể; không suy từ việc không ra sân hoặc hai tên cùng xuất hiện",
+      "kind": "event",
+      "symmetric": true
+    }
+  ],
+  "open_items": [
+    "Improve person identity resolution and role classification without API",
+    "Improve extraction recall and validate at least ten real relation types",
+    "Annotate independent development/holdout data and evaluate precision/recall",
+    "Review 24 generic-fallback article extractions",
+    "Expand balanced source/year/club coverage after pilot fixes",
+    "Collect group metadata and GitHub destination for submission"
+  ]
+}

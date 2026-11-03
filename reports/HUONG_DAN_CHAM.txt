@@ -1,0 +1,7 @@
+Hướng dẫn chấm (cột nhan): ghi D nếu đúng, S nếu sai.
+Một dòng ĐÚNG khi: (1) chủ thể và đối tượng là đúng người/CLB được nói trong câu; (2) đúng loại quan hệ và đúng chiều
+(CLB đích của chuyển nhượng, CLB sa thải HLV...); (3) đúng trạng thái (reported = bài khẳng định đã xảy ra/đang đúng,
+rumor = tin đồn/quan tâm, negated = bị phủ nhận, hypothetical = giả định); (4) câu bằng chứng đủ để thấy điều đó.
+Chỉ dựa vào câu bằng chứng và bài báo, không dựa vào hiểu biết ngoài. PLAYS_FOR/MANAGES đúng cả khi câu nói về quá khứ
+("đội bóng cũ", "từng khoác áo"). Nếu sai, ghi loại lỗi vào cột loi: sai_nguoi, sai_clb, sai_chieu, sai_loai, sai_trang_thai,
+bang_chung_khong_du, khac.

@@ -1,0 +1,31 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+data/raw/
+data/interim/
+data/processed/
+data/exports/
+neo4j/data/
+neo4j/logs/
+neo4j/plugins/
+logs/
+*.egg-info/
+data/llm/
+data/cache/
+data/graph/
+data/train/
+
+# Not published: reference material and upload bundles with article text
+*.pdf
+Đề bài tập cuối kỳ.txt
+data/kaggle_upload/
+# Reports: only aggregate numbers are published (no evidence sentences or article text)
+reports/*
+!reports/graph_stats_main_v6.json
+!reports/neo4j_import_main_v6.json
+!reports/student_eval_kaggle_run2.json
+!reports/HUONG_DAN_CHAM.txt

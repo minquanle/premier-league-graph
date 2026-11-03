@@ -1,0 +1,49 @@
+{
+  "checked_on": "2026-10-29",
+  "purpose": "public journalism for local pilot; no redistribution permission inferred",
+  "sources": {
+    "vnexpress_vi": {
+      "host": "vnexpress.net",
+      "language": "vi",
+      "seeds": [
+        "https://vnexpress.net/the-thao/ngoai-hang-anh"
+      ]
+    },
+    "bongdaplus": {
+      "host": "bongdaplus.vn",
+      "language": "vi",
+      "seeds": [
+        "https://bongdaplus.vn/ngoai-hang-anh",
+        "https://bongdaplus.vn/tin-chuyen-nhuong-ngoai-hang-anh"
+      ]
+    },
+    "24h": {
+      "host": "www.24h.com.vn",
+      "language": "vi",
+      "seeds": [
+        "https://www.24h.com.vn/bong-da-ngoai-hang-anh-c149.html"
+      ]
+    },
+    "vnexpress_en": {
+      "host": "e.vnexpress.net",
+      "language": "en",
+      "seeds": [
+        "https://e.vnexpress.net/news/sports/football"
+      ]
+    },
+    "nhandan_en": {
+      "host": "en.nhandan.vn",
+      "language": "en",
+      "seeds": [
+        "https://en.nhandan.vn/sports/"
+      ]
+    },
+    "vietnamnews": {
+      "host": "vietnamnews.vn",
+      "language": "en",
+      "seeds": [
+        "https://vietnamnews.vn/sports"
+      ]
+    }
+  }
+}

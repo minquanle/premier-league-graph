@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "player-graph"
+version = "0.1.0"
+description = "Reproducible bilingual football journalism graph pilot, without an LLM API"
+requires-python = ">=3.11,<3.13"
+dependencies = ["requests", "beautifulsoup4", "trafilatura", "langdetect", "rapidfuzz", "networkx", "neo4j", "spacy", "protego", "scipy"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+player-graph = "player_graph.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

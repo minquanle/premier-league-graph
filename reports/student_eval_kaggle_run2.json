@@ -1,0 +1,304 @@
+{
+  "created_at": "2026-11-01T16:26:01.587316+07:00",
+  "dataset": "sft_main_v6",
+  "split": "test_eval",
+  "reference": "teacher ag/gemini-3-flash",
+  "models": {
+    "qwen3_14b_base": {
+      "strict": {
+        "precision": 0.463,
+        "recall": 0.45,
+        "f1": 0.456,
+        "tp": 667,
+        "fp": 775,
+        "fn": 816
+      },
+      "lenient": {
+        "precision": 0.586,
+        "recall": 0.51,
+        "f1": 0.545,
+        "tp": 751,
+        "fp": 531,
+        "fn": 721
+      },
+      "json_parse_rate": 0.98,
+      "predicted_relations": 1516,
+      "passed_validator": 0.772,
+      "validator_rejections": {
+        "endpoint_type_mismatch": 224,
+        "evidence_not_verbatim_in_article": 73,
+        "endpoint_not_in_entities": 39,
+        "person_name_not_in_article": 3,
+        "self_loop": 3,
+        "unknown_relation_type": 4
+      },
+      "lenient_by_type": {
+        "APPOINTED_MANAGER_OF": {
+          "precision": 0.208,
+          "recall": 0.44,
+          "f1": 0.282,
+          "tp": 11,
+          "fp": 42,
+          "fn": 14
+        },
+        "CONFLICTS_WITH": {
+          "precision": 0.111,
+          "recall": 1.0,
+          "f1": 0.2,
+          "tp": 1,
+          "fp": 8,
+          "fn": 0
+        },
+        "CRITICIZES": {
+          "precision": 0.052,
+          "recall": 0.875,
+          "f1": 0.098,
+          "tp": 7,
+          "fp": 128,
+          "fn": 1
+        },
+        "DISMISSED_MANAGER": {
+          "precision": 0.333,
+          "recall": 0.486,
+          "f1": 0.395,
+          "tp": 17,
+          "fp": 34,
+          "fn": 18
+        },
+        "EXTENDED_CONTRACT_WITH": {
+          "precision": 0.227,
+          "recall": 0.556,
+          "f1": 0.323,
+          "tp": 5,
+          "fp": 17,
+          "fn": 4
+        },
+        "LOANED_TO": {
+          "precision": 0.462,
+          "recall": 0.333,
+          "f1": 0.387,
+          "tp": 6,
+          "fp": 7,
+          "fn": 12
+        },
+        "MANAGES": {
+          "precision": 0.753,
+          "recall": 0.519,
+          "f1": 0.614,
+          "tp": 149,
+          "fp": 49,
+          "fn": 138
+        },
+        "NEGOTIATES_TO_SIGN": {
+          "precision": 0.077,
+          "recall": 0.667,
+          "f1": 0.138,
+          "tp": 2,
+          "fp": 24,
+          "fn": 1
+        },
+        "PLAYS_FOR": {
+          "precision": 0.725,
+          "recall": 0.509,
+          "f1": 0.598,
+          "tp": 501,
+          "fp": 190,
+          "fn": 483
+        },
+        "REPRESENTS": {
+          "precision": 0.154,
+          "recall": 0.286,
+          "f1": 0.2,
+          "tp": 2,
+          "fp": 11,
+          "fn": 5
+        },
+        "RESIGNED_FROM": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 1,
+          "fn": 0
+        },
+        "TRANSFERRED_TO": {
+          "precision": 0.758,
+          "recall": 0.526,
+          "f1": 0.621,
+          "tp": 50,
+          "fp": 16,
+          "fn": 45
+        },
+        "WORKED_WITH": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 2,
+          "fn": 0
+        },
+        "WORKS_FOR": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 2,
+          "fn": 0
+        }
+      },
+      "lenient_by_language": {
+        "en": {
+          "precision": 0.532,
+          "recall": 0.523,
+          "f1": 0.528,
+          "tp": 123,
+          "fp": 108,
+          "fn": 112
+        },
+        "vi": {
+          "precision": 0.598,
+          "recall": 0.508,
+          "f1": 0.549,
+          "tp": 628,
+          "fp": 423,
+          "fn": 609
+        }
+      }
+    },
+    "qwen3_14b_student": {
+      "strict": {
+        "precision": 0.68,
+        "recall": 0.711,
+        "f1": 0.695,
+        "tp": 1054,
+        "fp": 497,
+        "fn": 429
+      },
+      "lenient": {
+        "precision": 0.761,
+        "recall": 0.789,
+        "f1": 0.775,
+        "tp": 1161,
+        "fp": 365,
+        "fn": 311
+      },
+      "json_parse_rate": 0.995,
+      "predicted_relations": 1558,
+      "passed_validator": 0.977,
+      "validator_rejections": {
+        "endpoint_not_in_entities": 25,
+        "person_name_not_in_article": 3,
+        "endpoint_type_mismatch": 5,
+        "evidence_not_verbatim_in_article": 3
+      },
+      "lenient_by_type": {
+        "APPOINTED_MANAGER_OF": {
+          "precision": 0.632,
+          "recall": 0.48,
+          "f1": 0.545,
+          "tp": 12,
+          "fp": 7,
+          "fn": 13
+        },
+        "CONFLICTS_WITH": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "CRITICIZES": {
+          "precision": 0.571,
+          "recall": 0.5,
+          "f1": 0.533,
+          "tp": 4,
+          "fp": 3,
+          "fn": 4
+        },
+        "DISMISSED_MANAGER": {
+          "precision": 0.769,
+          "recall": 0.857,
+          "f1": 0.811,
+          "tp": 30,
+          "fp": 9,
+          "fn": 5
+        },
+        "EXTENDED_CONTRACT_WITH": {
+          "precision": 0.857,
+          "recall": 0.667,
+          "f1": 0.75,
+          "tp": 6,
+          "fp": 1,
+          "fn": 3
+        },
+        "LOANED_TO": {
+          "precision": 0.733,
+          "recall": 0.611,
+          "f1": 0.667,
+          "tp": 11,
+          "fp": 4,
+          "fn": 7
+        },
+        "MANAGES": {
+          "precision": 0.785,
+          "recall": 0.812,
+          "f1": 0.798,
+          "tp": 233,
+          "fp": 64,
+          "fn": 54
+        },
+        "NEGOTIATES_TO_SIGN": {
+          "precision": 1.0,
+          "recall": 0.333,
+          "f1": 0.5,
+          "tp": 1,
+          "fp": 0,
+          "fn": 2
+        },
+        "PLAYS_FOR": {
+          "precision": 0.753,
+          "recall": 0.81,
+          "f1": 0.78,
+          "tp": 797,
+          "fp": 262,
+          "fn": 187
+        },
+        "REPRESENTS": {
+          "precision": 0.75,
+          "recall": 0.429,
+          "f1": 0.545,
+          "tp": 3,
+          "fp": 1,
+          "fn": 4
+        },
+        "TRANSFERRED_TO": {
+          "precision": 0.818,
+          "recall": 0.663,
+          "f1": 0.733,
+          "tp": 63,
+          "fp": 14,
+          "fn": 32
+        }
+      },
+      "lenient_by_language": {
+        "en": {
+          "precision": 0.707,
+          "recall": 0.885,
+          "f1": 0.786,
+          "tp": 208,
+          "fp": 86,
+          "fn": 27
+        },
+        "vi": {
+          "precision": 0.774,
+          "recall": 0.77,
+          "f1": 0.772,
+          "tp": 953,
+          "fp": 279,
+          "fn": 284
+        }
+      }
+    }
+  }
+}

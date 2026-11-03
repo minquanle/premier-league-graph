@@ -26,14 +26,13 @@ Mạng xã hội cầu thủ, huấn luyện viên, người đại diện và c
 
 ### Mô hình student (tùy chọn)
 
-Kết quả của teacher sau khi lọc được dùng để fine-tune **Qwen3-14B** bằng LoRA, chạy offline trên Kaggle (`notebooks/kaggle_qwen3_14b_sft.ipynb`, hướng dẫn trong `docs/HUONG_DAN_KAGGLE.md`). Dữ liệu được chia train/val/test theo cụm sự kiện. Đánh giá trên 200 mẫu test, đo mức khớp với teacher:
+Kết quả của teacher sau khi lọc được dùng để fine-tune **Qwen3-14B** bằng LoRa. Dữ liệu được chia train/val/test theo cụm sự kiện. Đánh giá trên 200 mẫu test, đo mức khớp với teacher:
 
 | Mô hình | F1 khớp chặt | F1 khớp lỏng |
 |---|---|---|
 | Qwen3-14B gốc | 0,456 | 0,545 |
 | Qwen3-14B sau fine-tune | 0,695 | 0,775 |
 
-Graph nộp bài được dựng từ kết quả của teacher. Student là phương án chạy cục bộ không cần API.
 
 ## Cài đặt và chạy
 

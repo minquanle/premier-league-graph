@@ -29,3 +29,7 @@ reports/*
 !reports/neo4j_import_main_v6.json
 !reports/student_eval_kaggle_run2.json
 !reports/HUONG_DAN_CHAM.txt
+!reports/graph_stats_main_v7.json
+!reports/neo4j_import_main_v7.json
+!reports/sna_main_v7.json
+!reports/ner_eval_main_v6.json

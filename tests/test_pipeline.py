@@ -133,3 +133,11 @@ def test_person_roles_from_edges():
     roles = person_roles(edges)
     assert roles["lampard"] == {"Player", "Coach"} and roles["raiola"] == {"Agent"}
     assert "neville" not in roles and "pogba" not in roles
+
+
+def test_person_roles_use_occupation_only_when_edges_give_none():
+    from player_graph.graph import person_roles
+    edges = [{"subject_id": "Q1", "relation_type": "PLAYS_FOR", "object_id": "c"},
+             {"subject_id": "Q2", "relation_type": "CRITICIZES", "object_id": "Q1"}]
+    roles = person_roles(edges, {"Q1": ["Q628099"], "Q2": ["Q937857"], "Q3": []}, ["Q1", "Q2", "Q3"])
+    assert roles["Q1"] == {"Player"} and roles["Q2"] == {"Player"} and "Q3" not in roles

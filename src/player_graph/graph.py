@@ -32,15 +32,44 @@ ROLE_EDGES = {"Player": {("subject", "PLAYS_FOR"), ("subject", "TRANSFERRED_TO")
               "Agent": {("subject", "REPRESENTS")}}
 
 
-def person_roles(edges):
-    """{entity_id: set of role labels}; one person can be both Player and Coach (e.g. a former player now managing)."""
+def person_roles(edges, occupations=None, people=()):
+    """{entity_id: set of role labels}; one person can be both Player and Coach (e.g. a former player now managing).
+
+    occupations ({qid: P106 values}) fill in only people whose edges give no role, such as pundits who once played.
+    """
     roles = defaultdict(set)
     for e in edges:
         for side in ("subject", "object"):
             for role, keys in ROLE_EDGES.items():
                 if (side, e["relation_type"]) in keys:
                     roles[e[f"{side}_id"]].add(role)
+    if occupations:
+        from .ner_role import role_from_occupations
+        for person in people:
+            if person not in roles and role_from_occupations(occupations.get(person, [])):
+                roles[person].update(role_from_occupations(occupations[person]))
     return roles
+
+
+def import_derived(run_name):
+    """Add the derived networks to a dataset already in the database; they stay marked and countable apart."""
+    conf = settings()
+    folder = DATA / "graph" / run_name / "derived"
+    counts = {}
+    with GraphDatabase.driver(conf["NEO4J_URI"], auth=(conf["NEO4J_USERNAME"], conf["NEO4J_PASSWORD"])) as driver:
+        with driver.session(database="neo4j") as session:
+            for kind, name in [("TEAMMATE_OF", "teammate_of"), ("PLAYED_UNDER", "played_under"), ("TRANSFER_FLOW", "transfer_flow")]:
+                rows = read_jsonl(folder / f"{name}.jsonl")
+                session.run(f"MATCH (:FootballEntity)-[r:{kind}]->(:FootballEntity) CALL (r) {{ DELETE r }} IN TRANSACTIONS OF 5000 ROWS").consume()
+                for i in range(0, len(rows), 2000):
+                    session.run(f"""UNWIND $rows AS row
+                        MATCH (s:FootballEntity {{entity_id:row.subject_id}}), (o:FootballEntity {{entity_id:row.object_id}})
+                        CREATE (s)-[r:{kind}]->(o) SET r = row, r.dataset_id=$dataset""", rows=rows[i:i + 2000], dataset=run_name).consume()
+                found = session.run(f"MATCH (:FootballEntity)-[r:{kind} {{dataset_id:$dataset}}]->() RETURN count(r) AS n", dataset=run_name).single()["n"]
+                if found != len(rows):
+                    raise RuntimeError(f"{kind}: database has {found}, file has {len(rows)}")
+                counts[kind] = found
+    return {"created_at": now(), "dataset_id": run_name, "derived_edges": counts, "counts_verified_against_files": True}
 
 
 def import_neo4j(source=None, dataset=DATASET):
@@ -86,7 +115,8 @@ def import_neo4j(source=None, dataset=DATASET):
                     MATCH (s:FootballEntity {{entity_id:row.subject_id}}), (o:FootballEntity {{entity_id:row.object_id}})
                     MERGE (s)-[r:{kind} {{relation_id:row.relation_id}}]->(o)
                     SET r += row, r.dataset_id=$dataset""", rows=rows, dataset=dataset).consume()
-            roles = person_roles(edges)
+            from .ner_role import load_occupations
+            roles = person_roles(edges, load_occupations(), [e["entity_id"] for e in entities if e["entity_type"] == "Person"])
             for role in ROLE_EDGES:
                 ids = [i for i, r in roles.items() if role in r]
                 session.run(f"UNWIND $ids AS id MATCH (n:Person {{entity_id:id}}) SET n:{role}", ids=ids).consume()

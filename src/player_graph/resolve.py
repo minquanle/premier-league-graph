@@ -36,8 +36,21 @@ CORE_CLUBS = set(VOCAB["core"])
 
 NEGOTIATION = re.compile(r"dam phan|thuong luong|thuong thao|talks|negotiat|in discussions|agreement|agreed|dat thoa thuan|"
                          r"submitted (a|an) (bid|offer)|made (a|an) (bid|offer)|gui de nghi chinh thuc|hoi mua chinh thuc")
-RESIGNATION = re.compile(r"tu chuc|xin nghi|resign|step(s|ped)? down|quit|walked away")
-DISMISSAL_WORDS = re.compile(r"pushed out|sacked|fired|dismissed|axed|sa thai|bi loai bo|bi day")
+NEGOTIATION_WORDS = r"(talks|negotiat\w*|discussions|dam phan|thuong luong|thuong thao)"
+# "have not held talks" and "will begin talks" mention talks without any taking place.
+NEGOTIATION_DENIED = re.compile(r"(?<!\w)(not|never|no|khong|chua|denied|deny|bac bo|phu nhan)( \w+){0,3} " + NEGOTIATION_WORDS)
+NEGOTIATION_FUTURE = re.compile(r"(?<!\w)(will|set to|plans? to|planning to|going to|expected to|se|du kien|sap)( \w+){0,2} " + NEGOTIATION_WORDS)
+# "About to finish talks" means talks are under way.
+FINISHING_TALKS = re.compile(r"(sap|se) hoan tat dam phan")
+RESIGNATION = re.compile(r"tu chuc|xin nghi|resign|step(s|ped|ping)? down|quit|walked away|quyet dinh (ra di|roi)")
+# Being sacked vetoes a resignation only when it happened to the person: "Watford sacked Pearson" says nothing about
+# the manager who resigned, and "left before being sacked" is still a choice.
+SELF_DISMISSAL = re.compile(r"(?<!\w)(was|were|been|got|is|bi) (\w+ )?(pushed out|sacked|fired|dismissed|axed|sa thai|loai bo|day)(?!\w)|pushed out")
+AVOIDED_DISMISSAL = re.compile(r"(truoc khi|before)( \w+){0,2} (bi sa thai|being sacked|being fired|being dismissed)")
+# Words that end the source phrase: in "from Chelsea to Arsenal" the club after them is the destination.
+TOWARDS_WORDS = {"to", "sang", "den", "toi", "ve", "joined", "join", "joining", "gia", "nhap"}
+# A swap deal: "Courtois from Chelsea, with Kovacic going the other way" gives the source of a different player.
+SWAP_DEAL = re.compile(r"the other way|in exchange|trao doi|doi lai")
 
 
 WOMENS_FOOTBALL = re.compile(r"(?<!\w)(women|women s|womens|wsl|lionesses|doi nu|bong da nu|giai nu|nu (arsenal|chelsea|man city|manchester city|man utd|manchester united|liverpool|tottenham))(?!\w)")
@@ -53,11 +66,13 @@ def semantic_check(a):
         canonical, _ = canonical_club(a["object"]["name"])
         aliases = {normalize(x) for x in [a["object"]["name"], canonical, *VOCAB["core"].get(canonical, []), *VOCAB["context"].get(canonical, [])]} - {""}
         # "bought him from Nottingham Forest": the club after "from/tu" is the source, not the destination.
-        if any(re.search(r"(?<!\w)(from|tu)( \w+){0,2} " + re.escape(al) + r"(?!\w)", text) for al in aliases):
-            return "destination_club_is_source_in_evidence"
-    if relation == "NEGOTIATES_TO_SIGN" and not NEGOTIATION.search(text):
+        for alias in aliases:
+            for m in re.finditer(r"(?<!\w)(?:from|tu)((?: \w+){0,2}) " + re.escape(alias) + r"(?!\w)", text):
+                if not TOWARDS_WORDS & set(m.group(1).split()) and not SWAP_DEAL.search(text):
+                    return "destination_club_is_source_in_evidence"
+    if relation == "NEGOTIATES_TO_SIGN" and (not NEGOTIATION.search(text) or NEGOTIATION_DENIED.search(text) or NEGOTIATION_FUTURE.search(FINISHING_TALKS.sub("dang dam phan", text))):
         return "no_actual_negotiation_in_evidence"
-    if relation == "RESIGNED_FROM" and (not RESIGNATION.search(text) or DISMISSAL_WORDS.search(text)):
+    if relation == "RESIGNED_FROM" and (not RESIGNATION.search(text) or SELF_DISMISSAL.search(AVOIDED_DISMISSAL.sub(" ", text))):
         return "resignation_not_stated_in_evidence"
     return None
 
@@ -65,7 +80,8 @@ def semantic_check(a):
 class Wikidata:
     """Cached, throttled access; every distinct request is fetched once per project."""
 
-    def __init__(self):
+    def __init__(self, offline=False):
+        self.offline = offline
         self.cache = DATA / "cache/wikidata"
         self.cache.mkdir(parents=True, exist_ok=True)
         self.lock = threading.Lock()
@@ -78,6 +94,8 @@ class Wikidata:
         path = self.cache / f"{key}.json"
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8"))
+        if self.offline:
+            return {}
         # One request at a time, spaced out, honouring 429 Retry-After: Wikidata asks bots to be sequential.
         for attempt in range(6):
             with self.lock:
@@ -165,6 +183,66 @@ def display_name(info, surfaces, fallback):
                                       max(fuzz.token_set_ratio(normalize(l), normalize(s)) for s in surfaces)))
 
 
+NAME_FOLD = str.maketrans({"ø": "o", "Ø": "o", "æ": "ae", "Æ": "ae", "œ": "oe", "ß": "ss", "ð": "d", "Ð": "d", "þ": "th", "ı": "i", "ł": "l", "Ł": "l"})
+
+
+def fold_name(name):
+    """Tokens for comparing names across spellings (Ødegaard/Odegaard), kept apart from `normalize`, which feeds stable ids."""
+    return normalize((name or "").translate(NAME_FOLD)).split()
+
+
+def same_token(a, b):
+    return a == b or fuzz.ratio(a, b) >= 85
+
+
+def same_given_name(a, b):
+    """Alex/Alexandre, Alex/Axel, J/James; not James/Jimmy, Simon/Anthony."""
+    if (len(a) == 1 or len(b) == 1) and a[0] == b[0]:
+        return True
+    return sorted(a) == sorted(b) or fuzz.ratio(a, b) >= 70 or (min(len(a), len(b)) >= 3 and (a.startswith(b) or b.startswith(a)))
+
+
+def name_compatible(surface, labels, aliases=(), common_given=()):
+    """Can a name in the news refer to this Wikidata person? A club in common is not enough on its own.
+
+    Labels are matched token by token; an alias counts only as a whole, because full legal names hide other surnames:
+    "Antony" is not James Antony Wilson, and "Diaz" is not Luis Alberto Suarez Diaz.
+    common_given: one word that is a frequent given name ("James", "Juan") says too little to pick a person, even
+    through an alias, unless it is the surname or the person's only name. Rare ones ("Alisson", "Kepa") still count.
+    """
+    full = fold_name(surface)
+    if not full:
+        return False
+    vague = len(full) == 1 and full[0] in common_given
+    if not vague and any(fold_name(alias) == full for alias in aliases):
+        return True
+    s = [t for t in full if t != "sir"] or full
+    for label in labels:
+        n = fold_name(label)
+        if not n:
+            continue
+        # Same words in another order or spacing: "Ibrahim Didier Ndong", "Alexis MacAllister".
+        if fuzz.token_sort_ratio(" ".join(s), " ".join(n)) >= 90 or fuzz.ratio(" ".join(s), " ".join(n)) >= 90:
+            return True
+        # One-word Wikidata names: "Rodrigo Moreno" is Rodrigo, "Allan de Souza" is Allan.
+        if len(n) == 1 and any(same_token(t, n[0]) for t in s):
+            return True
+        if len(s) == 1:
+            if same_token(s[0], n[-1]) or (same_token(s[0], n[0]) and not vague):
+                return True
+            continue
+        rest = iter(n)
+        in_order = all(any(same_token(t, x) for x in rest) for t in s)
+        # Spanish double surnames: "Marcos Alonso" is Marcos Alonso Mendoza. The first word has to agree too.
+        if in_order and same_token(s[0], n[0]):
+            return True
+        if same_token(s[-1], n[-1]):
+            suffix = len(s) <= len(n) and all(same_token(x, y) for x, y in zip(reversed(s), reversed(n)))
+            if suffix or in_order or same_given_name(s[0], n[0]):
+                return True
+    return False
+
+
 def plausible_in_year(info, year, role):
     """Reject identities that cannot be the person a news story of `year` talks about (dead, or far too old to play)."""
     if info.get("died") and info["died"] < year - 1:
@@ -224,8 +302,12 @@ def local_identity(key, clubs):
             "resolution_method": "unresolved_local_short_name" if single_token else "unresolved_local"}
 
 
-def link_people(people, wd):
-    """people: {key: set(club_qids)} -> {key: identity}; key is a surface or (surface, clubs, year)."""
+def link_people(people, wd, known_names=None, common_given=()):
+    """people: {key: set(club_qids)} -> {key: identity}; key is a surface or (surface, clubs, year).
+
+    known_names: {qid: aliases} from the roster, so an accepted nickname ("Beto") still counts as the person's name.
+    """
+    known_names = known_names or {}
     searches = {}
     for i, key in enumerate(people, 1):
         if i % 200 == 0 or i == len(people):
@@ -241,6 +323,8 @@ def link_people(people, wd):
         scored = []
         for rank, c in enumerate(searches[surface]):
             info = details.get(c["id"], {"teams": set(), "label": c.get("label")})
+            if not name_compatible(surface, info.get("labels") or [info.get("label") or c.get("label")], [*(c.get("aliases") or []), *known_names.get(c["id"], [])], common_given):
+                continue
             overlap = len(info["teams"] & clubs)
             exact = normalize(c.get("label", "")) == normalize(surface)
             scored.append((overlap, exact, -rank, c["id"], info["label"] or c.get("label")))
@@ -274,6 +358,7 @@ def link_people(people, wd):
         members[key] = found
     labels = wd.claims([q for found in members.values() for q in found])
     for key, found in members.items():
+        found = [q for q in found if name_compatible(name_of(key), labels.get(q, {}).get("labels") or [labels.get(q, {}).get("label")], known_names.get(q, []), common_given)]
         if len(found) > 1:
             # Prefer a candidate the corpus already names in full (e.g. "Carrick" -> "Michael Carrick").
             known = [q for q in found if used[q]]
@@ -285,6 +370,9 @@ def link_people(people, wd):
         if key not in out:
             out[key] = local_identity(key, clubs)
     return out
+
+
+COMMON_GIVEN_NAME = 15  # people in the roster sharing a given name before it stops identifying anyone on its own
 
 
 class Roster:
@@ -305,7 +393,9 @@ class Roster:
         self.cache.mkdir(parents=True, exist_ok=True)
         self.label, self.clubs = {}, defaultdict(set)
         self.full, self.surname = defaultdict(set), defaultdict(set)
+        self.names = defaultdict(set)
         self.failed = []
+        given = {}
         for qid in sorted(club_qids):
             for row in self._fetch(qid):
                 person = row["p"]["value"].rsplit("/", 1)[-1]
@@ -315,15 +405,18 @@ class Roster:
                 self.label[person] = label
                 self.clubs[person].add(qid)
                 names = [label, *[a for a in row.get("alts", {}).get("value", "").split("|") if a]]
+                self.names[person].update(names)
                 for name in names:
                     key = normalize(name)
                     if key:
                         self.full[key].add(person)
                 tokens = normalize(label).split()
                 if tokens:
+                    given[person] = tokens[0]
                     self.surname[tokens[-1]].add(person)
                     if len(tokens) > 2:
                         self.full[f"{tokens[0]} {tokens[-1]}"].add(person)
+        self.common_given = {name for name, count in Counter(given.values()).items() if count >= COMMON_GIVEN_NAME}
 
     def _fetch(self, qid):
         path = self.cache / f"{qid}.json"
@@ -353,6 +446,12 @@ class Roster:
             return None
         key = " ".join(tokens)
         candidates = set(self.full.get(key, set()))
+        # A multi-word alias sharing no word with the person's label is too often a data error to act on alone.
+        if len(tokens) > 1:
+            candidates = {p for p in candidates if set(fold_name(surface)) & set(fold_name(self.label[p]))}
+        else:
+            common = getattr(self, "common_given", set())
+            candidates = {p for p in candidates if name_compatible(surface, [self.label[p]], self.names.get(p, ()) if hasattr(self, "names") else (), common)}
         exact = bool(candidates)
         if not candidates:
             same_surname = self.surname.get(tokens[-1], set())
@@ -383,18 +482,28 @@ def club_qids_for_roster(wd):
 def link_with_roster(people, roster, wd, context=None):
     """context: {key: (year, role)}; bare surnames then also have to fit the story's year."""
     out, rest = {}, {}
+    hits = {key: roster.match(name_of(key), clubs) for key, clubs in people.items()}
+    # A full name reached only through an alias can belong to someone from another era ("James Hill" is also an alias
+    # of Jimmy Hill, born 1928), so it has to fit the story's year; the exact label is left alone, for historical stories.
+    by_alias = {key: hit[0] for key, hit in hits.items() if hit and context and key in context and len(normalize(name_of(key)).split()) > 1
+                and normalize(name_of(key)) != normalize(roster.label[hit[0]])}
+    alias_info = wd.claims(sorted(set(by_alias.values())))
     for key, clubs in people.items():
-        hit = roster.match(name_of(key), clubs)
+        hit = hits[key]
+        if hit and key in by_alias and not plausible_in_year(alias_info.get(hit[0], {}), *context[key]):
+            hit = None
         if hit:
             out[key] = {"entity_id": hit[0], "qid": hit[0], "canonical_name": roster.label[hit[0]], "resolution_method": hit[1]}
         else:
             rest[key] = clubs
     # Per-name API lookups only for what the roster could not settle.
-    out.update(link_people(rest, wd))
+    out.update(link_people(rest, wd, roster.names, roster.common_given))
     if context:
         # A surname plus a club the person once played for can still point to someone from another era
         # (e.g. a 1920s "McConnell" for a 2026 Liverpool line-up): check birth/death years.
-        weak = {k: v for k, v in out.items() if v["qid"] and len(normalize(name_of(k)).split()) == 1 and k in context}
+        # A one-word name that is the person's own label ("Rivaldo") is left alone: old stories recall retired players.
+        weak = {k: v for k, v in out.items() if v["qid"] and len(normalize(name_of(k)).split()) == 1 and k in context
+                and normalize(name_of(k)) != normalize(v["canonical_name"])}
         info = wd.claims([v["qid"] for v in weak.values()])
         for key, identity in weak.items():
             year, role = context[key]
@@ -438,15 +547,16 @@ def link_with_roster(people, roster, wd, context=None):
     return out
 
 
-def build(run_name):
-    folder = DATA / "llm" / run_name
+def build(run_name, llm_run=None, offline=False):
+    llm_run = llm_run or run_name
+    folder = DATA / "llm" / llm_run
     # Older runs may contain verbatim repeats of one relation; they must not inflate evidence counts.
     # Articles excluded after the teacher ran (e.g. 24h pages mixed with related-article text) give no evidence.
     excluded = {e["article_id"] for e in read_jsonl(DATA / "interim/excluded_articles_v2.jsonl")}
     assertions = [a for a in {a["assertion_id"]: a for a in read_jsonl(folder / "assertions.jsonl")}.values() if a["article_id"] not in excluded]
     raw = read_jsonl(folder / "raw_outputs.jsonl")
     articles = {a["article_id"]: a for a in read_jsonl(DATA / "processed/articles.jsonl")}
-    wd = Wikidata()
+    wd = Wikidata(offline)
 
     # Clubs first: their QIDs are the context for disambiguating people.
     club_names = {a[e]["name"] for a in assertions for e in ("subject", "object") if a[e]["type"] == "Club"}
@@ -489,6 +599,18 @@ def build(run_name):
     roster = Roster(club_qids)
     persons = link_with_roster(people, roster, wd, context)
 
+    # A check against the NLP recognizer, which never saw the extractor's output. It flags and does not delete.
+    from .ner_role import article_names, load_occupations, name_found, role_from_occupations
+    known = article_names(articles, {a["article_id"] for a in assertions})
+    occupations = load_occupations()
+
+    def name_check(a):
+        names = known.get(a["article_id"])
+        if names is None:
+            return "not_checked"
+        people = [a[end]["name"] for end in ("subject", "object") if a[end]["type"] == "Person"]
+        return "confirmed" if all(name_found(n, names) for n in people) else "not_found"
+
     entities, out_assertions = {}, []
     roles = defaultdict(Counter)
     for a in assertions:
@@ -514,8 +636,8 @@ def build(run_name):
                                "language": a["language"], "source_url": a["source_url"], "published_at": a["published_at"],
                                "evidence_text": a["evidence_text"], "evidence_start": a["evidence_start"], "evidence_end": a["evidence_end"],
                                "evidence_match": a["evidence_match"], "time_text": a.get("time_text"),
-                               "semantic_check": semantic_check(a), "eligible_for_graph": a["eligible_for_graph"] and not semantic_check(a),
-                               "extractor": f"llm:{run_name}", "review_status": "pending"})
+                               "semantic_check": semantic_check(a), "eligible_for_graph": a["eligible_for_graph"] and not semantic_check(a), "name_check": name_check(a),
+                               "extractor": f"llm:{llm_run}", "review_status": "pending"})
 
     # Scope: keep an edge when it touches a Premier League club, or a person who has such an edge.
     core_ids = {i for i, e in entities.items() if e["entity_type"] == "Club" and e["club_scope"] == "core"}
@@ -536,21 +658,25 @@ def build(run_name):
     relations = [{"relation_id": stable_id("relation", f"{s}|{t}|{o}"), "subject_id": s, "relation_type": t, "object_id": o,
                   "assertion_ids": sorted(x["assertion_id"] for x in rows), "article_ids": sorted({x["article_id"] for x in rows}),
                   "evidence_count": len(rows), "languages": sorted({x["language"] for x in rows}),
+                  "name_check_not_found": sum(x["name_check"] == "not_found" for x in rows),
                   "first_publication": min(x["published_at"] for x in rows), "last_publication": max(x["published_at"] for x in rows),
                   "counting_mode": "unique_pair_and_type", "review_status": "pending"}
                  for (s, t, o), rows in sorted(grouped.items())]
     in_graph = {r[k] for r in relations for k in ("subject_id", "object_id")}
     for eid, e in entities.items():
         e["aliases"] = sorted(e["aliases"])
-        e["roles"] = sorted(roles[eid])
+        e["roles"] = sorted(roles[eid]) or role_from_occupations(occupations.get(eid, []))
+        e["role_source"] = "relations" if roles[eid] else ("wikidata_p106" if e["roles"] else "none")
         e["scope_role"] = "core" if eid in core_ids or (eid in linked and e["entity_type"] == "Person") else "context"
     out_dir = DATA / "graph" / run_name
     write_jsonl(out_dir / "entities.jsonl", sorted((e for e in entities.values() if e["entity_id"] in in_graph), key=lambda e: e["entity_id"]))
     write_jsonl(out_dir / "assertions.jsonl", out_assertions)
     write_jsonl(out_dir / "relations.jsonl", relations)
+    write_jsonl(out_dir / "year_rejections.jsonl", [{"surface": name_of(k), "clubs": sorted(k[1]), "year": k[2], "candidate": v["rejected_candidate"]}
+                                                    for k, v in persons.items() if v.get("rejected_candidate")])
     write_jsonl(out_dir / "articles.jsonl", [articles[i] for i in sorted({a["article_id"] for a in out_assertions}) if i in articles])
     graph_entities = [e for e in entities.values() if e["entity_id"] in in_graph]
-    summary = {"created_at": now(), "run_name": run_name, "wikidata_requests": wd.calls, "wikidata_failed_lookups": wd.failures, "roster_clubs": len(club_qids), "roster_people": len(roster.label), "roster_failed_clubs": roster.failed, "excluded_articles_skipped": len(excluded), "rejected_by_year_check": sum(1 for v in persons.values() if v.get("rejected_candidate")), "person_contexts": len(persons),
+    summary = {"created_at": now(), "run_name": run_name, "llm_run": llm_run, "offline": offline, "wikidata_requests": wd.calls, "wikidata_failed_lookups": wd.failures, "roster_clubs": len(club_qids), "roster_people": len(roster.label), "roster_failed_clubs": roster.failed, "excluded_articles_skipped": len(excluded), "rejected_by_year_check": sum(1 for v in persons.values() if v.get("rejected_candidate")), "person_contexts": len(persons),
                "assertions": len(out_assertions), "eligible_assertions": len(eligible),
                "surface_person_names": len(people), "short_names_expanded_in_article": len(expansion),
                "entities_before_scope": len(entities), "nodes": len(graph_entities),
@@ -562,6 +688,8 @@ def build(run_name):
                "edges_dropped_out_of_scope": len({(a["subject_id"], a["relation_type"], a["object_id"]) for a in eligible}) - len(relations),
                "semantic_rejections": dict(Counter(a["semantic_check"] for a in out_assertions if a["semantic_check"])),
                "edges_dropped_unverified_person": dropped_unverified, "unverified_people": len(unverified),
+               "name_check": dict(Counter(a["name_check"] for a in eligible)),
+               "edges_with_all_evidence_name_flagged": sum(1 for r in relations if r["name_check_not_found"] == r["evidence_count"]),
                "edges_with_multiple_evidence": sum(1 for r in relations if r["evidence_count"] > 1),
                "edges_supported_in_both_languages": sum(1 for r in relations if len(r["languages"]) == 2)}
     write_json(out_dir / "summary.json", summary)

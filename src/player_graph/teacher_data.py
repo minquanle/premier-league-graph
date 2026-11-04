@@ -166,3 +166,30 @@ def export_training(run_name, dataset_name=None, articles_path=None, seed=42, va
                "max_chars": max(sum(len(m["content"]) for m in r["messages"]) for v in out.values() for r in v)}
     write_json(folder / "summary.json", summary)
     return summary
+
+
+def export_chunks(articles_path, name="student_infer_v6", seed=42, first_ids_from="sft_main_v6"):
+    """Every chunk of a frozen snapshot as a prompt for the fine-tuned student, with no target.
+
+    The fixed evaluation subset comes first, so a short speed test also re-measures F1 on known examples; the rest
+    is shuffled, so a run stopped early still covers a representative sample.
+    """
+    excluded = {e["article_id"] for e in read_jsonl(DATA / "interim/excluded_articles_v2.jsonl")}
+    rows = []
+    for article in read_jsonl(Path(articles_path)):
+        if article["article_id"] in excluded:
+            continue
+        for i, part in enumerate(chunks(article["clean_text"])):
+            rows.append({"id": f"{article['article_id']}#{i}", "article_id": article["article_id"], "language": article["language"],
+                         "messages": [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": user_message(article, part)}]})
+    first = {r["id"] for r in read_jsonl(DATA / "train" / first_ids_from / "test_eval.jsonl")}
+    head = sorted((r for r in rows if r["id"] in first), key=lambda r: r["id"])
+    tail = [r for r in rows if r["id"] not in first]
+    random.Random(seed).shuffle(tail)
+    folder = DATA / "train" / name
+    write_jsonl(folder / "chunks.jsonl", head + tail)
+    summary = {"created_at": now(), "dataset": name, "articles_source": str(articles_path), "prompt_version": PROMPT_VERSION,
+               "chunks": len(rows), "evaluation_chunks_first": len(head), "articles": len({r["article_id"] for r in rows}),
+               "languages": dict(Counter(r["language"] for r in rows))}
+    write_json(folder / "summary.json", summary)
+    return summary

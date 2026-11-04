@@ -289,6 +289,46 @@ def pick_articles(per_language, seed=7):
     return picked
 
 
+def import_outputs(run_name, prediction_paths, articles_path, model="qwen3_14b_student"):
+    """Same checks and output files as `run`, for raw outputs produced elsewhere (no API call)."""
+    articles = {a["article_id"]: a for a in read_jsonl(Path(articles_path))}
+    predictions = {}
+    for path in prediction_paths:
+        for row in read_jsonl(Path(path)):
+            predictions[row["id"]] = row["output"]  # a later file wins, so a resumed run can overwrite a partial one
+    accepted, rejected, failures, outputs = [], [], [], []
+    for example_id, content in sorted(predictions.items()):
+        article_id, i = example_id.split("#")
+        article, i = articles.get(article_id), int(i)
+        if article is None:
+            failures.append(f"{example_id}: article not in snapshot")
+            continue
+        part = chunks(article["clean_text"])[i]
+        try:
+            payload = parse_json(content)
+        except (ValueError, json.JSONDecodeError) as error:
+            failures.append(f"{example_id}: unparsable JSON ({error})")
+            continue
+        outputs.append({"article_id": article_id, "chunk": i, "payload": payload})
+        ok, bad = validate(article, part, payload)
+        accepted += ok
+        rejected += bad
+    accepted = list({a["assertion_id"]: a for a in accepted}.values())
+    out = DATA / "llm" / run_name
+    write_jsonl(out / "assertions.jsonl", accepted)
+    write_jsonl(out / "rejected.jsonl", rejected)
+    write_jsonl(out / "raw_outputs.jsonl", outputs)
+    eligible = [a for a in accepted if a["eligible_for_graph"]]
+    summary = {"created_at": now(), "run_name": run_name, "model": model, "prompt_version": PROMPT_VERSION, "source": "imported_outputs",
+               "predictions": len(predictions), "parsed_chunks": len(outputs), "failures": failures,
+               "assertions_accepted": len(accepted), "assertions_rejected": len(rejected),
+               "rejection_reasons": dict(Counter(r["reason"] for r in rejected)),
+               "status_counts": dict(Counter(a["status"] for a in accepted)), "eligible_assertions": len(eligible),
+               "eligible_by_type": dict(Counter(a["relation_type"] for a in eligible)), "review_status": "not_reviewed"}
+    write_json(out / "summary.json", summary)
+    return summary
+
+
 def run(run_name, model=None, per_language=10, workers=4, all_articles=False, articles_path=None):
     client = Client(model, workers)
     # all_articles: the whole corpus; already processed chunks come from the cache at no token cost.

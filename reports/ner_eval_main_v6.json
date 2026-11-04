@@ -1,0 +1,914 @@
+{
+  "created_at": "2026-11-04T11:44:46.495272+07:00",
+  "llm_run": "main_v6",
+  "reference": "entities listed by the extractor; not a human reference",
+  "test_chunks": 200,
+  "val_chunks": 521,
+  "library_only": {
+    "people": {
+      "precision": 0.62,
+      "recall": 0.969,
+      "f1": 0.756,
+      "tp": 1661,
+      "fp": 1016,
+      "fn": 54
+    },
+    "clubs": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 921
+    },
+    "people_by_language": {
+      "en": {
+        "precision": 0.592,
+        "recall": 0.951,
+        "f1": 0.73,
+        "tp": 274,
+        "fp": 189,
+        "fn": 14
+      },
+      "vi": {
+        "precision": 0.626,
+        "recall": 0.972,
+        "f1": 0.762,
+        "tp": 1387,
+        "fp": 827,
+        "fn": 40
+      }
+    },
+    "most_missed": [
+      [
+        "Willian",
+        3
+      ],
+      [
+        "Isak",
+        1
+      ],
+      [
+        "Colwill",
+        1
+      ],
+      [
+        "Romelu Lukaku",
+        1
+      ],
+      [
+        "Dominic Calvert-Lewin",
+        1
+      ],
+      [
+        "Christian Pulisic",
+        1
+      ],
+      [
+        "Munas Dabbur",
+        1
+      ],
+      [
+        "Matteo Politano",
+        1
+      ],
+      [
+        "Granit Xhaka",
+        1
+      ],
+      [
+        "Leroy Sane",
+        1
+      ],
+      [
+        "Jonjoy Shelvey",
+        1
+      ],
+      [
+        "Pep Guardiola",
+        1
+      ],
+      [
+        "Solly March",
+        1
+      ],
+      [
+        "Gonzalo Higuain",
+        1
+      ],
+      [
+        "Unai Emery",
+        1
+      ],
+      [
+        "Torreira",
+        1
+      ],
+      [
+        "Fuchs",
+        1
+      ],
+      [
+        "Maitland-Niles",
+        1
+      ],
+      [
+        "Praet",
+        1
+      ],
+      [
+        "Barnes",
+        1
+      ],
+      [
+        "Willock",
+        1
+      ],
+      [
+        "Antony",
+        1
+      ],
+      [
+        "Klich",
+        1
+      ],
+      [
+        "Tierney",
+        1
+      ],
+      [
+        "Nketiah",
+        1
+      ]
+    ],
+    "most_extra": [
+      [
+        "Eintracht Frankfurt",
+        6
+      ],
+      [
+        "Twitter",
+        6
+      ],
+      [
+        "Pha",
+        6
+      ],
+      [
+        "Atalanta",
+        6
+      ],
+      [
+        "Fenerbahce",
+        5
+      ],
+      [
+        "Antwerp",
+        5
+      ],
+      [
+        "Ai Cập",
+        5
+      ],
+      [
+        "Thắng",
+        5
+      ],
+      [
+        "Uruguay",
+        5
+      ],
+      [
+        "Florentino Perez",
+        5
+      ],
+      [
+        "B",
+        5
+      ],
+      [
+        "Ratcliffe",
+        4
+      ],
+      [
+        "Jamie Carragher",
+        4
+      ],
+      [
+        "Salzburg",
+        4
+      ],
+      [
+        "Todd Boehly",
+        4
+      ],
+      [
+        "Biển Ngà",
+        4
+      ],
+      [
+        "Alex Ferguson",
+        4
+      ],
+      [
+        "Bruno Fernandes",
+        4
+      ],
+      [
+        "X",
+        4
+      ],
+      [
+        "Vàng",
+        4
+      ],
+      [
+        "Instagram",
+        4
+      ],
+      [
+        "C1",
+        4
+      ],
+      [
+        "Nou",
+        4
+      ],
+      [
+        "Blues",
+        3
+      ],
+      [
+        "Opta",
+        3
+      ]
+    ],
+    "seconds": 28.3,
+    "val_unseen": {
+      "people": {
+        "precision": 0.556,
+        "recall": 0.969,
+        "f1": 0.706,
+        "tp": 4020,
+        "fp": 3216,
+        "fn": 129
+      },
+      "clubs": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 2215
+      },
+      "people_by_language": {
+        "en": {
+          "precision": 0.568,
+          "recall": 0.937,
+          "f1": 0.708,
+          "tp": 644,
+          "fp": 489,
+          "fn": 43
+        },
+        "vi": {
+          "precision": 0.553,
+          "recall": 0.975,
+          "f1": 0.706,
+          "tp": 3376,
+          "fp": 2727,
+          "fn": 86
+        }
+      }
+    }
+  },
+  "dictionary_only": {
+    "people": {
+      "precision": 0.775,
+      "recall": 0.899,
+      "f1": 0.832,
+      "tp": 1541,
+      "fp": 448,
+      "fn": 174
+    },
+    "clubs": {
+      "precision": 0.748,
+      "recall": 0.836,
+      "f1": 0.789,
+      "tp": 770,
+      "fp": 260,
+      "fn": 151
+    },
+    "people_by_language": {
+      "en": {
+        "precision": 0.748,
+        "recall": 0.823,
+        "f1": 0.783,
+        "tp": 237,
+        "fp": 80,
+        "fn": 51
+      },
+      "vi": {
+        "precision": 0.78,
+        "recall": 0.914,
+        "f1": 0.842,
+        "tp": 1304,
+        "fp": 368,
+        "fn": 123
+      }
+    },
+    "most_missed": [
+      [
+        "Jurgen Klopp",
+        15
+      ],
+      [
+        "Maurizio Sarri",
+        8
+      ],
+      [
+        "Olivier Giroud",
+        6
+      ],
+      [
+        "Romelu Lukaku",
+        6
+      ],
+      [
+        "Juergen Klopp",
+        5
+      ],
+      [
+        "Fabinho",
+        5
+      ],
+      [
+        "Willian",
+        4
+      ],
+      [
+        "Son Heung-min",
+        4
+      ],
+      [
+        "Rasmus Hojlund",
+        4
+      ],
+      [
+        "Hugo Lloris",
+        3
+      ],
+      [
+        "Alisson",
+        3
+      ],
+      [
+        "Jan Vertonghen",
+        3
+      ],
+      [
+        "Antony",
+        3
+      ],
+      [
+        "Ilkay Gundogan",
+        3
+      ],
+      [
+        "N'Golo Kante",
+        2
+      ],
+      [
+        "N’Golo Kante",
+        2
+      ],
+      [
+        "David De Gea",
+        2
+      ],
+      [
+        "Luka Jovic",
+        2
+      ],
+      [
+        "Martial",
+        2
+      ],
+      [
+        "Lucas Moura",
+        2
+      ],
+      [
+        "Memphis Depay",
+        2
+      ],
+      [
+        "Alexandre Lacazette",
+        2
+      ],
+      [
+        "Aaronson",
+        2
+      ],
+      [
+        "Nemanja Matic",
+        2
+      ],
+      [
+        "Ederson",
+        2
+      ]
+    ],
+    "most_extra": [
+      [
+        "Ratcliffe",
+        5
+      ],
+      [
+        "Perez",
+        5
+      ],
+      [
+        "Jamie Carragher",
+        4
+      ],
+      [
+        "Jim",
+        4
+      ],
+      [
+        "Giờ",
+        4
+      ],
+      [
+        "Todd",
+        4
+      ],
+      [
+        "Alex Ferguson",
+        4
+      ],
+      [
+        "Bruno Fernandes",
+        4
+      ],
+      [
+        "Lane",
+        3
+      ],
+      [
+        "E",
+        3
+      ],
+      [
+        "Harry Maguire",
+        3
+      ],
+      [
+        "Jose Mourinho",
+        3
+      ],
+      [
+        "Bảy",
+        3
+      ],
+      [
+        "Pep Guardiola",
+        3
+      ],
+      [
+        "Erling Haaland",
+        3
+      ],
+      [
+        "Bramall",
+        2
+      ],
+      [
+        "Craig",
+        2
+      ],
+      [
+        "Turin",
+        2
+      ],
+      [
+        "Costa",
+        2
+      ],
+      [
+        "Xabi Alonso",
+        2
+      ],
+      [
+        "Robert",
+        2
+      ],
+      [
+        "Hãy",
+        2
+      ],
+      [
+        "BATE",
+        2
+      ],
+      [
+        "L",
+        2
+      ],
+      [
+        "South",
+        2
+      ]
+    ],
+    "seconds": 1.3,
+    "val_unseen": {
+      "people": {
+        "precision": 0.721,
+        "recall": 0.9,
+        "f1": 0.801,
+        "tp": 3734,
+        "fp": 1442,
+        "fn": 415
+      },
+      "clubs": {
+        "precision": 0.714,
+        "recall": 0.841,
+        "f1": 0.772,
+        "tp": 1862,
+        "fp": 745,
+        "fn": 353
+      },
+      "people_by_language": {
+        "en": {
+          "precision": 0.746,
+          "recall": 0.849,
+          "f1": 0.794,
+          "tp": 583,
+          "fp": 199,
+          "fn": 104
+        },
+        "vi": {
+          "precision": 0.717,
+          "recall": 0.91,
+          "f1": 0.802,
+          "tp": 3151,
+          "fp": 1243,
+          "fn": 311
+        }
+      }
+    }
+  },
+  "library_and_dictionary": {
+    "people": {
+      "precision": 0.607,
+      "recall": 0.992,
+      "f1": 0.753,
+      "tp": 1701,
+      "fp": 1101,
+      "fn": 14
+    },
+    "clubs": {
+      "precision": 0.748,
+      "recall": 0.836,
+      "f1": 0.789,
+      "tp": 770,
+      "fp": 260,
+      "fn": 151
+    },
+    "people_by_language": {
+      "en": {
+        "precision": 0.569,
+        "recall": 0.986,
+        "f1": 0.722,
+        "tp": 284,
+        "fp": 215,
+        "fn": 4
+      },
+      "vi": {
+        "precision": 0.615,
+        "recall": 0.993,
+        "f1": 0.76,
+        "tp": 1417,
+        "fp": 886,
+        "fn": 10
+      }
+    },
+    "most_missed": [
+      [
+        "Willian",
+        3
+      ],
+      [
+        "Romelu Lukaku",
+        1
+      ],
+      [
+        "Munas Dabbur",
+        1
+      ],
+      [
+        "Maitland-Niles",
+        1
+      ],
+      [
+        "Antony",
+        1
+      ],
+      [
+        "Klich",
+        1
+      ],
+      [
+        "Firmino",
+        1
+      ],
+      [
+        "Gnonto",
+        1
+      ],
+      [
+        "Everton",
+        1
+      ],
+      [
+        "Frank Lampard",
+        1
+      ],
+      [
+        "Salah",
+        1
+      ],
+      [
+        "Ba",
+        1
+      ]
+    ],
+    "most_extra": [
+      [
+        "Eintracht Frankfurt",
+        6
+      ],
+      [
+        "Twitter",
+        6
+      ],
+      [
+        "Pha",
+        6
+      ],
+      [
+        "Atalanta",
+        6
+      ],
+      [
+        "Ratcliffe",
+        5
+      ],
+      [
+        "Fenerbahce",
+        5
+      ],
+      [
+        "Antwerp",
+        5
+      ],
+      [
+        "Ai Cập",
+        5
+      ],
+      [
+        "Thắng",
+        5
+      ],
+      [
+        "Uruguay",
+        5
+      ],
+      [
+        "Perez",
+        5
+      ],
+      [
+        "Florentino",
+        5
+      ],
+      [
+        "B",
+        5
+      ],
+      [
+        "Jamie Carragher",
+        4
+      ],
+      [
+        "Jim",
+        4
+      ],
+      [
+        "Giờ",
+        4
+      ],
+      [
+        "Salzburg",
+        4
+      ],
+      [
+        "Todd",
+        4
+      ],
+      [
+        "Boehly",
+        4
+      ],
+      [
+        "Biển Ngà",
+        4
+      ],
+      [
+        "Alex Ferguson",
+        4
+      ],
+      [
+        "Bruno Fernandes",
+        4
+      ],
+      [
+        "X",
+        4
+      ],
+      [
+        "Vàng",
+        4
+      ],
+      [
+        "Đan Mạch",
+        4
+      ]
+    ],
+    "seconds": 20.7,
+    "val_unseen": {
+      "people": {
+        "precision": 0.539,
+        "recall": 0.993,
+        "f1": 0.698,
+        "tp": 4120,
+        "fp": 3528,
+        "fn": 29
+      },
+      "clubs": {
+        "precision": 0.714,
+        "recall": 0.84,
+        "f1": 0.772,
+        "tp": 1860,
+        "fp": 746,
+        "fn": 355
+      },
+      "people_by_language": {
+        "en": {
+          "precision": 0.54,
+          "recall": 0.981,
+          "f1": 0.697,
+          "tp": 674,
+          "fp": 573,
+          "fn": 13
+        },
+        "vi": {
+          "precision": 0.538,
+          "recall": 0.995,
+          "f1": 0.699,
+          "tp": 3446,
+          "fp": 2955,
+          "fn": 16
+        }
+      }
+    }
+  },
+  "name_check": {
+    "person_names_checked": 35785,
+    "flagged": 212,
+    "flagged_share": 0.0059,
+    "seconds": 557.6,
+    "most_flagged": [
+      [
+        "Willian",
+        25
+      ],
+      [
+        "Son Heung-min",
+        11
+      ],
+      [
+        "Firmino",
+        6
+      ],
+      [
+        "Fabinho",
+        5
+      ],
+      [
+        "Valencia",
+        5
+      ],
+      [
+        "Romelu Lukaku",
+        4
+      ],
+      [
+        "Divock Origi",
+        4
+      ],
+      [
+        "Danilo",
+        4
+      ],
+      [
+        "Donny van de Beek",
+        4
+      ],
+      [
+        "Nemanja Matic",
+        3
+      ],
+      [
+        "Sokratis",
+        3
+      ],
+      [
+        "Lacazette",
+        3
+      ],
+      [
+        "Loftus-Cheek",
+        3
+      ],
+      [
+        "Hudson-Odoi",
+        3
+      ],
+      [
+        "Malcom",
+        2
+      ],
+      [
+        "Origi",
+        2
+      ],
+      [
+        "Matic",
+        2
+      ],
+      [
+        "Tanguy Ndombele",
+        2
+      ],
+      [
+        "Klopp",
+        2
+      ],
+      [
+        "Klich",
+        2
+      ],
+      [
+        "Maurizio Sarri",
+        2
+      ],
+      [
+        "Gnonto",
+        2
+      ],
+      [
+        "Lewis-Potter",
+        2
+      ],
+      [
+        "Ba",
+        2
+      ],
+      [
+        "Adama Traore",
+        1
+      ],
+      [
+        "Aiden O’Brien",
+        1
+      ],
+      [
+        "Culbreath",
+        1
+      ],
+      [
+        "Guardiola",
+        1
+      ],
+      [
+        "Munas Dabbur",
+        1
+      ],
+      [
+        "Fredricson",
+        1
+      ]
+    ]
+  }
+}

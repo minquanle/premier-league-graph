@@ -126,3 +126,100 @@ def test_womens_football_evidence_is_out_of_scope():
     assert semantic_check(a("Beth England scored as Chelsea won in the FA Women's Super League.")) == "womens_football_in_evidence"
     assert semantic_check(a("Sam Kerr ghi bàn giúp nữ Chelsea thắng.")) == "womens_football_in_evidence"
     assert semantic_check(a("Cole Palmer scored twice for Chelsea.")) is None
+
+
+def test_name_compatibility_rejects_shared_club_with_a_different_name():
+    from player_graph.resolve import name_compatible as ok
+    # Confirmed errors of main_v6: same club, different person.
+    assert not ok("Antony", ["James Wilson"], ["James Antony Wilson"])
+    assert not ok("Beth England", ["Mohamed Salah"])
+    assert not ok("Simon Jordan", ["Anthony Martial"], ["Anthony Jordan Martial"])
+    assert not ok("Diaz", ["Luis Suarez"], ["Luis Alberto Suarez Diaz"])
+    assert not ok("James Hill", ["Jimmy Hill"])
+    assert not ok("David Onana", ["Andre Onana"])
+    # Correct forms must survive: surname, compound surname, accents, full alias, shortened or single-word names.
+    assert ok("Antony", ["Antony dos Santos"])
+    assert ok("De Gea", ["David de Gea"])
+    assert ok("Alexander-Arnold", ["Trent Alexander-Arnold"])
+    assert ok("Odegaard", ["Martin \u00d8degaard"])
+    assert ok("Solskjaer", ["Ole Gunnar Solskj\u00e6r"])
+    assert ok("Chicharito", ["Javier Hernandez"], ["Chicharito"])
+    assert ok("Felipe Scolari", ["Luiz Felipe Scolari"])
+    assert ok("Luis Nani", ["Nani"])
+    assert ok("Alex Disasi", ["Axel Disasi"])
+    assert ok("Marcos Alonso", ["Marcos Alonso Mendoza"])
+    assert ok("Alexis MacAllister", ["Alexis Mac Allister"])
+    assert ok("Ibrahim Didier Ndong", ["Didier Ibrahim Ndong"])
+    assert ok("Sir Alex", ["Alex Ferguson"])
+    assert ok("Rodrigo Moreno", ["Rodrigo"])
+    assert ok("Beto", ["Norberto Bercique Gomes Betuncal"], ["Beto"])
+    assert not ok("Luiz Diaz", ["Luis Suarez"], ["Luis Alberto Suarez Diaz"])
+    assert not ok("Rodrigo", ["Rodri"])
+
+
+def test_member_search_skips_incompatible_candidate_known_in_corpus():
+    wd = FakeWikidata(search={"James Wilson": [{"id": "Q1", "label": "James Wilson", "description": "English footballer"}]},
+                      members={("Antony", "MU"): ["Q1", "Q2"]}, teams={"Q1": {"MU"}, "Q2": {"MU"}},
+                      labels={"Q1": "James Wilson", "Q2": "Antony dos Santos"})
+    out = link_people({"James Wilson": {"MU"}, "Antony": {"MU"}}, wd)
+    assert out["Antony"]["qid"] == "Q2"
+
+
+def test_roster_ignores_alias_sharing_no_word_with_label():
+    r = roster_with([("Q7", "Mykhailo Mudryk", {"CHE"})])
+    r.full["djordje petrovic"].add("Q7")
+    assert r.match("Djordje Petrovic", {"CHE"}) is None
+
+
+def test_semantic_regressions_from_review():
+    from player_graph.resolve import semantic_check
+
+    def a(rel, obj, ev, obj_type="Club"):
+        return {"relation_type": rel, "object": {"name": obj, "type": obj_type}, "evidence_text": ev}
+    # The destination after "to/sang" is not the source; the source of another player in a swap does not count.
+    assert semantic_check(a("TRANSFERRED_TO", "Arsenal", "Rice moved from Chelsea to Arsenal.")) is None
+    assert semantic_check(a("TRANSFERRED_TO", "Arsenal", "Rice chuy\u1ec3n t\u1eeb Chelsea sang Arsenal.")) is None
+    assert semantic_check(a("LOANED_TO", "Chelsea", "Real signed Courtois from Chelsea with Kovacic going the other way on loan.")) is None
+    # A real source club is still rejected.
+    assert semantic_check(a("TRANSFERRED_TO", "Chelsea", "Arsenal signed Havertz from Chelsea.")) == "destination_club_is_source_in_evidence"
+    # Resignation wording and whose dismissal it is.
+    assert semantic_check(a("RESIGNED_FROM", "Crystal Palace", "Allardyce was stepping down as Crystal Palace manager.")) is None
+    assert semantic_check(a("RESIGNED_FROM", "Wigan", "Paul Cook resigned from Wigan after Watford sacked Nigel Pearson.")) is None
+    assert semantic_check(a("RESIGNED_FROM", "Bournemouth", "Howe quy\u1ebft \u0111\u1ecbnh ra \u0111i tr\u01b0\u1edbc khi b\u1ecb sa th\u1ea3i.")) is None
+    assert semantic_check(a("RESIGNED_FROM", "Chelsea", "Sarri resigned after he was pushed out by the board.")) == "resignation_not_stated_in_evidence"
+    # Talks that are denied or only planned are not negotiations.
+    for ev in ["Manchester United have not held talks with Pogba.", "Manchester United will begin talks with Pogba next week."]:
+        assert semantic_check(a("NEGOTIATES_TO_SIGN", "Pogba", ev, "Person")) == "no_actual_negotiation_in_evidence"
+    assert semantic_check(a("NEGOTIATES_TO_SIGN", "Pogba", "Man Utd in talks with Pogba over new contract.", "Person")) is None
+    # "About to finish talks" means talks are under way.
+    assert semantic_check(a("NEGOTIATES_TO_SIGN", "Enzo", "Chelsea sắp hoàn tất đàm phán để mua Enzo.", "Person")) is None
+
+
+def test_frequent_given_name_alone_does_not_pick_a_person():
+    from player_graph.resolve import name_compatible as ok
+    common = {"james", "gabriel", "rodrigo"}
+    assert not ok("James", ["James Wilson"], ["James"], common)
+    assert not ok("Rodrigo", ["Rodrigo Bentancur"], ["Rodrigo"], common)
+    assert ok("James", ["Reece James"], (), common)  # the surname still identifies
+    assert ok("Rodrigo", ["Rodrigo"], (), common)  # the person's only name
+    assert ok("Alisson", ["Alisson Becker"], (), common)  # rare given name
+    r = roster_with([("Q1", "James Wilson", {"MU"}), ("Q2", "Alisson Becker", {"LIV"})])
+    r.names = {"Q1": ["James"], "Q2": ["Alisson"]}
+    r.common_given = {"james"}
+    r.full["james"].add("Q1"); r.full["alisson"].add("Q2")
+    assert r.match("James", {"MU"}) is None
+    assert r.match("Alisson", {"LIV"}) == ("Q2", "wikidata_roster_with_club")
+
+
+def test_year_check_spares_a_name_that_is_the_persons_own_label():
+    from player_graph.resolve import link_with_roster
+
+    class Years(FakeWikidata):
+        def claims(self, ids):
+            return {q: {"label": None, "labels": [], "teams": set(), "born": 1890 if q == "Q2" else 1972} for q in ids}
+    r = roster_with([("Q1", "Rivaldo", {"BAR"}), ("Q2", "John McConnell", {"LIV"})])
+    r.names, r.common_given = {}, set()
+    legend, old = ("Rivaldo", frozenset({"BAR"}), 2026), ("McConnell", frozenset({"LIV"}), 2026)
+    out = link_with_roster({legend: {"BAR"}, old: {"LIV"}}, r, Years(), {legend: (2026, "Player"), old: (2026, "Player")})
+    assert out[legend]["qid"] == "Q1"
+    assert out[old]["qid"] is None

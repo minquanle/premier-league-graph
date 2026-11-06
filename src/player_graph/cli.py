@@ -6,7 +6,7 @@ import json
 
 def main():
     parser = argparse.ArgumentParser(description="Player Graph: local, no-API pilot")
-    parser.add_argument("command", choices=["discover", "collect", "refresh", "extract", "llm-extract", "build-graph", "graph-stats", "review-teacher", "export-sft", "export-chunks", "import-student", "ner-check", "review-list", "derive-networks", "network-analysis", "import-derived", "discover-v2", "extend-vnexpress", "discover-v3", "collect-v2", "collect-v3", "collect-v4", "screen", "report", "import-neo4j"])
+    parser.add_argument("command", choices=["discover", "collect", "refresh", "extract", "llm-extract", "build-graph", "graph-stats", "review-teacher", "export-sft", "export-chunks", "import-student", "ner-check", "review-list", "derive-networks", "network-analysis", "import-derived", "discover-v2", "extend-vnexpress", "discover-v3", "collect-v2", "collect-v3", "collect-v4", "collect-v5", "collect-v6", "screen", "report", "import-neo4j"])
     parser.add_argument("--per-language", type=int, default=150)
     parser.add_argument("--reuse-candidates", action="store_true")
     parser.add_argument("--run-name", default=None)
@@ -17,6 +17,9 @@ def main():
     parser.add_argument("--snapshot", default=None, help="screen: write kept articles here instead of in place")
     parser.add_argument("--llm-run", default=None, help="build-graph: read this extraction run instead of --run-name")
     parser.add_argument("--offline", action="store_true", help="build-graph: use cached Wikidata only; uncached names stay unresolved")
+    parser.add_argument("--confirm-clubs", action="store_true", help="build-graph: drop person-club edges with one evidence that Wikidata does not confirm")
+    parser.add_argument("--chunks-name", default=None, help="export-chunks: dataset folder name")
+    parser.add_argument("--only-new-since", default=None, help="export-chunks: skip chunks already in this dataset folder")
     parser.add_argument("--predictions", nargs="+", default=None, help="import-student: prediction JSONL files from Kaggle")
     args = parser.parse_args()
     if args.command == "llm-extract":
@@ -28,7 +31,7 @@ def main():
         output = screen(Path(args.articles) if args.articles else None, Path(args.snapshot) if args.snapshot else None)
     elif args.command == "build-graph":
         from .resolve import build
-        output = build(args.run_name, args.llm_run, args.offline)
+        output = build(args.run_name, args.llm_run, args.offline, args.confirm_clubs)
     elif args.command == "import-derived":
         from .graph import import_derived
         output = import_derived(args.run_name)
@@ -46,11 +49,11 @@ def main():
         output = evaluate(args.llm_run or args.run_name, args.articles)
     elif args.command == "export-chunks":
         from .teacher_data import export_chunks
-        output = export_chunks(args.articles)
+        output = export_chunks(args.articles, args.chunks_name or "student_infer_v6", only_new_since=args.only_new_since)
     elif args.command == "import-student":
         from .llm_extract import import_outputs
         output = import_outputs(args.run_name, args.predictions, args.articles)
-    elif args.command in {"discover-v2", "extend-vnexpress", "discover-v3", "collect-v2", "collect-v3", "collect-v4"}:
+    elif args.command in {"discover-v2", "extend-vnexpress", "discover-v3", "collect-v2", "collect-v3", "collect-v4", "collect-v5", "collect-v6"}:
         from .collect_v2 import collect_v2, discover_v2, discover_v3, extend_vnexpress
         from .common import DATA, read_jsonl
         from .fetch import Fetcher
@@ -60,7 +63,11 @@ def main():
                    # Third batch: about half the second, spread over many entities.
                    "collect-v3": lambda f: collect_v2(f, target_vi=max(0, 1000 - n_v3("en") - n_v3("vi")), target_en=0, max_per_topic=12, prefer=("topic3:", "sitemap3:"), collection="v3"),
                    # Fourth batch: tops the graph up past 5,000 edges from topic candidates not yet used.
-                   "collect-v4": lambda f: collect_v2(f, target_vi=max(0, 2050 - n_v3("vi", "v4")), target_en=0, max_per_topic=20, prefer=("topic3:",), collection="v4")}[args.command]
+                   "collect-v4": lambda f: collect_v2(f, target_vi=max(0, 2050 - n_v3("vi", "v4")), target_en=0, max_per_topic=20, prefer=("topic3:",), collection="v4"),
+                   # Fifth batch: replaces edges removed by the Wikidata check on the fine-tuned student.
+                   "collect-v5": lambda f: collect_v2(f, target_vi=max(0, 1000 - n_v3("vi", "v5")), target_en=0, max_per_topic=30, prefer=("topic3:",), collection="v5"),
+                   # Sixth batch: the checked student graph was still short of 5,000 edges.
+                   "collect-v6": lambda f: collect_v2(f, target_vi=max(0, 700 - n_v3("vi", "v6")), target_en=0, max_per_topic=40, prefer=("topic3:",), collection="v6")}[args.command]
         output = command(Fetcher())
     elif args.command in {"review-teacher", "export-sft"}:
         from .teacher_data import export_training, review_sample

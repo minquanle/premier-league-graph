@@ -1,6 +1,10 @@
-# Tiến độ Player Graph (cập nhật 04/11/2026)
+# Tiến độ Player Graph (cập nhật 06/11/2026)
 
 Ghi chú để tiếp tục công việc nếu tắt máy hoặc mở phiên mới. Các số liệu chi tiết nằm trong `reports/` và `data/*/summary.json`.
+
+## Trạng thái mới nhất (06/11)
+
+Graph chính để nộp là `student_v4`: Qwen3-14B trên 6.843 đoạn, có lọc Wikidata (`--confirm-clubs`). 2.147 nút, 5.111 cạnh, 12 loại, đã nạp Neo4j cùng cạnh suy diễn. Mẫu 150 cạnh chấm nội bộ: 94,0–97,2%; còn thiếu người chấm độc lập (`reports/sample_student_v4_blank.csv`). Bảng dưới là lịch sử đến 04/11, khi `main_v7` còn là ứng viên.
 
 ## Trạng thái hiện tại
 

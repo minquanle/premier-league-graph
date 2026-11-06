@@ -168,7 +168,7 @@ def export_training(run_name, dataset_name=None, articles_path=None, seed=42, va
     return summary
 
 
-def export_chunks(articles_path, name="student_infer_v6", seed=42, first_ids_from="sft_main_v6"):
+def export_chunks(articles_path, name="student_infer_v6", seed=42, first_ids_from="sft_main_v6", only_new_since=None):
     """Every chunk of a frozen snapshot as a prompt for the fine-tuned student, with no target.
 
     The fixed evaluation subset comes first, so a short speed test also re-measures F1 on known examples; the rest
@@ -182,6 +182,9 @@ def export_chunks(articles_path, name="student_infer_v6", seed=42, first_ids_fro
         for i, part in enumerate(chunks(article["clean_text"])):
             rows.append({"id": f"{article['article_id']}#{i}", "article_id": article["article_id"], "language": article["language"],
                          "messages": [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": user_message(article, part)}]})
+    if only_new_since:
+        done = {r["id"] for name in only_new_since.split(",") for r in read_jsonl(DATA / "train" / name / "chunks.jsonl")}
+        rows = [r for r in rows if r["id"] not in done]
     first = {r["id"] for r in read_jsonl(DATA / "train" / first_ids_from / "test_eval.jsonl")}
     head = sorted((r for r in rows if r["id"] in first), key=lambda r: r["id"])
     tail = [r for r in rows if r["id"] not in first]

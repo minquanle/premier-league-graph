@@ -223,3 +223,59 @@ def test_year_check_spares_a_name_that_is_the_persons_own_label():
     out = link_with_roster({legend: {"BAR"}, old: {"LIV"}}, r, Years(), {legend: (2026, "Player"), old: (2026, "Player")})
     assert out[legend]["qid"] == "Q1"
     assert out[old]["qid"] is None
+
+
+def test_edge_is_filtered_only_with_one_evidence_and_no_wikidata_club():
+    from player_graph.resolve import unconfirmed_single_evidence as flagged
+    teams = {"p": {"teams": {"MU"}}}
+    edge = lambda rel, s, o, n=1: {"relation_type": rel, "subject_id": s, "object_id": o, "evidence_count": n}
+    assert flagged(edge("PLAYS_FOR", "p", "BAR"), teams)
+    assert not flagged(edge("PLAYS_FOR", "p", "MU"), teams)
+    assert not flagged(edge("PLAYS_FOR", "p", "BAR", 2), teams)  # two sentences agree
+    assert not flagged(edge("PLAYS_FOR", "unknown", "BAR"), teams)  # no Wikidata record to compare with
+    assert flagged(edge("DISMISSED_MANAGER", "BAR", "p"), teams)  # the person is the object here
+    assert not flagged(edge("CRITICIZES", "p", "BAR"), teams)  # not a membership claim
+
+
+def test_match_members_uses_whole_words_then_close_spelling():
+    from player_graph.resolve import match_members
+    row = lambda q, label, alts="": {"p": {"value": f"http://www.wikidata.org/entity/{q}"}, "pLabel": {"value": label}, "alts": {"value": alts}}
+    rows = [row("Q1", "Harry Maguire"), row("Q2", "Wilfried Zaha", "Zaha"), row("Q3", "Ryan Giggs")]
+    assert match_members("Maguire", rows) == ["Q1"]
+    assert match_members("Wilfred Zaha", rows) == ["Q2"]
+    assert match_members("Wilfred Giggs", rows) == []
+    assert match_members("", rows) == []
+
+
+def test_failed_club_lookup_is_recorded_not_treated_as_empty(monkeypatch):
+    from player_graph import resolve
+    monkeypatch.setattr(resolve, "fetch_club_rows", lambda qid, offline=False: None)
+    wd = resolve.Wikidata(offline=True)
+    assert wd.member_search("Maguire", "Q18656") == []
+    assert wd.failed_clubs == {"Q18656"}
+
+
+def test_name_in_club_list_skips_the_search_per_name():
+    from player_graph.resolve import link_people
+    calls = []
+    class Local(FakeWikidata):
+        def search_cached(self, name):
+            return False
+        def search(self, name):
+            calls.append(name)
+            return []
+    wd = Local(members={("Harry Maguire", "MU"): ["Q9"]}, labels={"Q9": "Harry Maguire"})
+    out = link_people({"Harry Maguire": {"MU"}, "Nobody Known": {"MU"}}, wd)
+    assert calls == ["Nobody Known"]
+    assert out["Harry Maguire"]["qid"] == "Q9"
+
+
+def test_calls_stop_after_repeated_failures(monkeypatch):
+    from player_graph import resolve
+    def boom(*a, **k):
+        raise AssertionError("no request expected")
+    monkeypatch.setattr(resolve.requests, "get", boom)
+    wd = resolve.Wikidata()
+    wd.failed_in_a_row = resolve.MAX_FAILURES_IN_A_ROW
+    assert wd.get({"action": "test_never_cached"}) == {}
+    assert wd.blocked and wd.failures == 1

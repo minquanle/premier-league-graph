@@ -1,0 +1,171 @@
+{
+  "created_at": "2026-11-06T21:18:52.446830+07:00",
+  "run_name": "student_v4",
+  "nodes": 2147,
+  "edges": 5111,
+  "nodes_by_type": {
+    "Person": 1917,
+    "Club": 230
+  },
+  "person_roles": {
+    "Player": 1649,
+    "Coach": 175,
+    "Coach+Player": 45,
+    "unknown": 44,
+    "Player+Coach": 4
+  },
+  "nodes_by_scope": {
+    "core": 1890,
+    "context": 257
+  },
+  "nodes_with_wikidata_qid": 2102,
+  "edges_by_type": {
+    "PLAYS_FOR": 2771,
+    "TRANSFERRED_TO": 752,
+    "MANAGES": 469,
+    "CRITICIZES": 354,
+    "LOANED_TO": 244,
+    "APPOINTED_MANAGER_OF": 135,
+    "EXTENDED_CONTRACT_WITH": 125,
+    "DISMISSED_MANAGER": 112,
+    "NEGOTIATES_TO_SIGN": 53,
+    "REPRESENTS": 50,
+    "CONFLICTS_WITH": 35,
+    "RESIGNED_FROM": 11
+  },
+  "relation_types_observed": 12,
+  "edges_with_multiple_evidence": 2908,
+  "edges_by_evidence_language": {
+    "vi": 3681,
+    "en": 411,
+    "en+vi": 1019
+  },
+  "density_undirected": 0.00168,
+  "average_degree": 3.6,
+  "connected_components": 4,
+  "largest_component_nodes": 2141,
+  "top_degree": [
+    [
+      "Manchester United",
+      231
+    ],
+    [
+      "Chelsea",
+      205
+    ],
+    [
+      "Arsenal",
+      168
+    ],
+    [
+      "Liverpool",
+      160
+    ],
+    [
+      "Tottenham Hotspur",
+      144
+    ],
+    [
+      "Manchester City",
+      132
+    ],
+    [
+      "Newcastle United",
+      109
+    ],
+    [
+      "Everton",
+      108
+    ],
+    [
+      "West Ham United",
+      101
+    ],
+    [
+      "Aston Villa",
+      86
+    ],
+    [
+      "Leicester City",
+      81
+    ],
+    [
+      "Fulham",
+      76
+    ],
+    [
+      "Crystal Palace",
+      75
+    ],
+    [
+      "Brighton and Hove Albion",
+      70
+    ],
+    [
+      "Southampton",
+      69
+    ]
+  ],
+  "top_pagerank": [
+    [
+      "Manchester United",
+      0.026
+    ],
+    [
+      "Chelsea",
+      0.023
+    ],
+    [
+      "Arsenal",
+      0.0199
+    ],
+    [
+      "Liverpool",
+      0.0187
+    ],
+    [
+      "Tottenham Hotspur",
+      0.017
+    ],
+    [
+      "Manchester City",
+      0.015
+    ],
+    [
+      "Newcastle United",
+      0.0143
+    ],
+    [
+      "Everton",
+      0.0132
+    ],
+    [
+      "West Ham United",
+      0.0121
+    ],
+    [
+      "Leicester City",
+      0.0111
+    ],
+    [
+      "Aston Villa",
+      0.0101
+    ],
+    [
+      "Crystal Palace",
+      0.0096
+    ],
+    [
+      "Brighton and Hove Albion",
+      0.0094
+    ],
+    [
+      "Fulham",
+      0.0093
+    ],
+    [
+      "Southampton",
+      0.009
+    ]
+  ]
+}

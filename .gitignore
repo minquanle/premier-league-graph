@@ -33,3 +33,6 @@ reports/*
 !reports/neo4j_import_main_v7.json
 !reports/sna_main_v7.json
 !reports/ner_eval_main_v6.json
+!reports/graph_stats_student_v4.json
+!reports/neo4j_import_student_v4.json
+!reports/sna_student_v4.json

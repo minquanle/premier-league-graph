@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-11-06T21:20:30.653046+07:00",
+  "dataset_id": "student_v4",
+  "database": "Neo4j Community 5.26.32",
+  "uri": "bolt://localhost:7687",
+  "articles": 6396,
+  "entity_candidates": 2147,
+  "assertions": 50011,
+  "candidate_relations": 5111,
+  "observed_candidate_types": 12,
+  "entities_in_candidate_relations": 2147,
+  "node_labels": {
+    "players": 1700,
+    "coaches": 216,
+    "agents": 35,
+    "clubs": 230,
+    "player_and_coach": 47,
+    "person_without_role": 13
+  },
+  "counts_verified_against_files": true,
+  "human_verified_relations": 0,
+  "all_relation_review_status": "pending"
+}

@@ -25,7 +25,7 @@ from .common import DATA, REPORTS, normalize, now, read_jsonl, stable_id, write_
 from .llm_extract import VOCAB, canonical_club
 
 API = "https://www.wikidata.org/w/api.php"
-HEADERS = {"User-Agent": "PlayerGraphStudentProject/0.2 (university course project; football news graph)"}
+HEADERS = {"User-Agent": "PlayerGraphStudentProject/0.3 (https://github.com/minquanle/premier-league-graph; university course project)"}
 FOOTBALL_PERSON = re.compile(r"football|soccer|footballer|futbol", re.I)
 FOOTBALL_CLUB = re.compile(r"(association )?football club|soccer (club|team)|football team", re.I)
 NOT_A_CLUB = re.compile(r"women|youth|reserve|academy|history of|season|under-\d|U\d\d|national", re.I)
@@ -77,6 +77,65 @@ def semantic_check(a):
     return None
 
 
+CLUB_MEMBERS_QUERY = """SELECT ?p ?pLabel (GROUP_CONCAT(DISTINCT ?alt; separator="|") AS ?alts) WHERE {
+  { ?p wdt:P54 wd:%(q)s } UNION { ?p wdt:P6087 wd:%(q)s } UNION { wd:%(q)s wdt:P286 ?p }
+  ?p wdt:P31 wd:Q5 .
+  OPTIONAL { ?p skos:altLabel ?alt . FILTER(LANG(?alt) IN ("en", "vi", "mul")) }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "mul,en,vi". }
+} GROUP BY ?p ?pLabel"""
+
+
+def fetch_club_rows(qid, offline=False):
+    """Everyone Wikidata lists for a club, cached per club. None means the lookup failed, not that the club is empty."""
+    folder = DATA / "cache/roster"
+    folder.mkdir(parents=True, exist_ok=True)
+    path = folder / f"{qid}.json"
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    if offline:
+        return None
+    for attempt in range(4):
+        try:
+            response = requests.get("https://query.wikidata.org/sparql", params={"query": CLUB_MEMBERS_QUERY % {"q": qid}},
+                                    headers={**HEADERS, "Accept": "application/sparql-results+json"}, timeout=120)
+            if response.status_code in (403, 429):
+                time.sleep(int(response.headers.get("Retry-After", 60)) + 1)
+                continue
+            if response.ok:
+                rows = response.json()["results"]["bindings"]
+                path.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
+                time.sleep(1)
+                return rows
+        except (requests.RequestException, ValueError):
+            pass
+        time.sleep(5 * (attempt + 1))
+    print(f"[wikidata] club roster failed: {qid}", file=sys.stderr, flush=True)
+    return None
+
+
+MEMBER_NAME_SIMILARITY = 88  # tolerates a misspelling ("Wilfred Zaha") without accepting a different person
+
+
+def match_members(term, rows, limit=5):
+    """QIDs of the rows whose label or alias matches `term`, whole words first, then close spellings."""
+    wanted = normalize(term)
+    words = set(wanted.split())
+    if not words:
+        return []
+    exact, close = [], []
+    for row in rows:
+        qid = row["p"]["value"].rsplit("/", 1)[-1]
+        names = [normalize(n) for n in [row["pLabel"]["value"], *row.get("alts", {}).get("value", "").split("|")] if n]
+        if any(words <= set(n.split()) for n in names):
+            exact.append(qid)
+        elif len(words) > 1 and any(fuzz.ratio(wanted, n) >= MEMBER_NAME_SIMILARITY for n in names):
+            close.append(qid)
+    return (exact or close)[:limit]
+
+
+MAX_FAILURES_IN_A_ROW = 5
+
+
 class Wikidata:
     """Cached, throttled access; every distinct request is fetched once per project."""
 
@@ -88,6 +147,10 @@ class Wikidata:
         self.last = 0.0
         self.calls = 0
         self.failures = 0
+        self.failed_in_a_row = 0
+        self.blocked = False
+        self.club_rows = {}
+        self.failed_clubs = set()
 
     def get(self, params, cache=True):
         key = hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()
@@ -95,6 +158,13 @@ class Wikidata:
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8"))
         if self.offline:
+            return {}
+        # Blocked: more calls only prolong it. A later run fetches what was skipped, since failures are not cached.
+        if self.failed_in_a_row >= MAX_FAILURES_IN_A_ROW:
+            if not self.blocked:
+                self.blocked = True
+                print("[wikidata] blocked, no more calls in this run; rerun later to fill the gaps", file=sys.stderr, flush=True)
+            self.failures += 1
             return {}
         # One request at a time, spaced out, honouring 429 Retry-After: Wikidata asks bots to be sequential.
         for attempt in range(6):
@@ -108,8 +178,8 @@ class Wikidata:
                 except requests.RequestException:
                     response = None
                 self.last = time.time()
-                if response is not None and response.status_code == 429:
-                    time.sleep(int(response.headers.get("Retry-After", 30)) + 1)
+                if response is not None and response.status_code in (403, 429):
+                    time.sleep(int(response.headers.get("Retry-After", 60)) + 1)
                     continue
             try:
                 data = response.json() if response is not None else {}
@@ -118,20 +188,38 @@ class Wikidata:
             if data and "error" not in data:
                 if cache:
                     path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+                self.failed_in_a_row = 0
                 return data
-            time.sleep(2 ** attempt)
+            # maxlag says how long to wait; a shorter retry would only be refused again.
+            time.sleep(max(2 ** attempt, int(response.headers.get("Retry-After", 0)) if response is not None else 0))
         self.failures += 1
+        self.failed_in_a_row += 1
+        print(f"[wikidata] gave up after retries ({self.failures} so far): {params.get('action')}", file=sys.stderr, flush=True)
         return {}
 
+    @staticmethod
+    def _search_params(name):
+        return {"action": "wbsearchentities", "search": name, "language": "en", "uselang": "en", "type": "item", "limit": 7}
+
+    def search_cached(self, name):
+        key = hashlib.sha256(json.dumps(self._search_params(name), sort_keys=True).encode()).hexdigest()
+        return (self.cache / f"{key}.json").exists()
+
     def search(self, name):
-        data = self.get({"action": "wbsearchentities", "search": name, "language": "en", "uselang": "en", "type": "item", "limit": 7})
+        data = self.get(self._search_params(name))
         return data.get("search", [])
 
     def member_search(self, term, club_qid):
-        """Items matching `term` that list `club_qid` as a team (P54) or coached team (P6087)."""
-        data = self.get({"action": "query", "list": "search", "srnamespace": 0, "srlimit": 5,
-                         "srsearch": f"{term} haswbstatement:P54={club_qid}|P6087={club_qid}"})
-        return [x["title"] for x in data.get("query", {}).get("search", [])]
+        """Items matching `term` that list `club_qid` as a team (P54) or coached team (P6087).
+
+        One SPARQL query per club, then local matching: searching per name and club got the project rate limited.
+        """
+        if club_qid not in self.club_rows:
+            rows = fetch_club_rows(club_qid, self.offline)
+            if rows is None:
+                self.failed_clubs.add(club_qid)
+            self.club_rows[club_qid] = rows or []
+        return match_members(term, self.club_rows[club_qid])
 
     def claims(self, ids):
         # Cached per entity, not per batch: a batch key changes whenever the candidate list does.
@@ -309,13 +397,23 @@ def link_people(people, wd, known_names=None, common_given=()):
     """
     known_names = known_names or {}
     searches = {}
+    clubs_of = defaultdict(set)
+    for key, clubs in people.items():
+        clubs_of[name_of(key)] |= clubs
+    settled_locally = 0
     for i, key in enumerate(people, 1):
         if i % 200 == 0 or i == len(people):
             print(f"[link] name search {i}/{len(people)} ({100 * i // len(people)}%), wikidata calls {getattr(wd, 'calls', 0)}", file=sys.stderr, flush=True)
         surface = name_of(key)
+        # A new name found in a club's member list needs no search per name: the second pass below settles it.
+        if surface not in searches and hasattr(wd, "search_cached") and not wd.search_cached(surface) \
+                and any(wd.member_search(surface, club) for club in sorted(clubs_of[surface])):
+            searches[surface] = []
+            settled_locally += 1
         if surface not in searches:
             searches[surface] = [c for c in wd.search(surface) if FOOTBALL_PERSON.search(c.get("description", ""))
                                  and "disambiguation" not in c.get("description", "")]
+    print(f"[link] names settled from club lists without a search: {settled_locally}", file=sys.stderr, flush=True)
     details = wd.claims([c["id"] for cands in searches.values() for c in cands])
     out = {}
     for key, clubs in people.items():
@@ -358,7 +456,8 @@ def link_people(people, wd, known_names=None, common_given=()):
         members[key] = found
     labels = wd.claims([q for found in members.values() for q in found])
     for key, found in members.items():
-        found = [q for q in found if name_compatible(name_of(key), labels.get(q, {}).get("labels") or [labels.get(q, {}).get("label")], known_names.get(q, []), common_given)]
+        # A candidate whose record could not be read is skipped: nothing to check the name against.
+        found = [q for q in found if q in labels and name_compatible(name_of(key), labels[q].get("labels") or [labels[q].get("label")], known_names.get(q, []), common_given)]
         if len(found) > 1:
             # Prefer a candidate the corpus already names in full (e.g. "Carrick" -> "Michael Carrick").
             known = [q for q in found if used[q]]
@@ -380,13 +479,6 @@ class Roster:
 
     Matching then runs locally; only names the roster cannot settle go to the per-name API lookup.
     """
-
-    QUERY = """SELECT ?p ?pLabel (GROUP_CONCAT(DISTINCT ?alt; separator="|") AS ?alts) WHERE {
-      { ?p wdt:P54 wd:%(q)s } UNION { ?p wdt:P6087 wd:%(q)s } UNION { wd:%(q)s wdt:P286 ?p }
-      ?p wdt:P31 wd:Q5 .
-      OPTIONAL { ?p skos:altLabel ?alt . FILTER(LANG(?alt) IN ("en", "vi", "mul")) }
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "mul,en,vi". }
-    } GROUP BY ?p ?pLabel"""
 
     def __init__(self, club_qids):
         self.cache = DATA / "cache/roster"
@@ -419,26 +511,10 @@ class Roster:
         self.common_given = {name for name, count in Counter(given.values()).items() if count >= COMMON_GIVEN_NAME}
 
     def _fetch(self, qid):
-        path = self.cache / f"{qid}.json"
-        if path.exists():
-            return json.loads(path.read_text(encoding="utf-8"))
-        for attempt in range(4):
-            try:
-                response = requests.get("https://query.wikidata.org/sparql", params={"query": self.QUERY % {"q": qid}},
-                                        headers={**HEADERS, "Accept": "application/sparql-results+json"}, timeout=120)
-                if response.status_code == 429:
-                    time.sleep(int(response.headers.get("Retry-After", 30)) + 1)
-                    continue
-                if response.ok:
-                    rows = response.json()["results"]["bindings"]
-                    path.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
-                    time.sleep(1)
-                    return rows
-            except (requests.RequestException, ValueError):
-                pass
-            time.sleep(5 * (attempt + 1))
-        self.failed.append(qid)
-        return []
+        rows = fetch_club_rows(qid)
+        if rows is None:
+            self.failed.append(qid)
+        return rows or []
 
     def match(self, surface, clubs):
         tokens = normalize(surface).split()
@@ -547,7 +623,22 @@ def link_with_roster(people, roster, wd, context=None):
     return out
 
 
-def build(run_name, llm_run=None, offline=False):
+# Which end of a relation is the person, for relations between a person and a club.
+PERSON_CLUB_ENDS = {"PLAYS_FOR": ("subject_id", "object_id"), "TRANSFERRED_TO": ("subject_id", "object_id"), "LOANED_TO": ("subject_id", "object_id"),
+                    "EXTENDED_CONTRACT_WITH": ("subject_id", "object_id"), "MANAGES": ("subject_id", "object_id"), "APPOINTED_MANAGER_OF": ("subject_id", "object_id"),
+                    "RESIGNED_FROM": ("subject_id", "object_id"), "DISMISSED_MANAGER": ("object_id", "subject_id")}
+
+
+def unconfirmed_single_evidence(relation, teams):
+    """One sentence, and Wikidata lists no such club for the person: the typical wrong edge of the fine-tuned student,
+    which links a person to any club in the sentence (hand review of 150 edges, 05/11)."""
+    ends = PERSON_CLUB_ENDS.get(relation["relation_type"])
+    if not ends or relation["evidence_count"] != 1 or relation[ends[0]] not in teams:
+        return False
+    return relation[ends[1]] not in teams[relation[ends[0]]].get("teams", set())
+
+
+def build(run_name, llm_run=None, offline=False, confirm_clubs=False):
     llm_run = llm_run or run_name
     folder = DATA / "llm" / llm_run
     # Older runs may contain verbatim repeats of one relation; they must not inflate evidence counts.
@@ -662,6 +753,12 @@ def build(run_name, llm_run=None, offline=False):
                   "first_publication": min(x["published_at"] for x in rows), "last_publication": max(x["published_at"] for x in rows),
                   "counting_mode": "unique_pair_and_type", "review_status": "pending"}
                  for (s, t, o), rows in sorted(grouped.items())]
+    filtered = []
+    if confirm_clubs:
+        teams = wd.claims(sorted(i for i, e in entities.items() if e["entity_type"] == "Person" and e["qid"]))
+        filtered = [r for r in relations if unconfirmed_single_evidence(r, teams)]
+        removed = {r["relation_id"] for r in filtered}
+        relations = [r for r in relations if r["relation_id"] not in removed]
     in_graph = {r[k] for r in relations for k in ("subject_id", "object_id")}
     for eid, e in entities.items():
         e["aliases"] = sorted(e["aliases"])
@@ -672,11 +769,12 @@ def build(run_name, llm_run=None, offline=False):
     write_jsonl(out_dir / "entities.jsonl", sorted((e for e in entities.values() if e["entity_id"] in in_graph), key=lambda e: e["entity_id"]))
     write_jsonl(out_dir / "assertions.jsonl", out_assertions)
     write_jsonl(out_dir / "relations.jsonl", relations)
+    write_jsonl(out_dir / "filtered_edges.jsonl", filtered)
     write_jsonl(out_dir / "year_rejections.jsonl", [{"surface": name_of(k), "clubs": sorted(k[1]), "year": k[2], "candidate": v["rejected_candidate"]}
                                                     for k, v in persons.items() if v.get("rejected_candidate")])
     write_jsonl(out_dir / "articles.jsonl", [articles[i] for i in sorted({a["article_id"] for a in out_assertions}) if i in articles])
     graph_entities = [e for e in entities.values() if e["entity_id"] in in_graph]
-    summary = {"created_at": now(), "run_name": run_name, "llm_run": llm_run, "offline": offline, "wikidata_requests": wd.calls, "wikidata_failed_lookups": wd.failures, "roster_clubs": len(club_qids), "roster_people": len(roster.label), "roster_failed_clubs": roster.failed, "excluded_articles_skipped": len(excluded), "rejected_by_year_check": sum(1 for v in persons.values() if v.get("rejected_candidate")), "person_contexts": len(persons),
+    summary = {"created_at": now(), "run_name": run_name, "llm_run": llm_run, "offline": offline, "wikidata_requests": wd.calls, "wikidata_failed_lookups": wd.failures, "wikidata_blocked": wd.blocked, "club_member_failed_clubs": sorted(wd.failed_clubs), "roster_clubs": len(club_qids), "roster_people": len(roster.label), "roster_failed_clubs": roster.failed, "excluded_articles_skipped": len(excluded), "rejected_by_year_check": sum(1 for v in persons.values() if v.get("rejected_candidate")), "person_contexts": len(persons),
                "assertions": len(out_assertions), "eligible_assertions": len(eligible),
                "surface_person_names": len(people), "short_names_expanded_in_article": len(expansion),
                "entities_before_scope": len(entities), "nodes": len(graph_entities),
@@ -688,6 +786,8 @@ def build(run_name, llm_run=None, offline=False):
                "edges_dropped_out_of_scope": len({(a["subject_id"], a["relation_type"], a["object_id"]) for a in eligible}) - len(relations),
                "semantic_rejections": dict(Counter(a["semantic_check"] for a in out_assertions if a["semantic_check"])),
                "edges_dropped_unverified_person": dropped_unverified, "unverified_people": len(unverified),
+               "confirm_clubs": confirm_clubs, "edges_filtered_unconfirmed_single_evidence": len(filtered),
+               "edges_filtered_by_type": dict(Counter(r["relation_type"] for r in filtered)),
                "name_check": dict(Counter(a["name_check"] for a in eligible)),
                "edges_with_all_evidence_name_flagged": sum(1 for r in relations if r["name_check_not_found"] == r["evidence_count"]),
                "edges_with_multiple_evidence": sum(1 for r in relations if r["evidence_count"] > 1),

@@ -2,16 +2,21 @@
 
 Mạng xã hội cầu thủ, huấn luyện viên, người đại diện và câu lạc bộ xoay quanh Ngoại hạng Anh, xây dựng bằng xử lý ngôn ngữ tự nhiên trên báo chí tiếng Việt và tiếng Anh, lưu trong Neo4j.
 
-## Kết quả (bản `main_v7`)
+## Kết quả (bản `student_v4`, graph chính)
+
+Graph chính do mô hình Qwen3-14B đã fine-tune trích xuất, rồi lọc bằng Wikidata.
 
 | Chỉ tiêu | Giá trị |
 |---|---|
-| Bài báo sau lọc | 5.023; 4.862 bài có đóng góp cạnh (VnExpress 3.901, Nhân Dân EN 473, Việt Nam News 436, Bóng Đá+ 48, khác 4) |
-| Nút | 2.225: 1.923 người và 302 Club; nhãn người gồm 1.704 Player, 243 Coach, 30 Agent (58 người vừa là Player vừa là Coach, 5 người chưa có vai trò) |
-| Cạnh trích từ báo | 5.199 |
+| Bài báo đóng góp | 6.396 (5.480 tiếng Việt, 916 tiếng Anh; VnExpress 5.427, Nhân Dân EN 481, Việt Nam News 433, Bóng Đá+ 51) |
+| Nút | 2.147: 1.917 người và 230 Club; nhãn gồm 1.700 Player, 216 Coach, 35 Agent (47 người vừa là Player vừa là Coach) |
+| Cạnh trích từ báo | 5.111 |
 | Loại quan hệ | 12 |
-| Nút người có mã Wikidata | 1.898/1.923 (người không xác định được danh tính bị loại, trừ người đại diện có tên đầy đủ) |
-| Cạnh suy diễn, đếm riêng | 46.259 `TEAMMATE_OF`, 5.483 `PLAYED_UNDER`, 3.031 `TRANSFER_FLOW` (từ ngày thi đấu trên Wikidata, không phải trích từ báo) |
+| Nút có mã Wikidata | 2.102/2.147 |
+| Cạnh suy diễn, đếm riêng | 43.676 `TEAMMATE_OF`, 5.440 `PLAYED_UNDER`, 2.846 `TRANSFER_FLOW` |
+| Độ chính xác (mẫu 150 cạnh, chấm nội bộ) | 94,0% (KTC 95%: 89,0–96,8%) nếu coi cạnh chưa chắc là sai; 97,2% nếu bỏ các cạnh đó. Chưa có người chấm độc lập |
+
+Bản `main_v7` (nhãn của mô hình thầy) chỉ dùng để so sánh: 2.225 nút, 5.199 cạnh.
 
 12 loại quan hệ: `PLAYS_FOR`, `MANAGES`, `TRANSFERRED_TO`, `LOANED_TO`, `EXTENDED_CONTRACT_WITH`, `NEGOTIATES_TO_SIGN`, `APPOINTED_MANAGER_OF`, `DISMISSED_MANAGER`, `RESIGNED_FROM`, `REPRESENTS`, `CRITICIZES`, `CONFLICTS_WITH`. Mỗi cạnh lưu câu bằng chứng nguyên văn, bài báo nguồn, ngôn ngữ và trạng thái (đã xảy ra, tin đồn, phủ định, giả định).
 
@@ -43,7 +48,7 @@ Mô hình đã train có thể trích quan hệ không cần gọi API: `export-
 
 | L | L ngẫu nhiên | C | C ngẫu nhiên | σ | Cụm Leiden | Modularity |
 |---|---|---|---|---|---|---|
-| 2,494 | 2,072 | 0,447 | 0,037 | 9,99 | 13 | 0,430 |
+| 2,462 | 2,058 | 0,447 | 0,039 | 9,54 | 13 | 0,434 |
 
 
 ## Cài đặt và chạy
@@ -77,6 +82,9 @@ Sao chép `.env.example` thành `.env`, điền endpoint tương thích OpenAI c
 .\.venv\Scripts\python.exe -m player_graph.cli derive-networks --run-name main_v7
 .\.venv\Scripts\python.exe -m player_graph.cli network-analysis --run-name main_v7
 .\.venv\Scripts\python.exe -m player_graph.cli import-derived --run-name main_v7
+# Graph chính từ Qwen: nhập kết quả Kaggle rồi dựng có lọc Wikidata
+.\.venv\Scripts\python.exe -m player_graph.cli import-student --run-name student_v4 --articles data/processed/snapshot_v8.jsonl --predictions <các file dự đoán>
+.\.venv\Scripts\python.exe -m player_graph.cli build-graph --run-name student_v4 --llm-run student_v4 --confirm-clubs
 # Dữ liệu huấn luyện student
 .\.venv\Scripts\python.exe -m player_graph.cli export-sft --run-name main_v6 --articles data/processed/snapshot_v6.jsonl
 # Kiểm thử
@@ -93,4 +101,5 @@ Thư mục `data/` (toàn văn bài báo, cache, kết quả trích xuất) khô
 - Luật tên giảm được lỗi gán nhầm danh tính nhưng chưa loại hết, nhất là với tên một chữ trùng nhiều người; các số đo bộ nhận dạng tên hiện so với kết quả mô hình, chưa so với người chấm.
 - Luật lọc bóng đá nữ chỉ dựa vào câu bằng chứng.
 - Cạnh suy diễn phụ thuộc ngày thi đấu trên Wikidata; khoảng 13% giai đoạn thi đấu không dùng được. ω là giá trị xấp xỉ.
+- Bộ lọc `--confirm-clubs` loại cả một số cạnh đúng khi Wikidata chưa đầy đủ; luật kiểm tra chiều chưa bao phủ quan hệ cho mượn.
 - `PLAYS_FOR` chiếm khoảng 54% số cạnh, phản ánh tần suất trên báo chí.

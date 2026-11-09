@@ -91,6 +91,12 @@ Sao chép `.env.example` thành `.env`, điền endpoint tương thích OpenAI c
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
+## Xem graph trên Neo4j
+
+1. Mở Docker Desktop, chạy `docker compose up -d` trong thư mục dự án; Neo4j không tự bật cùng Docker.
+2. Mở http://localhost:7474/browser/, đăng nhập `bolt://localhost:7687` bằng tài khoản trong `.env`.
+3. Chạy các truy vấn trong `queries/main.cypher`, bắt đầu bằng `CALL db.schema.visualization()`. Luôn giữ `LIMIT`: cơ sở dữ liệu có 58.554 nút, phần lớn là câu bằng chứng và bài báo.
+
 ## Dữ liệu
 
 Thư mục `data/` (toàn văn bài báo, cache, kết quả trích xuất) không được đưa lên repository vì liên quan bản quyền nội dung báo chí. Repository chỉ chứa mã nguồn, cấu hình và số liệu tổng hợp trong `reports/` (thống kê graph, kết quả nạp Neo4j, đánh giá student, hướng dẫn chấm).

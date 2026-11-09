@@ -1,8 +1,17 @@
-// Truy vấn mẫu cho graph nộp bài. Đổi "main_v7" nếu nạp bộ khác.
+// Truy vấn mẫu cho graph nộp bài. Đổi "student_v4" nếu nạp bộ khác.
+
+// --- Tổng quát ---
+// Lược đồ: các loại nút và cạnh
+CALL db.schema.visualization();
+// Số nút theo nhãn
+MATCH (n) UNWIND labels(n) AS nhan RETURN nhan, count(*) AS so_nut ORDER BY so_nut DESC;
+// Số cạnh theo 12 loại quan hệ trích từ báo (tổng 5.111)
+MATCH (:FootballEntity)-[r]->(:FootballEntity) WHERE NOT type(r) IN ["TEAMMATE_OF", "PLAYED_UNDER", "TRANSFER_FLOW"]
+RETURN type(r) AS quan_he, count(*) AS so_canh ORDER BY so_canh DESC;
 
 // --- Xem mạng ---
 // Quan hệ trích từ báo, chỉ 200 cạnh để trình duyệt không chậm
-MATCH (a:FootballEntity)-[r]->(b:FootballEntity) WHERE r.dataset_id = "main_v7" AND r.source_type IS NULL RETURN a, r, b LIMIT 200;
+MATCH (a:FootballEntity)-[r]->(b:FootballEntity) WHERE r.dataset_id = "student_v4" AND r.source_type IS NULL RETURN a, r, b LIMIT 200;
 
 // Quanh một câu lạc bộ
 MATCH (c:Club {canonical_name: "Arsenal"})-[r]-(p) WHERE r.source_type IS NULL RETURN c, r, p LIMIT 150;

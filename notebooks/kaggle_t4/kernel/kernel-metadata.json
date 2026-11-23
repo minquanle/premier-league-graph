@@ -1,0 +1,18 @@
+{
+ "id": "lequann/player-graph-qwen3-4b-lora-t4",
+ "title": "player-graph-qwen3-4b-lora-t4",
+ "code_file": "train_qwen3_4b_t4.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_internet": false,
+ "dataset_sources": [
+  "lequann/player-graph-sft-v6"
+ ],
+ "model_sources": [
+  "qwen-lm/qwen-3/transformers/4b/1"
+ ],
+ "competition_sources": [],
+ "kernel_sources": []
+}

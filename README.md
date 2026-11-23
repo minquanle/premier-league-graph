@@ -53,6 +53,10 @@ Mô hình đã train có thể trích quan hệ không cần gọi API: `export-
 
 ## Cài đặt và chạy
 
+### Hỏi đáp đồ thị qua mô hình Kaggle
+
+Bản thử hỏi đáp, few-shot/thinking, công cụ phân tích và cách chạy benchmark được mô tả trong [docs/CHATBOT_QA.md](docs/CHATBOT_QA.md). Chạy `scripts/chatbot_qa.py` khi Neo4j và endpoint Qwen3-4B đang hoạt động. Kết quả benchmark là mức khớp truy vấn trên graph, không thay thế đánh giá độ chính xác dữ liệu bóng đá.
+
 Yêu cầu: Python 3.11, Docker Desktop.
 
 ```powershell

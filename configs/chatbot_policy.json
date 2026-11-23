@@ -1,0 +1,20 @@
+{
+  "default_mode": "fewshot",
+  "selection_source": "8 dev cases only; frozen before heldout test",
+  "by_category": {
+    "lookup": "fewshot",
+    "multihop": "fewshot",
+    "count": "fewshot",
+    "intersection": "fewshot",
+    "empty": "fewshot"
+  },
+  "prompt_code_hash": "6a0be56883b6ed519ddbd97291824290fbcd99d244905f0bc3ebe930162dcffd",
+  "note": "Thinking mode is identical to fewshot on simple questions; timing noise is not a reason to route those to thinking. On dev multi/count/intersection after-repair accuracy did not improve enough to offset latency.",
+  "analytics_tools": [
+    "count_players",
+    "top_clubs",
+    "pagerank_teammates"
+  ],
+  "answer_mode": "row-bound citations with validated structured output and deterministic fallback",
+  "thinking_manual_override": "--mode thinking; not enabled globally from dev evidence"
+}

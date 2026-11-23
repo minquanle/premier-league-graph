@@ -1,0 +1,492 @@
+[
+  {
+    "id": "dev_01",
+    "split": "dev",
+    "question": "Ai từng dẫn dắt Chelsea theo dữ liệu trong đồ thị?",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "club": "Chelsea"
+    },
+    "cypher": "MATCH (p:Person)-[:MANAGES]->(:Club {canonical_name: $club}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "MANAGES",
+      "anchor_param": "club",
+      "anchor_side": "object"
+    }
+  },
+  {
+    "id": "dev_02",
+    "split": "dev",
+    "question": "HLV nào từng dẫn dắt đồng đội của Wayne Rooney?",
+    "category": "multihop",
+    "hops": 2,
+    "params": {
+      "person": "Wayne Rooney"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person)-[:PLAYED_UNDER]->(coach:Person) RETURN DISTINCT coach.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "dev_03",
+    "split": "dev",
+    "question": "Tìm những người từng thi đấu cho Chelsea trong dữ liệu.",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "club": "Chelsea"
+    },
+    "cypher": "MATCH (p:Person)-[:PLAYS_FOR]->(:Club {canonical_name: $club}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "PLAYS_FOR",
+      "anchor_param": "club",
+      "anchor_side": "object"
+    }
+  },
+  {
+    "id": "dev_04",
+    "split": "dev",
+    "question": "Wayne Rooney có quan hệ từng thi đấu với bao nhiêu CLB khác nhau?",
+    "category": "count",
+    "hops": 1,
+    "params": {
+      "person": "Wayne Rooney"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYS_FOR]->(c:Club) RETURN count(DISTINCT c) AS count LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "dev_05",
+    "split": "dev",
+    "question": "Cầu thủ nào có lịch sử khoác áo cả Chelsea lẫn Arsenal trong đồ thị?",
+    "category": "intersection",
+    "hops": 2,
+    "params": {
+      "club": "Chelsea",
+      "other": "Arsenal"
+    },
+    "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(p:Person)-[:PLAYS_FOR]->(:Club {canonical_name: $other}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "dev_06",
+    "split": "dev",
+    "question": "Những HLV từng huấn luyện đồng đội của Wayne Rooney đã dẫn dắt các CLB nào?",
+    "category": "multihop",
+    "hops": 3,
+    "params": {
+      "person": "Wayne Rooney"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person)-[:PLAYED_UNDER]->(coach:Person)-[:MANAGES]->(c:Club) RETURN DISTINCT c.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "dev_07",
+    "split": "dev",
+    "question": "Trong số người từng khoác áo Chelsea, ai từng được José Mourinho huấn luyện?",
+    "category": "intersection",
+    "hops": 2,
+    "params": {
+      "club": "Chelsea",
+      "person": "José Mourinho"
+    },
+    "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(p:Person)-[:PLAYED_UNDER]->(:Person {canonical_name: $person}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "dev_08",
+    "split": "dev",
+    "question": "Nếu xét Wayne Rooney ở vai trò người đại diện, đồ thị ghi ông đại diện cho những ai?",
+    "category": "empty",
+    "hops": 1,
+    "params": {
+      "person": "Wayne Rooney"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(p:Person) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "REPRESENTS",
+      "anchor_param": "person",
+      "anchor_side": "subject"
+    }
+  },
+  {
+    "id": "test_01",
+    "split": "test",
+    "question": "Tra cứu lịch sử Arsenal: danh sách người có quan hệ dẫn dắt đội bóng gồm những ai?",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "club": "Arsenal"
+    },
+    "cypher": "MATCH (coach:Person)-[:MANAGES]->(:Club {canonical_name: $club}) RETURN DISTINCT coach.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "MANAGES",
+      "anchor_param": "club",
+      "anchor_side": "object"
+    }
+  },
+  {
+    "id": "test_02",
+    "split": "test",
+    "question": "Lần theo sự nghiệp thi đấu của Frank Lampard, đồ thị nối anh với các đội bóng nào?",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "person": "Frank Lampard"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYS_FOR]->(club:Club) RETURN DISTINCT club.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "PLAYS_FOR",
+      "anchor_param": "person",
+      "anchor_side": "subject"
+    }
+  },
+  {
+    "id": "test_03",
+    "split": "test",
+    "question": "Trong các thương vụ được ghi nhận có đích đến là Tottenham Hotspur, những cầu thủ chuyển đến là ai?",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "club": "Tottenham Hotspur"
+    },
+    "cypher": "MATCH (player:Person)-[:TRANSFERRED_TO]->(:Club {canonical_name: $club}) RETURN DISTINCT player.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "TRANSFERRED_TO",
+      "anchor_param": "club",
+      "anchor_side": "object"
+    }
+  },
+  {
+    "id": "test_04",
+    "split": "test",
+    "question": "Liverpool từng là điểm đến theo hợp đồng cho mượn của những người nào trong đồ thị?",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "club": "Liverpool"
+    },
+    "cypher": "MATCH (player:Person)-[:LOANED_TO]->(:Club {canonical_name: $club}) RETURN DISTINCT player.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "LOANED_TO",
+      "anchor_param": "club",
+      "anchor_side": "object"
+    }
+  },
+  {
+    "id": "test_05",
+    "split": "test",
+    "question": "Có tên người đại diện nào gắn với Cristiano Ronaldo qua quan hệ đại diện không? Hãy liệt kê.",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "person": "Cristiano Ronaldo"
+    },
+    "cypher": "MATCH (agent:Person)-[:REPRESENTS]->(:Person {canonical_name: $person}) RETURN DISTINCT agent.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "REPRESENTS",
+      "anchor_param": "person",
+      "anchor_side": "object"
+    }
+  },
+  {
+    "id": "test_06",
+    "split": "test",
+    "question": "Từ các phát biểu chỉ trích của José Mourinho được đồ thị ghi nhận, hãy rút ra tên những người bị nhắm tới.",
+    "category": "lookup",
+    "hops": 1,
+    "params": {
+      "person": "José Mourinho"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:CRITICIZES]->(target:Person) RETURN DISTINCT target.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "CRITICIZES",
+      "anchor_param": "person",
+      "anchor_side": "subject"
+    }
+  },
+  {
+    "id": "test_07",
+    "split": "test",
+    "question": "Bắt đầu từ các đồng đội của Cristiano Ronaldo rồi lần tới HLV của họ; kết quả có những tên nào?",
+    "category": "multihop",
+    "hops": 2,
+    "params": {
+      "person": "Cristiano Ronaldo"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person)-[:PLAYED_UNDER]->(coach:Person) RETURN DISTINCT coach.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "test_08",
+    "split": "test",
+    "question": "Nếu lấy những người từng chơi cho Manchester United làm điểm trung gian, ta tìm được các đồng đội nào của họ?",
+    "category": "multihop",
+    "hops": 2,
+    "params": {
+      "club": "Manchester United"
+    },
+    "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(player:Person)-[:TEAMMATE_OF]-(mate:Person) RETURN DISTINCT mate.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "test_09",
+    "split": "test",
+    "question": "Những người từng huấn luyện Frank Lampard có lịch sử dẫn dắt các đội bóng nào theo dữ liệu?",
+    "category": "multihop",
+    "hops": 2,
+    "params": {
+      "person": "Frank Lampard"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(coach:Person)-[:MANAGES]->(club:Club) RETURN DISTINCT club.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "test_10",
+    "split": "test",
+    "question": "Đồng đội của Cristiano Ronaldo được những người đại diện nào đại diện trong đồ thị?",
+    "category": "multihop",
+    "hops": 2,
+    "params": {
+      "person": "Cristiano Ronaldo"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person)<-[:REPRESENTS]-(agent:Person) RETURN DISTINCT agent.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "test_11",
+    "split": "test",
+    "question": "Lấy các HLV từng dẫn dắt Arsenal, tìm những cầu thủ từng được họ huấn luyện, rồi cho biết đồng đội của các cầu thủ ấy.",
+    "category": "multihop",
+    "hops": 3,
+    "params": {
+      "club": "Arsenal"
+    },
+    "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(coach:Person)<-[:PLAYED_UNDER]-(player:Person)-[:TEAMMATE_OF]-(mate:Person) RETURN DISTINCT mate.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "test_12",
+    "split": "test",
+    "question": "Hãy đi từ Steven Gerrard qua đồng đội, qua HLV từng huấn luyện đồng đội đó, tới CLB do HLV ấy từng dẫn dắt; trả về tên CLB.",
+    "category": "multihop",
+    "hops": 3,
+    "params": {
+      "person": "Steven Gerrard"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person)-[:PLAYED_UNDER]->(coach:Person)-[:MANAGES]->(club:Club) RETURN DISTINCT club.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "derived"
+    }
+  },
+  {
+    "id": "test_13",
+    "split": "test",
+    "question": "Đếm số người riêng biệt mà đồ thị ghi đã khoác áo Manchester United.",
+    "category": "count",
+    "hops": 1,
+    "params": {
+      "club": "Manchester United"
+    },
+    "cypher": "MATCH (player:Person)-[:PLAYS_FOR]->(:Club {canonical_name: $club}) RETURN count(DISTINCT player) AS count LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_14",
+    "split": "test",
+    "question": "Nếu mỗi đội bóng chỉ tính một lần, sự nghiệp huấn luyện của Frank Lampard trong đồ thị trải qua bao nhiêu CLB?",
+    "category": "count",
+    "hops": 1,
+    "params": {
+      "person": "Frank Lampard"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:MANAGES]->(club:Club) RETURN count(DISTINCT club) AS count LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_15",
+    "split": "test",
+    "question": "Mạng lưới đồng đội trực tiếp của Cristiano Ronaldo gồm bao nhiêu người, sau khi bỏ trùng?",
+    "category": "count",
+    "hops": 1,
+    "params": {
+      "person": "Cristiano Ronaldo"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person) RETURN count(DISTINCT mate) AS count LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_16",
+    "split": "test",
+    "question": "Có tất cả bao nhiêu người khác nhau được nối tới José Mourinho bằng quan hệ từng là học trò?",
+    "category": "count",
+    "hops": 1,
+    "params": {
+      "person": "José Mourinho"
+    },
+    "cypher": "MATCH (player:Person)-[:PLAYED_UNDER]->(:Person {canonical_name: $person}) RETURN count(DISTINCT player) AS count LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_17",
+    "split": "test",
+    "question": "Với Liverpool là nơi nhận cầu thủ cho mượn, số người không trùng lặp được ghi nhận là bao nhiêu?",
+    "category": "count",
+    "hops": 1,
+    "params": {
+      "club": "Liverpool"
+    },
+    "cypher": "MATCH (player:Person)-[:LOANED_TO]->(:Club {canonical_name: $club}) RETURN count(DISTINCT player) AS count LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_18",
+    "split": "test",
+    "question": "Lọc ra những cầu thủ có tên trong cả lịch sử thi đấu của Arsenal và của Liverpool theo đồ thị.",
+    "category": "intersection",
+    "hops": 2,
+    "params": {
+      "club": "Arsenal",
+      "other": "Liverpool"
+    },
+    "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(player:Person)-[:PLAYS_FOR]->(:Club {canonical_name: $other}) RETURN DISTINCT player.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_19",
+    "split": "test",
+    "question": "Ai có cả hai dấu mốc làm HLV Manchester United và làm HLV Tottenham Hotspur trong dữ liệu?",
+    "category": "intersection",
+    "hops": 2,
+    "params": {
+      "club": "Manchester United",
+      "other": "Tottenham Hotspur"
+    },
+    "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(coach:Person)-[:MANAGES]->(:Club {canonical_name: $other}) RETURN DISTINCT coach.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_20",
+    "split": "test",
+    "question": "Tôi cần các tên xuất hiện ở cả tập đồng đội của Cristiano Ronaldo lẫn tập đồng đội của David Beckham.",
+    "category": "intersection",
+    "hops": 2,
+    "params": {
+      "person": "Cristiano Ronaldo",
+      "other": "David Beckham"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person)-[:TEAMMATE_OF]-(:Person {canonical_name: $other}) RETURN DISTINCT mate.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_21",
+    "split": "test",
+    "question": "Chỉ giữ những cầu thủ vừa từng thi đấu cho Manchester United vừa từng là học trò của Alex Ferguson.",
+    "category": "intersection",
+    "hops": 2,
+    "params": {
+      "club": "Manchester United",
+      "person": "Alex Ferguson"
+    },
+    "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(player:Person)-[:PLAYED_UNDER]->(:Person {canonical_name: $person}) RETURN DISTINCT player.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "aggregate"
+    }
+  },
+  {
+    "id": "test_22",
+    "split": "test",
+    "question": "Đồ thị có ghi Alex Ferguson từng được gửi sang đội bóng nào theo dạng cho mượn không? Cho biết tên đội nếu có.",
+    "category": "empty",
+    "hops": 1,
+    "params": {
+      "person": "Alex Ferguson"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:LOANED_TO]->(club:Club) RETURN DISTINCT club.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "LOANED_TO",
+      "anchor_param": "person",
+      "anchor_side": "subject"
+    }
+  },
+  {
+    "id": "test_23",
+    "split": "test",
+    "question": "Nếu tìm các thân chủ do Arsène Wenger làm người đại diện, dữ liệu trả về những ai?",
+    "category": "empty",
+    "hops": 1,
+    "params": {
+      "person": "Arsène Wenger"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(client:Person) RETURN DISTINCT client.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "REPRESENTS",
+      "anchor_param": "person",
+      "anchor_side": "subject"
+    }
+  },
+  {
+    "id": "test_24",
+    "split": "test",
+    "question": "Có CLB nào được nối từ Harry Kane bằng quan hệ từng dẫn dắt đội bóng? Hãy trả về tên được ghi nhận.",
+    "category": "empty",
+    "hops": 1,
+    "params": {
+      "person": "Harry Kane"
+    },
+    "cypher": "MATCH (:Person {canonical_name: $person})-[:MANAGES]->(club:Club) RETURN DISTINCT club.canonical_name AS name ORDER BY name LIMIT 10",
+    "provenance": {
+      "kind": "direct",
+      "relation": "MANAGES",
+      "anchor_param": "person",
+      "anchor_side": "subject"
+    }
+  }
+]

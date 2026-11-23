@@ -1,0 +1,21 @@
+{
+ "id": "lequann/player-graph-qwen3-4b-infer-vllm",
+ "title": "player-graph-qwen3-4b-infer-vllm",
+ "code_file": "infer_qwen3_4b_vllm.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_internet": true,
+ "dataset_sources": [
+  "lequann/player-graph-qwen3-4b-infer",
+  "huudong2003uet/vllm-wheel"
+ ],
+ "kernel_sources": [
+  "lequann/player-graph-qwen3-4b-lora-t4"
+ ],
+ "model_sources": [
+  "qwen-lm/qwen-3/transformers/4b/1"
+ ],
+ "competition_sources": []
+}

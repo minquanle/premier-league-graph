@@ -19,7 +19,6 @@ from player_graph.chatbot.backend import KaggleClient  # noqa: E402
 from player_graph.chatbot.pipeline import ask  # noqa: E402
 from player_graph.chatbot.query import Graph  # noqa: E402
 
-RUN = 'student_v4'
 KIND_COLOR = {'Club': '#2563eb', 'Player': '#16a34a', 'Coach': '#ea580c', 'Agent': '#9333ea', 'Person': '#64748b'}
 REL_COLOR = {'PLAYS_FOR': '#93c5fd', 'MANAGES': '#fdba74', 'TEAMMATE_OF': '#cbd5e1', 'PLAYED_UNDER': '#fcd34d',
              'TRANSFERRED_TO': '#5eead4', 'LOANED_TO': '#a5f3fc', 'CRITICIZES': '#fca5a5', 'CONFLICTS_WITH': '#f87171',
@@ -135,6 +134,10 @@ with st.sidebar:
         if st.button('Thử kết nối lại'):
             st.session_state.client = None
             st.rerun()
+
+# Which graph is loaded decides which saved network reports to show.
+RUN = graph().run('MATCH (n:FootballEntity) RETURN n.dataset_id AS run LIMIT 1')[0]['run']
+st.sidebar.caption(f'Graph đang nạp: `{RUN}`')
 
 tab_overview, tab_portrait, tab_qa = st.tabs(['📊 Tổng quan mạng', '🧑 Chân dung một nút', '💬 Hỏi đáp đa bước'])
 

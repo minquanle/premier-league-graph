@@ -2,21 +2,21 @@
 
 Mạng xã hội cầu thủ, huấn luyện viên, người đại diện và câu lạc bộ xoay quanh Ngoại hạng Anh, xây dựng bằng xử lý ngôn ngữ tự nhiên trên báo chí tiếng Việt và tiếng Anh, lưu trong Neo4j.
 
-## Kết quả (bản `student_v4`, graph chính)
+## Kết quả (bản `student_4b_v1`, graph chính)
 
-Graph chính do mô hình Qwen3-14B đã fine-tune trích xuất, rồi lọc bằng Wikidata.
+Graph chính do Qwen3-4B đã fine-tune trích xuất, rồi lọc bằng Wikidata. Toàn bộ hệ thống, từ trích xuất đến chatbot, chỉ dùng mô hình ≤ 9B.
 
 | Chỉ tiêu | Giá trị |
 |---|---|
-| Bài báo đóng góp | 6.396 (5.480 tiếng Việt, 916 tiếng Anh; VnExpress 5.427, Nhân Dân EN 481, Việt Nam News 433, Bóng Đá+ 51) |
-| Nút | 2.147: 1.917 người và 230 Club; nhãn gồm 1.700 Player, 216 Coach, 35 Agent (47 người vừa là Player vừa là Coach) |
-| Cạnh trích từ báo | 5.111 |
-| Loại quan hệ | 12 |
-| Nút có mã Wikidata | 2.102/2.147 |
-| Cạnh suy diễn, đếm riêng | 43.676 `TEAMMATE_OF`, 5.440 `PLAYED_UNDER`, 2.846 `TRANSFER_FLOW` |
-| Độ chính xác (mẫu 150 cạnh, chấm nội bộ) | 94,0% (KTC 95%: 89,0–96,8%) nếu coi cạnh chưa chắc là sai; 97,2% nếu bỏ các cạnh đó. Chưa có người chấm độc lập |
+| Bài báo đóng góp | 6.219 (5.331 tiếng Việt, 888 tiếng Anh) |
+| Nút | 2.046: 1.828 người và 218 Club; nhãn gồm 1.616 Player, 220 Coach, 32 Agent (55 người vừa là Player vừa là Coach) |
+| Cạnh trích từ báo | 4.924, thuộc 12 loại quan hệ; 57,0% có từ 2 bằng chứng trở lên |
+| Nút có mã Wikidata | 2.001/2.046 |
+| Cạnh suy diễn, đếm riêng | 41.262 `TEAMMATE_OF`, 5.427 `PLAYED_UNDER`, 2.674 `TRANSFER_FLOW` |
+| Mạng đồng đội | 1.433 người; thế giới nhỏ σ = 9,23 (L = 2,44 so với 2,05 ngẫu nhiên; C = 0,44 so với 0,04); lõi chính 41-core gồm 563 người |
+| Độ chính xác (ước lượng) | ≈ 93%: 79% số cạnh trùng với graph 14B (97,1% đúng trên mẫu đã chấm), 21% còn lại chỉ có ở graph 4B (78,3% đúng trên mẫu 60 cạnh chấm sơ bộ, `reports/sample_student_4b_v1_only.csv`) |
 
-Bản `main_v7` (nhãn của mô hình thầy) chỉ dùng để so sánh: 2.225 nút, 5.199 cạnh.
+**So sánh với graph do Qwen3-14B trích xuất** (`student_v4`): 2.147 nút, 5.111 cạnh, độ chính xác 94,0% (KTC 95%: 89,0–96,8%) trên mẫu 150 cạnh chấm nội bộ. F1 trích xuất trên 200 câu test của 14B là 0,695/0,775 (strict/lenient), của 4B là 0,629/0,681. Bộ lọc Wikidata kéo khoảng cách này xuống còn khoảng 1 điểm độ chính xác ở mức graph. Bản `main_v7` (nhãn của mô hình thầy) chỉ dùng để so sánh: 2.225 nút, 5.199 cạnh.
 
 12 loại quan hệ: `PLAYS_FOR`, `MANAGES`, `TRANSFERRED_TO`, `LOANED_TO`, `EXTENDED_CONTRACT_WITH`, `NEGOTIATES_TO_SIGN`, `APPOINTED_MANAGER_OF`, `DISMISSED_MANAGER`, `RESIGNED_FROM`, `REPRESENTS`, `CRITICIZES`, `CONFLICTS_WITH`. Mỗi cạnh lưu câu bằng chứng nguyên văn, bài báo nguồn, ngôn ngữ và trạng thái (đã xảy ra, tin đồn, phủ định, giả định).
 
@@ -99,7 +99,7 @@ Sao chép `.env.example` thành `.env`, điền endpoint tương thích OpenAI c
 
 1. Mở Docker Desktop, chạy `docker compose up -d` trong thư mục dự án; Neo4j không tự bật cùng Docker.
 2. Mở http://localhost:7474/browser/, đăng nhập `bolt://localhost:7687` bằng tài khoản trong `.env`.
-3. Chạy các truy vấn trong `queries/main.cypher`, bắt đầu bằng `CALL db.schema.visualization()`. Luôn giữ `LIMIT`: cơ sở dữ liệu có 58.554 nút, phần lớn là câu bằng chứng và bài báo.
+3. Chạy các truy vấn trong `queries/main.cypher`, bắt đầu bằng `CALL db.schema.visualization()`. Luôn giữ `LIMIT`: cơ sở dữ liệu có 51.962 nút, phần lớn là câu bằng chứng và bài báo.
 
 ## Ứng dụng: chân dung node và hỏi đáp đa bước
 

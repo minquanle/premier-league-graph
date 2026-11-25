@@ -1,4 +1,4 @@
-// Truy vấn mẫu cho graph nộp bài. Đổi "student_v4" nếu nạp bộ khác.
+// Truy vấn mẫu cho graph nộp bài. Đổi "student_4b_v1" nếu nạp bộ khác.
 
 // --- Tổng quát ---
 // Lược đồ: các loại nút và cạnh
@@ -11,7 +11,7 @@ RETURN type(r) AS quan_he, count(*) AS so_canh ORDER BY so_canh DESC;
 
 // --- Xem mạng ---
 // Quan hệ trích từ báo, chỉ 200 cạnh để trình duyệt không chậm
-MATCH (a:FootballEntity)-[r]->(b:FootballEntity) WHERE r.dataset_id = "student_v4" AND r.source_type IS NULL RETURN a, r, b LIMIT 200;
+MATCH (a:FootballEntity)-[r]->(b:FootballEntity) WHERE r.dataset_id = "student_4b_v1" AND r.source_type IS NULL RETURN a, r, b LIMIT 200;
 
 // Quanh một câu lạc bộ
 MATCH (c:Club {canonical_name: "Arsenal"})-[r]-(p) WHERE r.source_type IS NULL RETURN c, r, p LIMIT 150;

@@ -1,0 +1,151 @@
+stt,relation_id,chu_the,quan_he,doi_tuong,so_bang_chung,nhan,loai_loi,ghi_chu
+1,relation_fcd628d8bf0c242791e3,Johan Manzambi,PLAYS_FOR,Aston Villa,2,K,,cham_noi_bo
+2,relation_ce08c8cf71b27a6043d3,Adama Traoré,PLAYS_FOR,Wolverhampton Wanderers,12,D,,cham_noi_bo
+3,relation_f4a5c791035c2b73f2dc,James Maddison,EXTENDED_CONTRACT_WITH,Leicester City,1,D,,cham_noi_bo
+4,relation_844b9307167e7ee54d0c,David Seaman,PLAYS_FOR,Arsenal,1,D,,cham_noi_bo
+5,relation_d397063feda991a57e9c,Ryan Giggs,MANAGES,Manchester United,20,D,,cham_noi_bo
+6,relation_38e719fcb026ae8d4868,Savinho,PLAYS_FOR,Tottenham Hotspur,1,S,sai_clb,cham_noi_bo
+7,relation_5a7bb4a1ea3551e541e5,Victor Moses,PLAYS_FOR,Inter Milan,1,D,,cham_noi_bo
+8,relation_bbb2bcf7d0da2b3e0efd,Matt Derbyshire,TRANSFERRED_TO,Macarthur FC,1,D,,cham_noi_bo
+9,relation_6027c97f3f7f720a06c8,Luis Suárez,TRANSFERRED_TO,Liverpool,3,D,,cham_noi_bo
+10,relation_248772d999b926d98071,Sean Dyche,MANAGES,Everton,12,D,,cham_noi_bo
+11,relation_7cc97976d88d03aaa38c,Jamie Gittens,PLAYS_FOR,Chelsea,6,D,,cham_noi_bo
+12,relation_76648f72ebd81d8ccdf1,Harry Maguire,EXTENDED_CONTRACT_WITH,Manchester United,4,D,,cham_noi_bo
+13,relation_ca41821739f297d23ced,Richarlison,PLAYS_FOR,Watford,2,D,,cham_noi_bo
+14,relation_8eb491b543f510726bc8,Lucas Pérez,PLAYS_FOR,Arsenal,6,D,,cham_noi_bo
+15,relation_21a341546bc3defc0ffa,Maicon,PLAYS_FOR,Inter Milan,1,D,,cham_noi_bo
+16,relation_774f1afc1d801f50b7f1,Roy Keane,CRITICIZES,Ruben Amorim,1,D,,cham_noi_bo
+17,relation_36ab15ccbdd790c4e5f8,Erik ten Hag,MANAGES,Go Ahead Eagles,2,D,,cham_noi_bo
+18,relation_23741fbdcdaf0e65f293,José Mourinho,APPOINTED_MANAGER_OF,Real Madrid,3,D,,cham_noi_bo
+19,relation_22e796674b48777686c2,Gerard Piqué,PLAYS_FOR,FC Barcelona,22,D,,cham_noi_bo
+20,relation_935421579bd3b3cfeb5b,Jadon Sancho,LOANED_TO,Manchester United,4,S,sai_chieu,cham_noi_bo
+21,relation_6bcde6e16b4143114f20,Neil Ruddock,PLAYS_FOR,Crystal Palace,1,D,,cham_noi_bo
+22,relation_d4692a0eeede490e32af,Moritz Leitner,PLAYS_FOR,Norwich City,1,D,,cham_noi_bo
+23,relation_df73bba30221aef5e468,William Saliba,PLAYS_FOR,AS Saint-Étienne,1,D,,cham_noi_bo
+24,relation_b5513872af5bbad885eb,Fábio Carvalho,PLAYS_FOR,Liverpool,6,D,,cham_noi_bo
+25,relation_003bfc7928999896f232,Youri Tielemans,PLAYS_FOR,Monaco,1,D,,cham_noi_bo
+26,relation_d5e60ce4861f7cea4203,Matty James,PLAYS_FOR,Leicester City,1,D,,cham_noi_bo
+27,relation_e2729b83d9b326017cb7,Jorge Mendes,REPRESENTS,Cristiano Ronaldo,6,D,,cham_noi_bo
+28,relation_988bc9f1c8fcd75a48a9,Marcos Rojo,PLAYS_FOR,Manchester United,18,D,,cham_noi_bo
+29,relation_52c7e0841fb01b6c1a88,Gylfi Sigurðsson,PLAYS_FOR,Everton,16,D,,cham_noi_bo
+30,relation_69cfffe88174d332b67e,Mathias Jensen,PLAYS_FOR,Brentford,9,D,,cham_noi_bo
+31,relation_d3cbcb4bfde1b6dc1c81,Joel Pereira,PLAYS_FOR,Manchester United,1,D,,cham_noi_bo
+32,relation_eb020c3478857a660d6f,Morgan Schneiderlin,PLAYS_FOR,Manchester United,4,D,,cham_noi_bo
+33,relation_5fb3802c3faad7a531c5,Julian Draxler,PLAYS_FOR,VfL Wolfsburg,1,D,,cham_noi_bo
+34,relation_e359338c69bd9ec79377,Frank Lampard,MANAGES,Chelsea,160,D,,cham_noi_bo
+35,relation_6154fd9de9eade9172c2,Jhon Arias,PLAYS_FOR,Wolverhampton Wanderers,1,D,,cham_noi_bo
+36,relation_823e2a175fa8f1472c85,Bob Bradley,MANAGES,Swansea City,2,D,,cham_noi_bo
+37,relation_04e2f85fb4ea7133e122,Neymar,CONFLICTS_WITH,Edinson Cavani,1,D,,cham_noi_bo
+38,relation_36440b8d8f078ae5be4c,Manchester United,NEGOTIATES_TO_SIGN,André Onana,1,D,,cham_noi_bo
+39,relation_7fa0f548583c7596ad4b,Łukasz Fabiański,PLAYS_FOR,West Ham United,14,D,,cham_noi_bo
+40,relation_4013a9430e23c437c820,Edin Džeko,TRANSFERRED_TO,Manchester City,1,D,,cham_noi_bo
+41,relation_4c004d04681be30607e5,Darren Moore,MANAGES,West Bromwich Albion,1,D,,cham_noi_bo
+42,relation_fbb46230087cb430a6db,Wayne Rooney,CRITICIZES,Matheus Cunha,1,S,sai_nguoi,cham_noi_bo
+43,relation_bf098a452960fb12cc66,Mason Holgate,LOANED_TO,West Bromwich Albion,1,D,,cham_noi_bo
+44,relation_e97abd2872e26e5ad524,Tom Heaton,PLAYS_FOR,Bristol City F.C.,1,D,,cham_noi_bo
+45,relation_9d4544e0595fa9bb4095,Paolo Di Canio,MANAGES,Sunderland,2,D,,cham_noi_bo
+46,relation_a8a92752b58775da264f,Robbie Fowler,PLAYS_FOR,Cardiff City,1,D,,cham_noi_bo
+47,relation_8d3f3da7589bf194d940,Duncan Ferguson,MANAGES,Everton,4,D,,cham_noi_bo
+48,relation_ddbbc66ccad362f47bd4,Zoran Tošić,PLAYS_FOR,Manchester United,1,D,,cham_noi_bo
+49,relation_e0528a54814c1b46f8a5,Gabriel Gudmundsson,PLAYS_FOR,Leeds United,3,D,,cham_noi_bo
+50,relation_68ed19a50437c7cfde7a,Davy Klaassen,PLAYS_FOR,Everton,2,D,,cham_noi_bo
+51,relation_11afb707af0b439ed85d,Adam Masina,PLAYS_FOR,Watford,5,D,,cham_noi_bo
+52,relation_6001ee3d8b9606c34c5a,Archie Gray,PLAYS_FOR,Tottenham Hotspur,4,D,,cham_noi_bo
+53,relation_a871547814a5c92a2028,Darwin Núñez,TRANSFERRED_TO,Liverpool,12,D,,cham_noi_bo
+54,relation_988188c2d80a988b4b86,Matz Sels,PLAYS_FOR,Newcastle United,1,D,,cham_noi_bo
+55,relation_da3e48727e37ece627f2,Simao Coutinho,REPRESENTS,Diogo Dalot,1,D,,cham_noi_bo
+56,relation_f11a4256a170e3c27aff,Claude Puel,APPOINTED_MANAGER_OF,Leicester City,1,D,,cham_noi_bo
+57,relation_91e4536fe9575cf86b46,Alexis Sánchez,TRANSFERRED_TO,Manchester United,7,D,,cham_noi_bo
+58,relation_44ac90a370d13fdf61a7,Diogo Jota,TRANSFERRED_TO,Liverpool,10,D,,cham_noi_bo
+59,relation_a68b4b721b8099444d66,Romelu Lukaku,TRANSFERRED_TO,Chelsea,9,D,,cham_noi_bo
+60,relation_1c588d7baaec2150d821,Arjen Robben,TRANSFERRED_TO,Real Madrid,1,D,,cham_noi_bo
+61,relation_8d6dbbcdefdfb111f5d7,Rafael van der Vaart,CRITICIZES,Liverpool,1,D,,cham_noi_bo
+62,relation_a1db5b1e3527ec1a5a76,Louis Saha,PLAYS_FOR,Tottenham Hotspur,1,D,,cham_noi_bo
+63,relation_06a028c2cb91c3a7f9be,Luis Suárez,PLAYS_FOR,Atletico Madrid,3,D,,cham_noi_bo
+64,relation_f5a383ad1dc91ed4d3f3,Kurt Zouma,LOANED_TO,Everton,1,D,,cham_noi_bo
+65,relation_a2f7cd46e8f8cd170ac6,Mason Greenwood,PLAYS_FOR,Olympique Marseille,4,D,,cham_noi_bo
+66,relation_67cdf5ae20f29863313d,Álvaro Fernández Carreras,CONFLICTS_WITH,Antonio Rüdiger,1,D,,cham_noi_bo
+67,relation_27284399c52e383b03a2,Conor Hourihane,PLAYS_FOR,Aston Villa,7,D,,cham_noi_bo
+68,relation_752cea4b39864467fd0f,Omari Kellyman,PLAYS_FOR,Chelsea,2,D,,cham_noi_bo
+69,relation_f4d3ba2685f2a98669fa,Kevin Nolan,PLAYS_FOR,West Ham United,1,D,,cham_noi_bo
+70,relation_2bffb78369dccf952a19,Nathan Redmond,PLAYS_FOR,Norwich City,1,D,,cham_noi_bo
+71,relation_7b5e914aa0826dc6a930,Viktor Gyökeres,LOANED_TO,St Pauli,2,D,,cham_noi_bo
+72,relation_bef62c64f988923c25fc,Saúl Ñíguez,PLAYS_FOR,Chelsea,5,D,,cham_noi_bo
+73,relation_077d7426f62a31fb4fc0,Alejandro Garnacho,PLAYS_FOR,Manchester United,143,D,,cham_noi_bo
+74,relation_2a94e754cd19972c9ed2,Robbie Fowler,PLAYS_FOR,Blackburn Rovers,1,D,,cham_noi_bo
+75,relation_ab84db076737468436bd,Liam Rosenior,MANAGES,Derby County,2,K,,cham_noi_bo
+76,relation_4aefc0ab16ca1a5dab49,Odion Ighalo,PLAYS_FOR,Watford,4,D,,cham_noi_bo
+77,relation_8485d8bbd29749dae223,Javi Gracia,MANAGES,Watford,10,D,,cham_noi_bo
+78,relation_9eb30412fa8e7212904f,John Stones,PLAYS_FOR,Everton,4,D,,cham_noi_bo
+79,relation_bbe95b10e84d7d829535,Luis Díaz,TRANSFERRED_TO,Bayern Munich,1,D,,cham_noi_bo
+80,relation_aa3b2a4fc54e81ecff6b,Anthony Elanga,PLAYS_FOR,Newcastle United,5,D,,cham_noi_bo
+81,relation_21bdbf302291f1e82584,Aaron Wan-Bissaka,EXTENDED_CONTRACT_WITH,Manchester United,1,D,,cham_noi_bo
+82,relation_87a785adad79a949ee5f,Mohammed Kudus,TRANSFERRED_TO,West Ham United,2,D,,cham_noi_bo
+83,relation_66b2c360bcb9a541e4ef,Antonio Conte,MANAGES,Napoli,21,D,,cham_noi_bo
+84,relation_8cc228be5efa81705255,Bernd Leno,PLAYS_FOR,Fulham,17,D,,cham_noi_bo
+85,relation_bdc2127875cbe49352c3,Liam Cooper,PLAYS_FOR,Leeds United,7,D,,cham_noi_bo
+86,relation_7fba10256a96bfbb3973,Claudio Bravo,PLAYS_FOR,Real Betis Balompié,1,K,,cham_noi_bo
+87,relation_20a8d7bf0c29221cb1a8,Martin O'Neill,APPOINTED_MANAGER_OF,Nottingham Forest,1,D,,cham_noi_bo
+88,relation_278370fbd9b38270356a,Luis Suárez,PLAYS_FOR,FC Barcelona,21,D,,cham_noi_bo
+89,relation_0e77f2ac6e1eb5ec4d84,Keith Millen,MANAGES,Crystal Palace,1,D,,cham_noi_bo
+90,relation_c78a7a4551b4bc1e58c8,Alejandro Garnacho,TRANSFERRED_TO,Chelsea,6,D,,cham_noi_bo
+91,relation_32b61812817f4b0158da,Cenk Tosun,PLAYS_FOR,Everton,3,D,,cham_noi_bo
+92,relation_d0a33570a4797b59faf0,Ciro Immobile,PLAYS_FOR,Borussia Dortmund,2,D,,cham_noi_bo
+93,relation_a68d49e22fdb29643ec9,Crystal Palace,DISMISSED_MANAGER,Alan Pardew,2,D,,cham_noi_bo
+94,relation_40cd1f1797690232ea4e,Patrick Roberts,TRANSFERRED_TO,Manchester City,1,D,,cham_noi_bo
+95,relation_964a31beb628b2455d40,Hannibal Mejbri,PLAYS_FOR,Manchester United,9,D,,cham_noi_bo
+96,relation_a9bf11291769f55f6e8f,Théo Hernandez,TRANSFERRED_TO,Al Hilal,1,D,,cham_noi_bo
+97,relation_041b958082ce214ee711,Luis Suárez,PLAYS_FOR,Liverpool,8,D,,cham_noi_bo
+98,relation_4c237e3cbc5a08fd1a06,Raphaël Varane,TRANSFERRED_TO,Como,3,D,,cham_noi_bo
+99,relation_4603d54e84a3802c9918,Mauricio Pochettino,MANAGES,Tottenham Hotspur,149,D,,cham_noi_bo
+100,relation_d835f3c4f5ae28c369d1,Louis Saha,PLAYS_FOR,Everton,1,D,,cham_noi_bo
+101,relation_97c6a29009062d8b0932,Javier Garrido,PLAYS_FOR,Norwich City,1,D,,cham_noi_bo
+102,relation_3c5c1003e369b9e67dcf,Liverpool,NEGOTIATES_TO_SIGN,Marc Guéhi,1,D,,cham_noi_bo
+103,relation_a0179e48e5fd2923d78e,Chris Richards,LOANED_TO,Bayern Munich,1,S,sai_chieu,cham_noi_bo
+104,relation_152aae8408d7f6b8e754,Patrick Vieira,PLAYS_FOR,Manchester City,1,D,,cham_noi_bo
+105,relation_1c200365864072196c14,Dejan Lovren,PLAYS_FOR,Liverpool,23,D,,cham_noi_bo
+106,relation_9ee9981363e33d10d582,Eric García,PLAYS_FOR,Manchester City,14,D,,cham_noi_bo
+107,relation_efba2bdce66d107eb72c,Henri Saivet,TRANSFERRED_TO,Newcastle United,2,D,,cham_noi_bo
+108,relation_b801d3982509c19805a5,Marcus Bettinelli,PLAYS_FOR,Chelsea,2,D,,cham_noi_bo
+109,relation_9678390953657926626c,Jamie Redknapp,CRITICIZES,Mikel Arteta,1,D,,cham_noi_bo
+110,relation_87736198dc59a7751a2d,Joleon Lescott,CRITICIZES,Stefan Savić,1,D,,cham_noi_bo
+111,relation_39399e5f3f89787eb235,Romelu Lukaku,PLAYS_FOR,Napoli,6,D,,cham_noi_bo
+112,relation_cf0a426c45f1267f04a4,Alexandre Pato,PLAYS_FOR,Chelsea,1,D,,cham_noi_bo
+113,relation_87375ac24915fbebf14b,Jorrel Hato,PLAYS_FOR,Chelsea,11,D,,cham_noi_bo
+114,relation_5da57c4175e54cab757c,Franco Di Santo,PLAYS_FOR,Wigan Athletic,3,D,,cham_noi_bo
+115,relation_df2e834bb62cd050901f,Viktor Gyökeres,TRANSFERRED_TO,Brighton and Hove Albion,1,D,,cham_noi_bo
+116,relation_6cfa8dd237af3da4f828,Ray Clemence,PLAYS_FOR,Liverpool,1,D,,cham_noi_bo
+117,relation_94af138bd136a0e8ef0a,Marco van Basten,PLAYS_FOR,Ajax,1,D,,cham_noi_bo
+118,relation_b1ef006f1192ceb4c13f,Pablo Marí,PLAYS_FOR,Arsenal,14,D,,cham_noi_bo
+119,relation_c489bd5ba9e9c31339ab,Mauricio Del Castillo,CRITICIZES,Pep Guardiola,1,D,,cham_noi_bo
+120,relation_3a88d09b008fcd16474a,Paul Scholes,CRITICIZES,David de Gea,1,K,,cham_noi_bo
+121,relation_7e8afb63b8bb51190073,Aitor Karanka,MANAGES,Middlesbrough,2,D,,cham_noi_bo
+122,relation_6e80f11d90158867dde7,Jorginho,TRANSFERRED_TO,Chelsea,3,D,,cham_noi_bo
+123,relation_6311d015fae6192f09b3,Aaron Collins,PLAYS_FOR,Bolton Wanderers,1,D,,cham_noi_bo
+124,relation_29c09b7cae7fb7e600de,Sol Campbell,PLAYS_FOR,Notts County F.C.,1,D,,cham_noi_bo
+125,relation_82ec3faa5a766cab3ddb,José Mourinho,CRITICIZES,Andriy Shevchenko,1,D,,cham_noi_bo
+126,relation_43edd219c6eabd1dbd7e,Vincent Kompany,TRANSFERRED_TO,Manchester City,1,D,,cham_noi_bo
+127,relation_83230291c71a509be429,Enzo Fernández,PLAYS_FOR,Chelsea,72,D,,cham_noi_bo
+128,relation_2d9603c15de037c42fb1,Facundo Pellistri,PLAYS_FOR,Manchester United,6,D,,cham_noi_bo
+129,relation_2a931d64a10f8af63adc,Jordi Gómez,PLAYS_FOR,Wigan Athletic,1,D,,cham_noi_bo
+130,relation_ed64535572a84d954e78,Vitinha,LOANED_TO,Wolverhampton Wanderers,1,D,,cham_noi_bo
+131,relation_682b70e9b330f64393ac,Dirk Kuyt,PLAYS_FOR,Liverpool,3,D,,cham_noi_bo
+132,relation_d709fa19677922a4a695,Lutsharel Geertruida,PLAYS_FOR,Sunderland,2,D,,cham_noi_bo
+133,relation_3269147fb17eca33a201,Tottenham Hotspur,DISMISSED_MANAGER,Ange Postecoglou,5,D,,cham_noi_bo
+134,relation_2f9eb82635574ba84285,Jørgen Strand Larsen,PLAYS_FOR,Wolverhampton Wanderers,3,D,,cham_noi_bo
+135,relation_4ff84c73977cc82dbb60,Serge Aurier,PLAYS_FOR,Nottingham Forest,2,D,,cham_noi_bo
+136,relation_ede5f708ca7ba16eb0bb,Ainsley Maitland-Niles,PLAYS_FOR,Arsenal,21,D,,cham_noi_bo
+137,relation_67f2547fa9b17cdef8cc,Matt Le Tissier,PLAYS_FOR,Southampton,2,D,,cham_noi_bo
+138,relation_75eedf72b3db25c452e7,Nigel Pearson,MANAGES,Leicester City,6,D,,cham_noi_bo
+139,relation_0ce21a501b69a0547541,José Mourinho,CONFLICTS_WITH,Iker Casillas,3,D,,cham_noi_bo
+140,relation_c31fdad288e501c2a98b,Michy Batshuayi,PLAYS_FOR,Crystal Palace,2,D,,cham_noi_bo
+141,relation_e055c20638ccae3164f2,Anthony Martial,LOANED_TO,Sevilla,4,D,,cham_noi_bo
+142,relation_3f61f8e5d9473bf49679,Thiago Silva,TRANSFERRED_TO,Chelsea,4,D,,cham_noi_bo
+143,relation_bfe96ea7c946b2b3ddb3,Iliman Ndiaye,PLAYS_FOR,Manchester City,3,K,,cham_noi_bo
+144,relation_1ed842c799c435dc7fa0,Neil Etheridge,PLAYS_FOR,Cardiff City,5,D,,cham_noi_bo
+145,relation_936a7015bdab4910265f,Rolando Aarons,PLAYS_FOR,Newcastle United,1,D,,cham_noi_bo
+146,relation_f860d527bc56b3888c2c,Samuel Chukwueze,PLAYS_FOR,AC Milan,3,D,,cham_noi_bo
+147,relation_45363917597e7449b0fc,Mido,PLAYS_FOR,Middlesbrough,1,D,,cham_noi_bo
+148,relation_7444c9359640e84b5cb7,Roy Keane,CRITICIZES,Liverpool,2,D,,cham_noi_bo
+149,relation_8b47a7f15d41264fdfa1,Jamie Carragher,CRITICIZES,Bruno Fernandes,4,D,,cham_noi_bo
+150,relation_6c895e44448bedbbd125,Samuel Eto'o,PLAYS_FOR,Inter Milan,1,D,,cham_noi_bo

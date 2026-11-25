@@ -1,0 +1,523 @@
+{
+  "created_at": "2026-11-25T08:47:48.647634+07:00",
+  "run_name": "student_4b_v1",
+  "teammate": {
+    "nodes": 1441,
+    "k_max": 41,
+    "main_core": {
+      "size": 563,
+      "density": 0.117,
+      "members_by_degree": [
+        "Danny Welbeck",
+        "Romelu Lukaku",
+        "Raheem Sterling",
+        "Victor Moses",
+        "Danny Drinkwater",
+        "Tom Heaton",
+        "Ashley Young",
+        "Jonny Evans",
+        "James Milner",
+        "Calum Chambers",
+        "Emiliano Martínez",
+        "Joe Hart",
+        "Ross Barkley",
+        "Kurt Zouma",
+        "Conor Gallagher"
+      ],
+      "main_clubs": [
+        [
+          "Manchester United",
+          114
+        ],
+        [
+          "Chelsea",
+          107
+        ],
+        [
+          "Arsenal",
+          77
+        ],
+        [
+          "Tottenham Hotspur",
+          60
+        ],
+        [
+          "Manchester City",
+          57
+        ]
+      ]
+    },
+    "nodes_with_core_at_least": {
+      "1": 1441,
+      "5": 1353,
+      "10": 1304,
+      "20": 1183,
+      "30": 1027,
+      "40": 612,
+      "41": 563,
+      "50": 0
+    },
+    "shell_sizes_largest": [
+      [
+        41,
+        563
+      ],
+      [
+        40,
+        49
+      ],
+      [
+        39,
+        25
+      ],
+      [
+        38,
+        99
+      ],
+      [
+        37,
+        40
+      ],
+      [
+        36,
+        70
+      ],
+      [
+        35,
+        36
+      ],
+      [
+        34,
+        40
+      ],
+      [
+        33,
+        39
+      ],
+      [
+        32,
+        22
+      ]
+    ],
+    "top20_pagerank_in_main_core": 20,
+    "core_degree_spearman": 0.937,
+    "leiden_community_nuclei": [
+      {
+        "community_size": 250,
+        "nucleus_k": 33,
+        "nucleus_size": 35,
+        "nucleus_share": 0.14,
+        "nucleus_members": [
+          "César Azpilicueta",
+          "Victor Moses",
+          "Ruben Loftus-Cheek",
+          "Kepa Arrizabalaga",
+          "Andreas Christensen",
+          "Willian",
+          "Kurt Zouma",
+          "Baba Rahman"
+        ],
+        "main_clubs": [
+          [
+            "Chelsea",
+            132
+          ],
+          [
+            "Fulham",
+            15
+          ]
+        ]
+      },
+      {
+        "community_size": 198,
+        "nucleus_k": 38,
+        "nucleus_size": 45,
+        "nucleus_share": 0.227,
+        "nucleus_members": [
+          "Jonny Evans",
+          "Darren Fletcher",
+          "Ryan Giggs",
+          "Matty James",
+          "Tom Cleverley",
+          "Rio Ferdinand",
+          "Ben Foster",
+          "Danny Drinkwater"
+        ],
+        "main_clubs": [
+          [
+            "Manchester United",
+            81
+          ],
+          [
+            "Leicester City",
+            33
+          ]
+        ]
+      },
+      {
+        "community_size": 152,
+        "nucleus_k": 16,
+        "nucleus_size": 26,
+        "nucleus_share": 0.171,
+        "nucleus_members": [
+          "Cheikhou Kouyaté",
+          "Michail Antonio",
+          "Alex Song",
+          "Darren Randolph",
+          "Diafra Sakho",
+          "José Fonte",
+          "Håvard Nordtveit",
+          "Andy Carroll"
+        ],
+        "main_clubs": [
+          [
+            "West Ham United",
+            34
+          ],
+          [
+            "Crystal Palace",
+            24
+          ]
+        ]
+      },
+      {
+        "community_size": 142,
+        "nucleus_k": 35,
+        "nucleus_size": 36,
+        "nucleus_share": 0.254,
+        "nucleus_members": [
+          "Casemiro",
+          "Luke Shaw",
+          "Axel Tuanzebe",
+          "Joel Pereira",
+          "Raphaël Varane",
+          "Anthony Martial",
+          "James Garner",
+          "Daniel James"
+        ],
+        "main_clubs": [
+          [
+            "Manchester United",
+            72
+          ],
+          [
+            "Real Madrid",
+            16
+          ]
+        ]
+      },
+      {
+        "community_size": 128,
+        "nucleus_k": 28,
+        "nucleus_size": 29,
+        "nucleus_share": 0.227,
+        "nucleus_members": [
+          "Ben Davies",
+          "Harry Kane",
+          "Hugo Lloris",
+          "Eric Dier",
+          "Vincent Janssen",
+          "Ryan Sessegnon",
+          "Son Heung-min",
+          "Cristian Romero"
+        ],
+        "main_clubs": [
+          [
+            "Tottenham Hotspur",
+            89
+          ],
+          [
+            "Fulham",
+            12
+          ]
+        ]
+      },
+      {
+        "community_size": 115,
+        "nucleus_k": 37,
+        "nucleus_size": 38,
+        "nucleus_share": 0.33,
+        "nucleus_members": [
+          "Héctor Bellerín",
+          "Ainsley Maitland-Niles",
+          "Reiss Nelson",
+          "Charlie Patino",
+          "Aaron Ramsey",
+          "Calum Chambers",
+          "Carl Jenkinson",
+          "Emiliano Martínez"
+        ],
+        "main_clubs": [
+          [
+            "Arsenal",
+            100
+          ],
+          [
+            "Olympique Lyonnais",
+            4
+          ]
+        ]
+      }
+    ]
+  },
+  "teammate_and_played_under": {
+    "nodes": 1482,
+    "k_max": 43,
+    "main_core": {
+      "size": 623,
+      "density": 0.113,
+      "members_by_degree": [
+        "Danny Welbeck",
+        "Romelu Lukaku",
+        "Raheem Sterling",
+        "Victor Moses",
+        "Danny Drinkwater",
+        "Ashley Young",
+        "Tom Heaton",
+        "Jonny Evans",
+        "James Milner",
+        "Frank Lampard",
+        "José Mourinho",
+        "Calum Chambers",
+        "Emiliano Martínez",
+        "Joe Hart",
+        "Kurt Zouma"
+      ],
+      "main_clubs": [
+        [
+          "Manchester United",
+          118
+        ],
+        [
+          "Chelsea",
+          112
+        ],
+        [
+          "Arsenal",
+          79
+        ],
+        [
+          "Tottenham Hotspur",
+          62
+        ],
+        [
+          "Manchester City",
+          59
+        ]
+      ]
+    },
+    "nodes_with_core_at_least": {
+      "1": 1482,
+      "5": 1434,
+      "10": 1387,
+      "20": 1281,
+      "21": 1265,
+      "30": 1133,
+      "40": 798,
+      "43": 623,
+      "50": 0
+    },
+    "shell_sizes_largest": [
+      [
+        43,
+        623
+      ],
+      [
+        42,
+        68
+      ],
+      [
+        41,
+        55
+      ],
+      [
+        40,
+        52
+      ],
+      [
+        39,
+        80
+      ],
+      [
+        38,
+        40
+      ],
+      [
+        37,
+        23
+      ],
+      [
+        36,
+        35
+      ],
+      [
+        35,
+        35
+      ],
+      [
+        34,
+        32
+      ]
+    ],
+    "top20_pagerank_in_main_core": 20,
+    "core_degree_spearman": 0.929,
+    "leiden_community_nuclei": [
+      {
+        "community_size": 247,
+        "nucleus_k": 20,
+        "nucleus_size": 36,
+        "nucleus_share": 0.146,
+        "nucleus_members": [
+          "Scott Parker",
+          "Peter Crouch",
+          "Jermain Defoe",
+          "Younes Kaboul",
+          "Aaron Lennon",
+          "Danny Rose",
+          "Brad Friedel",
+          "Michael Dawson"
+        ],
+        "main_clubs": [
+          [
+            "Tottenham Hotspur",
+            36
+          ],
+          [
+            "Fulham",
+            21
+          ]
+        ]
+      },
+      {
+        "community_size": 165,
+        "nucleus_k": 38,
+        "nucleus_size": 39,
+        "nucleus_share": 0.236,
+        "nucleus_members": [
+          "Carl Jenkinson",
+          "Reiss Nelson",
+          "Héctor Bellerín",
+          "Ainsley Maitland-Niles",
+          "Charlie Patino",
+          "Aaron Ramsey",
+          "Emiliano Martínez",
+          "Arsène Wenger"
+        ],
+        "main_clubs": [
+          [
+            "Arsenal",
+            109
+          ],
+          [
+            "West Ham United",
+            33
+          ]
+        ]
+      },
+      {
+        "community_size": 163,
+        "nucleus_k": 40,
+        "nucleus_size": 41,
+        "nucleus_share": 0.252,
+        "nucleus_members": [
+          "Jonny Evans",
+          "Michael Carrick",
+          "David de Gea",
+          "Phil Jones",
+          "Jesse Lingard",
+          "Wayne Rooney",
+          "Chris Smalling",
+          "Antonio Valencia"
+        ],
+        "main_clubs": [
+          [
+            "Manchester United",
+            148
+          ],
+          [
+            "Leicester City",
+            2
+          ]
+        ]
+      },
+      {
+        "community_size": 152,
+        "nucleus_k": 37,
+        "nucleus_size": 38,
+        "nucleus_share": 0.25,
+        "nucleus_members": [
+          "Frank Lampard",
+          "César Azpilicueta",
+          "Ruben Loftus-Cheek",
+          "Victor Moses",
+          "Willian",
+          "Andreas Christensen",
+          "Kurt Zouma",
+          "Baba Rahman"
+        ],
+        "main_clubs": [
+          [
+            "Chelsea",
+            100
+          ],
+          [
+            "Juventus",
+            10
+          ]
+        ]
+      },
+      {
+        "community_size": 145,
+        "nucleus_k": 32,
+        "nucleus_size": 46,
+        "nucleus_share": 0.317,
+        "nucleus_members": [
+          "Raheem Sterling",
+          "Kelechi Iheanacho",
+          "İlkay Gündoğan",
+          "Tosin Adarabioyo",
+          "John Stones",
+          "Pep Guardiola",
+          "Kevin De Bruyne",
+          "Fernandinho"
+        ],
+        "main_clubs": [
+          [
+            "Manchester City",
+            80
+          ],
+          [
+            "Chelsea",
+            33
+          ]
+        ]
+      },
+      {
+        "community_size": 128,
+        "nucleus_k": 31,
+        "nucleus_size": 32,
+        "nucleus_share": 0.25,
+        "nucleus_members": [
+          "Virgil van Dijk",
+          "Jordan Henderson",
+          "Andy Robertson",
+          "Mohamed Salah",
+          "Alisson Becker",
+          "Sadio Mané",
+          "Trent Alexander-Arnold",
+          "Divock Origi"
+        ],
+        "main_clubs": [
+          [
+            "Liverpool",
+            92
+          ],
+          [
+            "Southampton",
+            17
+          ]
+        ]
+      }
+    ]
+  }
+}

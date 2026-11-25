@@ -1,0 +1,2675 @@
+subject_id,subject,object_id,object,moves
+Q101859,VfL Wolfsburg,Q1543,AC Milan,1
+Q101859,VfL Wolfsburg,Q15789,Bayern Munich,1
+Q101859,VfL Wolfsburg,Q18708,Fulham,2
+Q101859,VfL Wolfsburg,Q18721,Norwich City,1
+Q101859,VfL Wolfsburg,Q18741,Tottenham Hotspur,1
+Q101859,VfL Wolfsburg,Q19458,Burnley,1
+Q101859,VfL Wolfsburg,Q19467,Crystal Palace,1
+Q101859,VfL Wolfsburg,Q19490,Nottingham Forest,1
+Q101859,VfL Wolfsburg,Q50602,Manchester City,3
+Q101859,VfL Wolfsburg,Q631,Inter Milan,1
+Q101959,Borussia Mönchengladbach,Q1422,Juventus,1
+Q101959,Borussia Mönchengladbach,Q15789,Bayern Munich,1
+Q101959,Borussia Mönchengladbach,Q18721,Norwich City,1
+Q101959,Borussia Mönchengladbach,Q18747,West Ham United,1
+Q101959,Borussia Mönchengladbach,Q19453,Brighton and Hove Albion,1
+Q101959,Borussia Mönchengladbach,Q19477,Hull City,1
+Q101959,Borussia Mönchengladbach,Q204357,LA Galaxy,1
+Q101959,Borussia Mönchengladbach,Q51976,SV Werder Bremen,1
+Q101959,Borussia Mönchengladbach,Q7156,FC Barcelona,1
+Q101959,Borussia Mönchengladbach,Q9617,Arsenal,1
+Q10300,Rayo Vallecano,Q10315,Real Sociedad,1
+Q10300,Rayo Vallecano,Q10329,Sevilla,1
+Q10300,Rayo Vallecano,Q18750,Wigan Athletic,1
+Q10300,Rayo Vallecano,Q19477,Hull City,1
+Q10300,Rayo Vallecano,Q223360,FC Karpaty Lviv,1
+Q10300,Rayo Vallecano,Q9616,Chelsea,1
+Q10315,Real Sociedad,Q10329,Sevilla,1
+Q10315,Real Sociedad,Q1128631,Leeds United,1
+Q10315,Real Sociedad,Q1130849,Liverpool,1
+Q10315,Real Sociedad,Q12297,Villarreal,1
+Q10315,Real Sociedad,Q132885,Olympique Marseille,1
+Q10315,Real Sociedad,Q1543,AC Milan,1
+Q10315,Real Sociedad,Q18716,Newcastle United,1
+Q10315,Real Sociedad,Q191264,AZ Alkmaar,1
+Q10315,Real Sociedad,Q19513,Montpellier Hérault Sport Club,1
+Q10315,Real Sociedad,Q1967477,Antiguoko,1
+Q10315,Real Sociedad,Q5794,Everton,1
+Q10315,Real Sociedad,Q7156,FC Barcelona,1
+Q10315,Real Sociedad,Q8723,Real Betis Balompié,1
+Q10315,Real Sociedad,Q9617,Arsenal,3
+Q10329,Sevilla,Q1130849,Liverpool,1
+Q10329,Sevilla,Q12297,Villarreal,1
+Q10329,Sevilla,Q167615,CF Montréal,1
+Q10329,Sevilla,Q180305,Monaco,1
+Q10329,Sevilla,Q18659,Swansea City,1
+Q10329,Sevilla,Q18708,Fulham,1
+Q10329,Sevilla,Q18741,Tottenham Hotspur,1
+Q10329,Sevilla,Q18747,West Ham United,1
+Q10329,Sevilla,Q19490,Nottingham Forest,1
+Q10329,Sevilla,Q19628,Olympiacos F.C.,1
+Q10329,Sevilla,Q201584,AEK Athens F.C.,2
+Q10329,Sevilla,Q204357,LA Galaxy,1
+Q10329,Sevilla,Q2052,ACF Fiorentina,1
+Q10329,Sevilla,Q2739,AS Roma,1
+Q10329,Sevilla,Q309480,Al Ittihad,1
+Q10329,Sevilla,Q482764,Al Nassr,1
+Q10329,Sevilla,Q483020,Paris Saint-Germain,1
+Q10329,Sevilla,Q50602,Manchester City,2
+Q10329,Sevilla,Q5794,Everton,1
+Q10329,Sevilla,Q702455,RB Leipzig,1
+Q10329,Sevilla,Q7156,FC Barcelona,3
+Q10329,Sevilla,Q770740,SD Eibar,1
+Q10329,Sevilla,Q8701,Atletico Madrid,1
+Q10329,Sevilla,Q8749,RC Celta de Vigo,2
+Q10329,Sevilla,Q8760,Deportivo de A Coruña,1
+Q10329,Sevilla,Q9617,Arsenal,1
+Q1046367,Shandong Taishan F.C.,Q2693,Parma Calcio 1913,1
+Q104761,Bayer Leverkusen,Q101959,Borussia Mönchengladbach,1
+Q104761,Bayer Leverkusen,Q1130849,Liverpool,3
+Q104761,Bayer Leverkusen,Q11945,Girona FC,1
+Q104761,Bayer Leverkusen,Q15789,Bayern Munich,1
+Q104761,Bayer Leverkusen,Q18711,Aston Villa,2
+Q104761,Bayer Leverkusen,Q18739,Sunderland,2
+Q104761,Bayer Leverkusen,Q18741,Tottenham Hotspur,2
+Q104761,Bayer Leverkusen,Q18747,West Ham United,1
+Q104761,Bayer Leverkusen,Q19490,Nottingham Forest,1
+Q104761,Bayer Leverkusen,Q8682,Real Madrid,2
+Q104761,Bayer Leverkusen,Q9616,Chelsea,2
+Q104761,Bayer Leverkusen,Q9617,Arsenal,2
+Q10512,Elche CF,Q18708,Fulham,1
+Q10512,Elche CF,Q18711,Aston Villa,1
+Q10512,Elche CF,Q50602,Manchester City,1
+Q10512,Elche CF,Q8806,Getafe CF,1
+Q105254,1. FSV Mainz 05,Q104761,Bayer Leverkusen,1
+Q105254,1. FSV Mainz 05,Q1130849,Liverpool,1
+Q105254,1. FSV Mainz 05,Q141971,1. FC Union Berlin,1
+Q105254,1. FSV Mainz 05,Q18741,Tottenham Hotspur,1
+Q105254,1. FSV Mainz 05,Q19453,Brighton and Hove Albion,1
+Q105254,1. FSV Mainz 05,Q19467,Crystal Palace,1
+Q105254,1. FSV Mainz 05,Q19473,Huddersfield Town,1
+Q105254,1. FSV Mainz 05,Q19481,Leicester City,1
+Q105254,1. FSV Mainz 05,Q22707,TSG 1899 Hoffenheim,1
+Q105254,1. FSV Mainz 05,Q32494,Schalke 04,2
+Q105254,1. FSV Mainz 05,Q732002,Royal Antwerp F.C.,1
+Q1067750,Real Sociedad B,Q10315,Real Sociedad,2
+Q1067750,Real Sociedad B,Q770740,SD Eibar,1
+Q1067750,Real Sociedad B,Q8682,Real Madrid,1
+Q1120838,Como,Q2074,Genoa CFC,1
+Q1120838,Como,Q2641,Napoli,1
+Q1120838,Como,Q8835,RCD Mallorca,1
+Q1128631,Leeds United,Q10512,Elche CF,1
+Q1128631,Leeds United,Q1130849,Liverpool,2
+Q1128631,Leeds United,Q18656,Manchester United,1
+Q1128631,Leeds United,Q18659,Swansea City,1
+Q1128631,Leeds United,Q18661,Middlesbrough,1
+Q1128631,Leeds United,Q18711,Aston Villa,1
+Q1128631,Leeds United,Q18716,Newcastle United,2
+Q1128631,Leeds United,Q18721,Norwich City,1
+Q1128631,Leeds United,Q18723,Queens Park Rangers,1
+Q1128631,Leeds United,Q18741,Tottenham Hotspur,4
+Q1128631,Leeds United,Q19451,Bolton Wanderers,1
+Q1128631,Leeds United,Q19453,Brighton and Hove Albion,2
+Q1128631,Leeds United,Q19458,Burnley,2
+Q1128631,Leeds United,Q19467,Crystal Palace,1
+Q1128631,Leeds United,Q19481,Leicester City,2
+Q1128631,Leeds United,Q19498,Sheffield Wednesday,1
+Q1128631,Leeds United,Q19568,AFC Bournemouth,1
+Q1128631,Leeds United,Q19607,Sheffield United,1
+Q1128631,Leeds United,Q204888,PAOK FC,1
+Q1128631,Leeds United,Q2074,Genoa CFC,1
+Q1128631,Leeds United,Q2739,AS Roma,1
+Q1128631,Leeds United,Q48950,Rotherham United F.C.,1
+Q1128631,Leeds United,Q50602,Manchester City,2
+Q1128631,Leeds United,Q7156,FC Barcelona,1
+Q1128631,Leeds United,Q9617,Arsenal,1
+Q1130849,Liverpool,Q10329,Sevilla,1
+Q1130849,Liverpool,Q104761,Bayer Leverkusen,1
+Q1130849,Liverpool,Q105254,1. FSV Mainz 05,1
+Q1130849,Liverpool,Q1128631,Leeds United,1
+Q1130849,Liverpool,Q12297,Villarreal,1
+Q1130849,Liverpool,Q132885,Olympique Marseille,1
+Q1130849,Liverpool,Q134241,Feyenoord Rotterdam,1
+Q1130849,Liverpool,Q1422,Juventus,1
+Q1130849,Liverpool,Q1457,U.C. Sampdoria,1
+Q1130849,Liverpool,Q1543,AC Milan,1
+Q1130849,Liverpool,Q15789,Bayern Munich,2
+Q1130849,Liverpool,Q172567,Beşiktaş J.K.,2
+Q1130849,Liverpool,Q18659,Swansea City,2
+Q1130849,Liverpool,Q18661,Middlesbrough,2
+Q1130849,Liverpool,Q18662,Cardiff City,2
+Q1130849,Liverpool,Q18711,Aston Villa,1
+Q1130849,Liverpool,Q18721,Norwich City,1
+Q1130849,Liverpool,Q18732,Southampton,3
+Q1130849,Liverpool,Q18736,Stoke City,3
+Q1130849,Liverpool,Q18739,Sunderland,1
+Q1130849,Liverpool,Q18741,Tottenham Hotspur,4
+Q1130849,Liverpool,Q18744,West Bromwich Albion,1
+Q1130849,Liverpool,Q18747,West Ham United,3
+Q1130849,Liverpool,Q1886,Atalanta BC,1
+Q1130849,Liverpool,Q1900,Cagliari Calcio,1
+Q1130849,Liverpool,Q190916,Club Brugge K.V.,1
+Q1130849,Liverpool,Q192641,Trabzonspor,2
+Q1130849,Liverpool,Q19444,Birmingham City F.C.,1
+Q1130849,Liverpool,Q19446,Blackburn Rovers,3
+Q1130849,Liverpool,Q19451,Bolton Wanderers,2
+Q1130849,Liverpool,Q19453,Brighton and Hove Albion,2
+Q1130849,Liverpool,Q19458,Burnley,1
+Q1130849,Liverpool,Q19462,Charlton Athletic,1
+Q1130849,Liverpool,Q19467,Crystal Palace,3
+Q1130849,Liverpool,Q19477,Hull City,1
+Q1130849,Liverpool,Q19490,Nottingham Forest,1
+Q1130849,Liverpool,Q19498,Sheffield Wednesday,1
+Q1130849,Liverpool,Q19516,Lille OSC,2
+Q1130849,Liverpool,Q19568,AFC Bournemouth,2
+Q1130849,Liverpool,Q19571,Brentford,2
+Q1130849,Liverpool,Q19593,Celtic,1
+Q1130849,Liverpool,Q19604,Portsmouth,1
+Q1130849,Liverpool,Q19607,Sheffield United,3
+Q1130849,Liverpool,Q204357,LA Galaxy,1
+Q1130849,Liverpool,Q2052,ACF Fiorentina,1
+Q1130849,Liverpool,Q221695,Grêmio FBPA,1
+Q1130849,Liverpool,Q22707,TSG 1899 Hoffenheim,1
+Q1130849,Liverpool,Q2641,Napoli,1
+Q1130849,Liverpool,Q2739,AS Roma,2
+Q1130849,Liverpool,Q29108,FC Zenit Saint Petersburg,1
+Q1130849,Liverpool,Q309480,Al Ittihad,1
+Q1130849,Liverpool,Q44441,Al Ahli FC,1
+Q1130849,Liverpool,Q483020,Paris Saint-Germain,1
+Q1130849,Liverpool,Q495299,Galatasaray S.K.,1
+Q1130849,Liverpool,Q50602,Manchester City,4
+Q1130849,Liverpool,Q51976,SV Werder Bremen,1
+Q1130849,Liverpool,Q631,Inter Milan,1
+Q1130849,Liverpool,Q704,Olympique Lyonnais,1
+Q1130849,Liverpool,Q7156,FC Barcelona,2
+Q1130849,Liverpool,Q72844,Al-Ettifaq FC,1
+Q1130849,Liverpool,Q73965,Al Hilal,1
+Q1130849,Liverpool,Q8682,Real Madrid,6
+Q1130849,Liverpool,Q9616,Chelsea,2
+Q1130849,Liverpool,Q994811,FC Red Bull Salzburg,1
+Q1157920,Dalian Professional F.C.,Q19516,Lille OSC,1
+Q1157920,Dalian Professional F.C.,Q5794,Everton,1
+Q11945,Girona FC,Q18732,Southampton,1
+Q11945,Girona FC,Q221695,Grêmio FBPA,1
+Q11945,Girona FC,Q332664,Willem II,1
+Q11945,Girona FC,Q50602,Manchester City,3
+Q11945,Girona FC,Q7156,FC Barcelona,1
+Q11945,Girona FC,Q81888,Ajax,1
+Q11945,Girona FC,Q8760,Deportivo de A Coruña,1
+Q12278,Sporting de Gijón,Q8682,Real Madrid,1
+Q12297,Villarreal,Q10315,Real Sociedad,1
+Q12297,Villarreal,Q1120838,Como,2
+Q12297,Villarreal,Q1130849,Liverpool,1
+Q12297,Villarreal,Q18656,Manchester United,1
+Q12297,Villarreal,Q18659,Swansea City,1
+Q12297,Villarreal,Q18711,Aston Villa,2
+Q12297,Villarreal,Q18741,Tottenham Hotspur,1
+Q12297,Villarreal,Q18750,Wigan Athletic,1
+Q12297,Villarreal,Q19453,Brighton and Hove Albion,1
+Q12297,Villarreal,Q19467,Crystal Palace,1
+Q12297,Villarreal,Q19477,Hull City,1
+Q12297,Villarreal,Q19490,Nottingham Forest,1
+Q12297,Villarreal,Q223620,Deportivo Alavés,1
+Q12297,Villarreal,Q2641,Napoli,1
+Q12297,Villarreal,Q38568,São Paulo FC,1
+Q12297,Villarreal,Q5794,Everton,1
+Q12297,Villarreal,Q7156,FC Barcelona,1
+Q12297,Villarreal,Q81888,Ajax,1
+Q12297,Villarreal,Q8682,Real Madrid,1
+Q12297,Villarreal,Q8701,Atletico Madrid,2
+Q12297,Villarreal,Q8723,Real Betis Balompié,1
+Q12297,Villarreal,Q8806,Getafe CF,3
+Q12297,Villarreal,Q9616,Chelsea,2
+Q12297,Villarreal,Q9617,Arsenal,3
+Q124007617,SK Sturm Graz,Q10512,Elche CF,1
+Q124007617,SK Sturm Graz,Q1886,Atalanta BC,1
+Q126334,RC Strasbourg Alsace,Q10315,Real Sociedad,1
+Q126334,RC Strasbourg Alsace,Q185163,OGC Nice,1
+Q126334,RC Strasbourg Alsace,Q18732,Southampton,1
+Q126334,RC Strasbourg Alsace,Q19467,Crystal Palace,1
+Q126334,RC Strasbourg Alsace,Q19490,Nottingham Forest,1
+Q126334,RC Strasbourg Alsace,Q2714,Watford,1
+Q126334,RC Strasbourg Alsace,Q9616,Chelsea,2
+Q126334,RC Strasbourg Alsace,Q9617,Arsenal,1
+Q126334,RC Strasbourg Alsace,Q9653,Ipswich Town,1
+Q128446,FC Porto,Q1130849,Liverpool,1
+Q128446,FC Porto,Q1422,Juventus,1
+Q128446,FC Porto,Q180305,Monaco,2
+Q128446,FC Porto,Q18656,Manchester United,4
+Q128446,FC Porto,Q18736,Stoke City,1
+Q128446,FC Porto,Q187528,R.S.C. Anderlecht,1
+Q128446,FC Porto,Q19500,Wolverhampton Wanderers,2
+Q128446,FC Porto,Q219233,SBV Vitesse,1
+Q128446,FC Porto,Q50602,Manchester City,2
+Q128446,FC Porto,Q80987,Fluminense F.C.,2
+Q128446,FC Porto,Q8682,Real Madrid,2
+Q128446,FC Porto,Q8701,Atletico Madrid,3
+Q128446,FC Porto,Q9616,Chelsea,1
+Q128446,FC Porto,Q9617,Arsenal,1
+Q132885,Olympique Marseille,Q1422,Juventus,1
+Q132885,Olympique Marseille,Q1543,AC Milan,1
+Q132885,Olympique Marseille,Q172476,Bordeaux,1
+Q132885,Olympique Marseille,Q172567,Beşiktaş J.K.,1
+Q132885,Olympique Marseille,Q180305,Monaco,1
+Q132885,Olympique Marseille,Q18380286,Los Angeles FC,1
+Q132885,Olympique Marseille,Q18659,Swansea City,1
+Q132885,Olympique Marseille,Q18708,Fulham,1
+Q132885,Olympique Marseille,Q18711,Aston Villa,2
+Q132885,Olympique Marseille,Q18716,Newcastle United,1
+Q132885,Olympique Marseille,Q18723,Queens Park Rangers,1
+Q132885,Olympique Marseille,Q18732,Southampton,1
+Q132885,Olympique Marseille,Q18739,Sunderland,1
+Q132885,Olympique Marseille,Q18747,West Ham United,2
+Q132885,Olympique Marseille,Q1886,Atalanta BC,1
+Q132885,Olympique Marseille,Q19467,Crystal Palace,1
+Q132885,Olympique Marseille,Q19498,Sheffield Wednesday,1
+Q132885,Olympique Marseille,Q19509,Stade Rennais F.C.,1
+Q132885,Olympique Marseille,Q2739,AS Roma,1
+Q132885,Olympique Marseille,Q495299,Galatasaray S.K.,1
+Q132885,Olympique Marseille,Q50602,Manchester City,1
+Q132885,Olympique Marseille,Q5794,Everton,1
+Q132885,Olympique Marseille,Q631,Inter Milan,2
+Q132885,Olympique Marseille,Q6651,Brescia Calcio,1
+Q132885,Olympique Marseille,Q73965,Al Hilal,1
+Q132885,Olympique Marseille,Q8749,RC Celta de Vigo,1
+Q132885,Olympique Marseille,Q8760,Deportivo de A Coruña,1
+Q132885,Olympique Marseille,Q9616,Chelsea,4
+Q132885,Olympique Marseille,Q9617,Arsenal,3
+Q13361030,New York City FC,Q1128631,Leeds United,1
+Q134241,Feyenoord Rotterdam,Q1130849,Liverpool,2
+Q134241,Feyenoord Rotterdam,Q128446,FC Porto,1
+Q134241,Feyenoord Rotterdam,Q1543,AC Milan,1
+Q134241,Feyenoord Rotterdam,Q18708,Fulham,1
+Q134241,Feyenoord Rotterdam,Q18716,Newcastle United,2
+Q134241,Feyenoord Rotterdam,Q18732,Southampton,1
+Q134241,Feyenoord Rotterdam,Q190916,Club Brugge K.V.,1
+Q134241,Feyenoord Rotterdam,Q19453,Brighton and Hove Albion,2
+Q134241,Feyenoord Rotterdam,Q19603,FC Twente,1
+Q134241,Feyenoord Rotterdam,Q8835,RCD Mallorca,1
+Q134241,Feyenoord Rotterdam,Q9617,Arsenal,1
+Q138230,Kasımpaşa S.K.,Q18711,Aston Villa,1
+Q138230,Kasımpaşa S.K.,Q8760,Deportivo de A Coruña,1
+Q141971,1. FC Union Berlin,Q18716,Newcastle United,1
+Q141971,1. FC Union Berlin,Q19490,Nottingham Forest,1
+Q1422,Juventus,Q101859,VfL Wolfsburg,1
+Q1422,Juventus,Q10329,Sevilla,1
+Q1422,Juventus,Q1130849,Liverpool,2
+Q1422,Juventus,Q132885,Olympique Marseille,2
+Q1422,Juventus,Q13361030,New York City FC,1
+Q1422,Juventus,Q1457,U.C. Sampdoria,2
+Q1422,Juventus,Q1543,AC Milan,4
+Q1422,Juventus,Q15755,FC Augsburg,1
+Q1422,Juventus,Q15789,Bayern Munich,1
+Q1422,Juventus,Q180305,Monaco,1
+Q1422,Juventus,Q18656,Manchester United,2
+Q1422,Juventus,Q18732,Southampton,1
+Q1422,Juventus,Q18739,Sunderland,1
+Q1422,Juventus,Q18741,Tottenham Hotspur,3
+Q1422,Juventus,Q18744,West Bromwich Albion,1
+Q1422,Juventus,Q18747,West Ham United,2
+Q1422,Juventus,Q1886,Atalanta BC,1
+Q1422,Juventus,Q1893,Bologna F.C. 1909,1
+Q1422,Juventus,Q19490,Nottingham Forest,1
+Q1422,Juventus,Q19597,Rangers,1
+Q1422,Juventus,Q2052,ACF Fiorentina,1
+Q1422,Juventus,Q2641,Napoli,1
+Q1422,Juventus,Q2739,AS Roma,1
+Q1422,Juventus,Q483020,Paris Saint-Germain,1
+Q1422,Juventus,Q50602,Manchester City,1
+Q1422,Juventus,Q631,Inter Milan,3
+Q1422,Juventus,Q704,Olympique Lyonnais,1
+Q1422,Juventus,Q7156,FC Barcelona,2
+Q1422,Juventus,Q8639,Hellas Verona FC,2
+Q1422,Juventus,Q8682,Real Madrid,3
+Q1422,Juventus,Q9616,Chelsea,2
+Q1422,Juventus,Q9617,Arsenal,1
+Q1457,U.C. Sampdoria,Q134241,Feyenoord Rotterdam,1
+Q1457,U.C. Sampdoria,Q1422,Juventus,1
+Q1457,U.C. Sampdoria,Q180305,Monaco,1
+Q1457,U.C. Sampdoria,Q18656,Manchester United,1
+Q1457,U.C. Sampdoria,Q18723,Queens Park Rangers,1
+Q1457,U.C. Sampdoria,Q19481,Leicester City,2
+Q1457,U.C. Sampdoria,Q19597,Rangers,1
+Q1457,U.C. Sampdoria,Q2074,Genoa CFC,1
+Q1457,U.C. Sampdoria,Q2641,Napoli,1
+Q1457,U.C. Sampdoria,Q2674,Palermo F.C.,1
+Q1457,U.C. Sampdoria,Q2693,Parma Calcio 1913,1
+Q1457,U.C. Sampdoria,Q32494,Schalke 04,1
+Q1457,U.C. Sampdoria,Q631,Inter Milan,2
+Q1457,U.C. Sampdoria,Q9616,Chelsea,1
+Q1457,U.C. Sampdoria,Q9617,Arsenal,2
+Q15214308,Orlando City SC,Q316789,Melbourne Victory FC,1
+Q15214308,Orlando City SC,Q38568,São Paulo FC,1
+Q1543,AC Milan,Q1120838,Como,1
+Q1543,AC Milan,Q1130849,Liverpool,1
+Q1543,AC Milan,Q1422,Juventus,1
+Q1543,AC Milan,Q1457,U.C. Sampdoria,2
+Q1543,AC Milan,Q172567,Beşiktaş J.K.,1
+Q1543,AC Milan,Q179075,FC Dynamo Kyiv,1
+Q1543,AC Milan,Q180305,Monaco,1
+Q1543,AC Milan,Q18380286,Los Angeles FC,1
+Q1543,AC Milan,Q185163,OGC Nice,1
+Q1543,AC Milan,Q18711,Aston Villa,1
+Q1543,AC Milan,Q18716,Newcastle United,2
+Q1543,AC Milan,Q18736,Stoke City,1
+Q1543,AC Milan,Q1886,Atalanta BC,1
+Q1543,AC Milan,Q191264,AZ Alkmaar,1
+Q1543,AC Milan,Q19490,Nottingham Forest,1
+Q1543,AC Milan,Q19516,Lille OSC,1
+Q1543,AC Milan,Q19593,Celtic,1
+Q1543,AC Milan,Q201584,AEK Athens F.C.,1
+Q1543,AC Milan,Q204888,PAOK FC,1
+Q1543,AC Milan,Q2674,Palermo F.C.,1
+Q1543,AC Milan,Q38568,São Paulo FC,1
+Q1543,AC Milan,Q483020,Paris Saint-Germain,4
+Q1543,AC Milan,Q495299,Galatasaray S.K.,3
+Q1543,AC Milan,Q50602,Manchester City,1
+Q1543,AC Milan,Q51976,SV Werder Bremen,2
+Q1543,AC Milan,Q5794,Everton,2
+Q1543,AC Milan,Q702455,RB Leipzig,1
+Q1543,AC Milan,Q704,Olympique Lyonnais,1
+Q1543,AC Milan,Q7156,FC Barcelona,1
+Q1543,AC Milan,Q73965,Al Hilal,1
+Q1543,AC Milan,Q81888,Ajax,2
+Q1543,AC Milan,Q857938,İstanbul Başakşehir F.K.,1
+Q1543,AC Milan,Q8701,Atletico Madrid,1
+Q1543,AC Milan,Q9616,Chelsea,2
+Q1543,AC Milan,Q9617,Arsenal,2
+Q15755,FC Augsburg,Q1130849,Liverpool,1
+Q15755,FC Augsburg,Q18721,Norwich City,1
+Q15755,FC Augsburg,Q18732,Southampton,1
+Q15755,FC Augsburg,Q204888,PAOK FC,1
+Q15755,FC Augsburg,Q32494,Schalke 04,1
+Q15755,FC Augsburg,Q9616,Chelsea,1
+Q15789,Bayern Munich,Q104761,Bayer Leverkusen,2
+Q15789,Bayern Munich,Q1130849,Liverpool,2
+Q15789,Bayern Munich,Q15755,FC Augsburg,1
+Q15789,Bayern Munich,Q180305,Monaco,1
+Q15789,Bayern Munich,Q18656,Manchester United,5
+Q15789,Bayern Munich,Q18711,Aston Villa,3
+Q15789,Bayern Munich,Q18716,Newcastle United,1
+Q15789,Bayern Munich,Q18741,Tottenham Hotspur,2
+Q15789,Bayern Munich,Q19446,Blackburn Rovers,1
+Q15789,Bayern Munich,Q19603,FC Twente,1
+Q15789,Bayern Munich,Q22707,TSG 1899 Hoffenheim,2
+Q15789,Bayern Munich,Q2641,Napoli,1
+Q15789,Bayern Munich,Q2693,Parma Calcio 1913,1
+Q15789,Bayern Munich,Q482764,Al Nassr,1
+Q15789,Bayern Munich,Q483020,Paris Saint-Germain,1
+Q15789,Bayern Munich,Q495299,Galatasaray S.K.,1
+Q15789,Bayern Munich,Q5794,Everton,1
+Q15789,Bayern Munich,Q631,Inter Milan,3
+Q15789,Bayern Munich,Q704,Olympique Lyonnais,1
+Q15789,Bayern Munich,Q7156,FC Barcelona,1
+Q15789,Bayern Munich,Q8701,Atletico Madrid,2
+Q15789,Bayern Munich,Q9616,Chelsea,1
+Q15789,Bayern Munich,Q9617,Arsenal,1
+Q1675351,Ituano Futebol Clube,Q9617,Arsenal,1
+Q16836317,Atlanta United FC,Q18716,Newcastle United,1
+Q16836317,Atlanta United FC,Q9616,Chelsea,1
+Q16844931,Inter Miami,Q19453,Brighton and Hove Albion,1
+Q170040,Rubin Kazan,Q29108,FC Zenit Saint Petersburg,1
+Q172476,Bordeaux,Q10329,Sevilla,1
+Q172476,Bordeaux,Q1422,Juventus,2
+Q172476,Bordeaux,Q18716,Newcastle United,1
+Q172476,Bordeaux,Q19521,AS Saint-Étienne,1
+Q172567,Beşiktaş J.K.,Q1120838,Como,1
+Q172567,Beşiktaş J.K.,Q12297,Villarreal,1
+Q172567,Beşiktaş J.K.,Q141971,1. FC Union Berlin,1
+Q172567,Beşiktaş J.K.,Q18656,Manchester United,1
+Q172567,Beşiktaş J.K.,Q18711,Aston Villa,1
+Q172567,Beşiktaş J.K.,Q18716,Newcastle United,1
+Q172567,Beşiktaş J.K.,Q19458,Burnley,1
+Q172567,Beşiktaş J.K.,Q19593,Celtic,1
+Q172567,Beşiktaş J.K.,Q204888,PAOK FC,1
+Q172567,Beşiktaş J.K.,Q495299,Galatasaray S.K.,3
+Q172567,Beşiktaş J.K.,Q725367,Shanghai Shenhua F.C.,2
+Q172969,FC Shakhtar Donetsk,Q18656,Manchester United,2
+Q172969,FC Shakhtar Donetsk,Q50602,Manchester City,2
+Q172969,FC Shakhtar Donetsk,Q5794,Everton,1
+Q172969,FC Shakhtar Donetsk,Q9616,Chelsea,2
+Q179075,FC Dynamo Kyiv,Q1543,AC Milan,1
+Q179075,FC Dynamo Kyiv,Q18744,West Bromwich Albion,1
+Q179075,FC Dynamo Kyiv,Q18747,West Ham United,1
+Q179075,FC Dynamo Kyiv,Q5794,Everton,1
+Q180305,Monaco,Q1120838,Como,1
+Q180305,Monaco,Q1128631,Leeds United,1
+Q180305,Monaco,Q1130849,Liverpool,2
+Q180305,Monaco,Q1457,U.C. Sampdoria,1
+Q180305,Monaco,Q185163,OGC Nice,2
+Q180305,Monaco,Q18656,Manchester United,4
+Q180305,Monaco,Q18732,Southampton,1
+Q180305,Monaco,Q18741,Tottenham Hotspur,1
+Q180305,Monaco,Q187528,R.S.C. Anderlecht,2
+Q180305,Monaco,Q19477,Hull City,1
+Q180305,Monaco,Q19481,Leicester City,1
+Q180305,Monaco,Q19500,Wolverhampton Wanderers,2
+Q180305,Monaco,Q19521,AS Saint-Étienne,1
+Q180305,Monaco,Q19571,Brentford,1
+Q180305,Monaco,Q19628,Olympiacos F.C.,1
+Q180305,Monaco,Q204888,PAOK FC,1
+Q180305,Monaco,Q223450,Vitória S.C.,1
+Q180305,Monaco,Q2641,Napoli,1
+Q180305,Monaco,Q483020,Paris Saint-Germain,1
+Q180305,Monaco,Q50602,Manchester City,2
+Q180305,Monaco,Q631,Inter Milan,1
+Q180305,Monaco,Q704,Olympique Lyonnais,1
+Q180305,Monaco,Q7156,FC Barcelona,1
+Q180305,Monaco,Q81888,Ajax,2
+Q180305,Monaco,Q8682,Real Madrid,1
+Q180305,Monaco,Q9616,Chelsea,4
+Q180305,Monaco,Q9617,Arsenal,3
+Q18380286,Los Angeles FC,Q172567,Beşiktaş J.K.,1
+Q18380286,Los Angeles FC,Q19516,Lille OSC,1
+Q185163,OGC Nice,Q132885,Olympique Marseille,3
+Q185163,OGC Nice,Q180305,Monaco,1
+Q185163,OGC Nice,Q18520,Luton Town,1
+Q185163,OGC Nice,Q18662,Cardiff City,1
+Q185163,OGC Nice,Q18708,Fulham,1
+Q185163,OGC Nice,Q18716,Newcastle United,1
+Q185163,OGC Nice,Q187528,R.S.C. Anderlecht,1
+Q185163,OGC Nice,Q192641,Trabzonspor,1
+Q185163,OGC Nice,Q19490,Nottingham Forest,1
+Q185163,OGC Nice,Q19500,Wolverhampton Wanderers,1
+Q185163,OGC Nice,Q19571,Brentford,1
+Q185163,OGC Nice,Q483020,Paris Saint-Germain,1
+Q185163,OGC Nice,Q704,Olympique Lyonnais,1
+Q185163,OGC Nice,Q9617,Arsenal,1
+Q18519,Lincoln City F.C.,Q18741,Tottenham Hotspur,1
+Q18520,Luton Town,Q18711,Aston Villa,1
+Q18520,Luton Town,Q18744,West Bromwich Albion,1
+Q18520,Luton Town,Q19453,Brighton and Hove Albion,1
+Q18520,Luton Town,Q19470,Derby County,1
+Q18520,Luton Town,Q19481,Leicester City,1
+Q18520,Luton Town,Q19571,Brentford,1
+Q18520,Luton Town,Q5794,Everton,1
+Q18520,Luton Town,Q9616,Chelsea,1
+Q18520,Luton Town,Q9617,Arsenal,1
+Q18523,Newport County A.F.C.,Q1128631,Leeds United,1
+Q18523,Newport County A.F.C.,Q18739,Sunderland,1
+Q18523,Newport County A.F.C.,Q18750,Wigan Athletic,1
+Q18523,Newport County A.F.C.,Q19500,Wolverhampton Wanderers,1
+Q18523,Newport County A.F.C.,Q19568,AFC Bournemouth,1
+Q18656,Manchester United,Q101859,VfL Wolfsburg,1
+Q18656,Manchester United,Q10329,Sevilla,2
+Q18656,Manchester United,Q1046367,Shandong Taishan F.C.,1
+Q18656,Manchester United,Q1120838,Como,1
+Q18656,Manchester United,Q1128631,Leeds United,1
+Q18656,Manchester United,Q1130849,Liverpool,1
+Q18656,Manchester United,Q12297,Villarreal,1
+Q18656,Manchester United,Q132885,Olympique Marseille,1
+Q18656,Manchester United,Q134241,Feyenoord Rotterdam,1
+Q18656,Manchester United,Q1422,Juventus,3
+Q18656,Manchester United,Q1457,U.C. Sampdoria,1
+Q18656,Manchester United,Q15214308,Orlando City SC,1
+Q18656,Manchester United,Q1543,AC Milan,2
+Q18656,Manchester United,Q16844931,Inter Miami,1
+Q18656,Manchester United,Q172567,Beşiktaş J.K.,1
+Q18656,Manchester United,Q18661,Middlesbrough,2
+Q18656,Manchester United,Q18662,Cardiff City,1
+Q18656,Manchester United,Q18708,Fulham,2
+Q18656,Manchester United,Q18711,Aston Villa,3
+Q18656,Manchester United,Q18716,Newcastle United,1
+Q18656,Manchester United,Q18721,Norwich City,1
+Q18656,Manchester United,Q18723,Queens Park Rangers,3
+Q18656,Manchester United,Q18736,Stoke City,3
+Q18656,Manchester United,Q18739,Sunderland,3
+Q18656,Manchester United,Q18741,Tottenham Hotspur,2
+Q18656,Manchester United,Q18744,West Bromwich Albion,3
+Q18656,Manchester United,Q18747,West Ham United,2
+Q18656,Manchester United,Q18750,Wigan Athletic,1
+Q18656,Manchester United,Q187528,R.S.C. Anderlecht,1
+Q18656,Manchester United,Q192641,Trabzonspor,1
+Q18656,Manchester United,Q19444,Birmingham City F.C.,2
+Q18656,Manchester United,Q19446,Blackburn Rovers,3
+Q18656,Manchester United,Q19449,Blackpool,1
+Q18656,Manchester United,Q19451,Bolton Wanderers,1
+Q18656,Manchester United,Q19453,Brighton and Hove Albion,3
+Q18656,Manchester United,Q19458,Burnley,1
+Q18656,Manchester United,Q19467,Crystal Palace,2
+Q18656,Manchester United,Q19473,Huddersfield Town,2
+Q18656,Manchester United,Q19477,Hull City,3
+Q18656,Manchester United,Q19481,Leicester City,6
+Q18656,Manchester United,Q19490,Nottingham Forest,2
+Q18656,Manchester United,Q19516,Lille OSC,1
+Q18656,Manchester United,Q19571,Brentford,1
+Q18656,Manchester United,Q19593,Celtic,3
+Q18656,Manchester United,Q19607,Sheffield United,4
+Q18656,Manchester United,Q19612,Preston North End F.C.,4
+Q18656,Manchester United,Q204357,LA Galaxy,1
+Q18656,Manchester United,Q2052,ACF Fiorentina,1
+Q18656,Manchester United,Q223620,Deportivo Alavés,1
+Q18656,Manchester United,Q22707,TSG 1899 Hoffenheim,1
+Q18656,Manchester United,Q2641,Napoli,2
+Q18656,Manchester United,Q2693,Parma Calcio 1913,1
+Q18656,Manchester United,Q2714,Watford,1
+Q18656,Manchester United,Q2739,AS Roma,2
+Q18656,Manchester United,Q308683,Chicago Fire FC,1
+Q18656,Manchester United,Q482764,Al Nassr,1
+Q18656,Manchester United,Q483020,Paris Saint-Germain,2
+Q18656,Manchester United,Q48947,Plymouth Argyle F.C.,1
+Q18656,Manchester United,Q48950,Rotherham United F.C.,1
+Q18656,Manchester United,Q495299,Galatasaray S.K.,1
+Q18656,Manchester United,Q50602,Manchester City,2
+Q18656,Manchester United,Q5794,Everton,6
+Q18656,Manchester United,Q631,Inter Milan,5
+Q18656,Manchester United,Q704,Olympique Lyonnais,2
+Q18656,Manchester United,Q7156,FC Barcelona,3
+Q18656,Manchester United,Q732002,Royal Antwerp F.C.,3
+Q18656,Manchester United,Q80845,S.C. Internacional,1
+Q18656,Manchester United,Q81888,Ajax,1
+Q18656,Manchester United,Q8682,Real Madrid,3
+Q18656,Manchester United,Q8723,Real Betis Balompié,2
+Q18656,Manchester United,Q8806,Getafe CF,1
+Q18656,Manchester United,Q9616,Chelsea,5
+Q18656,Manchester United,Q9617,Arsenal,2
+Q18659,Swansea City,Q1128631,Leeds United,1
+Q18659,Swansea City,Q1130849,Liverpool,1
+Q18659,Swansea City,Q132885,Olympique Marseille,1
+Q18659,Swansea City,Q134241,Feyenoord Rotterdam,1
+Q18659,Swansea City,Q18656,Manchester United,1
+Q18659,Swansea City,Q18662,Cardiff City,1
+Q18659,Swansea City,Q18711,Aston Villa,1
+Q18659,Swansea City,Q18716,Newcastle United,1
+Q18659,Swansea City,Q18732,Southampton,1
+Q18659,Swansea City,Q18741,Tottenham Hotspur,5
+Q18659,Swansea City,Q18744,West Bromwich Albion,1
+Q18659,Swansea City,Q18747,West Ham United,2
+Q18659,Swansea City,Q18750,Wigan Athletic,1
+Q18659,Swansea City,Q19449,Blackpool,1
+Q18659,Swansea City,Q19467,Crystal Palace,2
+Q18659,Swansea City,Q19470,Derby County,1
+Q18659,Swansea City,Q19477,Hull City,1
+Q18659,Swansea City,Q19490,Nottingham Forest,1
+Q18659,Swansea City,Q19580,Coventry City,1
+Q18659,Swansea City,Q19607,Sheffield United,1
+Q18659,Swansea City,Q2641,Napoli,1
+Q18659,Swansea City,Q50602,Manchester City,1
+Q18659,Swansea City,Q5794,Everton,2
+Q18659,Swansea City,Q8760,Deportivo de A Coruña,1
+Q18659,Swansea City,Q9616,Chelsea,1
+Q18661,Middlesbrough,Q105254,1. FSV Mainz 05,1
+Q18661,Middlesbrough,Q1130849,Liverpool,1
+Q18661,Middlesbrough,Q1457,U.C. Sampdoria,1
+Q18661,Middlesbrough,Q16836317,Atlanta United FC,1
+Q18661,Middlesbrough,Q172567,Beşiktaş J.K.,1
+Q18661,Middlesbrough,Q180305,Monaco,1
+Q18661,Middlesbrough,Q18656,Manchester United,1
+Q18661,Middlesbrough,Q18708,Fulham,4
+Q18661,Middlesbrough,Q18711,Aston Villa,3
+Q18661,Middlesbrough,Q18716,Newcastle United,1
+Q18661,Middlesbrough,Q18736,Stoke City,2
+Q18661,Middlesbrough,Q18741,Tottenham Hotspur,2
+Q18661,Middlesbrough,Q18747,West Ham United,2
+Q18661,Middlesbrough,Q18750,Wigan Athletic,1
+Q18661,Middlesbrough,Q1886,Atalanta BC,1
+Q18661,Middlesbrough,Q192641,Trabzonspor,1
+Q18661,Middlesbrough,Q19446,Blackburn Rovers,2
+Q18661,Middlesbrough,Q19458,Burnley,1
+Q18661,Middlesbrough,Q19477,Hull City,1
+Q18661,Middlesbrough,Q19500,Wolverhampton Wanderers,2
+Q18661,Middlesbrough,Q19568,AFC Bournemouth,1
+Q18661,Middlesbrough,Q19580,Coventry City,1
+Q18661,Middlesbrough,Q19593,Celtic,1
+Q18661,Middlesbrough,Q50602,Manchester City,1
+Q18661,Middlesbrough,Q81888,Ajax,2
+Q18661,Middlesbrough,Q9616,Chelsea,1
+Q18662,Cardiff City,Q1130849,Liverpool,1
+Q18662,Cardiff City,Q1422,Juventus,1
+Q18662,Cardiff City,Q18659,Swansea City,1
+Q18662,Cardiff City,Q18661,Middlesbrough,1
+Q18662,Cardiff City,Q18711,Aston Villa,1
+Q18662,Cardiff City,Q18723,Queens Park Rangers,1
+Q18662,Cardiff City,Q18736,Stoke City,1
+Q18662,Cardiff City,Q18750,Wigan Athletic,1
+Q18662,Cardiff City,Q19446,Blackburn Rovers,1
+Q18662,Cardiff City,Q19456,Bristol City F.C.,1
+Q18662,Cardiff City,Q19467,Crystal Palace,2
+Q18662,Cardiff City,Q19470,Derby County,1
+Q18662,Cardiff City,Q19473,Huddersfield Town,1
+Q18662,Cardiff City,Q19490,Nottingham Forest,1
+Q18662,Cardiff City,Q19521,AS Saint-Étienne,1
+Q18662,Cardiff City,Q19568,AFC Bournemouth,1
+Q18662,Cardiff City,Q19593,Celtic,1
+Q18662,Cardiff City,Q19598,Notts County F.C.,1
+Q18662,Cardiff City,Q2714,Watford,1
+Q18662,Cardiff City,Q48950,Rotherham United F.C.,1
+Q18662,Cardiff City,Q9617,Arsenal,1
+Q18708,Fulham,Q104761,Bayer Leverkusen,1
+Q18708,Fulham,Q1130849,Liverpool,2
+Q18708,Fulham,Q12278,Sporting de Gijón,1
+Q18708,Fulham,Q12297,Villarreal,1
+Q18708,Fulham,Q1543,AC Milan,1
+Q18708,Fulham,Q15789,Bayern Munich,1
+Q18708,Fulham,Q180305,Monaco,2
+Q18708,Fulham,Q185163,OGC Nice,1
+Q18708,Fulham,Q18656,Manchester United,2
+Q18708,Fulham,Q18661,Middlesbrough,1
+Q18708,Fulham,Q18662,Cardiff City,1
+Q18708,Fulham,Q18711,Aston Villa,2
+Q18708,Fulham,Q18721,Norwich City,1
+Q18708,Fulham,Q18729,Reading,1
+Q18708,Fulham,Q18736,Stoke City,1
+Q18708,Fulham,Q18741,Tottenham Hotspur,1
+Q18708,Fulham,Q18747,West Ham United,2
+Q18708,Fulham,Q190916,Club Brugge K.V.,1
+Q18708,Fulham,Q192641,Trabzonspor,1
+Q18708,Fulham,Q19444,Birmingham City F.C.,1
+Q18708,Fulham,Q19446,Blackburn Rovers,1
+Q18708,Fulham,Q19467,Crystal Palace,2
+Q18708,Fulham,Q19470,Derby County,1
+Q18708,Fulham,Q19481,Leicester City,1
+Q18708,Fulham,Q19490,Nottingham Forest,1
+Q18708,Fulham,Q19500,Wolverhampton Wanderers,1
+Q18708,Fulham,Q19571,Brentford,1
+Q18708,Fulham,Q19593,Celtic,2
+Q18708,Fulham,Q19597,Rangers,1
+Q18708,Fulham,Q19601,Oldham Athletic,1
+Q18708,Fulham,Q19628,Olympiacos F.C.,1
+Q18708,Fulham,Q201584,AEK Athens F.C.,1
+Q18708,Fulham,Q2074,Genoa CFC,1
+Q18708,Fulham,Q221695,Grêmio FBPA,1
+Q18708,Fulham,Q32494,Schalke 04,1
+Q18708,Fulham,Q38568,São Paulo FC,1
+Q18708,Fulham,Q483020,Paris Saint-Germain,1
+Q18708,Fulham,Q48950,Rotherham United F.C.,1
+Q18708,Fulham,Q50602,Manchester City,1
+Q18708,Fulham,Q732002,Royal Antwerp F.C.,1
+Q18708,Fulham,Q73965,Al Hilal,1
+Q18708,Fulham,Q81888,Ajax,1
+Q18708,Fulham,Q9616,Chelsea,2
+Q18708,Fulham,Q9653,Ipswich Town,1
+Q18711,Aston Villa,Q1130849,Liverpool,1
+Q18711,Aston Villa,Q12297,Villarreal,1
+Q18711,Aston Villa,Q126334,RC Strasbourg Alsace,1
+Q18711,Aston Villa,Q128446,FC Porto,1
+Q18711,Aston Villa,Q1422,Juventus,1
+Q18711,Aston Villa,Q185163,OGC Nice,1
+Q18711,Aston Villa,Q18656,Manchester United,4
+Q18711,Aston Villa,Q18659,Swansea City,1
+Q18711,Aston Villa,Q18661,Middlesbrough,3
+Q18711,Aston Villa,Q18662,Cardiff City,1
+Q18711,Aston Villa,Q18708,Fulham,3
+Q18711,Aston Villa,Q18716,Newcastle United,3
+Q18711,Aston Villa,Q18723,Queens Park Rangers,2
+Q18711,Aston Villa,Q18732,Southampton,1
+Q18711,Aston Villa,Q18736,Stoke City,1
+Q18711,Aston Villa,Q18741,Tottenham Hotspur,1
+Q18711,Aston Villa,Q18744,West Bromwich Albion,2
+Q18711,Aston Villa,Q18747,West Ham United,2
+Q18711,Aston Villa,Q187528,R.S.C. Anderlecht,1
+Q18711,Aston Villa,Q1886,Atalanta BC,1
+Q18711,Aston Villa,Q190916,Club Brugge K.V.,1
+Q18711,Aston Villa,Q192641,Trabzonspor,1
+Q18711,Aston Villa,Q19444,Birmingham City F.C.,1
+Q18711,Aston Villa,Q19451,Bolton Wanderers,1
+Q18711,Aston Villa,Q19453,Brighton and Hove Albion,1
+Q18711,Aston Villa,Q19458,Burnley,1
+Q18711,Aston Villa,Q19462,Charlton Athletic,1
+Q18711,Aston Villa,Q19470,Derby County,1
+Q18711,Aston Villa,Q19477,Hull City,1
+Q18711,Aston Villa,Q19481,Leicester City,2
+Q18711,Aston Villa,Q19490,Nottingham Forest,1
+Q18711,Aston Villa,Q19500,Wolverhampton Wanderers,1
+Q18711,Aston Villa,Q19568,AFC Bournemouth,1
+Q18711,Aston Villa,Q19580,Coventry City,1
+Q18711,Aston Villa,Q19593,Celtic,1
+Q18711,Aston Villa,Q19597,Rangers,1
+Q18711,Aston Villa,Q19598,Notts County F.C.,1
+Q18711,Aston Villa,Q19604,Portsmouth,3
+Q18711,Aston Villa,Q2052,ACF Fiorentina,1
+Q18711,Aston Villa,Q223620,Deportivo Alavés,1
+Q18711,Aston Villa,Q2739,AS Roma,3
+Q18711,Aston Villa,Q309480,Al Ittihad,1
+Q18711,Aston Villa,Q482764,Al Nassr,1
+Q18711,Aston Villa,Q483020,Paris Saint-Germain,1
+Q18711,Aston Villa,Q50602,Manchester City,4
+Q18711,Aston Villa,Q5794,Everton,4
+Q18711,Aston Villa,Q732002,Royal Antwerp F.C.,1
+Q18711,Aston Villa,Q73965,Al Hilal,1
+Q18711,Aston Villa,Q8701,Atletico Madrid,1
+Q18711,Aston Villa,Q9616,Chelsea,3
+Q18711,Aston Villa,Q9617,Arsenal,1
+Q18716,Newcastle United,Q10315,Real Sociedad,1
+Q18716,Newcastle United,Q1128631,Leeds United,1
+Q18716,Newcastle United,Q1130849,Liverpool,3
+Q18716,Newcastle United,Q1157920,Dalian Professional F.C.,1
+Q18716,Newcastle United,Q126334,RC Strasbourg Alsace,1
+Q18716,Newcastle United,Q134241,Feyenoord Rotterdam,1
+Q18716,Newcastle United,Q1422,Juventus,2
+Q18716,Newcastle United,Q16836317,Atlanta United FC,1
+Q18716,Newcastle United,Q185163,OGC Nice,1
+Q18716,Newcastle United,Q18656,Manchester United,3
+Q18716,Newcastle United,Q18659,Swansea City,1
+Q18716,Newcastle United,Q18661,Middlesbrough,1
+Q18716,Newcastle United,Q18708,Fulham,3
+Q18716,Newcastle United,Q18711,Aston Villa,1
+Q18716,Newcastle United,Q18721,Norwich City,3
+Q18716,Newcastle United,Q18723,Queens Park Rangers,2
+Q18716,Newcastle United,Q18729,Reading,1
+Q18716,Newcastle United,Q18732,Southampton,1
+Q18716,Newcastle United,Q18741,Tottenham Hotspur,4
+Q18716,Newcastle United,Q18747,West Ham United,2
+Q18716,Newcastle United,Q18750,Wigan Athletic,1
+Q18716,Newcastle United,Q19444,Birmingham City F.C.,1
+Q18716,Newcastle United,Q19446,Blackburn Rovers,1
+Q18716,Newcastle United,Q19449,Blackpool,1
+Q18716,Newcastle United,Q19481,Leicester City,1
+Q18716,Newcastle United,Q19490,Nottingham Forest,6
+Q18716,Newcastle United,Q19500,Wolverhampton Wanderers,1
+Q18716,Newcastle United,Q19580,Coventry City,1
+Q18716,Newcastle United,Q19607,Sheffield United,1
+Q18716,Newcastle United,Q19612,Preston North End F.C.,1
+Q18716,Newcastle United,Q223620,Deportivo Alavés,1
+Q18716,Newcastle United,Q2714,Watford,3
+Q18716,Newcastle United,Q319136,St. Mirren F.C.,1
+Q18716,Newcastle United,Q32494,Schalke 04,1
+Q18716,Newcastle United,Q44441,Al Ahli FC,1
+Q18716,Newcastle United,Q483020,Paris Saint-Germain,1
+Q18716,Newcastle United,Q50602,Manchester City,1
+Q18716,Newcastle United,Q5794,Everton,1
+Q18716,Newcastle United,Q7156,FC Barcelona,1
+Q18716,Newcastle United,Q81888,Ajax,1
+Q18716,Newcastle United,Q8682,Real Madrid,1
+Q18716,Newcastle United,Q8760,Deportivo de A Coruña,1
+Q18716,Newcastle United,Q9616,Chelsea,2
+Q18716,Newcastle United,Q9617,Arsenal,2
+Q18721,Norwich City,Q15755,FC Augsburg,1
+Q18721,Norwich City,Q15789,Bayern Munich,1
+Q18721,Norwich City,Q18520,Luton Town,1
+Q18721,Norwich City,Q18656,Manchester United,1
+Q18721,Norwich City,Q18659,Swansea City,2
+Q18721,Norwich City,Q18723,Queens Park Rangers,2
+Q18721,Norwich City,Q18729,Reading,1
+Q18721,Norwich City,Q18732,Southampton,1
+Q18721,Norwich City,Q18744,West Bromwich Albion,1
+Q18721,Norwich City,Q18750,Wigan Athletic,1
+Q18721,Norwich City,Q190916,Club Brugge K.V.,1
+Q18721,Norwich City,Q19446,Blackburn Rovers,3
+Q18721,Norwich City,Q19453,Brighton and Hove Albion,1
+Q18721,Norwich City,Q19458,Burnley,1
+Q18721,Norwich City,Q19477,Hull City,1
+Q18721,Norwich City,Q19481,Leicester City,2
+Q18721,Norwich City,Q19498,Sheffield Wednesday,1
+Q18721,Norwich City,Q19500,Wolverhampton Wanderers,2
+Q18721,Norwich City,Q19571,Brentford,1
+Q18721,Norwich City,Q19580,Coventry City,3
+Q18721,Norwich City,Q19593,Celtic,1
+Q18721,Norwich City,Q19598,Notts County F.C.,1
+Q18721,Norwich City,Q22707,TSG 1899 Hoffenheim,1
+Q18721,Norwich City,Q2714,Watford,1
+Q18721,Norwich City,Q327238,Toronto FC,1
+Q18721,Norwich City,Q495299,Galatasaray S.K.,1
+Q18721,Norwich City,Q5794,Everton,1
+Q18723,Queens Park Rangers,Q172567,Beşiktaş J.K.,1
+Q18723,Queens Park Rangers,Q18659,Swansea City,2
+Q18723,Queens Park Rangers,Q18662,Cardiff City,1
+Q18723,Queens Park Rangers,Q18708,Fulham,1
+Q18723,Queens Park Rangers,Q18716,Newcastle United,3
+Q18723,Queens Park Rangers,Q18721,Norwich City,1
+Q18723,Queens Park Rangers,Q18729,Reading,1
+Q18723,Queens Park Rangers,Q18732,Southampton,2
+Q18723,Queens Park Rangers,Q18744,West Bromwich Albion,1
+Q18723,Queens Park Rangers,Q19444,Birmingham City F.C.,1
+Q18723,Queens Park Rangers,Q19467,Crystal Palace,2
+Q18723,Queens Park Rangers,Q19470,Derby County,1
+Q18723,Queens Park Rangers,Q19481,Leicester City,1
+Q18723,Queens Park Rangers,Q19604,Portsmouth,1
+Q18723,Queens Park Rangers,Q327238,Toronto FC,1
+Q18723,Queens Park Rangers,Q50602,Manchester City,1
+Q18723,Queens Park Rangers,Q5794,Everton,2
+Q18729,Reading,Q1128631,Leeds United,2
+Q18729,Reading,Q172476,Bordeaux,1
+Q18729,Reading,Q18662,Cardiff City,1
+Q18729,Reading,Q18711,Aston Villa,1
+Q18729,Reading,Q18732,Southampton,1
+Q18729,Reading,Q18744,West Bromwich Albion,3
+Q18729,Reading,Q19467,Crystal Palace,1
+Q18729,Reading,Q19470,Derby County,1
+Q18729,Reading,Q19490,Nottingham Forest,1
+Q18729,Reading,Q19498,Sheffield Wednesday,1
+Q18729,Reading,Q19580,Coventry City,1
+Q18729,Reading,Q22707,TSG 1899 Hoffenheim,1
+Q18729,Reading,Q73965,Al Hilal,1
+Q18729,Reading,Q9616,Chelsea,1
+Q18729,Reading,Q9653,Ipswich Town,1
+Q18732,Southampton,Q1046367,Shandong Taishan F.C.,1
+Q18732,Southampton,Q1130849,Liverpool,8
+Q18732,Southampton,Q11945,Girona FC,1
+Q18732,Southampton,Q1457,U.C. Sampdoria,1
+Q18732,Southampton,Q172567,Beşiktaş J.K.,1
+Q18732,Southampton,Q180305,Monaco,1
+Q18732,Southampton,Q18656,Manchester United,2
+Q18732,Southampton,Q18659,Swansea City,1
+Q18732,Southampton,Q18661,Middlesbrough,1
+Q18732,Southampton,Q18662,Cardiff City,1
+Q18732,Southampton,Q18711,Aston Villa,3
+Q18732,Southampton,Q18716,Newcastle United,3
+Q18732,Southampton,Q18721,Norwich City,1
+Q18732,Southampton,Q18729,Reading,1
+Q18732,Southampton,Q18739,Sunderland,1
+Q18732,Southampton,Q18741,Tottenham Hotspur,4
+Q18732,Southampton,Q18744,West Bromwich Albion,2
+Q18732,Southampton,Q18747,West Ham United,3
+Q18732,Southampton,Q191843,R.C. Lens,1
+Q18732,Southampton,Q19446,Blackburn Rovers,1
+Q18732,Southampton,Q19467,Crystal Palace,1
+Q18732,Southampton,Q19477,Hull City,1
+Q18732,Southampton,Q19481,Leicester City,1
+Q18732,Southampton,Q19490,Nottingham Forest,1
+Q18732,Southampton,Q19498,Sheffield Wednesday,2
+Q18732,Southampton,Q19568,AFC Bournemouth,2
+Q18732,Southampton,Q19593,Celtic,1
+Q18732,Southampton,Q19597,Rangers,1
+Q18732,Southampton,Q19607,Sheffield United,1
+Q18732,Southampton,Q495299,Galatasaray S.K.,1
+Q18732,Southampton,Q5794,Everton,3
+Q18732,Southampton,Q631,Inter Milan,1
+Q18732,Southampton,Q704,Olympique Lyonnais,2
+Q18732,Southampton,Q81888,Ajax,1
+Q18732,Southampton,Q8749,RC Celta de Vigo,1
+Q18732,Southampton,Q9616,Chelsea,2
+Q18732,Southampton,Q9617,Arsenal,3
+Q187326,Aberdeen F.C.,Q19481,Leicester City,1
+Q187326,Aberdeen F.C.,Q19568,AFC Bournemouth,1
+Q18736,Stoke City,Q10329,Sevilla,1
+Q18736,Stoke City,Q1130849,Liverpool,1
+Q18736,Stoke City,Q18656,Manchester United,1
+Q18736,Stoke City,Q18659,Swansea City,2
+Q18736,Stoke City,Q18661,Middlesbrough,1
+Q18736,Stoke City,Q18662,Cardiff City,1
+Q18736,Stoke City,Q18708,Fulham,1
+Q18736,Stoke City,Q18732,Southampton,1
+Q18736,Stoke City,Q18747,West Ham United,2
+Q18736,Stoke City,Q191264,AZ Alkmaar,1
+Q18736,Stoke City,Q19453,Brighton and Hove Albion,1
+Q18736,Stoke City,Q19456,Bristol City F.C.,3
+Q18736,Stoke City,Q19458,Burnley,2
+Q18736,Stoke City,Q19470,Derby County,1
+Q18736,Stoke City,Q19498,Sheffield Wednesday,1
+Q18736,Stoke City,Q19612,Preston North End F.C.,1
+Q18736,Stoke City,Q223620,Deportivo Alavés,1
+Q18736,Stoke City,Q5794,Everton,1
+Q18736,Stoke City,Q8760,Deportivo de A Coruña,1
+Q18736,Stoke City,Q9616,Chelsea,1
+Q18739,Sunderland,Q10315,Real Sociedad,1
+Q18739,Sunderland,Q1130849,Liverpool,2
+Q18739,Sunderland,Q132885,Olympique Marseille,1
+Q18739,Sunderland,Q1422,Juventus,1
+Q18739,Sunderland,Q1543,AC Milan,1
+Q18739,Sunderland,Q180305,Monaco,1
+Q18739,Sunderland,Q18662,Cardiff City,1
+Q18739,Sunderland,Q18711,Aston Villa,1
+Q18739,Sunderland,Q18716,Newcastle United,1
+Q18739,Sunderland,Q18721,Norwich City,2
+Q18739,Sunderland,Q18729,Reading,2
+Q18739,Sunderland,Q18736,Stoke City,2
+Q18739,Sunderland,Q18744,West Bromwich Albion,1
+Q18739,Sunderland,Q18750,Wigan Athletic,2
+Q18739,Sunderland,Q1893,Bologna F.C. 1909,1
+Q18739,Sunderland,Q19446,Blackburn Rovers,1
+Q18739,Sunderland,Q19453,Brighton and Hove Albion,2
+Q18739,Sunderland,Q19470,Derby County,1
+Q18739,Sunderland,Q19477,Hull City,4
+Q18739,Sunderland,Q19498,Sheffield Wednesday,1
+Q18739,Sunderland,Q19568,AFC Bournemouth,1
+Q18739,Sunderland,Q19580,Coventry City,1
+Q18739,Sunderland,Q19597,Rangers,1
+Q18739,Sunderland,Q19612,Preston North End F.C.,1
+Q18739,Sunderland,Q2714,Watford,3
+Q18739,Sunderland,Q327238,Toronto FC,1
+Q18739,Sunderland,Q495299,Galatasaray S.K.,1
+Q18739,Sunderland,Q702455,RB Leipzig,1
+Q18739,Sunderland,Q8806,Getafe CF,1
+Q18739,Sunderland,Q9617,Arsenal,1
+Q18739,Sunderland,Q9653,Ipswich Town,2
+Q18741,Tottenham Hotspur,Q10329,Sevilla,2
+Q18741,Tottenham Hotspur,Q1130849,Liverpool,2
+Q18741,Tottenham Hotspur,Q11945,Girona FC,1
+Q18741,Tottenham Hotspur,Q12297,Villarreal,4
+Q18741,Tottenham Hotspur,Q132885,Olympique Marseille,2
+Q18741,Tottenham Hotspur,Q1422,Juventus,3
+Q18741,Tottenham Hotspur,Q1457,U.C. Sampdoria,1
+Q18741,Tottenham Hotspur,Q1543,AC Milan,1
+Q18741,Tottenham Hotspur,Q15789,Bayern Munich,1
+Q18741,Tottenham Hotspur,Q180305,Monaco,1
+Q18741,Tottenham Hotspur,Q18380286,Los Angeles FC,3
+Q18741,Tottenham Hotspur,Q18656,Manchester United,3
+Q18741,Tottenham Hotspur,Q18659,Swansea City,1
+Q18741,Tottenham Hotspur,Q18661,Middlesbrough,3
+Q18741,Tottenham Hotspur,Q18708,Fulham,3
+Q18741,Tottenham Hotspur,Q18711,Aston Villa,1
+Q18741,Tottenham Hotspur,Q18716,Newcastle United,1
+Q18741,Tottenham Hotspur,Q18721,Norwich City,3
+Q18741,Tottenham Hotspur,Q18723,Queens Park Rangers,3
+Q18741,Tottenham Hotspur,Q18732,Southampton,1
+Q18741,Tottenham Hotspur,Q18736,Stoke City,3
+Q18741,Tottenham Hotspur,Q18739,Sunderland,4
+Q18741,Tottenham Hotspur,Q18744,West Bromwich Albion,1
+Q18741,Tottenham Hotspur,Q18747,West Ham United,3
+Q18741,Tottenham Hotspur,Q187528,R.S.C. Anderlecht,1
+Q18741,Tottenham Hotspur,Q1886,Atalanta BC,1
+Q18741,Tottenham Hotspur,Q19453,Brighton and Hove Albion,1
+Q18741,Tottenham Hotspur,Q19456,Bristol City F.C.,2
+Q18741,Tottenham Hotspur,Q19467,Crystal Palace,2
+Q18741,Tottenham Hotspur,Q19477,Hull City,2
+Q18741,Tottenham Hotspur,Q19481,Leicester City,3
+Q18741,Tottenham Hotspur,Q19509,Stade Rennais F.C.,2
+Q18741,Tottenham Hotspur,Q19568,AFC Bournemouth,4
+Q18741,Tottenham Hotspur,Q19593,Celtic,1
+Q18741,Tottenham Hotspur,Q19604,Portsmouth,6
+Q18741,Tottenham Hotspur,Q19607,Sheffield United,1
+Q18741,Tottenham Hotspur,Q19612,Preston North End F.C.,1
+Q18741,Tottenham Hotspur,Q2052,ACF Fiorentina,2
+Q18741,Tottenham Hotspur,Q2641,Napoli,1
+Q18741,Tottenham Hotspur,Q2714,Watford,3
+Q18741,Tottenham Hotspur,Q2798,Udinese Calcio,1
+Q18741,Tottenham Hotspur,Q327238,Toronto FC,1
+Q18741,Tottenham Hotspur,Q38568,São Paulo FC,1
+Q18741,Tottenham Hotspur,Q5794,Everton,3
+Q18741,Tottenham Hotspur,Q631,Inter Milan,1
+Q18741,Tottenham Hotspur,Q704,Olympique Lyonnais,1
+Q18741,Tottenham Hotspur,Q7156,FC Barcelona,1
+Q18741,Tottenham Hotspur,Q732002,Royal Antwerp F.C.,1
+Q18741,Tottenham Hotspur,Q81888,Ajax,1
+Q18741,Tottenham Hotspur,Q857938,İstanbul Başakşehir F.K.,1
+Q18741,Tottenham Hotspur,Q8682,Real Madrid,2
+Q18741,Tottenham Hotspur,Q8701,Atletico Madrid,3
+Q18741,Tottenham Hotspur,Q8723,Real Betis Balompié,1
+Q18741,Tottenham Hotspur,Q9617,Arsenal,1
+Q18741,Tottenham Hotspur,Q9653,Ipswich Town,1
+Q18744,West Bromwich Albion,Q1422,Juventus,1
+Q18744,West Bromwich Albion,Q16844931,Inter Miami,1
+Q18744,West Bromwich Albion,Q180305,Monaco,1
+Q18744,West Bromwich Albion,Q18520,Luton Town,1
+Q18744,West Bromwich Albion,Q18656,Manchester United,1
+Q18744,West Bromwich Albion,Q18662,Cardiff City,2
+Q18744,West Bromwich Albion,Q18711,Aston Villa,3
+Q18744,West Bromwich Albion,Q18716,Newcastle United,2
+Q18744,West Bromwich Albion,Q18729,Reading,1
+Q18744,West Bromwich Albion,Q18732,Southampton,1
+Q18744,West Bromwich Albion,Q18736,Stoke City,2
+Q18744,West Bromwich Albion,Q18739,Sunderland,3
+Q18744,West Bromwich Albion,Q18750,Wigan Athletic,1
+Q18744,West Bromwich Albion,Q19444,Birmingham City F.C.,2
+Q18744,West Bromwich Albion,Q19446,Blackburn Rovers,1
+Q18744,West Bromwich Albion,Q19453,Brighton and Hove Albion,1
+Q18744,West Bromwich Albion,Q19467,Crystal Palace,2
+Q18744,West Bromwich Albion,Q19470,Derby County,1
+Q18744,West Bromwich Albion,Q19481,Leicester City,1
+Q18744,West Bromwich Albion,Q19580,Coventry City,1
+Q18744,West Bromwich Albion,Q19612,Preston North End F.C.,1
+Q18744,West Bromwich Albion,Q19628,Olympiacos F.C.,1
+Q18744,West Bromwich Albion,Q2714,Watford,3
+Q18744,West Bromwich Albion,Q2739,AS Roma,1
+Q18744,West Bromwich Albion,Q51976,SV Werder Bremen,1
+Q18744,West Bromwich Albion,Q5794,Everton,1
+Q18747,West Ham United,Q10315,Real Sociedad,2
+Q18747,West Ham United,Q10329,Sevilla,1
+Q18747,West Ham United,Q1128631,Leeds United,1
+Q18747,West Ham United,Q1130849,Liverpool,1
+Q18747,West Ham United,Q1157920,Dalian Professional F.C.,1
+Q18747,West Ham United,Q132885,Olympique Marseille,2
+Q18747,West Ham United,Q1543,AC Milan,1
+Q18747,West Ham United,Q179075,FC Dynamo Kyiv,1
+Q18747,West Ham United,Q180305,Monaco,1
+Q18747,West Ham United,Q18520,Luton Town,1
+Q18747,West Ham United,Q18656,Manchester United,2
+Q18747,West Ham United,Q18659,Swansea City,2
+Q18747,West Ham United,Q18661,Middlesbrough,1
+Q18747,West Ham United,Q18708,Fulham,1
+Q18747,West Ham United,Q18711,Aston Villa,2
+Q18747,West Ham United,Q18716,Newcastle United,2
+Q18747,West Ham United,Q18723,Queens Park Rangers,1
+Q18747,West Ham United,Q18741,Tottenham Hotspur,4
+Q18747,West Ham United,Q18750,Wigan Athletic,1
+Q18747,West Ham United,Q187528,R.S.C. Anderlecht,1
+Q18747,West Ham United,Q1893,Bologna F.C. 1909,1
+Q18747,West Ham United,Q19444,Birmingham City F.C.,2
+Q18747,West Ham United,Q19458,Burnley,2
+Q18747,West Ham United,Q19462,Charlton Athletic,2
+Q18747,West Ham United,Q19467,Crystal Palace,4
+Q18747,West Ham United,Q19477,Hull City,1
+Q18747,West Ham United,Q19490,Nottingham Forest,2
+Q18747,West Ham United,Q19568,AFC Bournemouth,3
+Q18747,West Ham United,Q19571,Brentford,1
+Q18747,West Ham United,Q19593,Celtic,2
+Q18747,West Ham United,Q204357,LA Galaxy,1
+Q18747,West Ham United,Q2074,Genoa CFC,1
+Q18747,West Ham United,Q223620,Deportivo Alavés,1
+Q18747,West Ham United,Q2714,Watford,2
+Q18747,West Ham United,Q308683,Chicago Fire FC,1
+Q18747,West Ham United,Q495299,Galatasaray S.K.,1
+Q18747,West Ham United,Q50602,Manchester City,1
+Q18747,West Ham United,Q5794,Everton,2
+Q18747,West Ham United,Q631,Inter Milan,1
+Q18747,West Ham United,Q73965,Al Hilal,1
+Q18747,West Ham United,Q81888,Ajax,1
+Q18747,West Ham United,Q8760,Deportivo de A Coruña,1
+Q18747,West Ham United,Q9616,Chelsea,2
+Q18747,West Ham United,Q9617,Arsenal,1
+Q18747,West Ham United,Q9653,Ipswich Town,1
+Q18750,Wigan Athletic,Q18656,Manchester United,1
+Q18750,Wigan Athletic,Q18659,Swansea City,1
+Q18750,Wigan Athletic,Q18661,Middlesbrough,1
+Q18750,Wigan Athletic,Q18708,Fulham,2
+Q18750,Wigan Athletic,Q18711,Aston Villa,3
+Q18750,Wigan Athletic,Q18721,Norwich City,1
+Q18750,Wigan Athletic,Q18729,Reading,1
+Q18750,Wigan Athletic,Q18739,Sunderland,2
+Q18750,Wigan Athletic,Q18747,West Ham United,1
+Q18750,Wigan Athletic,Q19449,Blackpool,1
+Q18750,Wigan Athletic,Q19453,Brighton and Hove Albion,1
+Q18750,Wigan Athletic,Q19467,Crystal Palace,1
+Q18750,Wigan Athletic,Q19470,Derby County,2
+Q18750,Wigan Athletic,Q19477,Hull City,2
+Q18750,Wigan Athletic,Q19481,Leicester City,1
+Q18750,Wigan Athletic,Q19571,Brentford,1
+Q18750,Wigan Athletic,Q2714,Watford,1
+Q18750,Wigan Athletic,Q51976,SV Werder Bremen,1
+Q18750,Wigan Athletic,Q5794,Everton,3
+Q18750,Wigan Athletic,Q9616,Chelsea,1
+Q187528,R.S.C. Anderlecht,Q138230,Kasımpaşa S.K.,1
+Q187528,R.S.C. Anderlecht,Q1457,U.C. Sampdoria,1
+Q187528,R.S.C. Anderlecht,Q179075,FC Dynamo Kyiv,1
+Q187528,R.S.C. Anderlecht,Q180305,Monaco,2
+Q187528,R.S.C. Anderlecht,Q18708,Fulham,1
+Q187528,R.S.C. Anderlecht,Q18716,Newcastle United,1
+Q187528,R.S.C. Anderlecht,Q18747,West Ham United,1
+Q187528,R.S.C. Anderlecht,Q188277,Cruzeiro E.C.,1
+Q187528,R.S.C. Anderlecht,Q1893,Bologna F.C. 1909,1
+Q187528,R.S.C. Anderlecht,Q19446,Blackburn Rovers,1
+Q187528,R.S.C. Anderlecht,Q19453,Brighton and Hove Albion,1
+Q187528,R.S.C. Anderlecht,Q19458,Burnley,1
+Q187528,R.S.C. Anderlecht,Q19467,Crystal Palace,1
+Q187528,R.S.C. Anderlecht,Q19500,Wolverhampton Wanderers,1
+Q187528,R.S.C. Anderlecht,Q19509,Stade Rennais F.C.,1
+Q187528,R.S.C. Anderlecht,Q19593,Celtic,1
+Q187528,R.S.C. Anderlecht,Q19597,Rangers,1
+Q187528,R.S.C. Anderlecht,Q19603,FC Twente,1
+Q187528,R.S.C. Anderlecht,Q50602,Manchester City,2
+Q187528,R.S.C. Anderlecht,Q857938,İstanbul Başakşehir F.K.,1
+Q187528,R.S.C. Anderlecht,Q9616,Chelsea,1
+Q188277,Cruzeiro E.C.,Q180305,Monaco,1
+Q188277,Cruzeiro E.C.,Q18741,Tottenham Hotspur,1
+Q188277,Cruzeiro E.C.,Q190916,Club Brugge K.V.,1
+Q188277,Cruzeiro E.C.,Q9616,Chelsea,1
+Q1886,Atalanta BC,Q1457,U.C. Sampdoria,1
+Q1886,Atalanta BC,Q18656,Manchester United,2
+Q1886,Atalanta BC,Q18661,Middlesbrough,1
+Q1886,Atalanta BC,Q18741,Tottenham Hotspur,3
+Q1886,Atalanta BC,Q1893,Bologna F.C. 1909,1
+Q1886,Atalanta BC,Q1900,Cagliari Calcio,1
+Q1886,Atalanta BC,Q19481,Leicester City,2
+Q1886,Atalanta BC,Q19490,Nottingham Forest,1
+Q1886,Atalanta BC,Q2693,Parma Calcio 1913,1
+Q1886,Atalanta BC,Q2739,AS Roma,1
+Q1886,Atalanta BC,Q857938,İstanbul Başakşehir F.K.,1
+Q1886,Atalanta BC,Q8701,Atletico Madrid,1
+Q1886,Atalanta BC,Q9616,Chelsea,1
+Q1886,Atalanta BC,Q9653,Ipswich Town,1
+Q1893,Bologna F.C. 1909,Q1422,Juventus,1
+Q1893,Bologna F.C. 1909,Q1457,U.C. Sampdoria,1
+Q1893,Bologna F.C. 1909,Q18656,Manchester United,1
+Q1893,Bologna F.C. 1909,Q18716,Newcastle United,1
+Q1893,Bologna F.C. 1909,Q18732,Southampton,1
+Q1893,Bologna F.C. 1909,Q19628,Olympiacos F.C.,1
+Q1893,Bologna F.C. 1909,Q2052,ACF Fiorentina,1
+Q1893,Bologna F.C. 1909,Q2641,Napoli,2
+Q1893,Bologna F.C. 1909,Q2798,Udinese Calcio,1
+Q1893,Bologna F.C. 1909,Q631,Inter Milan,1
+Q1893,Bologna F.C. 1909,Q9617,Arsenal,2
+Q1893,Bologna F.C. 1909,Q994811,FC Red Bull Salzburg,1
+Q1900,Cagliari Calcio,Q631,Inter Milan,1
+Q1900,Cagliari Calcio,Q6703,Empoli FC,2
+Q1900,Cagliari Calcio,Q9616,Chelsea,1
+Q190916,Club Brugge K.V.,Q101859,VfL Wolfsburg,1
+Q190916,Club Brugge K.V.,Q1543,AC Milan,1
+Q190916,Club Brugge K.V.,Q18711,Aston Villa,1
+Q190916,Club Brugge K.V.,Q18750,Wigan Athletic,1
+Q190916,Club Brugge K.V.,Q19451,Bolton Wanderers,1
+Q190916,Club Brugge K.V.,Q19453,Brighton and Hove Albion,2
+Q190916,Club Brugge K.V.,Q19568,AFC Bournemouth,1
+Q190916,Club Brugge K.V.,Q19571,Brentford,1
+Q190916,Club Brugge K.V.,Q219233,SBV Vitesse,1
+Q190916,Club Brugge K.V.,Q2714,Watford,1
+Q190916,Club Brugge K.V.,Q732002,Royal Antwerp F.C.,2
+Q190916,Club Brugge K.V.,Q80845,S.C. Internacional,1
+Q190916,Club Brugge K.V.,Q8639,Hellas Verona FC,1
+Q190916,Club Brugge K.V.,Q9617,Arsenal,1
+Q191264,AZ Alkmaar,Q101859,VfL Wolfsburg,1
+Q191264,AZ Alkmaar,Q1457,U.C. Sampdoria,1
+Q191264,AZ Alkmaar,Q1543,AC Milan,1
+Q191264,AZ Alkmaar,Q15755,FC Augsburg,1
+Q191264,AZ Alkmaar,Q18708,Fulham,1
+Q191264,AZ Alkmaar,Q18739,Sunderland,1
+Q191264,AZ Alkmaar,Q19453,Brighton and Hove Albion,2
+Q191264,AZ Alkmaar,Q19462,Charlton Athletic,1
+Q191264,AZ Alkmaar,Q19568,AFC Bournemouth,1
+Q191264,AZ Alkmaar,Q19580,Coventry City,1
+Q191264,AZ Alkmaar,Q219233,SBV Vitesse,1
+Q191264,AZ Alkmaar,Q2693,Parma Calcio 1913,1
+Q191264,AZ Alkmaar,Q2739,AS Roma,1
+Q191264,AZ Alkmaar,Q81888,Ajax,1
+Q191264,AZ Alkmaar,Q8723,Real Betis Balompié,1
+Q191843,R.C. Lens,Q12297,Villarreal,1
+Q191843,R.C. Lens,Q185163,OGC Nice,1
+Q191843,R.C. Lens,Q18741,Tottenham Hotspur,2
+Q191843,R.C. Lens,Q19509,Stade Rennais F.C.,1
+Q191843,R.C. Lens,Q483020,Paris Saint-Germain,1
+Q191843,R.C. Lens,Q50602,Manchester City,1
+Q191843,R.C. Lens,Q702455,RB Leipzig,1
+Q191843,R.C. Lens,Q8682,Real Madrid,1
+Q192641,Trabzonspor,Q12297,Villarreal,1
+Q192641,Trabzonspor,Q18736,Stoke City,1
+Q192641,Trabzonspor,Q2674,Palermo F.C.,1
+Q192641,Trabzonspor,Q9616,Chelsea,1
+Q19353,FC Anzhi Makhachkala,Q9616,Chelsea,1
+Q19444,Birmingham City F.C.,Q18662,Cardiff City,1
+Q19444,Birmingham City F.C.,Q18711,Aston Villa,2
+Q19444,Birmingham City F.C.,Q18716,Newcastle United,1
+Q19444,Birmingham City F.C.,Q18721,Norwich City,1
+Q19444,Birmingham City F.C.,Q18736,Stoke City,2
+Q19444,Birmingham City F.C.,Q18739,Sunderland,4
+Q19444,Birmingham City F.C.,Q18744,West Bromwich Albion,1
+Q19444,Birmingham City F.C.,Q18747,West Ham United,2
+Q19444,Birmingham City F.C.,Q18750,Wigan Athletic,2
+Q19444,Birmingham City F.C.,Q19446,Blackburn Rovers,1
+Q19444,Birmingham City F.C.,Q19477,Hull City,1
+Q19444,Birmingham City F.C.,Q19481,Leicester City,2
+Q19444,Birmingham City F.C.,Q19490,Nottingham Forest,3
+Q19444,Birmingham City F.C.,Q19498,Sheffield Wednesday,1
+Q19444,Birmingham City F.C.,Q19607,Sheffield United,1
+Q19444,Birmingham City F.C.,Q8682,Real Madrid,1
+Q19444,Birmingham City F.C.,Q9616,Chelsea,1
+Q19446,Blackburn Rovers,Q1128631,Leeds United,1
+Q19446,Blackburn Rovers,Q1130849,Liverpool,1
+Q19446,Blackburn Rovers,Q18656,Manchester United,1
+Q19446,Blackburn Rovers,Q18662,Cardiff City,1
+Q19446,Blackburn Rovers,Q18708,Fulham,4
+Q19446,Blackburn Rovers,Q18711,Aston Villa,3
+Q19446,Blackburn Rovers,Q18716,Newcastle United,4
+Q19446,Blackburn Rovers,Q18721,Norwich City,1
+Q19446,Blackburn Rovers,Q18736,Stoke City,2
+Q19446,Blackburn Rovers,Q18739,Sunderland,2
+Q19446,Blackburn Rovers,Q18741,Tottenham Hotspur,1
+Q19446,Blackburn Rovers,Q18750,Wigan Athletic,1
+Q19446,Blackburn Rovers,Q19444,Birmingham City F.C.,1
+Q19446,Blackburn Rovers,Q19451,Bolton Wanderers,1
+Q19446,Blackburn Rovers,Q19453,Brighton and Hove Albion,1
+Q19446,Blackburn Rovers,Q19458,Burnley,1
+Q19446,Blackburn Rovers,Q19467,Crystal Palace,2
+Q19446,Blackburn Rovers,Q19481,Leicester City,2
+Q19446,Blackburn Rovers,Q19568,AFC Bournemouth,1
+Q19446,Blackburn Rovers,Q19571,Brentford,1
+Q19446,Blackburn Rovers,Q19607,Sheffield United,1
+Q19446,Blackburn Rovers,Q48947,Plymouth Argyle F.C.,1
+Q19446,Blackburn Rovers,Q48950,Rotherham United F.C.,1
+Q19446,Blackburn Rovers,Q50602,Manchester City,1
+Q19446,Blackburn Rovers,Q8723,Real Betis Balompié,1
+Q19446,Blackburn Rovers,Q9616,Chelsea,2
+Q19449,Blackpool,Q18656,Manchester United,1
+Q19449,Blackpool,Q18659,Swansea City,1
+Q19449,Blackpool,Q18708,Fulham,1
+Q19449,Blackpool,Q18716,Newcastle United,1
+Q19449,Blackpool,Q18721,Norwich City,2
+Q19449,Blackpool,Q18723,Queens Park Rangers,2
+Q19449,Blackpool,Q18732,Southampton,1
+Q19449,Blackpool,Q19444,Birmingham City F.C.,1
+Q19449,Blackpool,Q19473,Huddersfield Town,1
+Q19449,Blackpool,Q19568,AFC Bournemouth,1
+Q19449,Blackpool,Q19607,Sheffield United,1
+Q19449,Blackpool,Q2714,Watford,1
+Q19451,Bolton Wanderers,Q1128631,Leeds United,1
+Q19451,Bolton Wanderers,Q1130849,Liverpool,1
+Q19451,Bolton Wanderers,Q18708,Fulham,1
+Q19451,Bolton Wanderers,Q18716,Newcastle United,1
+Q19451,Bolton Wanderers,Q18739,Sunderland,1
+Q19451,Bolton Wanderers,Q18747,West Ham United,2
+Q19451,Bolton Wanderers,Q18750,Wigan Athletic,1
+Q19451,Bolton Wanderers,Q19449,Blackpool,1
+Q19451,Bolton Wanderers,Q19453,Brighton and Hove Albion,1
+Q19451,Bolton Wanderers,Q19458,Burnley,1
+Q19451,Bolton Wanderers,Q19498,Sheffield Wednesday,1
+Q19451,Bolton Wanderers,Q2052,ACF Fiorentina,1
+Q19451,Bolton Wanderers,Q2714,Watford,1
+Q19451,Bolton Wanderers,Q319136,St. Mirren F.C.,1
+Q19451,Bolton Wanderers,Q9616,Chelsea,3
+Q19451,Bolton Wanderers,Q9617,Arsenal,1
+Q19453,Brighton and Hove Albion,Q10315,Real Sociedad,1
+Q19453,Brighton and Hove Albion,Q1128631,Leeds United,1
+Q19453,Brighton and Hove Albion,Q1130849,Liverpool,1
+Q19453,Brighton and Hove Albion,Q134241,Feyenoord Rotterdam,1
+Q19453,Brighton and Hove Albion,Q1543,AC Milan,1
+Q19453,Brighton and Hove Albion,Q18523,Newport County A.F.C.,1
+Q19453,Brighton and Hove Albion,Q18656,Manchester United,1
+Q19453,Brighton and Hove Albion,Q18659,Swansea City,1
+Q19453,Brighton and Hove Albion,Q18716,Newcastle United,1
+Q19453,Brighton and Hove Albion,Q18721,Norwich City,3
+Q19453,Brighton and Hove Albion,Q18723,Queens Park Rangers,1
+Q19453,Brighton and Hove Albion,Q18729,Reading,2
+Q19453,Brighton and Hove Albion,Q18732,Southampton,1
+Q19453,Brighton and Hove Albion,Q18741,Tottenham Hotspur,1
+Q19453,Brighton and Hove Albion,Q18744,West Bromwich Albion,1
+Q19453,Brighton and Hove Albion,Q18747,West Ham United,1
+Q19453,Brighton and Hove Albion,Q19444,Birmingham City F.C.,2
+Q19453,Brighton and Hove Albion,Q19456,Bristol City F.C.,1
+Q19453,Brighton and Hove Albion,Q19458,Burnley,1
+Q19453,Brighton and Hove Albion,Q19462,Charlton Athletic,1
+Q19453,Brighton and Hove Albion,Q19467,Crystal Palace,1
+Q19453,Brighton and Hove Albion,Q19481,Leicester City,1
+Q19453,Brighton and Hove Albion,Q19500,Wolverhampton Wanderers,1
+Q19453,Brighton and Hove Albion,Q19568,AFC Bournemouth,1
+Q19453,Brighton and Hove Albion,Q19593,Celtic,1
+Q19453,Brighton and Hove Albion,Q196160,Royale Union Saint-Gilloise,2
+Q19453,Brighton and Hove Albion,Q22707,TSG 1899 Hoffenheim,1
+Q19453,Brighton and Hove Albion,Q2714,Watford,1
+Q19453,Brighton and Hove Albion,Q495299,Galatasaray S.K.,1
+Q19453,Brighton and Hove Albion,Q702455,RB Leipzig,1
+Q19453,Brighton and Hove Albion,Q9616,Chelsea,5
+Q19453,Brighton and Hove Albion,Q9617,Arsenal,1
+Q19453,Brighton and Hove Albion,Q9653,Ipswich Town,1
+Q19456,Bristol City F.C.,Q18523,Newport County A.F.C.,1
+Q19456,Bristol City F.C.,Q18656,Manchester United,1
+Q19456,Bristol City F.C.,Q18659,Swansea City,2
+Q19456,Bristol City F.C.,Q18708,Fulham,1
+Q19456,Bristol City F.C.,Q18711,Aston Villa,1
+Q19456,Bristol City F.C.,Q18716,Newcastle United,1
+Q19456,Bristol City F.C.,Q18739,Sunderland,1
+Q19456,Bristol City F.C.,Q19446,Blackburn Rovers,1
+Q19456,Bristol City F.C.,Q19458,Burnley,3
+Q19456,Bristol City F.C.,Q19467,Crystal Palace,1
+Q19456,Bristol City F.C.,Q19500,Wolverhampton Wanderers,1
+Q19456,Bristol City F.C.,Q19568,AFC Bournemouth,1
+Q19456,Bristol City F.C.,Q19612,Preston North End F.C.,1
+Q19456,Bristol City F.C.,Q2714,Watford,1
+Q19458,Burnley,Q1130849,Liverpool,1
+Q19458,Burnley,Q172567,Beşiktaş J.K.,1
+Q19458,Burnley,Q18708,Fulham,1
+Q19458,Burnley,Q18711,Aston Villa,2
+Q19458,Burnley,Q18716,Newcastle United,3
+Q19458,Burnley,Q18721,Norwich City,1
+Q19458,Burnley,Q18723,Queens Park Rangers,1
+Q19458,Burnley,Q18729,Reading,1
+Q19458,Burnley,Q18732,Southampton,2
+Q19458,Burnley,Q18741,Tottenham Hotspur,3
+Q19458,Burnley,Q18744,West Bromwich Albion,1
+Q19458,Burnley,Q18747,West Ham United,1
+Q19458,Burnley,Q18750,Wigan Athletic,1
+Q19458,Burnley,Q19451,Bolton Wanderers,1
+Q19458,Burnley,Q19470,Derby County,1
+Q19458,Burnley,Q19473,Huddersfield Town,1
+Q19458,Burnley,Q19490,Nottingham Forest,1
+Q19458,Burnley,Q19498,Sheffield Wednesday,2
+Q19458,Burnley,Q19500,Wolverhampton Wanderers,1
+Q19458,Burnley,Q19568,AFC Bournemouth,3
+Q19458,Burnley,Q19597,Rangers,1
+Q19458,Burnley,Q19607,Sheffield United,1
+Q19458,Burnley,Q50602,Manchester City,1
+Q19458,Burnley,Q5794,Everton,2
+Q19458,Burnley,Q732002,Royal Antwerp F.C.,1
+Q19458,Burnley,Q9653,Ipswich Town,1
+Q19462,Charlton Athletic,Q1130849,Liverpool,2
+Q19462,Charlton Athletic,Q18523,Newport County A.F.C.,1
+Q19462,Charlton Athletic,Q18659,Swansea City,1
+Q19462,Charlton Athletic,Q18662,Cardiff City,1
+Q19462,Charlton Athletic,Q18711,Aston Villa,2
+Q19462,Charlton Athletic,Q18716,Newcastle United,1
+Q19462,Charlton Athletic,Q18729,Reading,1
+Q19462,Charlton Athletic,Q18741,Tottenham Hotspur,2
+Q19462,Charlton Athletic,Q19444,Birmingham City F.C.,1
+Q19462,Charlton Athletic,Q19453,Brighton and Hove Albion,1
+Q19462,Charlton Athletic,Q19458,Burnley,2
+Q19462,Charlton Athletic,Q19568,AFC Bournemouth,2
+Q19462,Charlton Athletic,Q19571,Brentford,1
+Q19462,Charlton Athletic,Q19580,Coventry City,1
+Q19462,Charlton Athletic,Q5794,Everton,1
+Q19462,Charlton Athletic,Q9616,Chelsea,1
+Q19462,Charlton Athletic,Q9617,Arsenal,2
+Q19467,Crystal Palace,Q126334,RC Strasbourg Alsace,1
+Q19467,Crystal Palace,Q132885,Olympique Marseille,1
+Q19467,Crystal Palace,Q15789,Bayern Munich,1
+Q19467,Crystal Palace,Q172567,Beşiktaş J.K.,1
+Q19467,Crystal Palace,Q18656,Manchester United,2
+Q19467,Crystal Palace,Q18662,Cardiff City,1
+Q19467,Crystal Palace,Q18708,Fulham,2
+Q19467,Crystal Palace,Q18729,Reading,1
+Q19467,Crystal Palace,Q18732,Southampton,2
+Q19467,Crystal Palace,Q18741,Tottenham Hotspur,1
+Q19467,Crystal Palace,Q18750,Wigan Athletic,1
+Q19467,Crystal Palace,Q19458,Burnley,1
+Q19467,Crystal Palace,Q19462,Charlton Athletic,2
+Q19467,Crystal Palace,Q19470,Derby County,1
+Q19467,Crystal Palace,Q19481,Leicester City,1
+Q19467,Crystal Palace,Q19490,Nottingham Forest,2
+Q19467,Crystal Palace,Q19513,Montpellier Hérault Sport Club,1
+Q19467,Crystal Palace,Q19521,AS Saint-Étienne,1
+Q19467,Crystal Palace,Q19568,AFC Bournemouth,2
+Q19467,Crystal Palace,Q19593,Celtic,1
+Q19467,Crystal Palace,Q19604,Portsmouth,1
+Q19467,Crystal Palace,Q238593,D.C. United,1
+Q19467,Crystal Palace,Q48950,Rotherham United F.C.,1
+Q19467,Crystal Palace,Q495299,Galatasaray S.K.,1
+Q19467,Crystal Palace,Q50602,Manchester City,1
+Q19467,Crystal Palace,Q5794,Everton,1
+Q19467,Crystal Palace,Q8701,Atletico Madrid,1
+Q19467,Crystal Palace,Q8749,RC Celta de Vigo,1
+Q19467,Crystal Palace,Q8806,Getafe CF,2
+Q19467,Crystal Palace,Q9616,Chelsea,2
+Q19467,Crystal Palace,Q9617,Arsenal,2
+Q19470,Derby County,Q1543,AC Milan,1
+Q19470,Derby County,Q18656,Manchester United,1
+Q19470,Derby County,Q18661,Middlesbrough,1
+Q19470,Derby County,Q18716,Newcastle United,1
+Q19470,Derby County,Q18736,Stoke City,1
+Q19470,Derby County,Q18744,West Bromwich Albion,1
+Q19470,Derby County,Q19456,Bristol City F.C.,1
+Q19470,Derby County,Q19458,Burnley,4
+Q19470,Derby County,Q19462,Charlton Athletic,1
+Q19470,Derby County,Q19500,Wolverhampton Wanderers,2
+Q19470,Derby County,Q19597,Rangers,1
+Q19470,Derby County,Q48929,Burton Albion F.C.,1
+Q19470,Derby County,Q50602,Manchester City,1
+Q19470,Derby County,Q5794,Everton,1
+Q19470,Derby County,Q9653,Ipswich Town,1
+Q19473,Huddersfield Town,Q18523,Newport County A.F.C.,1
+Q19473,Huddersfield Town,Q18662,Cardiff City,1
+Q19473,Huddersfield Town,Q18729,Reading,1
+Q19473,Huddersfield Town,Q19453,Brighton and Hove Albion,1
+Q19473,Huddersfield Town,Q19456,Bristol City F.C.,1
+Q19473,Huddersfield Town,Q19500,Wolverhampton Wanderers,1
+Q19473,Huddersfield Town,Q19568,AFC Bournemouth,1
+Q19473,Huddersfield Town,Q19612,Preston North End F.C.,1
+Q19473,Huddersfield Town,Q5794,Everton,1
+Q19473,Huddersfield Town,Q9616,Chelsea,1
+Q19477,Hull City,Q1128631,Leeds United,1
+Q19477,Hull City,Q1130849,Liverpool,1
+Q19477,Hull City,Q18661,Middlesbrough,1
+Q19477,Hull City,Q18662,Cardiff City,1
+Q19477,Hull City,Q18711,Aston Villa,1
+Q19477,Hull City,Q18716,Newcastle United,2
+Q19477,Hull City,Q18721,Norwich City,1
+Q19477,Hull City,Q18729,Reading,2
+Q19477,Hull City,Q18739,Sunderland,1
+Q19477,Hull City,Q18741,Tottenham Hotspur,1
+Q19477,Hull City,Q18744,West Bromwich Albion,2
+Q19477,Hull City,Q18747,West Ham United,1
+Q19477,Hull City,Q191264,AZ Alkmaar,1
+Q19477,Hull City,Q19446,Blackburn Rovers,3
+Q19477,Hull City,Q19453,Brighton and Hove Albion,2
+Q19477,Hull City,Q19470,Derby County,3
+Q19477,Hull City,Q19481,Leicester City,1
+Q19477,Hull City,Q19490,Nottingham Forest,1
+Q19477,Hull City,Q221602,AIK Fotboll,1
+Q19477,Hull City,Q80845,S.C. Internacional,1
+Q19477,Hull City,Q9653,Ipswich Town,1
+Q19481,Leicester City,Q1031200,Portland Timbers,1
+Q19481,Leicester City,Q10329,Sevilla,1
+Q19481,Leicester City,Q1128631,Leeds United,2
+Q19481,Leicester City,Q1130849,Liverpool,1
+Q19481,Leicester City,Q132885,Olympique Marseille,1
+Q19481,Leicester City,Q172567,Beşiktaş J.K.,1
+Q19481,Leicester City,Q180305,Monaco,2
+Q19481,Leicester City,Q185163,OGC Nice,1
+Q19481,Leicester City,Q18520,Luton Town,1
+Q19481,Leicester City,Q18656,Manchester United,2
+Q19481,Leicester City,Q18659,Swansea City,1
+Q19481,Leicester City,Q18661,Middlesbrough,1
+Q19481,Leicester City,Q18708,Fulham,1
+Q19481,Leicester City,Q18711,Aston Villa,1
+Q19481,Leicester City,Q18721,Norwich City,2
+Q19481,Leicester City,Q18739,Sunderland,1
+Q19481,Leicester City,Q18741,Tottenham Hotspur,1
+Q19481,Leicester City,Q18744,West Bromwich Albion,1
+Q19481,Leicester City,Q1886,Atalanta BC,1
+Q19481,Leicester City,Q1893,Bologna F.C. 1909,1
+Q19481,Leicester City,Q1900,Cagliari Calcio,1
+Q19481,Leicester City,Q192641,Trabzonspor,1
+Q19481,Leicester City,Q19444,Birmingham City F.C.,2
+Q19481,Leicester City,Q19446,Blackburn Rovers,1
+Q19481,Leicester City,Q19449,Blackpool,1
+Q19481,Leicester City,Q19451,Bolton Wanderers,1
+Q19481,Leicester City,Q19453,Brighton and Hove Albion,1
+Q19481,Leicester City,Q19458,Burnley,1
+Q19481,Leicester City,Q19467,Crystal Palace,1
+Q19481,Leicester City,Q19470,Derby County,1
+Q19481,Leicester City,Q19473,Huddersfield Town,1
+Q19481,Leicester City,Q19477,Hull City,1
+Q19481,Leicester City,Q19568,AFC Bournemouth,1
+Q19481,Leicester City,Q19571,Brentford,1
+Q19481,Leicester City,Q19607,Sheffield United,1
+Q19481,Leicester City,Q19628,Olympiacos F.C.,1
+Q19481,Leicester City,Q2052,ACF Fiorentina,1
+Q19481,Leicester City,Q22707,TSG 1899 Hoffenheim,1
+Q19481,Leicester City,Q2714,Watford,1
+Q19481,Leicester City,Q482764,Al Nassr,1
+Q19481,Leicester City,Q48929,Burton Albion F.C.,1
+Q19481,Leicester City,Q50602,Manchester City,2
+Q19481,Leicester City,Q5794,Everton,2
+Q19481,Leicester City,Q732002,Royal Antwerp F.C.,1
+Q19481,Leicester City,Q8701,Atletico Madrid,1
+Q19481,Leicester City,Q8723,Real Betis Balompié,1
+Q19481,Leicester City,Q9616,Chelsea,3
+Q19490,Nottingham Forest,Q1128631,Leeds United,1
+Q19490,Nottingham Forest,Q1130849,Liverpool,1
+Q19490,Nottingham Forest,Q11945,Girona FC,1
+Q19490,Nottingham Forest,Q132885,Olympique Marseille,1
+Q19490,Nottingham Forest,Q1543,AC Milan,1
+Q19490,Nottingham Forest,Q18519,Lincoln City F.C.,1
+Q19490,Nottingham Forest,Q18656,Manchester United,2
+Q19490,Nottingham Forest,Q18659,Swansea City,1
+Q19490,Nottingham Forest,Q18662,Cardiff City,1
+Q19490,Nottingham Forest,Q18711,Aston Villa,2
+Q19490,Nottingham Forest,Q18716,Newcastle United,3
+Q19490,Nottingham Forest,Q18732,Southampton,2
+Q19490,Nottingham Forest,Q18741,Tottenham Hotspur,2
+Q19490,Nottingham Forest,Q18747,West Ham United,1
+Q19490,Nottingham Forest,Q1893,Bologna F.C. 1909,1
+Q19490,Nottingham Forest,Q19456,Bristol City F.C.,1
+Q19490,Nottingham Forest,Q19458,Burnley,3
+Q19490,Nottingham Forest,Q19467,Crystal Palace,1
+Q19490,Nottingham Forest,Q19477,Hull City,1
+Q19490,Nottingham Forest,Q19481,Leicester City,2
+Q19490,Nottingham Forest,Q19580,Coventry City,1
+Q19490,Nottingham Forest,Q19598,Notts County F.C.,1
+Q19490,Nottingham Forest,Q19628,Olympiacos F.C.,1
+Q19490,Nottingham Forest,Q482406,FC Seoul,1
+Q19490,Nottingham Forest,Q48929,Burton Albion F.C.,1
+Q19490,Nottingham Forest,Q48950,Rotherham United F.C.,1
+Q19490,Nottingham Forest,Q495299,Galatasaray S.K.,1
+Q19490,Nottingham Forest,Q50602,Manchester City,2
+Q19490,Nottingham Forest,Q81888,Ajax,1
+Q19490,Nottingham Forest,Q9616,Chelsea,1
+Q19498,Sheffield Wednesday,Q18659,Swansea City,1
+Q19498,Sheffield Wednesday,Q18661,Middlesbrough,1
+Q19498,Sheffield Wednesday,Q18732,Southampton,1
+Q19498,Sheffield Wednesday,Q18736,Stoke City,1
+Q19498,Sheffield Wednesday,Q18744,West Bromwich Albion,1
+Q19498,Sheffield Wednesday,Q18747,West Ham United,2
+Q19498,Sheffield Wednesday,Q19458,Burnley,1
+Q19498,Sheffield Wednesday,Q19462,Charlton Athletic,1
+Q19498,Sheffield Wednesday,Q19467,Crystal Palace,1
+Q19498,Sheffield Wednesday,Q19490,Nottingham Forest,1
+Q19498,Sheffield Wednesday,Q19500,Wolverhampton Wanderers,1
+Q19500,Wolverhampton Wanderers,Q1130849,Liverpool,1
+Q19500,Wolverhampton Wanderers,Q12297,Villarreal,1
+Q19500,Wolverhampton Wanderers,Q134241,Feyenoord Rotterdam,1
+Q19500,Wolverhampton Wanderers,Q18656,Manchester United,1
+Q19500,Wolverhampton Wanderers,Q18659,Swansea City,1
+Q19500,Wolverhampton Wanderers,Q18708,Fulham,3
+Q19500,Wolverhampton Wanderers,Q18711,Aston Villa,1
+Q19500,Wolverhampton Wanderers,Q18739,Sunderland,1
+Q19500,Wolverhampton Wanderers,Q18741,Tottenham Hotspur,1
+Q19500,Wolverhampton Wanderers,Q187528,R.S.C. Anderlecht,1
+Q19500,Wolverhampton Wanderers,Q19444,Birmingham City F.C.,3
+Q19500,Wolverhampton Wanderers,Q19449,Blackpool,2
+Q19500,Wolverhampton Wanderers,Q19451,Bolton Wanderers,1
+Q19500,Wolverhampton Wanderers,Q19453,Brighton and Hove Albion,2
+Q19500,Wolverhampton Wanderers,Q19456,Bristol City F.C.,2
+Q19500,Wolverhampton Wanderers,Q19462,Charlton Athletic,1
+Q19500,Wolverhampton Wanderers,Q19467,Crystal Palace,1
+Q19500,Wolverhampton Wanderers,Q19477,Hull City,1
+Q19500,Wolverhampton Wanderers,Q19580,Coventry City,2
+Q19500,Wolverhampton Wanderers,Q19604,Portsmouth,1
+Q19500,Wolverhampton Wanderers,Q221695,Grêmio FBPA,1
+Q19500,Wolverhampton Wanderers,Q2739,AS Roma,1
+Q19500,Wolverhampton Wanderers,Q32494,Schalke 04,1
+Q19500,Wolverhampton Wanderers,Q44441,Al Ahli FC,1
+Q19500,Wolverhampton Wanderers,Q495299,Galatasaray S.K.,1
+Q19500,Wolverhampton Wanderers,Q50602,Manchester City,1
+Q19500,Wolverhampton Wanderers,Q5794,Everton,3
+Q19500,Wolverhampton Wanderers,Q8806,Getafe CF,1
+Q19500,Wolverhampton Wanderers,Q9616,Chelsea,1
+Q19509,Stade Rennais F.C.,Q1128631,Leeds United,3
+Q19509,Stade Rennais F.C.,Q1130849,Liverpool,1
+Q19509,Stade Rennais F.C.,Q172476,Bordeaux,1
+Q19509,Stade Rennais F.C.,Q180305,Monaco,1
+Q19509,Stade Rennais F.C.,Q185163,OGC Nice,1
+Q19509,Stade Rennais F.C.,Q18662,Cardiff City,1
+Q19509,Stade Rennais F.C.,Q18721,Norwich City,1
+Q19509,Stade Rennais F.C.,Q18736,Stoke City,1
+Q19509,Stade Rennais F.C.,Q18747,West Ham United,1
+Q19509,Stade Rennais F.C.,Q19490,Nottingham Forest,1
+Q19509,Stade Rennais F.C.,Q19568,AFC Bournemouth,1
+Q19509,Stade Rennais F.C.,Q22707,TSG 1899 Hoffenheim,1
+Q19509,Stade Rennais F.C.,Q2714,Watford,1
+Q19509,Stade Rennais F.C.,Q50602,Manchester City,1
+Q19509,Stade Rennais F.C.,Q704,Olympique Lyonnais,1
+Q19509,Stade Rennais F.C.,Q7156,FC Barcelona,1
+Q19509,Stade Rennais F.C.,Q9616,Chelsea,3
+Q19513,Montpellier Hérault Sport Club,Q12297,Villarreal,1
+Q19513,Montpellier Hérault Sport Club,Q132885,Olympique Marseille,1
+Q19513,Montpellier Hérault Sport Club,Q18656,Manchester United,1
+Q19513,Montpellier Hérault Sport Club,Q2641,Napoli,1
+Q19513,Montpellier Hérault Sport Club,Q702455,RB Leipzig,1
+Q19513,Montpellier Hérault Sport Club,Q9617,Arsenal,1
+Q19516,Lille OSC,Q101859,VfL Wolfsburg,1
+Q19516,Lille OSC,Q1046440,Casa Pia A.C.,1
+Q19516,Lille OSC,Q1130849,Liverpool,1
+Q19516,Lille OSC,Q132885,Olympique Marseille,1
+Q19516,Lille OSC,Q1422,Juventus,1
+Q19516,Lille OSC,Q1543,AC Milan,2
+Q19516,Lille OSC,Q15789,Bayern Munich,1
+Q19516,Lille OSC,Q180305,Monaco,1
+Q19516,Lille OSC,Q18656,Manchester United,1
+Q19516,Lille OSC,Q18711,Aston Villa,1
+Q19516,Lille OSC,Q18716,Newcastle United,3
+Q19516,Lille OSC,Q18732,Southampton,1
+Q19516,Lille OSC,Q18744,West Bromwich Albion,1
+Q19516,Lille OSC,Q18747,West Ham United,1
+Q19516,Lille OSC,Q19453,Brighton and Hove Albion,2
+Q19516,Lille OSC,Q19481,Leicester City,1
+Q19516,Lille OSC,Q19521,AS Saint-Étienne,1
+Q19516,Lille OSC,Q219703,Boavista F.C.,1
+Q19516,Lille OSC,Q483020,Paris Saint-Germain,2
+Q19516,Lille OSC,Q50602,Manchester City,1
+Q19516,Lille OSC,Q5794,Everton,1
+Q19516,Lille OSC,Q9616,Chelsea,1
+Q19516,Lille OSC,Q9617,Arsenal,3
+Q19521,AS Saint-Étienne,Q180305,Monaco,1
+Q19521,AS Saint-Étienne,Q185163,OGC Nice,1
+Q19521,AS Saint-Étienne,Q18736,Stoke City,1
+Q19521,AS Saint-Étienne,Q19481,Leicester City,1
+Q19521,AS Saint-Étienne,Q19516,Lille OSC,1
+Q19521,AS Saint-Étienne,Q19628,Olympiacos F.C.,1
+Q19521,AS Saint-Étienne,Q2693,Parma Calcio 1913,1
+Q19521,AS Saint-Étienne,Q704,Olympique Lyonnais,1
+Q19521,AS Saint-Étienne,Q7156,FC Barcelona,1
+Q19521,AS Saint-Étienne,Q9616,Chelsea,1
+Q19521,AS Saint-Étienne,Q9617,Arsenal,2
+Q19568,AFC Bournemouth,Q1130849,Liverpool,2
+Q19568,AFC Bournemouth,Q12297,Villarreal,1
+Q19568,AFC Bournemouth,Q1543,AC Milan,1
+Q19568,AFC Bournemouth,Q18661,Middlesbrough,1
+Q19568,AFC Bournemouth,Q18711,Aston Villa,1
+Q19568,AFC Bournemouth,Q18716,Newcastle United,4
+Q19568,AFC Bournemouth,Q18723,Queens Park Rangers,1
+Q19568,AFC Bournemouth,Q18729,Reading,1
+Q19568,AFC Bournemouth,Q18741,Tottenham Hotspur,2
+Q19568,AFC Bournemouth,Q18747,West Ham United,2
+Q19568,AFC Bournemouth,Q19458,Burnley,1
+Q19568,AFC Bournemouth,Q19467,Crystal Palace,1
+Q19568,AFC Bournemouth,Q19500,Wolverhampton Wanderers,2
+Q19568,AFC Bournemouth,Q19597,Rangers,1
+Q19568,AFC Bournemouth,Q19604,Portsmouth,2
+Q19568,AFC Bournemouth,Q19607,Sheffield United,1
+Q19568,AFC Bournemouth,Q19612,Preston North End F.C.,1
+Q19568,AFC Bournemouth,Q50602,Manchester City,2
+Q19568,AFC Bournemouth,Q5794,Everton,1
+Q19568,AFC Bournemouth,Q702455,RB Leipzig,1
+Q19568,AFC Bournemouth,Q8682,Real Madrid,1
+Q19568,AFC Bournemouth,Q8806,Getafe CF,1
+Q19568,AFC Bournemouth,Q9616,Chelsea,1
+Q19568,AFC Bournemouth,Q9617,Arsenal,2
+Q19568,AFC Bournemouth,Q9653,Ipswich Town,1
+Q19571,Brentford,Q10329,Sevilla,1
+Q19571,Brentford,Q104761,Bayer Leverkusen,1
+Q19571,Brentford,Q1128631,Leeds United,1
+Q19571,Brentford,Q134241,Feyenoord Rotterdam,1
+Q19571,Brentford,Q16844931,Inter Miami,1
+Q19571,Brentford,Q18656,Manchester United,2
+Q19571,Brentford,Q18711,Aston Villa,2
+Q19571,Brentford,Q18716,Newcastle United,1
+Q19571,Brentford,Q18721,Norwich City,1
+Q19571,Brentford,Q18723,Queens Park Rangers,1
+Q19571,Brentford,Q18747,West Ham United,1
+Q19571,Brentford,Q18750,Wigan Athletic,1
+Q19571,Brentford,Q19456,Bristol City F.C.,1
+Q19571,Brentford,Q19458,Burnley,2
+Q19571,Brentford,Q19603,FC Twente,1
+Q19571,Brentford,Q19607,Sheffield United,1
+Q19571,Brentford,Q19628,Olympiacos F.C.,1
+Q19571,Brentford,Q2714,Watford,1
+Q19571,Brentford,Q2739,AS Roma,1
+Q19571,Brentford,Q44441,Al Ahli FC,1
+Q19571,Brentford,Q770740,SD Eibar,1
+Q19571,Brentford,Q9616,Chelsea,1
+Q19571,Brentford,Q9617,Arsenal,2
+Q19580,Coventry City,Q18662,Cardiff City,1
+Q19580,Coventry City,Q18716,Newcastle United,2
+Q19580,Coventry City,Q18721,Norwich City,1
+Q19580,Coventry City,Q18732,Southampton,1
+Q19580,Coventry City,Q187326,Aberdeen F.C.,1
+Q19580,Coventry City,Q18750,Wigan Athletic,1
+Q19580,Coventry City,Q19444,Birmingham City F.C.,1
+Q19580,Coventry City,Q19458,Burnley,2
+Q19580,Coventry City,Q19470,Derby County,1
+Q19580,Coventry City,Q19473,Huddersfield Town,1
+Q19580,Coventry City,Q19568,AFC Bournemouth,1
+Q19580,Coventry City,Q219233,SBV Vitesse,1
+Q19580,Coventry City,Q631,Inter Milan,1
+Q19580,Coventry City,Q9617,Arsenal,1
+Q19593,Celtic,Q104761,Bayer Leverkusen,1
+Q19593,Celtic,Q1128631,Leeds United,1
+Q19593,Celtic,Q1130849,Liverpool,2
+Q19593,Celtic,Q18708,Fulham,1
+Q19593,Celtic,Q18711,Aston Villa,2
+Q19593,Celtic,Q18721,Norwich City,1
+Q19593,Celtic,Q18732,Southampton,3
+Q19593,Celtic,Q187326,Aberdeen F.C.,1
+Q19593,Celtic,Q18741,Tottenham Hotspur,1
+Q19593,Celtic,Q18750,Wigan Athletic,1
+Q19593,Celtic,Q19453,Brighton and Hove Albion,1
+Q19593,Celtic,Q19456,Bristol City F.C.,1
+Q19593,Celtic,Q19467,Crystal Palace,1
+Q19593,Celtic,Q19470,Derby County,1
+Q19593,Celtic,Q19498,Sheffield Wednesday,1
+Q19593,Celtic,Q2052,ACF Fiorentina,1
+Q19593,Celtic,Q219233,SBV Vitesse,1
+Q19593,Celtic,Q50602,Manchester City,1
+Q19593,Celtic,Q704,Olympique Lyonnais,1
+Q19593,Celtic,Q9617,Arsenal,1
+Q19593,Celtic,Q9653,Ipswich Town,1
+Q19597,Rangers,Q10315,Real Sociedad,1
+Q19597,Rangers,Q13361030,New York City FC,1
+Q19597,Rangers,Q185163,OGC Nice,1
+Q19597,Rangers,Q18662,Cardiff City,1
+Q19597,Rangers,Q18732,Southampton,1
+Q19597,Rangers,Q19473,Huddersfield Town,1
+Q19597,Rangers,Q19580,Coventry City,1
+Q19597,Rangers,Q5794,Everton,2
+Q19598,Notts County F.C.,Q1128631,Leeds United,1
+Q19598,Notts County F.C.,Q19568,AFC Bournemouth,1
+Q19598,Notts County F.C.,Q19607,Sheffield United,1
+Q19598,Notts County F.C.,Q50602,Manchester City,1
+Q19601,Oldham Athletic,Q18721,Norwich City,1
+Q19601,Oldham Athletic,Q19571,Brentford,1
+Q19603,FC Twente,Q12297,Villarreal,1
+Q19603,FC Twente,Q134241,Feyenoord Rotterdam,1
+Q19603,FC Twente,Q18716,Newcastle United,1
+Q19603,FC Twente,Q18721,Norwich City,1
+Q19603,FC Twente,Q18732,Southampton,2
+Q19603,FC Twente,Q18741,Tottenham Hotspur,1
+Q19603,FC Twente,Q18744,West Bromwich Albion,1
+Q19603,FC Twente,Q18750,Wigan Athletic,1
+Q19603,FC Twente,Q631,Inter Milan,2
+Q19603,FC Twente,Q81888,Ajax,1
+Q19604,Portsmouth,Q1130849,Liverpool,1
+Q19604,Portsmouth,Q18661,Middlesbrough,1
+Q19604,Portsmouth,Q18711,Aston Villa,1
+Q19604,Portsmouth,Q18716,Newcastle United,1
+Q19604,Portsmouth,Q18721,Norwich City,1
+Q19604,Portsmouth,Q18736,Stoke City,1
+Q19604,Portsmouth,Q18739,Sunderland,2
+Q19604,Portsmouth,Q18741,Tottenham Hotspur,3
+Q19604,Portsmouth,Q18744,West Bromwich Albion,1
+Q19604,Portsmouth,Q18747,West Ham United,1
+Q19604,Portsmouth,Q19453,Brighton and Hove Albion,1
+Q19604,Portsmouth,Q19467,Crystal Palace,1
+Q19604,Portsmouth,Q19500,Wolverhampton Wanderers,1
+Q19604,Portsmouth,Q19568,AFC Bournemouth,1
+Q19604,Portsmouth,Q19580,Coventry City,1
+Q19604,Portsmouth,Q19598,Notts County F.C.,1
+Q19604,Portsmouth,Q19607,Sheffield United,1
+Q19604,Portsmouth,Q2714,Watford,1
+Q19604,Portsmouth,Q9653,Ipswich Town,1
+Q19607,Sheffield United,Q132885,Olympique Marseille,1
+Q19607,Sheffield United,Q18723,Queens Park Rangers,1
+Q19607,Sheffield United,Q18736,Stoke City,1
+Q19607,Sheffield United,Q18739,Sunderland,1
+Q19607,Sheffield United,Q18741,Tottenham Hotspur,2
+Q19607,Sheffield United,Q19444,Birmingham City F.C.,1
+Q19607,Sheffield United,Q19458,Burnley,2
+Q19607,Sheffield United,Q19462,Charlton Athletic,1
+Q19607,Sheffield United,Q19470,Derby County,2
+Q19607,Sheffield United,Q19473,Huddersfield Town,1
+Q19607,Sheffield United,Q19477,Hull City,1
+Q19607,Sheffield United,Q19481,Leicester City,1
+Q19607,Sheffield United,Q19490,Nottingham Forest,3
+Q19607,Sheffield United,Q19500,Wolverhampton Wanderers,1
+Q19607,Sheffield United,Q19568,AFC Bournemouth,1
+Q19607,Sheffield United,Q19597,Rangers,1
+Q19607,Sheffield United,Q19612,Preston North End F.C.,1
+Q19607,Sheffield United,Q48950,Rotherham United F.C.,2
+Q19607,Sheffield United,Q5794,Everton,2
+Q19607,Sheffield United,Q8615,Spezia Calcio,1
+Q19607,Sheffield United,Q9617,Arsenal,1
+Q19612,Preston North End F.C.,Q101959,Borussia Mönchengladbach,1
+Q19612,Preston North End F.C.,Q1128631,Leeds United,1
+Q19612,Preston North End F.C.,Q1130849,Liverpool,2
+Q19612,Preston North End F.C.,Q18739,Sunderland,1
+Q19612,Preston North End F.C.,Q18744,West Bromwich Albion,2
+Q19612,Preston North End F.C.,Q191264,AZ Alkmaar,1
+Q19612,Preston North End F.C.,Q19456,Bristol City F.C.,1
+Q19612,Preston North End F.C.,Q19458,Burnley,1
+Q19612,Preston North End F.C.,Q19477,Hull City,1
+Q19612,Preston North End F.C.,Q19481,Leicester City,1
+Q19612,Preston North End F.C.,Q19604,Portsmouth,1
+Q19612,Preston North End F.C.,Q5794,Everton,1
+Q19612,Preston North End F.C.,Q8682,Real Madrid,1
+Q196160,Royale Union Saint-Gilloise,Q18739,Sunderland,1
+Q19628,Olympiacos F.C.,Q1457,U.C. Sampdoria,2
+Q19628,Olympiacos F.C.,Q180305,Monaco,1
+Q19628,Olympiacos F.C.,Q19444,Birmingham City F.C.,1
+Q19628,Olympiacos F.C.,Q2052,ACF Fiorentina,1
+Q19628,Olympiacos F.C.,Q2739,AS Roma,1
+Q19628,Olympiacos F.C.,Q332664,Willem II,1
+Q19628,Olympiacos F.C.,Q38568,São Paulo FC,1
+Q19628,Olympiacos F.C.,Q44441,Al Ahli FC,1
+Q19628,Olympiacos F.C.,Q5794,Everton,1
+Q19628,Olympiacos F.C.,Q8723,Real Betis Balompié,1
+Q19628,Olympiacos F.C.,Q9617,Arsenal,1
+Q1967477,Antiguoko,Q10315,Real Sociedad,1
+Q1967477,Antiguoko,Q1067750,Real Sociedad B,2
+Q1967477,Antiguoko,Q7156,FC Barcelona,1
+Q1967477,Antiguoko,Q8687,Athletic Club,1
+Q201584,AEK Athens F.C.,Q190916,Club Brugge K.V.,1
+Q201584,AEK Athens F.C.,Q2074,Genoa CFC,1
+Q204357,LA Galaxy,Q1543,AC Milan,2
+Q204357,LA Galaxy,Q19470,Derby County,1
+Q204888,PAOK FC,Q18661,Middlesbrough,1
+Q204888,PAOK FC,Q18721,Norwich City,2
+Q204888,PAOK FC,Q8760,Deportivo de A Coruña,1
+Q2052,ACF Fiorentina,Q10329,Sevilla,1
+Q2052,ACF Fiorentina,Q1120838,Como,1
+Q2052,ACF Fiorentina,Q11945,Girona FC,1
+Q2052,ACF Fiorentina,Q1422,Juventus,3
+Q2052,ACF Fiorentina,Q1543,AC Milan,1
+Q2052,ACF Fiorentina,Q18656,Manchester United,1
+Q2052,ACF Fiorentina,Q18711,Aston Villa,1
+Q2052,ACF Fiorentina,Q18732,Southampton,1
+Q2052,ACF Fiorentina,Q18739,Sunderland,1
+Q2052,ACF Fiorentina,Q18747,West Ham United,1
+Q2052,ACF Fiorentina,Q1893,Bologna F.C. 1909,1
+Q2052,ACF Fiorentina,Q1900,Cagliari Calcio,2
+Q2052,ACF Fiorentina,Q19490,Nottingham Forest,1
+Q2052,ACF Fiorentina,Q19628,Olympiacos F.C.,1
+Q2052,ACF Fiorentina,Q2641,Napoli,1
+Q2052,ACF Fiorentina,Q2739,AS Roma,1
+Q2052,ACF Fiorentina,Q32494,Schalke 04,1
+Q2052,ACF Fiorentina,Q495299,Galatasaray S.K.,1
+Q2052,ACF Fiorentina,Q50602,Manchester City,1
+Q2052,ACF Fiorentina,Q732002,Royal Antwerp F.C.,1
+Q2052,ACF Fiorentina,Q9616,Chelsea,2
+Q2074,Genoa CFC,Q1422,Juventus,1
+Q2074,Genoa CFC,Q1543,AC Milan,1
+Q2074,Genoa CFC,Q18741,Tottenham Hotspur,1
+Q2074,Genoa CFC,Q1886,Atalanta BC,1
+Q2074,Genoa CFC,Q1893,Bologna F.C. 1909,1
+Q2074,Genoa CFC,Q2739,AS Roma,1
+Q2074,Genoa CFC,Q631,Inter Milan,2
+Q208552,Molde FK,Q18656,Manchester United,2
+Q208552,Molde FK,Q18711,Aston Villa,1
+Q208552,Molde FK,Q9616,Chelsea,1
+Q208552,Molde FK,Q994811,FC Red Bull Salzburg,1
+Q216032,K.R.C. Genk,Q104761,Bayer Leverkusen,1
+Q216032,K.R.C. Genk,Q126334,RC Strasbourg Alsace,1
+Q216032,K.R.C. Genk,Q128446,FC Porto,1
+Q216032,K.R.C. Genk,Q18711,Aston Villa,1
+Q216032,K.R.C. Genk,Q1886,Atalanta BC,1
+Q216032,K.R.C. Genk,Q19453,Brighton and Hove Albion,1
+Q216032,K.R.C. Genk,Q19467,Crystal Palace,1
+Q216032,K.R.C. Genk,Q19481,Leicester City,1
+Q216032,K.R.C. Genk,Q19516,Lille OSC,1
+Q216032,K.R.C. Genk,Q19607,Sheffield United,1
+Q216032,K.R.C. Genk,Q2641,Napoli,1
+Q216032,K.R.C. Genk,Q2714,Watford,1
+Q216032,K.R.C. Genk,Q50602,Manchester City,1
+Q216032,K.R.C. Genk,Q51976,SV Werder Bremen,1
+Q216032,K.R.C. Genk,Q73965,Al Hilal,1
+Q216032,K.R.C. Genk,Q8701,Atletico Madrid,1
+Q216032,K.R.C. Genk,Q9616,Chelsea,1
+Q218334,Figueirense Futebol Clube,Q22707,TSG 1899 Hoffenheim,1
+Q218334,Figueirense Futebol Clube,Q81888,Ajax,1
+Q218883,Urawa Red Diamonds,Q1130849,Liverpool,1
+Q218883,Urawa Red Diamonds,Q2693,Parma Calcio 1913,1
+Q219233,SBV Vitesse,Q10315,Real Sociedad,1
+Q219233,SBV Vitesse,Q1130849,Liverpool,1
+Q219233,SBV Vitesse,Q18656,Manchester United,1
+Q219233,SBV Vitesse,Q18659,Swansea City,1
+Q219233,SBV Vitesse,Q18732,Southampton,1
+Q219233,SBV Vitesse,Q18739,Sunderland,1
+Q219233,SBV Vitesse,Q191843,R.C. Lens,1
+Q219233,SBV Vitesse,Q19470,Derby County,1
+Q219233,SBV Vitesse,Q51976,SV Werder Bremen,1
+Q219233,SBV Vitesse,Q5794,Everton,1
+Q219233,SBV Vitesse,Q704,Olympique Lyonnais,1
+Q219233,SBV Vitesse,Q7156,FC Barcelona,1
+Q219233,SBV Vitesse,Q9616,Chelsea,3
+Q219703,Boavista F.C.,Q8723,Real Betis Balompié,1
+Q221602,AIK Fotboll,Q19453,Brighton and Hove Albion,1
+Q221602,AIK Fotboll,Q332664,Willem II,1
+Q221695,Grêmio FBPA,Q1130849,Liverpool,1
+Q221695,Grêmio FBPA,Q128446,FC Porto,1
+Q221695,Grêmio FBPA,Q16844931,Inter Miami,1
+Q221695,Grêmio FBPA,Q495299,Galatasaray S.K.,1
+Q221695,Grêmio FBPA,Q7156,FC Barcelona,1
+Q223360,FC Karpaty Lviv,Q204888,PAOK FC,1
+Q223450,Vitória S.C.,Q19458,Burnley,1
+Q223450,Vitória S.C.,Q19509,Stade Rennais F.C.,1
+Q223450,Vitória S.C.,Q8760,Deportivo de A Coruña,1
+Q223620,Deportivo Alavés,Q10300,Rayo Vallecano,1
+Q223620,Deportivo Alavés,Q167615,CF Montréal,1
+Q223620,Deportivo Alavés,Q2714,Watford,1
+Q223620,Deportivo Alavés,Q7156,FC Barcelona,1
+Q223620,Deportivo Alavés,Q8682,Real Madrid,2
+Q223620,Deportivo Alavés,Q8760,Deportivo de A Coruña,1
+Q22707,TSG 1899 Hoffenheim,Q1128631,Leeds United,2
+Q22707,TSG 1899 Hoffenheim,Q1130849,Liverpool,1
+Q22707,TSG 1899 Hoffenheim,Q134241,Feyenoord Rotterdam,1
+Q22707,TSG 1899 Hoffenheim,Q15789,Bayern Munich,1
+Q22707,TSG 1899 Hoffenheim,Q18659,Swansea City,1
+Q22707,TSG 1899 Hoffenheim,Q18716,Newcastle United,2
+Q22707,TSG 1899 Hoffenheim,Q18736,Stoke City,1
+Q22707,TSG 1899 Hoffenheim,Q18747,West Ham United,1
+Q22707,TSG 1899 Hoffenheim,Q19453,Brighton and Hove Albion,1
+Q22707,TSG 1899 Hoffenheim,Q19467,Crystal Palace,1
+Q22707,TSG 1899 Hoffenheim,Q495299,Galatasaray S.K.,1
+Q22707,TSG 1899 Hoffenheim,Q51976,SV Werder Bremen,1
+Q22707,TSG 1899 Hoffenheim,Q81888,Ajax,1
+Q22707,TSG 1899 Hoffenheim,Q8682,Real Madrid,1
+Q22707,TSG 1899 Hoffenheim,Q8760,Deportivo de A Coruña,1
+Q238593,D.C. United,Q19470,Derby County,1
+Q238593,D.C. United,Q308683,Chicago Fire FC,1
+Q2641,Napoli,Q1422,Juventus,1
+Q2641,Napoli,Q1543,AC Milan,3
+Q2641,Napoli,Q15789,Bayern Munich,2
+Q2641,Napoli,Q18659,Swansea City,1
+Q2641,Napoli,Q19521,AS Saint-Étienne,1
+Q2641,Napoli,Q2052,ACF Fiorentina,1
+Q2641,Napoli,Q2074,Genoa CFC,1
+Q2641,Napoli,Q2693,Parma Calcio 1913,2
+Q2641,Napoli,Q2714,Watford,1
+Q2641,Napoli,Q482764,Al Nassr,1
+Q2641,Napoli,Q483020,Paris Saint-Germain,2
+Q2641,Napoli,Q495299,Galatasaray S.K.,2
+Q2641,Napoli,Q5794,Everton,1
+Q2641,Napoli,Q631,Inter Milan,1
+Q2641,Napoli,Q770740,SD Eibar,1
+Q2641,Napoli,Q9616,Chelsea,2
+Q2674,Palermo F.C.,Q18656,Manchester United,1
+Q2674,Palermo F.C.,Q18708,Fulham,1
+Q2674,Palermo F.C.,Q19477,Hull City,1
+Q2674,Palermo F.C.,Q2641,Napoli,1
+Q2674,Palermo F.C.,Q2739,AS Roma,1
+Q2674,Palermo F.C.,Q8639,Hellas Verona FC,1
+Q2693,Parma Calcio 1913,Q1130849,Liverpool,2
+Q2693,Parma Calcio 1913,Q1422,Juventus,2
+Q2693,Parma Calcio 1913,Q1457,U.C. Sampdoria,1
+Q2693,Parma Calcio 1913,Q18656,Manchester United,1
+Q2693,Parma Calcio 1913,Q18711,Aston Villa,1
+Q2693,Parma Calcio 1913,Q187528,R.S.C. Anderlecht,1
+Q2693,Parma Calcio 1913,Q1886,Atalanta BC,1
+Q2693,Parma Calcio 1913,Q192641,Trabzonspor,1
+Q2693,Parma Calcio 1913,Q2739,AS Roma,1
+Q2693,Parma Calcio 1913,Q289707,A.C. Reggiana 1919,1
+Q2693,Parma Calcio 1913,Q631,Inter Milan,2
+Q2693,Parma Calcio 1913,Q9616,Chelsea,1
+Q2714,Watford,Q12297,Villarreal,2
+Q2714,Watford,Q18662,Cardiff City,1
+Q2714,Watford,Q18711,Aston Villa,1
+Q2714,Watford,Q18721,Norwich City,1
+Q2714,Watford,Q18729,Reading,2
+Q2714,Watford,Q18744,West Bromwich Albion,1
+Q2714,Watford,Q18750,Wigan Athletic,1
+Q2714,Watford,Q19444,Birmingham City F.C.,1
+Q2714,Watford,Q19453,Brighton and Hove Albion,2
+Q2714,Watford,Q19456,Bristol City F.C.,1
+Q2714,Watford,Q19473,Huddersfield Town,1
+Q2714,Watford,Q19481,Leicester City,1
+Q2714,Watford,Q19490,Nottingham Forest,1
+Q2714,Watford,Q19568,AFC Bournemouth,1
+Q2714,Watford,Q19612,Preston North End F.C.,1
+Q2714,Watford,Q19628,Olympiacos F.C.,1
+Q2714,Watford,Q2798,Udinese Calcio,1
+Q2714,Watford,Q5794,Everton,1
+Q2714,Watford,Q8723,Real Betis Balompié,1
+Q2714,Watford,Q8760,Deportivo de A Coruña,1
+Q2714,Watford,Q8835,RCD Mallorca,1
+Q2739,AS Roma,Q1130849,Liverpool,2
+Q2739,AS Roma,Q128446,FC Porto,1
+Q2739,AS Roma,Q1422,Juventus,2
+Q2739,AS Roma,Q1457,U.C. Sampdoria,1
+Q2739,AS Roma,Q1543,AC Milan,4
+Q2739,AS Roma,Q18708,Fulham,2
+Q2739,AS Roma,Q18732,Southampton,1
+Q2739,AS Roma,Q18741,Tottenham Hotspur,2
+Q2739,AS Roma,Q1886,Atalanta BC,1
+Q2739,AS Roma,Q19481,Leicester City,1
+Q2739,AS Roma,Q19509,Stade Rennais F.C.,1
+Q2739,AS Roma,Q19568,AFC Bournemouth,1
+Q2739,AS Roma,Q19628,Olympiacos F.C.,1
+Q2739,AS Roma,Q204357,LA Galaxy,1
+Q2739,AS Roma,Q2052,ACF Fiorentina,1
+Q2739,AS Roma,Q2074,Genoa CFC,2
+Q2739,AS Roma,Q2641,Napoli,1
+Q2739,AS Roma,Q2674,Palermo F.C.,1
+Q2739,AS Roma,Q2693,Parma Calcio 1913,1
+Q2739,AS Roma,Q2714,Watford,1
+Q2739,AS Roma,Q402038,Hebei F.C.,1
+Q2739,AS Roma,Q495299,Galatasaray S.K.,1
+Q2739,AS Roma,Q631,Inter Milan,3
+Q2739,AS Roma,Q7156,FC Barcelona,1
+Q2739,AS Roma,Q72844,Al-Ettifaq FC,1
+Q2739,AS Roma,Q8723,Real Betis Balompié,1
+Q2739,AS Roma,Q8760,Deportivo de A Coruña,1
+Q2739,AS Roma,Q9616,Chelsea,2
+Q2798,Udinese Calcio,Q10329,Sevilla,1
+Q2798,Udinese Calcio,Q1422,Juventus,1
+Q2798,Udinese Calcio,Q1457,U.C. Sampdoria,1
+Q2798,Udinese Calcio,Q18741,Tottenham Hotspur,1
+Q2798,Udinese Calcio,Q1900,Cagliari Calcio,1
+Q2798,Udinese Calcio,Q190916,Club Brugge K.V.,1
+Q2798,Udinese Calcio,Q2052,ACF Fiorentina,1
+Q2798,Udinese Calcio,Q2641,Napoli,1
+Q2798,Udinese Calcio,Q631,Inter Milan,1
+Q2798,Udinese Calcio,Q6703,Empoli FC,1
+Q2798,Udinese Calcio,Q7156,FC Barcelona,1
+Q289707,A.C. Reggiana 1919,Q495299,Galatasaray S.K.,1
+Q29108,FC Zenit Saint Petersburg,Q1130849,Liverpool,1
+Q29108,FC Zenit Saint Petersburg,Q18744,West Bromwich Albion,2
+Q29108,FC Zenit Saint Petersburg,Q704,Olympique Lyonnais,1
+Q306797,Östersunds FK,Q19571,Brentford,1
+Q308683,Chicago Fire FC,Q18711,Aston Villa,1
+Q309480,Al Ittihad,Q104761,Bayer Leverkusen,1
+Q309480,Al Ittihad,Q192641,Trabzonspor,1
+Q309480,Al Ittihad,Q73965,Al Hilal,1
+Q319136,St. Mirren F.C.,Q18711,Aston Villa,1
+Q319136,St. Mirren F.C.,Q187326,Aberdeen F.C.,1
+Q319136,St. Mirren F.C.,Q19593,Celtic,1
+Q319136,St. Mirren F.C.,Q9616,Chelsea,1
+Q32494,Schalke 04,Q105254,1. FSV Mainz 05,1
+Q32494,Schalke 04,Q1130849,Liverpool,2
+Q32494,Schalke 04,Q1422,Juventus,1
+Q32494,Schalke 04,Q1543,AC Milan,1
+Q32494,Schalke 04,Q15789,Bayern Munich,2
+Q32494,Schalke 04,Q18732,Southampton,1
+Q32494,Schalke 04,Q19467,Crystal Palace,1
+Q32494,Schalke 04,Q19481,Leicester City,1
+Q32494,Schalke 04,Q19580,Coventry City,1
+Q32494,Schalke 04,Q19593,Celtic,1
+Q32494,Schalke 04,Q204357,LA Galaxy,1
+Q32494,Schalke 04,Q483020,Paris Saint-Germain,1
+Q32494,Schalke 04,Q50602,Manchester City,1
+Q32494,Schalke 04,Q51976,SV Werder Bremen,1
+Q32494,Schalke 04,Q9617,Arsenal,1
+Q327238,Toronto FC,Q18739,Sunderland,1
+Q332664,Willem II,Q10315,Real Sociedad,1
+Q332664,Willem II,Q1130849,Liverpool,1
+Q332664,Willem II,Q18656,Manchester United,1
+Q332664,Willem II,Q191264,AZ Alkmaar,1
+Q332664,Willem II,Q19458,Burnley,1
+Q371136,F.C. Paços de Ferreira,Q185163,OGC Nice,1
+Q371136,F.C. Paços de Ferreira,Q19467,Crystal Palace,1
+Q371136,F.C. Paços de Ferreira,Q8701,Atletico Madrid,1
+Q38568,São Paulo FC,Q10300,Rayo Vallecano,1
+Q38568,São Paulo FC,Q10315,Real Sociedad,1
+Q38568,São Paulo FC,Q128446,FC Porto,1
+Q38568,São Paulo FC,Q15214308,Orlando City SC,1
+Q38568,São Paulo FC,Q483020,Paris Saint-Germain,1
+Q38568,São Paulo FC,Q7156,FC Barcelona,1
+Q38568,São Paulo FC,Q80845,S.C. Internacional,1
+Q38568,São Paulo FC,Q81888,Ajax,1
+Q38568,São Paulo FC,Q8682,Real Madrid,1
+Q38568,São Paulo FC,Q9616,Chelsea,2
+Q38568,São Paulo FC,Q9617,Arsenal,1
+Q402038,Hebei F.C.,Q2693,Parma Calcio 1913,1
+Q482764,Al Nassr,Q29108,FC Zenit Saint Petersburg,1
+Q482764,Al Nassr,Q8687,Athletic Club,1
+Q483020,Paris Saint-Germain,Q104761,Bayer Leverkusen,2
+Q483020,Paris Saint-Germain,Q1130849,Liverpool,5
+Q483020,Paris Saint-Germain,Q1422,Juventus,4
+Q483020,Paris Saint-Germain,Q16844931,Inter Miami,1
+Q483020,Paris Saint-Germain,Q172476,Bordeaux,1
+Q483020,Paris Saint-Germain,Q18656,Manchester United,3
+Q483020,Paris Saint-Germain,Q18711,Aston Villa,1
+Q483020,Paris Saint-Germain,Q18741,Tottenham Hotspur,2
+Q483020,Paris Saint-Germain,Q18747,West Ham United,2
+Q483020,Paris Saint-Germain,Q191843,R.C. Lens,2
+Q483020,Paris Saint-Germain,Q19467,Crystal Palace,1
+Q483020,Paris Saint-Germain,Q19490,Nottingham Forest,1
+Q483020,Paris Saint-Germain,Q19500,Wolverhampton Wanderers,2
+Q483020,Paris Saint-Germain,Q19509,Stade Rennais F.C.,1
+Q483020,Paris Saint-Germain,Q19597,Rangers,1
+Q483020,Paris Saint-Germain,Q216032,K.R.C. Genk,1
+Q483020,Paris Saint-Germain,Q2739,AS Roma,2
+Q483020,Paris Saint-Germain,Q38568,São Paulo FC,1
+Q483020,Paris Saint-Germain,Q495299,Galatasaray S.K.,1
+Q483020,Paris Saint-Germain,Q50602,Manchester City,1
+Q483020,Paris Saint-Germain,Q5794,Everton,1
+Q483020,Paris Saint-Germain,Q702455,RB Leipzig,2
+Q483020,Paris Saint-Germain,Q73965,Al Hilal,1
+Q483020,Paris Saint-Germain,Q8682,Real Madrid,1
+Q483020,Paris Saint-Germain,Q8687,Athletic Club,1
+Q483020,Paris Saint-Germain,Q8701,Atletico Madrid,2
+Q483020,Paris Saint-Germain,Q8723,Real Betis Balompié,1
+Q483020,Paris Saint-Germain,Q8835,RCD Mallorca,1
+Q483020,Paris Saint-Germain,Q9616,Chelsea,2
+Q483020,Paris Saint-Germain,Q9617,Arsenal,1
+Q48947,Plymouth Argyle F.C.,Q18732,Southampton,2
+Q48947,Plymouth Argyle F.C.,Q19449,Blackpool,1
+Q48947,Plymouth Argyle F.C.,Q19453,Brighton and Hove Albion,1
+Q48947,Plymouth Argyle F.C.,Q19456,Bristol City F.C.,1
+Q48947,Plymouth Argyle F.C.,Q19628,Olympiacos F.C.,1
+Q48947,Plymouth Argyle F.C.,Q5794,Everton,1
+Q48950,Rotherham United F.C.,Q18744,West Bromwich Albion,1
+Q48950,Rotherham United F.C.,Q18750,Wigan Athletic,1
+Q48950,Rotherham United F.C.,Q19453,Brighton and Hove Albion,1
+Q48950,Rotherham United F.C.,Q19571,Brentford,1
+Q48950,Rotherham United F.C.,Q19598,Notts County F.C.,1
+Q48950,Rotherham United F.C.,Q59773416,Macarthur FC,1
+Q495299,Galatasaray S.K.,Q10300,Rayo Vallecano,1
+Q495299,Galatasaray S.K.,Q1120838,Como,1
+Q495299,Galatasaray S.K.,Q1130849,Liverpool,1
+Q495299,Galatasaray S.K.,Q172567,Beşiktaş J.K.,1
+Q495299,Galatasaray S.K.,Q185163,OGC Nice,1
+Q495299,Galatasaray S.K.,Q18708,Fulham,1
+Q495299,Galatasaray S.K.,Q18739,Sunderland,1
+Q495299,Galatasaray S.K.,Q19509,Stade Rennais F.C.,1
+Q495299,Galatasaray S.K.,Q2693,Parma Calcio 1913,1
+Q495299,Galatasaray S.K.,Q2739,AS Roma,1
+Q495299,Galatasaray S.K.,Q316789,Melbourne Victory FC,2
+Q495299,Galatasaray S.K.,Q32494,Schalke 04,1
+Q495299,Galatasaray S.K.,Q631,Inter Milan,2
+Q495299,Galatasaray S.K.,Q704,Olympique Lyonnais,2
+Q495299,Galatasaray S.K.,Q73965,Al Hilal,1
+Q495299,Galatasaray S.K.,Q857938,İstanbul Başakşehir F.K.,1
+Q495299,Galatasaray S.K.,Q874016,Kawasaki Frontale,1
+Q495299,Galatasaray S.K.,Q9616,Chelsea,1
+Q499616,Club Nacional de Football,Q221695,Grêmio FBPA,1
+Q499616,Club Nacional de Football,Q2739,AS Roma,1
+Q499616,Club Nacional de Football,Q81888,Ajax,1
+Q50602,Manchester City,Q10315,Real Sociedad,2
+Q50602,Manchester City,Q10329,Sevilla,4
+Q50602,Manchester City,Q104761,Bayer Leverkusen,1
+Q50602,Manchester City,Q1130849,Liverpool,2
+Q50602,Manchester City,Q11945,Girona FC,1
+Q50602,Manchester City,Q132885,Olympique Marseille,1
+Q50602,Manchester City,Q13361030,New York City FC,1
+Q50602,Manchester City,Q1422,Juventus,2
+Q50602,Manchester City,Q1543,AC Milan,3
+Q50602,Manchester City,Q15789,Bayern Munich,1
+Q50602,Manchester City,Q167615,CF Montréal,1
+Q50602,Manchester City,Q18661,Middlesbrough,2
+Q50602,Manchester City,Q18662,Cardiff City,2
+Q50602,Manchester City,Q18711,Aston Villa,2
+Q50602,Manchester City,Q18721,Norwich City,1
+Q50602,Manchester City,Q18732,Southampton,1
+Q50602,Manchester City,Q18736,Stoke City,2
+Q50602,Manchester City,Q18739,Sunderland,4
+Q50602,Manchester City,Q18741,Tottenham Hotspur,3
+Q50602,Manchester City,Q18744,West Bromwich Albion,2
+Q50602,Manchester City,Q18747,West Ham United,2
+Q50602,Manchester City,Q187528,R.S.C. Anderlecht,1
+Q50602,Manchester City,Q19446,Blackburn Rovers,1
+Q50602,Manchester City,Q19449,Blackpool,1
+Q50602,Manchester City,Q19451,Bolton Wanderers,2
+Q50602,Manchester City,Q19458,Burnley,3
+Q50602,Manchester City,Q19490,Nottingham Forest,3
+Q50602,Manchester City,Q19568,AFC Bournemouth,1
+Q50602,Manchester City,Q19603,FC Twente,1
+Q50602,Manchester City,Q19604,Portsmouth,1
+Q50602,Manchester City,Q19628,Olympiacos F.C.,1
+Q50602,Manchester City,Q2052,ACF Fiorentina,1
+Q50602,Manchester City,Q2641,Napoli,1
+Q50602,Manchester City,Q2739,AS Roma,3
+Q50602,Manchester City,Q44441,Al Ahli FC,1
+Q50602,Manchester City,Q482764,Al Nassr,1
+Q50602,Manchester City,Q495299,Galatasaray S.K.,2
+Q50602,Manchester City,Q506832,Club Athletico Paranaense,1
+Q50602,Manchester City,Q51976,SV Werder Bremen,1
+Q50602,Manchester City,Q5794,Everton,5
+Q50602,Manchester City,Q631,Inter Milan,3
+Q50602,Manchester City,Q702455,RB Leipzig,1
+Q50602,Manchester City,Q7156,FC Barcelona,6
+Q50602,Manchester City,Q857938,İstanbul Başakşehir F.K.,1
+Q50602,Manchester City,Q8682,Real Madrid,3
+Q50602,Manchester City,Q8701,Atletico Madrid,1
+Q50602,Manchester City,Q8723,Real Betis Balompié,1
+Q50602,Manchester City,Q8835,RCD Mallorca,1
+Q50602,Manchester City,Q9616,Chelsea,4
+Q50602,Manchester City,Q9617,Arsenal,2
+Q506832,Club Athletico Paranaense,Q128446,FC Porto,1
+Q506832,Club Athletico Paranaense,Q172969,FC Shakhtar Donetsk,1
+Q506832,Club Athletico Paranaense,Q19467,Crystal Palace,1
+Q506832,Club Athletico Paranaense,Q2052,ACF Fiorentina,1
+Q506832,Club Athletico Paranaense,Q704,Olympique Lyonnais,1
+Q506832,Club Athletico Paranaense,Q8701,Atletico Madrid,1
+Q51976,SV Werder Bremen,Q101859,VfL Wolfsburg,1
+Q51976,SV Werder Bremen,Q101959,Borussia Mönchengladbach,1
+Q51976,SV Werder Bremen,Q105254,1. FSV Mainz 05,1
+Q51976,SV Werder Bremen,Q18716,Newcastle United,1
+Q51976,SV Werder Bremen,Q18721,Norwich City,1
+Q51976,SV Werder Bremen,Q18736,Stoke City,1
+Q51976,SV Werder Bremen,Q18747,West Ham United,1
+Q51976,SV Werder Bremen,Q192641,Trabzonspor,1
+Q51976,SV Werder Bremen,Q22707,TSG 1899 Hoffenheim,1
+Q51976,SV Werder Bremen,Q32494,Schalke 04,1
+Q51976,SV Werder Bremen,Q81888,Ajax,1
+Q51976,SV Werder Bremen,Q8682,Real Madrid,1
+Q51976,SV Werder Bremen,Q9616,Chelsea,1
+Q51976,SV Werder Bremen,Q9617,Arsenal,2
+Q5794,Everton,Q1128631,Leeds United,1
+Q5794,Everton,Q11945,Girona FC,2
+Q5794,Everton,Q1457,U.C. Sampdoria,1
+Q5794,Everton,Q172567,Beşiktaş J.K.,1
+Q5794,Everton,Q185163,OGC Nice,1
+Q5794,Everton,Q18656,Manchester United,3
+Q5794,Everton,Q18708,Fulham,3
+Q5794,Everton,Q18711,Aston Villa,3
+Q5794,Everton,Q18716,Newcastle United,3
+Q5794,Everton,Q18721,Norwich City,3
+Q5794,Everton,Q18723,Queens Park Rangers,1
+Q5794,Everton,Q18732,Southampton,1
+Q5794,Everton,Q18736,Stoke City,1
+Q5794,Everton,Q18739,Sunderland,2
+Q5794,Everton,Q18741,Tottenham Hotspur,1
+Q5794,Everton,Q18744,West Bromwich Albion,3
+Q5794,Everton,Q18747,West Ham United,2
+Q5794,Everton,Q18750,Wigan Athletic,1
+Q5794,Everton,Q1886,Atalanta BC,1
+Q5794,Everton,Q19444,Birmingham City F.C.,1
+Q5794,Everton,Q19446,Blackburn Rovers,2
+Q5794,Everton,Q19449,Blackpool,1
+Q5794,Everton,Q19451,Bolton Wanderers,1
+Q5794,Everton,Q19458,Burnley,2
+Q5794,Everton,Q19467,Crystal Palace,1
+Q5794,Everton,Q19477,Hull City,2
+Q5794,Everton,Q19481,Leicester City,1
+Q5794,Everton,Q19500,Wolverhampton Wanderers,1
+Q5794,Everton,Q19516,Lille OSC,1
+Q5794,Everton,Q19521,AS Saint-Étienne,1
+Q5794,Everton,Q19568,AFC Bournemouth,1
+Q5794,Everton,Q19571,Brentford,1
+Q5794,Everton,Q19604,Portsmouth,1
+Q5794,Everton,Q19607,Sheffield United,1
+Q5794,Everton,Q19628,Olympiacos F.C.,2
+Q5794,Everton,Q2052,ACF Fiorentina,1
+Q5794,Everton,Q238593,D.C. United,1
+Q5794,Everton,Q2714,Watford,2
+Q5794,Everton,Q286801,Sharjah FC,1
+Q5794,Everton,Q483020,Paris Saint-Germain,2
+Q5794,Everton,Q50602,Manchester City,4
+Q5794,Everton,Q51976,SV Werder Bremen,1
+Q5794,Everton,Q702455,RB Leipzig,1
+Q5794,Everton,Q7156,FC Barcelona,1
+Q5794,Everton,Q81888,Ajax,1
+Q5794,Everton,Q9616,Chelsea,1
+Q5794,Everton,Q9617,Arsenal,2
+Q5794,Everton,Q9653,Ipswich Town,1
+Q584316,Danubio F.C.,Q10512,Elche CF,1
+Q584316,Danubio F.C.,Q2674,Palermo F.C.,1
+Q631,Inter Milan,Q10329,Sevilla,1
+Q631,Inter Milan,Q1128631,Leeds United,1
+Q631,Inter Milan,Q1130849,Liverpool,2
+Q631,Inter Milan,Q128446,FC Porto,1
+Q631,Inter Milan,Q132885,Olympique Marseille,2
+Q631,Inter Milan,Q1422,Juventus,2
+Q631,Inter Milan,Q1457,U.C. Sampdoria,1
+Q631,Inter Milan,Q1543,AC Milan,1
+Q631,Inter Milan,Q15789,Bayern Munich,1
+Q631,Inter Milan,Q172567,Beşiktaş J.K.,1
+Q631,Inter Milan,Q18520,Luton Town,1
+Q631,Inter Milan,Q18656,Manchester United,2
+Q631,Inter Milan,Q18708,Fulham,1
+Q631,Inter Milan,Q18711,Aston Villa,1
+Q631,Inter Milan,Q18723,Queens Park Rangers,1
+Q631,Inter Milan,Q18736,Stoke City,1
+Q631,Inter Milan,Q1886,Atalanta BC,1
+Q631,Inter Milan,Q1893,Bologna F.C. 1909,1
+Q631,Inter Milan,Q190916,Club Brugge K.V.,1
+Q631,Inter Milan,Q19353,FC Anzhi Makhachkala,1
+Q631,Inter Milan,Q19481,Leicester City,1
+Q631,Inter Milan,Q19571,Brentford,1
+Q631,Inter Milan,Q2052,ACF Fiorentina,1
+Q631,Inter Milan,Q2739,AS Roma,2
+Q631,Inter Milan,Q2798,Udinese Calcio,1
+Q631,Inter Milan,Q483020,Paris Saint-Germain,2
+Q631,Inter Milan,Q50602,Manchester City,3
+Q631,Inter Milan,Q51976,SV Werder Bremen,1
+Q631,Inter Milan,Q5794,Everton,1
+Q631,Inter Milan,Q7156,FC Barcelona,1
+Q631,Inter Milan,Q81888,Ajax,1
+Q631,Inter Milan,Q8682,Real Madrid,1
+Q631,Inter Milan,Q8701,Atletico Madrid,1
+Q631,Inter Milan,Q9616,Chelsea,1
+Q631,Inter Milan,Q9617,Arsenal,2
+Q6651,Brescia Calcio,Q1543,AC Milan,1
+Q6651,Brescia Calcio,Q2074,Genoa CFC,1
+Q6651,Brescia Calcio,Q2739,AS Roma,1
+Q6651,Brescia Calcio,Q631,Inter Milan,1
+Q6651,Brescia Calcio,Q9616,Chelsea,1
+Q6703,Empoli FC,Q18741,Tottenham Hotspur,1
+Q6703,Empoli FC,Q2641,Napoli,1
+Q6703,Empoli FC,Q289707,A.C. Reggiana 1919,1
+Q702455,RB Leipzig,Q10329,Sevilla,1
+Q702455,RB Leipzig,Q1130849,Liverpool,2
+Q702455,RB Leipzig,Q1422,Juventus,1
+Q702455,RB Leipzig,Q15789,Bayern Munich,1
+Q702455,RB Leipzig,Q18656,Manchester United,1
+Q702455,RB Leipzig,Q18708,Fulham,1
+Q702455,RB Leipzig,Q18741,Tottenham Hotspur,2
+Q702455,RB Leipzig,Q19500,Wolverhampton Wanderers,1
+Q702455,RB Leipzig,Q19568,AFC Bournemouth,1
+Q702455,RB Leipzig,Q19607,Sheffield United,1
+Q702455,RB Leipzig,Q22707,TSG 1899 Hoffenheim,1
+Q702455,RB Leipzig,Q483020,Paris Saint-Germain,1
+Q702455,RB Leipzig,Q50602,Manchester City,1
+Q702455,RB Leipzig,Q81888,Ajax,1
+Q702455,RB Leipzig,Q8701,Atletico Madrid,1
+Q702455,RB Leipzig,Q9616,Chelsea,2
+Q702455,RB Leipzig,Q994811,FC Red Bull Salzburg,1
+Q704,Olympique Lyonnais,Q10315,Real Sociedad,1
+Q704,Olympique Lyonnais,Q105254,1. FSV Mainz 05,1
+Q704,Olympique Lyonnais,Q1130849,Liverpool,1
+Q704,Olympique Lyonnais,Q12297,Villarreal,1
+Q704,Olympique Lyonnais,Q126334,RC Strasbourg Alsace,2
+Q704,Olympique Lyonnais,Q132885,Olympique Marseille,1
+Q704,Olympique Lyonnais,Q15789,Bayern Munich,1
+Q704,Olympique Lyonnais,Q180305,Monaco,1
+Q704,Olympique Lyonnais,Q18659,Swansea City,1
+Q704,Olympique Lyonnais,Q18711,Aston Villa,1
+Q704,Olympique Lyonnais,Q18716,Newcastle United,1
+Q704,Olympique Lyonnais,Q18732,Southampton,1
+Q704,Olympique Lyonnais,Q18739,Sunderland,1
+Q704,Olympique Lyonnais,Q18741,Tottenham Hotspur,3
+Q704,Olympique Lyonnais,Q18747,West Ham United,2
+Q704,Olympique Lyonnais,Q187528,R.S.C. Anderlecht,1
+Q704,Olympique Lyonnais,Q191843,R.C. Lens,1
+Q704,Olympique Lyonnais,Q19458,Burnley,1
+Q704,Olympique Lyonnais,Q19500,Wolverhampton Wanderers,1
+Q704,Olympique Lyonnais,Q204888,PAOK FC,1
+Q704,Olympique Lyonnais,Q2641,Napoli,1
+Q704,Olympique Lyonnais,Q308683,Chicago Fire FC,1
+Q704,Olympique Lyonnais,Q483020,Paris Saint-Germain,1
+Q704,Olympique Lyonnais,Q50602,Manchester City,1
+Q704,Olympique Lyonnais,Q5794,Everton,1
+Q704,Olympique Lyonnais,Q7156,FC Barcelona,1
+Q704,Olympique Lyonnais,Q8682,Real Madrid,2
+Q704,Olympique Lyonnais,Q9616,Chelsea,2
+Q704,Olympique Lyonnais,Q9617,Arsenal,1
+Q7156,FC Barcelona,Q10300,Rayo Vallecano,1
+Q7156,FC Barcelona,Q10329,Sevilla,1
+Q7156,FC Barcelona,Q1130849,Liverpool,2
+Q7156,FC Barcelona,Q11945,Girona FC,3
+Q7156,FC Barcelona,Q12297,Villarreal,1
+Q7156,FC Barcelona,Q132885,Olympique Marseille,1
+Q7156,FC Barcelona,Q134241,Feyenoord Rotterdam,1
+Q7156,FC Barcelona,Q1422,Juventus,2
+Q7156,FC Barcelona,Q1543,AC Milan,1
+Q7156,FC Barcelona,Q15789,Bayern Munich,3
+Q7156,FC Barcelona,Q16844931,Inter Miami,2
+Q7156,FC Barcelona,Q180305,Monaco,1
+Q7156,FC Barcelona,Q18656,Manchester United,1
+Q7156,FC Barcelona,Q18711,Aston Villa,1
+Q7156,FC Barcelona,Q18741,Tottenham Hotspur,2
+Q7156,FC Barcelona,Q18747,West Ham United,1
+Q7156,FC Barcelona,Q19500,Wolverhampton Wanderers,2
+Q7156,FC Barcelona,Q19568,AFC Bournemouth,1
+Q7156,FC Barcelona,Q223620,Deportivo Alavés,1
+Q7156,FC Barcelona,Q2739,AS Roma,2
+Q7156,FC Barcelona,Q308683,Chicago Fire FC,1
+Q7156,FC Barcelona,Q44441,Al Ahli FC,1
+Q7156,FC Barcelona,Q483020,Paris Saint-Germain,5
+Q7156,FC Barcelona,Q495299,Galatasaray S.K.,1
+Q7156,FC Barcelona,Q50602,Manchester City,4
+Q7156,FC Barcelona,Q5794,Everton,3
+Q7156,FC Barcelona,Q631,Inter Milan,2
+Q7156,FC Barcelona,Q6651,Brescia Calcio,1
+Q7156,FC Barcelona,Q73965,Al Hilal,1
+Q7156,FC Barcelona,Q770740,SD Eibar,1
+Q7156,FC Barcelona,Q81888,Ajax,1
+Q7156,FC Barcelona,Q8687,Athletic Club,1
+Q7156,FC Barcelona,Q8701,Atletico Madrid,3
+Q7156,FC Barcelona,Q8723,Real Betis Balompié,2
+Q7156,FC Barcelona,Q8749,RC Celta de Vigo,2
+Q7156,FC Barcelona,Q9616,Chelsea,8
+Q7156,FC Barcelona,Q9617,Arsenal,4
+Q725367,Shanghai Shenhua F.C.,Q1422,Juventus,1
+Q725367,Shanghai Shenhua F.C.,Q172567,Beşiktaş J.K.,1
+Q725367,Shanghai Shenhua F.C.,Q495299,Galatasaray S.K.,1
+Q725367,Shanghai Shenhua F.C.,Q857938,İstanbul Başakşehir F.K.,1
+Q72844,Al-Ettifaq FC,Q309480,Al Ittihad,1
+Q72844,Al-Ettifaq FC,Q81888,Ajax,1
+Q732002,Royal Antwerp F.C.,Q18656,Manchester United,1
+Q732002,Royal Antwerp F.C.,Q18736,Stoke City,1
+Q732002,Royal Antwerp F.C.,Q191264,AZ Alkmaar,1
+Q732002,Royal Antwerp F.C.,Q19446,Blackburn Rovers,1
+Q732002,Royal Antwerp F.C.,Q19477,Hull City,1
+Q732002,Royal Antwerp F.C.,Q19500,Wolverhampton Wanderers,1
+Q732002,Royal Antwerp F.C.,Q221602,AIK Fotboll,1
+Q73965,Al Hilal,Q18744,West Bromwich Albion,1
+Q73965,Al Hilal,Q495299,Galatasaray S.K.,1
+Q73965,Al Hilal,Q7156,FC Barcelona,1
+Q73965,Al Hilal,Q81888,Ajax,1
+Q770740,SD Eibar,Q10315,Real Sociedad,1
+Q770740,SD Eibar,Q18741,Tottenham Hotspur,1
+Q770740,SD Eibar,Q19444,Birmingham City F.C.,1
+Q770740,SD Eibar,Q19571,Brentford,1
+Q770740,SD Eibar,Q8749,RC Celta de Vigo,2
+Q770740,SD Eibar,Q8806,Getafe CF,1
+Q80845,S.C. Internacional,Q1543,AC Milan,1
+Q80845,S.C. Internacional,Q172969,FC Shakhtar Donetsk,1
+Q80845,S.C. Internacional,Q2693,Parma Calcio 1913,1
+Q80845,S.C. Internacional,Q2739,AS Roma,1
+Q80845,S.C. Internacional,Q80987,Fluminense F.C.,1
+Q80845,S.C. Internacional,Q9616,Chelsea,1
+Q80987,Fluminense F.C.,Q128446,FC Porto,2
+Q80987,Fluminense F.C.,Q1543,AC Milan,1
+Q80987,Fluminense F.C.,Q180305,Monaco,1
+Q80987,Fluminense F.C.,Q18656,Manchester United,1
+Q80987,Fluminense F.C.,Q18747,West Ham United,1
+Q80987,Fluminense F.C.,Q2714,Watford,2
+Q80987,Fluminense F.C.,Q9616,Chelsea,1
+Q81888,Ajax,Q1130849,Liverpool,2
+Q81888,Ajax,Q11945,Girona FC,1
+Q81888,Ajax,Q132885,Olympique Marseille,2
+Q81888,Ajax,Q138230,Kasımpaşa S.K.,1
+Q81888,Ajax,Q1422,Juventus,2
+Q81888,Ajax,Q1543,AC Milan,2
+Q81888,Ajax,Q15789,Bayern Munich,1
+Q81888,Ajax,Q18656,Manchester United,4
+Q81888,Ajax,Q18661,Middlesbrough,1
+Q81888,Ajax,Q18711,Aston Villa,1
+Q81888,Ajax,Q18716,Newcastle United,1
+Q81888,Ajax,Q18736,Stoke City,1
+Q81888,Ajax,Q18739,Sunderland,1
+Q81888,Ajax,Q18741,Tottenham Hotspur,2
+Q81888,Ajax,Q18747,West Ham United,2
+Q81888,Ajax,Q191264,AZ Alkmaar,1
+Q81888,Ajax,Q19453,Brighton and Hove Albion,1
+Q81888,Ajax,Q19467,Crystal Palace,1
+Q81888,Ajax,Q19571,Brentford,1
+Q81888,Ajax,Q19603,FC Twente,1
+Q81888,Ajax,Q2739,AS Roma,1
+Q81888,Ajax,Q309480,Al Ittihad,1
+Q81888,Ajax,Q50602,Manchester City,1
+Q81888,Ajax,Q5794,Everton,1
+Q81888,Ajax,Q631,Inter Milan,3
+Q81888,Ajax,Q702455,RB Leipzig,1
+Q81888,Ajax,Q704,Olympique Lyonnais,1
+Q81888,Ajax,Q7156,FC Barcelona,4
+Q81888,Ajax,Q732002,Royal Antwerp F.C.,1
+Q81888,Ajax,Q8682,Real Madrid,1
+Q81888,Ajax,Q8701,Atletico Madrid,2
+Q81888,Ajax,Q8760,Deportivo de A Coruña,1
+Q81888,Ajax,Q9616,Chelsea,1
+Q81888,Ajax,Q9617,Arsenal,2
+Q857938,İstanbul Başakşehir F.K.,Q2739,AS Roma,1
+Q8615,Spezia Calcio,Q1128631,Leeds United,1
+Q8615,Spezia Calcio,Q9617,Arsenal,1
+Q8639,Hellas Verona FC,Q18711,Aston Villa,1
+Q8639,Hellas Verona FC,Q18739,Sunderland,1
+Q8639,Hellas Verona FC,Q1893,Bologna F.C. 1909,1
+Q8639,Hellas Verona FC,Q2052,ACF Fiorentina,2
+Q8639,Hellas Verona FC,Q2641,Napoli,1
+Q8639,Hellas Verona FC,Q2798,Udinese Calcio,1
+Q8639,Hellas Verona FC,Q5794,Everton,1
+Q8682,Real Madrid,Q10300,Rayo Vallecano,1
+Q8682,Real Madrid,Q10315,Real Sociedad,1
+Q8682,Real Madrid,Q104761,Bayer Leverkusen,1
+Q8682,Real Madrid,Q1128631,Leeds United,1
+Q8682,Real Madrid,Q1130849,Liverpool,1
+Q8682,Real Madrid,Q128446,FC Porto,2
+Q8682,Real Madrid,Q1422,Juventus,3
+Q8682,Real Madrid,Q1543,AC Milan,3
+Q8682,Real Madrid,Q15789,Bayern Munich,3
+Q8682,Real Madrid,Q180305,Monaco,2
+Q8682,Real Madrid,Q18656,Manchester United,2
+Q8682,Real Madrid,Q18661,Middlesbrough,1
+Q8682,Real Madrid,Q18708,Fulham,2
+Q8682,Real Madrid,Q18716,Newcastle United,1
+Q8682,Real Madrid,Q18741,Tottenham Hotspur,3
+Q8682,Real Madrid,Q18747,West Ham United,1
+Q8682,Real Madrid,Q19500,Wolverhampton Wanderers,1
+Q8682,Real Madrid,Q19568,AFC Bournemouth,1
+Q8682,Real Madrid,Q204357,LA Galaxy,1
+Q8682,Real Madrid,Q2052,ACF Fiorentina,1
+Q8682,Real Madrid,Q219233,SBV Vitesse,1
+Q8682,Real Madrid,Q2641,Napoli,2
+Q8682,Real Madrid,Q2798,Udinese Calcio,1
+Q8682,Real Madrid,Q29108,FC Zenit Saint Petersburg,1
+Q8682,Real Madrid,Q309480,Al Ittihad,1
+Q8682,Real Madrid,Q483020,Paris Saint-Germain,2
+Q8682,Real Madrid,Q50602,Manchester City,2
+Q8682,Real Madrid,Q631,Inter Milan,1
+Q8682,Real Madrid,Q7156,FC Barcelona,2
+Q8682,Real Madrid,Q8687,Athletic Club,1
+Q8682,Real Madrid,Q8701,Atletico Madrid,1
+Q8682,Real Madrid,Q8760,Deportivo de A Coruña,1
+Q8682,Real Madrid,Q8806,Getafe CF,3
+Q8682,Real Madrid,Q8835,RCD Mallorca,2
+Q8682,Real Madrid,Q9616,Chelsea,3
+Q8682,Real Madrid,Q9617,Arsenal,2
+Q8687,Athletic Club,Q13361030,New York City FC,1
+Q8687,Athletic Club,Q1422,Juventus,1
+Q8687,Athletic Club,Q15789,Bayern Munich,1
+Q8687,Athletic Club,Q18656,Manchester United,1
+Q8687,Athletic Club,Q18708,Fulham,1
+Q8687,Athletic Club,Q50602,Manchester City,1
+Q8687,Athletic Club,Q8682,Real Madrid,1
+Q8687,Athletic Club,Q8835,RCD Mallorca,1
+Q8687,Athletic Club,Q9616,Chelsea,1
+Q8701,Atletico Madrid,Q10300,Rayo Vallecano,1
+Q8701,Atletico Madrid,Q10329,Sevilla,2
+Q8701,Atletico Madrid,Q1130849,Liverpool,2
+Q8701,Atletico Madrid,Q128446,FC Porto,1
+Q8701,Atletico Madrid,Q1422,Juventus,2
+Q8701,Atletico Madrid,Q15789,Bayern Munich,1
+Q8701,Atletico Madrid,Q180305,Monaco,1
+Q8701,Atletico Madrid,Q18656,Manchester United,2
+Q8701,Atletico Madrid,Q18716,Newcastle United,1
+Q8701,Atletico Madrid,Q18732,Southampton,1
+Q8701,Atletico Madrid,Q18741,Tottenham Hotspur,2
+Q8701,Atletico Madrid,Q19490,Nottingham Forest,2
+Q8701,Atletico Madrid,Q19500,Wolverhampton Wanderers,3
+Q8701,Atletico Madrid,Q2052,ACF Fiorentina,1
+Q8701,Atletico Madrid,Q2074,Genoa CFC,1
+Q8701,Atletico Madrid,Q499616,Club Nacional de Football,1
+Q8701,Atletico Madrid,Q50602,Manchester City,3
+Q8701,Atletico Madrid,Q5794,Everton,1
+Q8701,Atletico Madrid,Q631,Inter Milan,1
+Q8701,Atletico Madrid,Q8749,RC Celta de Vigo,1
+Q8701,Atletico Madrid,Q9616,Chelsea,4
+Q8701,Atletico Madrid,Q9617,Arsenal,1
+Q8723,Real Betis Balompié,Q10300,Rayo Vallecano,1
+Q8723,Real Betis Balompié,Q12297,Villarreal,1
+Q8723,Real Betis Balompié,Q18741,Tottenham Hotspur,2
+Q8723,Real Betis Balompié,Q19593,Celtic,1
+Q8723,Real Betis Balompié,Q19628,Olympiacos F.C.,1
+Q8723,Real Betis Balompié,Q2641,Napoli,1
+Q8723,Real Betis Balompié,Q7156,FC Barcelona,2
+Q8723,Real Betis Balompié,Q81888,Ajax,1
+Q8723,Real Betis Balompié,Q8682,Real Madrid,1
+Q874016,Kawasaki Frontale,Q19453,Brighton and Hove Albion,1
+Q8749,RC Celta de Vigo,Q1130849,Liverpool,1
+Q8749,RC Celta de Vigo,Q12297,Villarreal,1
+Q8749,RC Celta de Vigo,Q19500,Wolverhampton Wanderers,1
+Q8749,RC Celta de Vigo,Q19571,Brentford,1
+Q8749,RC Celta de Vigo,Q196160,Royale Union Saint-Gilloise,1
+Q8749,RC Celta de Vigo,Q22707,TSG 1899 Hoffenheim,1
+Q8749,RC Celta de Vigo,Q2693,Parma Calcio 1913,1
+Q8749,RC Celta de Vigo,Q50602,Manchester City,2
+Q8749,RC Celta de Vigo,Q770740,SD Eibar,1
+Q8749,RC Celta de Vigo,Q8682,Real Madrid,1
+Q8749,RC Celta de Vigo,Q8701,Atletico Madrid,1
+Q8749,RC Celta de Vigo,Q9617,Arsenal,1
+Q875120,SC Cambuur,Q332664,Willem II,1
+Q8760,Deportivo de A Coruña,Q1130849,Liverpool,1
+Q8760,Deportivo de A Coruña,Q128446,FC Porto,1
+Q8760,Deportivo de A Coruña,Q172567,Beşiktaş J.K.,1
+Q8760,Deportivo de A Coruña,Q180305,Monaco,1
+Q8760,Deportivo de A Coruña,Q18716,Newcastle United,2
+Q8760,Deportivo de A Coruña,Q18747,West Ham United,1
+Q8760,Deportivo de A Coruña,Q19453,Brighton and Hove Albion,1
+Q8760,Deportivo de A Coruña,Q19490,Nottingham Forest,1
+Q8760,Deportivo de A Coruña,Q7156,FC Barcelona,1
+Q8760,Deportivo de A Coruña,Q8682,Real Madrid,1
+Q8760,Deportivo de A Coruña,Q8701,Atletico Madrid,1
+Q8760,Deportivo de A Coruña,Q9616,Chelsea,1
+Q8760,Deportivo de A Coruña,Q9617,Arsenal,2
+Q8806,Getafe CF,Q10329,Sevilla,1
+Q8806,Getafe CF,Q132885,Olympique Marseille,1
+Q8806,Getafe CF,Q18708,Fulham,1
+Q8806,Getafe CF,Q18729,Reading,1
+Q8806,Getafe CF,Q18741,Tottenham Hotspur,1
+Q8806,Getafe CF,Q19453,Brighton and Hove Albion,1
+Q8806,Getafe CF,Q19467,Crystal Palace,1
+Q8806,Getafe CF,Q19516,Lille OSC,1
+Q8806,Getafe CF,Q19568,AFC Bournemouth,1
+Q8835,RCD Mallorca,Q12297,Villarreal,2
+Q8835,RCD Mallorca,Q18716,Newcastle United,1
+Q8835,RCD Mallorca,Q483020,Paris Saint-Germain,2
+Q8835,RCD Mallorca,Q50602,Manchester City,2
+Q8835,RCD Mallorca,Q7156,FC Barcelona,1
+Q8835,RCD Mallorca,Q8682,Real Madrid,1
+Q8835,RCD Mallorca,Q8701,Atletico Madrid,1
+Q9616,Chelsea,Q101859,VfL Wolfsburg,2
+Q9616,Chelsea,Q101959,Borussia Mönchengladbach,1
+Q9616,Chelsea,Q10329,Sevilla,2
+Q9616,Chelsea,Q104761,Bayer Leverkusen,2
+Q9616,Chelsea,Q1120838,Como,1
+Q9616,Chelsea,Q1130849,Liverpool,3
+Q9616,Chelsea,Q12297,Villarreal,1
+Q9616,Chelsea,Q126334,RC Strasbourg Alsace,3
+Q9616,Chelsea,Q132885,Olympique Marseille,2
+Q9616,Chelsea,Q141971,1. FC Union Berlin,1
+Q9616,Chelsea,Q1422,Juventus,1
+Q9616,Chelsea,Q1543,AC Milan,8
+Q9616,Chelsea,Q15789,Bayern Munich,1
+Q9616,Chelsea,Q167615,CF Montréal,1
+Q9616,Chelsea,Q16844931,Inter Miami,1
+Q9616,Chelsea,Q172567,Beşiktaş J.K.,1
+Q9616,Chelsea,Q180305,Monaco,2
+Q9616,Chelsea,Q18656,Manchester United,2
+Q9616,Chelsea,Q18659,Swansea City,1
+Q9616,Chelsea,Q18661,Middlesbrough,3
+Q9616,Chelsea,Q18711,Aston Villa,6
+Q9616,Chelsea,Q18716,Newcastle United,4
+Q9616,Chelsea,Q18732,Southampton,2
+Q9616,Chelsea,Q18739,Sunderland,1
+Q9616,Chelsea,Q18741,Tottenham Hotspur,4
+Q9616,Chelsea,Q18744,West Bromwich Albion,1
+Q9616,Chelsea,Q18750,Wigan Athletic,1
+Q9616,Chelsea,Q1900,Cagliari Calcio,1
+Q9616,Chelsea,Q19444,Birmingham City F.C.,1
+Q9616,Chelsea,Q19446,Blackburn Rovers,2
+Q9616,Chelsea,Q19453,Brighton and Hove Albion,1
+Q9616,Chelsea,Q19456,Bristol City F.C.,1
+Q9616,Chelsea,Q19462,Charlton Athletic,2
+Q9616,Chelsea,Q19467,Crystal Palace,6
+Q9616,Chelsea,Q19473,Huddersfield Town,1
+Q9616,Chelsea,Q19477,Hull City,1
+Q9616,Chelsea,Q19481,Leicester City,1
+Q9616,Chelsea,Q19490,Nottingham Forest,1
+Q9616,Chelsea,Q19500,Wolverhampton Wanderers,1
+Q9616,Chelsea,Q19521,AS Saint-Étienne,1
+Q9616,Chelsea,Q19568,AFC Bournemouth,1
+Q9616,Chelsea,Q19580,Coventry City,1
+Q9616,Chelsea,Q19593,Celtic,1
+Q9616,Chelsea,Q19601,Oldham Athletic,1
+Q9616,Chelsea,Q19604,Portsmouth,1
+Q9616,Chelsea,Q2052,ACF Fiorentina,1
+Q9616,Chelsea,Q216032,K.R.C. Genk,1
+Q9616,Chelsea,Q219233,SBV Vitesse,6
+Q9616,Chelsea,Q2641,Napoli,2
+Q9616,Chelsea,Q2714,Watford,2
+Q9616,Chelsea,Q2739,AS Roma,4
+Q9616,Chelsea,Q29108,FC Zenit Saint Petersburg,1
+Q9616,Chelsea,Q309480,Al Ittihad,1
+Q9616,Chelsea,Q44441,Al Ahli FC,1
+Q9616,Chelsea,Q483020,Paris Saint-Germain,2
+Q9616,Chelsea,Q495299,Galatasaray S.K.,2
+Q9616,Chelsea,Q50602,Manchester City,4
+Q9616,Chelsea,Q5794,Everton,2
+Q9616,Chelsea,Q631,Inter Milan,2
+Q9616,Chelsea,Q702455,RB Leipzig,2
+Q9616,Chelsea,Q704,Olympique Lyonnais,1
+Q9616,Chelsea,Q7156,FC Barcelona,3
+Q9616,Chelsea,Q725367,Shanghai Shenhua F.C.,2
+Q9616,Chelsea,Q73965,Al Hilal,1
+Q9616,Chelsea,Q80987,Fluminense F.C.,1
+Q9616,Chelsea,Q8682,Real Madrid,8
+Q9616,Chelsea,Q8701,Atletico Madrid,4
+Q9616,Chelsea,Q8723,Real Betis Balompié,1
+Q9616,Chelsea,Q9617,Arsenal,10
+Q9616,Chelsea,Q9653,Ipswich Town,2
+Q9617,Arsenal,Q101959,Borussia Mönchengladbach,1
+Q9617,Arsenal,Q10315,Real Sociedad,1
+Q9617,Arsenal,Q104761,Bayer Leverkusen,1
+Q9617,Arsenal,Q1128631,Leeds United,2
+Q9617,Arsenal,Q1130849,Liverpool,1
+Q9617,Arsenal,Q12297,Villarreal,4
+Q9617,Arsenal,Q128446,FC Porto,2
+Q9617,Arsenal,Q132885,Olympique Marseille,4
+Q9617,Arsenal,Q134241,Feyenoord Rotterdam,1
+Q9617,Arsenal,Q1422,Juventus,2
+Q9617,Arsenal,Q1543,AC Milan,2
+Q9617,Arsenal,Q15755,FC Augsburg,1
+Q9617,Arsenal,Q172476,Bordeaux,2
+Q9617,Arsenal,Q172567,Beşiktaş J.K.,2
+Q9617,Arsenal,Q185163,OGC Nice,1
+Q9617,Arsenal,Q18656,Manchester United,3
+Q9617,Arsenal,Q18659,Swansea City,1
+Q9617,Arsenal,Q18661,Middlesbrough,3
+Q9617,Arsenal,Q18662,Cardiff City,1
+Q9617,Arsenal,Q18708,Fulham,3
+Q9617,Arsenal,Q18711,Aston Villa,1
+Q9617,Arsenal,Q18716,Newcastle United,1
+Q9617,Arsenal,Q18723,Queens Park Rangers,1
+Q9617,Arsenal,Q18732,Southampton,1
+Q9617,Arsenal,Q18741,Tottenham Hotspur,1
+Q9617,Arsenal,Q18744,West Bromwich Albion,2
+Q9617,Arsenal,Q18747,West Ham United,4
+Q9617,Arsenal,Q19444,Birmingham City F.C.,2
+Q9617,Arsenal,Q19449,Blackpool,2
+Q9617,Arsenal,Q19453,Brighton and Hove Albion,1
+Q9617,Arsenal,Q19456,Bristol City F.C.,2
+Q9617,Arsenal,Q19467,Crystal Palace,3
+Q9617,Arsenal,Q19477,Hull City,3
+Q9617,Arsenal,Q19481,Leicester City,2
+Q9617,Arsenal,Q19490,Nottingham Forest,3
+Q9617,Arsenal,Q19498,Sheffield Wednesday,1
+Q9617,Arsenal,Q19521,AS Saint-Étienne,1
+Q9617,Arsenal,Q19568,AFC Bournemouth,1
+Q9617,Arsenal,Q19571,Brentford,1
+Q9617,Arsenal,Q19597,Rangers,1
+Q9617,Arsenal,Q19604,Portsmouth,1
+Q9617,Arsenal,Q19628,Olympiacos F.C.,1
+Q9617,Arsenal,Q2052,ACF Fiorentina,2
+Q9617,Arsenal,Q22707,TSG 1899 Hoffenheim,1
+Q9617,Arsenal,Q2641,Napoli,1
+Q9617,Arsenal,Q2714,Watford,3
+Q9617,Arsenal,Q2739,AS Roma,2
+Q9617,Arsenal,Q2798,Udinese Calcio,1
+Q9617,Arsenal,Q32494,Schalke 04,1
+Q9617,Arsenal,Q495299,Galatasaray S.K.,1
+Q9617,Arsenal,Q50602,Manchester City,5
+Q9617,Arsenal,Q5794,Everton,2
+Q9617,Arsenal,Q704,Olympique Lyonnais,1
+Q9617,Arsenal,Q7156,FC Barcelona,7
+Q9617,Arsenal,Q73965,Al Hilal,1
+Q9617,Arsenal,Q81888,Ajax,1
+Q9617,Arsenal,Q857938,İstanbul Başakşehir F.K.,1
+Q9617,Arsenal,Q8682,Real Madrid,2
+Q9617,Arsenal,Q8701,Atletico Madrid,1
+Q9617,Arsenal,Q8723,Real Betis Balompié,2
+Q9617,Arsenal,Q8749,RC Celta de Vigo,1
+Q9617,Arsenal,Q8760,Deportivo de A Coruña,1
+Q9617,Arsenal,Q9616,Chelsea,1
+Q9617,Arsenal,Q9653,Ipswich Town,1
+Q9653,Ipswich Town,Q126334,RC Strasbourg Alsace,1
+Q9653,Ipswich Town,Q18716,Newcastle United,2
+Q9653,Ipswich Town,Q18739,Sunderland,1
+Q9653,Ipswich Town,Q18744,West Bromwich Albion,1
+Q9653,Ipswich Town,Q18747,West Ham United,1
+Q9653,Ipswich Town,Q19462,Charlton Athletic,1
+Q9653,Ipswich Town,Q19473,Huddersfield Town,1
+Q9653,Ipswich Town,Q19477,Hull City,2
+Q9653,Ipswich Town,Q19490,Nottingham Forest,1
+Q9653,Ipswich Town,Q19568,AFC Bournemouth,1
+Q9653,Ipswich Town,Q19607,Sheffield United,2
+Q9653,Ipswich Town,Q48947,Plymouth Argyle F.C.,1
+Q9653,Ipswich Town,Q9616,Chelsea,1
+Q994811,FC Red Bull Salzburg,Q1130849,Liverpool,2
+Q994811,FC Red Bull Salzburg,Q124007617,SK Sturm Graz,1
+Q994811,FC Red Bull Salzburg,Q132885,Olympique Marseille,1
+Q994811,FC Red Bull Salzburg,Q1422,Juventus,1
+Q994811,FC Red Bull Salzburg,Q15789,Bayern Munich,1
+Q994811,FC Red Bull Salzburg,Q18732,Southampton,1
+Q994811,FC Red Bull Salzburg,Q19481,Leicester City,1
+Q994811,FC Red Bull Salzburg,Q50602,Manchester City,1
+Q994811,FC Red Bull Salzburg,Q702455,RB Leipzig,4
+Q994811,FC Red Bull Salzburg,Q7156,FC Barcelona,1
+Q994811,FC Red Bull Salzburg,Q9617,Arsenal,1

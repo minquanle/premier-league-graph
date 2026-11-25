@@ -127,7 +127,18 @@ Cần Neo4j đang chạy và endpoint Qwen3-4B phục vụ bằng vLLM trên Kag
 
 ## Dữ liệu
 
-Thư mục `data/` (toàn văn bài báo, cache, kết quả trích xuất) không được đưa lên repository vì liên quan bản quyền nội dung báo chí. Repository chỉ chứa mã nguồn, cấu hình và số liệu tổng hợp trong `reports/` (thống kê graph, kết quả nạp Neo4j, đánh giá student, hướng dẫn chấm).
+Bộ dữ liệu công bố nằm trong [`dataset/`](dataset/README.md), sinh lại bằng `python scripts/export_dataset.py`. Bộ này gồm:
+
+- nút, cạnh và link bài nguồn của từng cạnh;
+- danh mục bài báo;
+- ba mạng suy diễn;
+- kết quả phân tích mạng;
+- các mẫu đã chấm;
+- graph 14B dùng làm đối chứng.
+
+Thư mục `data/` (toàn văn bài báo, câu bằng chứng, cache, kết quả trích xuất thô) không đưa lên repository vì thuộc bản quyền nội dung báo chí.
+
+Bài báo dạng preprint arXiv nằm trong [`reports/arxiv/`](reports/arxiv/README.md).
 
 ## Hạn chế đã biết
 

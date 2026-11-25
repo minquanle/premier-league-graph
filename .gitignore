@@ -39,3 +39,4 @@ reports/*
 
 # Contains the chatbot API key
 notebooks/kaggle_serve/kernel/
+!reports/arxiv/

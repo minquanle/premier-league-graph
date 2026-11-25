@@ -1,0 +1,21 @@
+{
+ "main_graph": "student_4b_v1",
+ "main": {
+  "nodes": 2046,
+  "edges": 4924,
+  "edge_sources": 37117,
+  "articles": 6158,
+  "teammate_of": 41262,
+  "played_under": 5427,
+  "transfer_flow": 2674
+ },
+ "comparison_graph": "student_v4",
+ "comparison": {
+  "nodes": 2147,
+  "edges": 5111
+ },
+ "graded_samples": {
+  "graded_sample_14b_150.csv": 150,
+  "graded_sample_4b_only_60.csv": 60
+ }
+}

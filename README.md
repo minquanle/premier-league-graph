@@ -101,6 +101,30 @@ Sao chép `.env.example` thành `.env`, điền endpoint tương thích OpenAI c
 2. Mở http://localhost:7474/browser/, đăng nhập `bolt://localhost:7687` bằng tài khoản trong `.env`.
 3. Chạy các truy vấn trong `queries/main.cypher`, bắt đầu bằng `CALL db.schema.visualization()`. Luôn giữ `LIMIT`: cơ sở dữ liệu có 58.554 nút, phần lớn là câu bằng chứng và bài báo.
 
+## Ứng dụng: chân dung node và hỏi đáp đa bước
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[app]"
+.\.venv\Scripts\python.exe -m streamlit run app/streamlit_app.py
+```
+
+Ứng dụng gồm ba trang:
+
+- **Tổng quan mạng:** thế giới nhỏ (σ, ω), cộng đồng Leiden/Louvain, lõi k-core và hạt nhân từng cộng đồng, nhân vật trung tâm.
+- **Chân dung một nút:**
+  - bậc, PageRank, chỉ số lõi và cộng đồng của người đó, kèm thứ hạng trong mạng;
+  - mạng quan hệ xung quanh;
+  - các quan hệ trích từ báo, kèm câu bằng chứng và link bài.
+- **Hỏi đáp đa bước:** câu hỏi đi qua các bước sau:
+  1. Liên kết thực thể (tên đầy đủ, họ, biệt danh).
+  2. Định tuyến sang công cụ phân tích mạng (PageRank, lõi, hạt nhân cộng đồng, đường nối hai người) hoặc sang bộ lập kế hoạch.
+  3. Qwen3-4B lập kế hoạch các bước nhảy trên đồ thị bằng **một lần gọi nhanh**.
+  4. **Năm kiểm tra tự động** (`src/player_graph/chatbot/verify.py`): dùng đủ thực thể, vai trò, từ khoá quan hệ, loại đáp án, kết quả rỗng.
+  5. Chỉ khi có cảnh báo mới lập lại kế hoạch bằng chế độ suy nghĩ.
+  6. Code biên dịch kế hoạch sang Cypher, truy vấn, rồi trả lời kèm bằng chứng. Đồ thị con giải thích câu trả lời được vẽ lại.
+
+Cần Neo4j đang chạy và endpoint Qwen3-4B phục vụ bằng vLLM trên Kaggle (`notebooks/kaggle_serve`). Không có endpoint thì hai trang đầu vẫn dùng được.
+
 ## Dữ liệu
 
 Thư mục `data/` (toàn văn bài báo, cache, kết quả trích xuất) không được đưa lên repository vì liên quan bản quyền nội dung báo chí. Repository chỉ chứa mã nguồn, cấu hình và số liệu tổng hợp trong `reports/` (thống kê graph, kết quả nạp Neo4j, đánh giá student, hướng dẫn chấm).

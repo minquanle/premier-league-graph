@@ -29,8 +29,9 @@ HOPS = {
     'players_extended_by':  ('EXTENDED_CONTRACT_WITH', 'in', 'Club', 'Person', 'những người từng gia hạn hợp đồng với CLB này'),
     'clubs_negotiating_for': ('NEGOTIATES_TO_SIGN', 'in', 'Person', 'Club', 'CLB từng đàm phán chiêu mộ người này'),
     'negotiation_targets':  ('NEGOTIATES_TO_SIGN', 'out', 'Club', 'Person', 'những người CLB này từng đàm phán chiêu mộ'),
-    'clubs_appointed_by':   ('APPOINTED_MANAGER_OF', 'in', 'Person', 'Club', 'CLB từng bổ nhiệm người này làm HLV'),
-    'managers_appointed':   ('APPOINTED_MANAGER_OF', 'out', 'Club', 'Person', 'những HLV được CLB này bổ nhiệm'),
+    # Stored as (coach)-[:APPOINTED_MANAGER_OF]->(club), unlike DISMISSED_MANAGER which is (club)->(coach).
+    'clubs_appointed_by':   ('APPOINTED_MANAGER_OF', 'out', 'Person', 'Club', 'CLB từng bổ nhiệm người này làm HLV'),
+    'managers_appointed':   ('APPOINTED_MANAGER_OF', 'in', 'Club', 'Person', 'những HLV được CLB này bổ nhiệm'),
     'clubs_dismissed_by':   ('DISMISSED_MANAGER', 'in', 'Person', 'Club', 'CLB từng sa thải người này'),
     'managers_dismissed':   ('DISMISSED_MANAGER', 'out', 'Club', 'Person', 'những HLV bị CLB này sa thải'),
     'clubs_resigned_from':  ('RESIGNED_FROM', 'out', 'Person', 'Club', 'CLB mà người này từng từ chức'),
@@ -38,6 +39,8 @@ HOPS = {
     'agents_of':            ('REPRESENTS', 'in', 'Person', 'Person', 'người đại diện của người này'),
     'criticized_targets':   ('CRITICIZES', 'out', 'Person', 'Person', 'những người bị người này chỉ trích'),
     'critics_of':           ('CRITICIZES', 'in', 'Person', 'Person', 'những người từng chỉ trích người này'),
+    'clubs_criticized':     ('CRITICIZES', 'out', 'Person', 'Club', 'CLB bị người này chỉ trích'),
+    'critics_of_club':      ('CRITICIZES', 'in', 'Club', 'Person', 'những người từng chỉ trích CLB này'),
     'conflicts_with':       ('CONFLICTS_WITH', 'any', 'Person', 'Person', 'những người có xung đột với người này'),
     'teammates':            ('TEAMMATE_OF', 'any', 'Person', 'Person', 'đồng đội (cùng CLB, cùng thời kỳ)'),
     'coaches_of_player':    ('PLAYED_UNDER', 'out', 'Person', 'Person', 'những HLV từng huấn luyện cầu thủ này'),
@@ -57,7 +60,9 @@ Return JSON only: {"chains":[{"from":"<param>","hops":["<hop>",...]}],"output":"
   "players of both club X and club Y"). Both chains must end on the same type.
 - output "count" when the question asks how many / bao nhiêu / đếm / số lượng; otherwise "list".
 - Read the relation direction carefully: "HLV của cầu thủ" = coaches_of_player; "cầu thủ của HLV" = players_coached;
-  "người đại diện của X" = agents_of; "X đại diện cho ai" = clients_of_agent.
+  "người đại diện của X" = agents_of; "X đại diện cho ai" = clients_of_agent;
+  "ai chỉ trích X" / "X bị ai chỉ trích" = critics_of; "X chỉ trích ai" = criticized_targets;
+  "học trò của X" = players_coached (X is the coach).
 - If no hop sequence fits, return {"chains":[],"output":"unsupported"}.
 Hop catalogue (name: input -> output: meaning):
 ''' + '\n'.join(f'{n}: {h[2]} -> {h[3]}: {h[4]}' for n, h in HOPS.items())
@@ -322,6 +327,72 @@ def generate_v2(client, graph, question, params, votes=3, k=8, use_schema=True, 
     plan = next(p for key, p in ballots if key == winner)
     cypher, answer_type = compile_plan(plan, types)
     rows = graph.run(cypher, params)
+    return {'ok': True, 'plan': plan, 'query': cypher, 'rows': rows, 'answer_type': answer_type,
+            'provenance': provenance(plan, types), **info}
+
+
+def _try_plan(response, types):
+    """(plan, error, unsupported) from one model response."""
+    try:
+        plan = parse(response['content'])
+        if plan.get('output') == 'unsupported':
+            return None, None, True
+        check(plan, types)
+        return plan, None, False
+    except Exception as error:
+        return None, str(error)[:300], False
+
+
+def generate_v3(client, graph, question, params, k=8, escalate=True, thinking_tokens=6144):
+    """Fast planner -> deterministic checks -> one thinking re-plan only when a check fires.
+
+    Measured on the benchmarks: extra votes never changed an answer (wrong plans were unanimous),
+    and role notes in the prompt cost more than they fixed; the same knowledge works better as checks
+    (verify.check_plan). The fast plan is kept unless the re-plan is valid and not more suspicious.
+    """
+    from . import verify
+    types = param_types(graph, params)
+    examples = select_examples(question, types, k=k)
+    msgs = messages(question, params, types, examples)
+    schema = plan_schema(types)
+    roles = verify.effective_roles(graph, [v for key, v in params.items() if types[key] == 'Person'])
+
+    def assess(plan):
+        cypher, _ = compile_plan(plan, types)
+        rows = graph.run(cypher, params)
+        return rows, verify.check_plan(plan, question, params, types, roles, HOPS, rows)
+
+    first = client.complete(msgs, schema=schema, temperature=0, seed=42)
+    attempts = [dict(first)]
+    plan, error, unsupported = _try_plan(first, types)
+    if error:
+        attempts[0]['error'] = error
+    rows, problems = assess(plan) if plan else (None, [f'V0: {error}'] if error else [])
+    fast = {'plan': plan, 'problems': problems, 'unsupported': unsupported}
+    escalated = False
+    if escalate and (problems or error):
+        escalated = True
+        feedback = ('Your plan was ' + first['content'].strip() + '\nAutomatic checks found possible problems:\n- '
+                    + '\n- '.join(problems) + '\nRe-read the question and the hop catalogue. Return the corrected JSON plan, '
+                    'or the same plan if it is already right.')
+        second = client.complete(msgs + [{'role': 'user', 'content': feedback}], thinking=True,
+                                 schema=schema, max_tokens=thinking_tokens)
+        attempts.append({**second, 'thinking': True})
+        plan2, error2, unsupported2 = _try_plan(second, types)
+        if error2:
+            attempts[-1]['error'] = error2
+        if plan2:
+            rows2, problems2 = assess(plan2)
+            # Replace a valid fast plan only by a strictly less suspicious one (on the dev set a tie
+            # rule swapped two right fast plans for wrong ones and fixed none).
+            if plan is None or len(problems2) < len(problems):
+                plan, rows, problems, unsupported = plan2, rows2, problems2, False
+        elif plan is None and unsupported2:
+            unsupported = True
+    info = {'attempts': attempts, 'escalated': escalated, 'thinking': escalated, 'fast': fast, 'checks': problems}
+    if plan is None:
+        return {'ok': False, 'unsupported': unsupported, **info}
+    cypher, answer_type = compile_plan(plan, types)
     return {'ok': True, 'plan': plan, 'query': cypher, 'rows': rows, 'answer_type': answer_type,
             'provenance': provenance(plan, types), **info}
 

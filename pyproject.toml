@@ -11,6 +11,7 @@ dependencies = ["requests", "beautifulsoup4", "trafilatura", "langdetect", "rapi
 
 [project.optional-dependencies]
 test = ["pytest"]
+app = ["streamlit==1.40.2", "pyvis==0.3.2", "pandas"]
 
 [project.scripts]
 player-graph = "player_graph.cli:main"

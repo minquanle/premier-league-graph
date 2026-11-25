@@ -1,0 +1,42 @@
+[
+  {
+    "id": "v3_001",
+    "author": "Quân",
+    "question": "Arteta từng dẫn dắt những đội nào?",
+    "expected_entities": ["Mikel Arteta"],
+    "kind": "lookup",
+    "answer": ["Arsenal"],
+    "answer_type": "list",
+    "note": "Viết tắt họ, không ghi đủ tên"
+  },
+  {
+    "id": "v3_002",
+    "author": "Mi",
+    "question": "co bao nhieu cau thu tung choi cho ca chelsea lan arsenal",
+    "expected_entities": ["Chelsea", "Arsenal"],
+    "kind": "intersection",
+    "answer": 0,
+    "answer_type": "count",
+    "note": "Không dấu; điền số đúng sau khi kiểm tra trên Neo4j"
+  },
+  {
+    "id": "v3_003",
+    "author": "Quân",
+    "question": "Ai là trung tâm của mạng lưới đồng đội?",
+    "expected_entities": [],
+    "kind": "analytics",
+    "answer": [],
+    "answer_type": "list",
+    "note": "Câu phân tích mạng: đáp án lấy từ reports/cores_student_v4.json hoặc PageRank"
+  },
+  {
+    "id": "v3_004",
+    "author": "Mi",
+    "question": "Thời tiết ở London hôm nay thế nào?",
+    "expected_entities": [],
+    "kind": "out_of_scope",
+    "answer": null,
+    "answer_type": "unsupported",
+    "note": "Hệ thống phải từ chối, không bịa"
+  }
+]

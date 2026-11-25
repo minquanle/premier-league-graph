@@ -122,7 +122,8 @@ def graph(monkeypatch):
 
     def run(query, params=None):
         if 'labels(n)' in query:
-            return [{'name': n, 'labels': ['FootballEntity', 'Person', 'Player']} for n in params['names']]
+            return [{'name': n, 'labels': ['FootballEntity', 'Person', 'Player'], 'player': True, 'coach': False,
+                     'agent': False} for n in params['names']]
         return [{'name': 'Bob'}]
     return Mock(run=Mock(side_effect=run))
 
@@ -191,3 +192,75 @@ def test_planner_prompt_carries_roles(graph):
     agent.generate_v2(client, graph, 'q', {'person': 'A'})
     last = json.loads(client.complete.call_args_list[0][0][0][-1]['content'])
     assert last['params'] == {'person': 'Person (Player)'}
+
+
+@pytest.mark.parametrize('hop,start,pattern', [
+    # Directions as stored in the graph: coach->club for appointments, club->coach for dismissals,
+    # club->person for negotiations.
+    ('clubs_appointed_by', 'Person', '(:Person {canonical_name: $x})-[:APPOINTED_MANAGER_OF]->(ans:Club)'),
+    ('managers_appointed', 'Club', '(:Club {canonical_name: $x})<-[:APPOINTED_MANAGER_OF]-(ans:Person)'),
+    ('managers_dismissed', 'Club', '(:Club {canonical_name: $x})-[:DISMISSED_MANAGER]->(ans:Person)'),
+    ('clubs_negotiating_for', 'Person', '(:Person {canonical_name: $x})<-[:NEGOTIATES_TO_SIGN]-(ans:Club)'),
+    ('critics_of_club', 'Club', '(:Club {canonical_name: $x})<-[:CRITICIZES]-(ans:Person)'),
+])
+def test_hop_directions_match_stored_edges(hop, start, pattern):
+    cypher, _ = agent.compile_plan(plan(('x', [hop])), {'x': start})
+    assert pattern in cypher
+
+
+# ---- planner v3: fast plan, deterministic checks, escalation only when a check fires ----
+
+from player_graph.chatbot import verify  # noqa: E402
+
+
+def problems(question, p, params=None, types=None, roles=None, rows=(1,)):
+    params = params or {'person': 'A'}
+    return verify.check_plan(p, question, params, types or {k: 'Person' for k in params},
+                             roles or {'A': ['Player']}, agent.HOPS, [{'name': 'x', 'count': r} for r in rows])
+
+
+def test_checks_flag_an_unused_entity():
+    out = problems('Trong số cầu thủ của X, ai từng được A huấn luyện?', plan(('club', ['players_of_club', 'coaches_of_player'])),
+                   params={'club': 'X', 'person': 'A'}, types={'club': 'Club', 'person': 'Person'})
+    assert any(p.startswith('V1') for p in out)
+
+
+def test_checks_flag_role_direction():
+    assert any(p.startswith('V2') for p in problems('Đồng đội của A chơi dưới quyền bao nhiêu HLV?',
+                                                     plan(('person', ['teammates', 'players_coached']), output='count')))
+    assert not problems('Đồng đội của A chơi dưới quyền bao nhiêu HLV?',
+                        plan(('person', ['teammates', 'coaches_of_player']), output='count'))
+
+
+def test_checks_flag_a_missing_cue_hop_and_answer_type():
+    out = problems('Đồng đội của những người từng chơi cho X được những HLV nào huấn luyện?',
+                   plan(('club', ['players_of_club', 'coaches_of_player'])), params={'club': 'X'}, types={'club': 'Club'})
+    assert any('đồng đội' in p for p in out)
+    out = problems('A từng thi đấu cho những CLB nào?', plan(('person', ['teammates'])))
+    assert any(p.startswith('V5') for p in out)
+
+
+def test_empty_result_is_suspicious_unless_asking_existence():
+    assert any(p.startswith('V4') for p in problems('A từng chơi cho những CLB nào?', plan(('person', ['clubs_played_for'])), rows=()))
+    assert not problems('Có CLB nào A từng chơi cho không?', plan(('person', ['clubs_played_for'])), rows=())
+
+
+def test_v3_keeps_a_clean_fast_plan_without_escalating(graph):
+    client = scripted([TEAM])
+    result = agent.generate_v3(client, graph, 'Đồng đội của A là ai?', {'person': 'A'})
+    assert result['ok'] and not result['escalated'] and client.complete.call_count == 1
+
+
+def test_v3_escalates_a_flagged_plan_with_feedback(graph):
+    wrong = json.dumps(plan(('person', ['players_coached'])))
+    client = scripted([wrong], thinking=COACH)
+    result = agent.generate_v3(client, graph, 'Những HLV nào từng huấn luyện A?', {'person': 'A'})
+    assert result['escalated'] and result['plan']['chains'][0]['hops'] == ['coaches_of_player']
+    call = client.complete.call_args_list[1]
+    assert call[1]['thinking'] and 'V2' in call[0][0][-1]['content']
+
+
+def test_v3_escalates_an_invalid_plan(graph):
+    client = scripted([BAD], thinking=TEAM)
+    result = agent.generate_v3(client, graph, 'Đồng đội của A là ai?', {'person': 'A'})
+    assert result['ok'] and result['escalated'] and result['fast']['problems'][0].startswith('V0')

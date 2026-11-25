@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from player_graph.chatbot.backend import KaggleClient
-from player_graph.chatbot.query import Graph,generate,category,DIRECT,fold
+from player_graph.chatbot.query import Graph,generate,category,DIRECT,fold,CLUB_TO_PERSON
 from player_graph.chatbot.linking import link
 from player_graph.chatbot.answer import evidence_packets,synthesize
 from player_graph.chatbot.analytics import choose_tool,tools
@@ -57,7 +57,7 @@ def main():
             relation=next(iter(relations))
             if len(params)==1:
                 anchor=next(iter(params))
-                reverse=relation in {'APPOINTED_MANAGER_OF','DISMISSED_MANAGER'}
+                reverse=relation in CLUB_TO_PERSON
                 side=('subject' if reverse else 'object') if anchor=='club' else 'subject'
                 provenance={'kind':'direct','relation':relation,'anchor_param':anchor,'anchor_side':side}
         packets=evidence_packets(graph,result['rows'],provenance,params)

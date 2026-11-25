@@ -119,7 +119,10 @@ def test_relation_alternatives_cannot_bypass_direction_or_allowlist(edge):
 @pytest.mark.parametrize("relation,domain,target", [
     ("PLAYS_FOR", "Person", "Club"),
     ("MANAGES", "Coach", "Club"),
-    ("APPOINTED_MANAGER_OF", "Club", "Coach"),
+    ("APPOINTED_MANAGER_OF", "Coach", "Club"),
+    ("NEGOTIATES_TO_SIGN", "Club", "Player"),
+    ("CRITICIZES", "Person", "Club"),
+    ("CRITICIZES", "Person", "Person"),
     ("DISMISSED_MANAGER", "Club", "Person"),
     ("REPRESENTS", "Agent", "Player"),
     ("PLAYED_UNDER", "Player", "Coach"),
@@ -135,7 +138,9 @@ def test_domain_checks_accept_valid_forward_and_reverse_traversals(relation, dom
 
 @pytest.mark.parametrize("pattern", [
     "(c:Club)-[:PLAYS_FOR]->(p:Person)",
-    "(p:Person)-[:APPOINTED_MANAGER_OF]->(c:Club)",
+    "(c:Club)-[:APPOINTED_MANAGER_OF]->(p:Person)",
+    "(p:Person)-[:NEGOTIATES_TO_SIGN]->(c:Club)",
+    "(c:Club)-[:CRITICIZES]->(p:Person)",
     "(p:Person)-[:TRANSFER_FLOW]->(c:Club)",
     "(c:Club)-[:PLAYED_UNDER]->(p:Person)",
     "(p:Person)<-[:PLAYS_FOR]-(c:Club)",
@@ -411,3 +416,38 @@ def test_new_tools_require_supplied_entities():
     assert name == "path_between" and args == params
     with pytest.raises(ValueError):
         analytics.choose_tool(client_for(json.dumps({"tool": "network_core", "args": {}})), "q", {"person": "A"})
+
+
+def linker_graph(people):
+    from unittest.mock import Mock
+    return Mock(run=Mock(return_value=[{'name': n, 'aliases': [], 'labels': ['FootballEntity', 'Person'], 'degree': d}
+                                       for n, d in people]))
+
+
+def test_linker_resolves_a_bare_surname_to_the_far_better_connected_person():
+    from player_graph.chatbot.linking import link
+    graph = linker_graph([('Harry Kane', 90), ('Martin Kane', 4)])
+    assert link(graph, 'Kane chơi cho đội nào?') == {'person': 'Harry Kane'}
+    assert link(graph, 'Harry Kane và Kane khác nhau thế nào?') == {'person': 'Harry Kane'}
+
+
+def test_linker_asks_when_surnames_are_equally_known_and_ignores_folded_lookalikes():
+    from player_graph.chatbot.linking import link
+    with pytest.raises(ValueError, match='Gary Neville'):
+        link(linker_graph([('Gary Neville', 50), ('Phil Neville', 40)]), 'Neville chơi cho đội nào?')
+    assert link(linker_graph([('Emre Cann', 50)]), 'Tôi cần biết thêm') == {}
+
+
+def test_pipeline_routes_network_questions_to_analytics_tools():
+    from player_graph.chatbot.pipeline import route
+    assert route('Hạt nhân của mạng đồng đội gồm những ai?', {}) == 'analytics'
+    assert route('Kane và Salah nối với nhau qua những ai?', {'person': 'Harry Kane', 'other': 'Mohamed Salah'}) == 'analytics'
+    assert route('Kane từng chơi cho những CLB nào?', {'person': 'Harry Kane'}) == 'planner'
+
+
+def test_pipeline_tool_answers_state_the_computed_numbers():
+    from player_graph.chatbot.pipeline import _tool_answer
+    path = _tool_answer('path_between', {}, [{'name': 'A', 'count': 0}, {'name': 'B', 'count': 1}, {'name': 'C', 'count': 2}])
+    assert '2 bước' in path and '**A** → **B** → **C**' in path
+    assert '42-core' in _tool_answer('network_core', {}, [{'name': 'A', 'count': 42}])
+    assert 'Không tìm thấy' in _tool_answer('path_between', {}, [])

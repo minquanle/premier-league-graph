@@ -9,13 +9,15 @@ DIRECT = {'PLAYS_FOR', 'MANAGES', 'TRANSFERRED_TO', 'LOANED_TO',
           'EXTENDED_CONTRACT_WITH', 'NEGOTIATES_TO_SIGN', 'APPOINTED_MANAGER_OF',
           'DISMISSED_MANAGER', 'RESIGNED_FROM', 'REPRESENTS', 'CRITICIZES', 'CONFLICTS_WITH'}
 DERIVED = {'TEAMMATE_OF', 'PLAYED_UNDER', 'TRANSFER_FLOW'}
+# Direct relations stored from the club to the person (all others start at the person).
+CLUB_TO_PERSON = {'DISMISSED_MANAGER', 'NEGOTIATES_TO_SIGN'}
 SCHEMA = '''Translate Vietnamese graph questions to a single read-only Neo4j Cypher query.
 Return JSON {"plan":{"relations":["RELATION"],"answer_type":"name|count"},"cypher":"MATCH ..."}.
 Do not answer from memory. Use only the canonical values in supplied parameters, as $person, $club, $other etc.
 Nodes: Person (also optional Player/Coach/Agent labels), Club. Properties: canonical_name, entity_id.
-Person -> Club: PLAYS_FOR, MANAGES, TRANSFERRED_TO, LOANED_TO, EXTENDED_CONTRACT_WITH, NEGOTIATES_TO_SIGN, RESIGNED_FROM.
-Club -> Person: APPOINTED_MANAGER_OF, DISMISSED_MANAGER.
-Person -> Person: REPRESENTS (agent to client), CRITICIZES, CONFLICTS_WITH.
+Person -> Club: PLAYS_FOR, MANAGES, TRANSFERRED_TO, LOANED_TO, EXTENDED_CONTRACT_WITH, RESIGNED_FROM, APPOINTED_MANAGER_OF (coach appointed by the club).
+Club -> Person: DISMISSED_MANAGER (club sacked the coach), NEGOTIATES_TO_SIGN (club wants to sign the person).
+Person -> Person: REPRESENTS (agent to client), CRITICIZES, CONFLICTS_WITH. CRITICIZES and CONFLICTS_WITH may also point Person -> Club.
 Derived Person -- Person: TEAMMATE_OF, always undirected traversal.
 Derived Person -> Person: PLAYED_UNDER, player to coach.
 Derived Club -> Club: TRANSFER_FLOW.
@@ -108,9 +110,11 @@ def validate(raw, params):
         left,llabel,arrow1,kind,arrow2,right,rlabel=m.groups()
         a=typed.get(left) or ('Club' if llabel=='Club' else 'Person' if llabel else None)
         b=typed.get(right) or ('Club' if rlabel=='Club' else 'Person' if rlabel else None)
-        expected = ('Club','Person') if kind in {'APPOINTED_MANAGER_OF','DISMISSED_MANAGER'} else ('Person','Club') if kind in DIRECT-{'REPRESENTS','CRITICIZES','CONFLICTS_WITH'} else ('Club','Club') if kind=='TRANSFER_FLOW' else ('Person','Person')
+        expected = ('Club','Person') if kind in CLUB_TO_PERSON else ('Person','Club') if kind in DIRECT-CLUB_TO_PERSON-{'REPRESENTS','CRITICIZES','CONFLICTS_WITH'} else ('Club','Club') if kind=='TRANSFER_FLOW' else ('Person','Person')
         if arrow1=='<-':
             a,b=b,a
+        if kind in {'CRITICIZES','CONFLICTS_WITH'} and (a,b)==('Person','Club'):
+            continue
         if arrow1=='-' and arrow2=='-' and (b,a)==expected:
             continue
         if (a and a!=expected[0]) or (b and b!=expected[1]):

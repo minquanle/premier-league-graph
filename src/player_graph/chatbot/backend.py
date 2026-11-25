@@ -53,10 +53,33 @@ class KaggleClient:
             time.sleep(10)
         raise TimeoutError('No healthy Kaggle Qwen endpoint found')
 
-    def complete(self, messages, thinking=False, json_output=False, schema=None, temperature=None, seed=42):
+    def _stream(self, body, timeout):
+        """Server-sent events: tokens flow at once, so the Cloudflare tunnel's ~100 s limit
+        (HTTP 524 before the first byte) never applies to long thinking calls."""
+        body = {**body, 'stream': True, 'stream_options': {'include_usage': True}}
+        request = urllib.request.Request(self.base_url + '/v1/chat/completions', data=json.dumps(body).encode(),
+                                         headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + self.key})
+        parts, finish, usage = [], None, {}
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            for raw in response:
+                line = raw.decode('utf-8').strip()
+                if not line.startswith('data:'):
+                    continue
+                data = line[5:].strip()
+                if data == '[DONE]':
+                    break
+                chunk = json.loads(data)
+                usage = chunk.get('usage') or usage
+                for choice in chunk.get('choices', []):
+                    parts.append(choice.get('delta', {}).get('content') or '')
+                    finish = choice.get('finish_reason') or finish
+        return {'content': ''.join(parts), 'usage': usage, 'finish_reason': finish}
+
+    def complete(self, messages, thinking=False, json_output=False, schema=None, temperature=None, seed=42,
+                 stream=None, max_tokens=None):
         start = time.monotonic()
         body = {'model': self.model, 'messages': messages,
-                'max_tokens': 3072 if thinking else 1400,
+                'max_tokens': max_tokens or (3072 if thinking else 1400),
                 'temperature': temperature if temperature is not None else (0.6 if thinking else 0),
                 'top_p': 0.95, 'seed': seed,
                 'chat_template_kwargs': {'enable_thinking': thinking}}
@@ -66,6 +89,9 @@ class KaggleClient:
         elif json_output:
             body['response_format'] = {'type': 'json_object'}
         # Do not return chain-of-thought text, credentials, or endpoint addresses in reports.
+        if stream if stream is not None else thinking:
+            result = self._stream(body, timeout=150)
+            return {**result, 'seconds': round(time.monotonic() - start, 3)}
         data = fetch(self.base_url + '/v1/chat/completions', self.key, body, timeout=150)
         choice = data['choices'][0]
         return {'content': choice['message'].get('content') or '',

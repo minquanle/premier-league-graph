@@ -174,6 +174,158 @@ def provenance(plan, types):
     return {'kind': 'aggregate'}
 
 
+ROLE_NOTE = '''
+Each parameter is shown as its type plus, for people, their roles in the graph, e.g. "Person (Player)",
+"Person (Coach)", "Person (Player, Coach)". Use roles to choose the direction of person-to-person hops:
+from a Player, coaches_of_player gives their coaches; from a Coach, players_coached gives their players.'''
+
+_ROLES = {}
+
+
+def entity_roles(graph, names):
+    """Graph role labels (Player/Coach/Agent) for canonical names, cached across questions."""
+    missing = [n for n in names if n not in _ROLES]
+    if missing:
+        for row in graph.run('''MATCH (n:FootballEntity) WHERE n.canonical_name IN $names
+                RETURN n.canonical_name AS name, labels(n) AS labels''', {'names': missing}):
+            _ROLES[row['name']] = sorted(set(row['labels']) & {'Player', 'Coach', 'Agent'})
+        for n in missing:
+            _ROLES.setdefault(n, [])
+    return {n: _ROLES[n] for n in names}
+
+
+def describe(params, types, roles):
+    return {k: f"{types[k]} ({', '.join(roles.get(v) or [])})" if types[k] == 'Person' and roles.get(v) else types[k]
+            for k, v in params.items()}
+
+
+def messages_with_roles(graph, question, params, types, examples):
+    roles = entity_roles(graph, sorted({*params.values(), *(v for e in examples for v in e['params'].values())}))
+    msgs = [{'role': 'system', 'content': SYSTEM + ROLE_NOTE}]
+    for e in examples:
+        msgs += [{'role': 'user', 'content': json.dumps({'question': e['question'], 'params': describe(e['params'], e['param_types'], roles)}, ensure_ascii=False)},
+                 {'role': 'assistant', 'content': json.dumps(e['plan'], ensure_ascii=False)}]
+    msgs.append({'role': 'user', 'content': json.dumps({'question': question, 'params': describe(params, types, roles)}, ensure_ascii=False)})
+    return msgs
+
+
+def plan_schema(types):
+    """JSON schema for structured decoding: hop names and start parameters are closed enums."""
+    chain = {'type': 'object', 'additionalProperties': False, 'required': ['from', 'hops'],
+             'properties': {'from': {'type': 'string', 'enum': sorted(types)},
+                            'hops': {'type': 'array', 'minItems': 1, 'maxItems': MAX_HOPS,
+                                     'items': {'type': 'string', 'enum': sorted(HOPS)}}}}
+    return {'type': 'object', 'additionalProperties': False, 'required': ['chains', 'output'],
+            'properties': {'chains': {'type': 'array', 'minItems': 0, 'maxItems': 2, 'items': chain},
+                           'output': {'type': 'string', 'enum': ['list', 'count', 'unsupported']}}}
+
+
+def load_library():
+    return json.loads((ROOT / 'configs/chatbot_agent_library.json').read_text(encoding='utf-8'))
+
+
+def select_examples(question, types, library=None, k=8):
+    """Few-shot examples closest to the question: shared words, plus the same parameter types."""
+    from .query import fold
+    words = set(re.findall(r'\w+', fold(question)))
+    signature = sorted(types.values())
+
+    def score(e):
+        overlap = len(words & set(re.findall(r'\w+', fold(e['question'])))) / max(1, len(words))
+        return overlap + (0.5 if sorted(e['param_types'].values()) == signature else 0)
+    library = library if library is not None else load_library()
+    return sorted(library, key=lambda e: (-score(e), e['id']))[:k]
+
+
+def _canonical(plan):
+    return json.dumps(plan, sort_keys=True, ensure_ascii=False)
+
+
+def generate_v2(client, graph, question, params, votes=3, k=8, use_schema=True, adaptive_thinking=True, max_repairs=1, roles=True):
+    """Planner with structured decoding, dynamic few-shot, self-consistency voting and adaptive thinking.
+
+    Votes: one greedy sample plus (votes - 1) samples at temperature 0.6. A plan wins with a strict
+    majority; without one, a single thinking call breaks the tie (if enabled), else the greedy plan is used.
+    """
+    import concurrent.futures
+    types = param_types(graph, params)
+    examples = select_examples(question, types, k=k)
+    msgs = messages_with_roles(graph, question, params, types, examples) if roles else messages(question, params, types, examples)
+    schema = plan_schema(types) if use_schema else None
+
+    def sample(i):
+        return client.complete(msgs, schema=schema, json_output=not use_schema,
+                               temperature=0 if i == 0 else 0.6, seed=42 + i)
+
+    with concurrent.futures.ThreadPoolExecutor(votes) as pool:
+        responses = list(pool.map(sample, range(votes)))
+    attempts, ballots = [], []
+    for response in responses:
+        record = {**response}
+        attempts.append(record)
+        try:
+            plan = parse(response['content'])
+            if plan.get('output') == 'unsupported':
+                ballots.append(('unsupported', None))
+                continue
+            check(plan, types)
+            ballots.append((_canonical(plan), plan))
+        except Exception as error:
+            record['error'] = str(error)[:300]
+    counts = {}
+    for key, _ in ballots:
+        counts[key] = counts.get(key, 0) + 1
+    winner = next((key for key, n in sorted(counts.items(), key=lambda kv: -kv[1]) if n * 2 > votes), None)
+    used_thinking = False
+    if winner is None and adaptive_thinking:
+        used_thinking = True
+        response = client.complete(msgs, thinking=True)
+        record = {**response, 'thinking': True}
+        attempts.append(record)
+        try:
+            plan = parse(response['content'])
+            if plan.get('output') == 'unsupported':
+                winner = 'unsupported'
+            else:
+                check(plan, types)
+                winner = _canonical(plan)
+                ballots.append((winner, plan))
+        except Exception as error:
+            record['error'] = str(error)[:300]
+    if winner is None and ballots:
+        winner = ballots[0][0]          # greedy sample first, if it was valid
+    if winner is None:
+        # Nothing valid: one guided repair with the first error.
+        error = next((a['error'] for a in attempts if 'error' in a), 'invalid plan')
+        repair = msgs + [{'role': 'assistant', 'content': responses[0]['content']},
+                         {'role': 'user', 'content': 'Fix this problem and return the JSON plan only: ' + error}]
+        for _ in range(max_repairs):
+            response = client.complete(repair, schema=schema, json_output=not use_schema)
+            record = {**response, 'repair': True}
+            attempts.append(record)
+            try:
+                plan = parse(response['content'])
+                if plan.get('output') == 'unsupported':
+                    winner = 'unsupported'
+                    break
+                check(plan, types)
+                winner = _canonical(plan)
+                ballots.append((winner, plan))
+                break
+            except Exception as err:
+                record['error'] = str(err)[:300]
+    info = {'attempts': attempts, 'thinking': used_thinking, 'votes': counts}
+    if winner is None:
+        return {'ok': False, **info}
+    if winner == 'unsupported':
+        return {'ok': False, 'unsupported': True, **info}
+    plan = next(p for key, p in ballots if key == winner)
+    cypher, answer_type = compile_plan(plan, types)
+    rows = graph.run(cypher, params)
+    return {'ok': True, 'plan': plan, 'query': cypher, 'rows': rows, 'answer_type': answer_type,
+            'provenance': provenance(plan, types), **info}
+
+
 def generate(client, graph, question, params, thinking=False, max_repairs=2):
     """Plan, check, compile and run. Mirrors query.generate's result shape."""
     types = param_types(graph, params)

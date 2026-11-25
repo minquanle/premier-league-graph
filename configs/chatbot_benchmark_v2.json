@@ -1,0 +1,2769 @@
+[
+ {
+  "id": "v2_001",
+  "split": "test_v2",
+  "question": "Những ai từng thi đấu cho FC Porto theo đồ thị?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "FC Porto"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_002",
+  "split": "test_v2",
+  "question": "Ai từng làm HLV của Wolverhampton Wanderers?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Wolverhampton Wanderers"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_003",
+  "split": "test_v2",
+  "question": "Cho biết các đội bóng mà Toby Alderweireld từng khoác áo.",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Toby Alderweireld"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_004",
+  "split": "test_v2",
+  "question": "Pep Guardiola từng dẫn dắt những đội nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Pep Guardiola"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_005",
+  "split": "test_v2",
+  "question": "Olympique Marseille từng mua về những ai theo dữ liệu?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Olympique Marseille"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:TRANSFERRED_TO]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_006",
+  "split": "test_v2",
+  "question": "Harry Maguire từng chuyển nhượng sang những CLB nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Harry Maguire"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "transfer_destinations"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TRANSFERRED_TO]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_007",
+  "split": "test_v2",
+  "question": "Rangers từng mượn những cầu thủ nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Rangers"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_loaned_in"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:LOANED_TO]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_008",
+  "split": "test_v2",
+  "question": "Amad Diallo từng được cho mượn tới đội nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Amad Diallo"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "loan_destinations"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:LOANED_TO]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_009",
+  "split": "test_v2",
+  "question": "Ai từng là đồng đội của Roberto Mancini?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Roberto Mancini"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_010",
+  "split": "test_v2",
+  "question": "Youri Tielemans từng chơi dưới quyền ai?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Youri Tielemans"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_011",
+  "split": "test_v2",
+  "question": "Graham Potter từng huấn luyện những cầu thủ nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Graham Potter"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_012",
+  "split": "test_v2",
+  "question": "Ai là người đại diện của Romelu Lukaku?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Romelu Lukaku"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "agents_of"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:REPRESENTS]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_013",
+  "split": "test_v2",
+  "question": "Patrice Evra từng chỉ trích những ai?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Patrice Evra"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "criticized_targets"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:CRITICIZES]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_014",
+  "split": "test_v2",
+  "question": "Những ai từng lên tiếng chỉ trích Mohamed Salah?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Mohamed Salah"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "critics_of"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:CRITICIZES]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_015",
+  "split": "test_v2",
+  "question": "Sunderland từng sa thải những HLV nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Sunderland"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_dismissed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})-[:DISMISSED_MANAGER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_016",
+  "split": "test_v2",
+  "question": "Sean Dyche từng bị CLB nào sa thải?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Sean Dyche"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_dismissed_by"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:DISMISSED_MANAGER]-(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_017",
+  "split": "test_v2",
+  "question": "Cầu thủ rời Crystal Palace thường chuyển sang những CLB nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Crystal Palace"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "transfer_flow_to"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})-[:TRANSFER_FLOW]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_018",
+  "split": "test_v2",
+  "question": "Những ai từng thi đấu cho Fenerbahce theo đồ thị?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Fenerbahce"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_019",
+  "split": "test_v2",
+  "question": "Đồ thị ghi những huấn luyện viên nào từng dẫn dắt Norwich City?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Norwich City"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_020",
+  "split": "test_v2",
+  "question": "Dominic Calvert-Lewin từng chơi cho những CLB nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Dominic Calvert-Lewin"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_021",
+  "split": "test_v2",
+  "question": "Unai Emery từng dẫn dắt những đội nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Unai Emery"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_022",
+  "split": "test_v2",
+  "question": "Southampton từng mua về những ai theo dữ liệu?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Southampton"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:TRANSFERRED_TO]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_023",
+  "split": "test_v2",
+  "question": "Kiernan Dewsbury-Hall từng chuyển nhượng sang những CLB nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Kiernan Dewsbury-Hall"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "transfer_destinations"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TRANSFERRED_TO]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_024",
+  "split": "test_v2",
+  "question": "Crystal Palace từng mượn những cầu thủ nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "club": "Crystal Palace"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_loaned_in"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:LOANED_TO]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_025",
+  "split": "test_v2",
+  "question": "Morgan Rogers từng được cho mượn tới đội nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Morgan Rogers"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "loan_destinations"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:LOANED_TO]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_026",
+  "split": "test_v2",
+  "question": "Ai từng là đồng đội của Sam Johnstone?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Sam Johnstone"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_027",
+  "split": "test_v2",
+  "question": "Những HLV nào từng huấn luyện Emmanuel Adebayor?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Emmanuel Adebayor"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_028",
+  "split": "test_v2",
+  "question": "Mark Hughes từng huấn luyện những cầu thủ nào?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Mark Hughes"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_029",
+  "split": "test_v2",
+  "question": "Ai là người đại diện của Diego Costa?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Diego Costa"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "agents_of"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:REPRESENTS]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_030",
+  "split": "test_v2",
+  "question": "Ruben Amorim từng chỉ trích những ai?",
+  "kind": "lookup",
+  "category": "lookup",
+  "hops": 1,
+  "params": {
+   "person": "Ruben Amorim"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "criticized_targets"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:CRITICIZES]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_031",
+  "split": "test_v2",
+  "question": "Đồng đội của Rayan Cherki từng được những HLV nào huấn luyện?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Rayan Cherki"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_032",
+  "split": "test_v2",
+  "question": "Các đồng đội của Moussa Sissoko đã chơi cho những CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Moussa Sissoko"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_033",
+  "split": "test_v2",
+  "question": "Cầu thủ từng khoác áo Eintracht Frankfurt đã chơi dưới quyền những HLV nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Eintracht Frankfurt"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_034",
+  "split": "test_v2",
+  "question": "Những HLV từng dẫn dắt Lille OSC còn dẫn dắt các đội nào khác?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Lille OSC"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(c0n0:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_035",
+  "split": "test_v2",
+  "question": "Các HLV từng huấn luyện Rasmus Højlund đã dẫn dắt những CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Rasmus Højlund"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(c0n0:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_036",
+  "split": "test_v2",
+  "question": "Học trò của Steve Bruce từng thi đấu cho những đội nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Steve Bruce"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_037",
+  "split": "test_v2",
+  "question": "Những người chuyển đến Brighton and Hove Albion từng chơi cho các CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Brighton and Hove Albion"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:TRANSFERRED_TO]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_038",
+  "split": "test_v2",
+  "question": "Những người bị Enzo Maresca chỉ trích từng thi đấu cho đội nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Enzo Maresca"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "criticized_targets",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:CRITICIZES]->(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_039",
+  "split": "test_v2",
+  "question": "Cầu thủ của AS Roma được những người đại diện nào đại diện?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "AS Roma"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "agents_of"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)<-[:REPRESENTS]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_040",
+  "split": "test_v2",
+  "question": "Đồng đội của Bryan Mbeumo từng được những HLV nào huấn luyện?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Bryan Mbeumo"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_041",
+  "split": "test_v2",
+  "question": "Các đồng đội của Adam Lallana đã chơi cho những CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Adam Lallana"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_042",
+  "split": "test_v2",
+  "question": "Cầu thủ từng khoác áo Watford đã chơi dưới quyền những HLV nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Watford"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_043",
+  "split": "test_v2",
+  "question": "Những HLV từng dẫn dắt Hellas Verona FC còn dẫn dắt các đội nào khác?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Hellas Verona FC"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(c0n0:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_044",
+  "split": "test_v2",
+  "question": "Các HLV từng huấn luyện Adam Lallana đã dẫn dắt những CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Adam Lallana"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(c0n0:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_045",
+  "split": "test_v2",
+  "question": "Học trò của Antonio Conte từng thi đấu cho những đội nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Antonio Conte"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_046",
+  "split": "test_v2",
+  "question": "Những người chuyển đến SK Sturm Graz từng chơi cho các CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "SK Sturm Graz"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:TRANSFERRED_TO]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_047",
+  "split": "test_v2",
+  "question": "Những người bị Ruben Amorim chỉ trích từng thi đấu cho đội nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Ruben Amorim"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "criticized_targets",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:CRITICIZES]->(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_048",
+  "split": "test_v2",
+  "question": "Cầu thủ của Napoli được những người đại diện nào đại diện?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Napoli"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "agents_of"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)<-[:REPRESENTS]-(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_049",
+  "split": "test_v2",
+  "question": "Đồng đội của Idrissa Gueye từng được những HLV nào huấn luyện?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Idrissa Gueye"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_050",
+  "split": "test_v2",
+  "question": "Các đồng đội của Sean Dyche đã chơi cho những CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Sean Dyche"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_051",
+  "split": "test_v2",
+  "question": "Cầu thủ từng khoác áo Swansea City đã chơi dưới quyền những HLV nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Swansea City"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_052",
+  "split": "test_v2",
+  "question": "Những HLV từng dẫn dắt Fulham còn dẫn dắt các đội nào khác?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "Fulham"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(c0n0:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_053",
+  "split": "test_v2",
+  "question": "Các HLV từng huấn luyện Benjamin Šeško đã dẫn dắt những CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Benjamin Šeško"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(c0n0:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_054",
+  "split": "test_v2",
+  "question": "Học trò của Pep Guardiola từng thi đấu cho những đội nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "person": "Pep Guardiola"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_055",
+  "split": "test_v2",
+  "question": "Những người chuyển đến R.C. Lens từng chơi cho các CLB nào?",
+  "kind": "multihop",
+  "category": "multihop",
+  "hops": 2,
+  "params": {
+   "club": "R.C. Lens"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:TRANSFERRED_TO]-(c0n0:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_056",
+  "split": "test_v2",
+  "question": "Đi từ Tosin Adarabioyo qua đồng đội, tới HLV của đồng đội đó: các HLV ấy từng dẫn dắt CLB nào?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "person": "Tosin Adarabioyo"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(c0n1:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_057",
+  "split": "test_v2",
+  "question": "Học trò của các HLV từng dẫn dắt Rangers đã thi đấu cho những CLB nào?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "club": "Rangers"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "players_coached",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(c0n0:Person)<-[:PLAYED_UNDER]-(c0n1:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_058",
+  "split": "test_v2",
+  "question": "Đồng đội của những người từng chơi cho FC Porto được những HLV nào huấn luyện?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "club": "FC Porto"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)-[:TEAMMATE_OF]-(c0n1:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_059",
+  "split": "test_v2",
+  "question": "Đi từ Eric Bailly qua đồng đội, tới HLV của đồng đội đó: các HLV ấy từng dẫn dắt CLB nào?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "person": "Eric Bailly"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(c0n1:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_060",
+  "split": "test_v2",
+  "question": "Học trò của các HLV từng dẫn dắt Real Sociedad đã thi đấu cho những CLB nào?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "club": "Real Sociedad"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "players_coached",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(c0n0:Person)<-[:PLAYED_UNDER]-(c0n1:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_061",
+  "split": "test_v2",
+  "question": "Đồng đội của những người từng chơi cho Notts County F.C. được những HLV nào huấn luyện?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "club": "Notts County F.C."
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)-[:TEAMMATE_OF]-(c0n1:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_062",
+  "split": "test_v2",
+  "question": "Đi từ Richarlison qua đồng đội, tới HLV của đồng đội đó: các HLV ấy từng dẫn dắt CLB nào?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "person": "Richarlison"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(c0n1:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_063",
+  "split": "test_v2",
+  "question": "Học trò của các HLV từng dẫn dắt FC Zenit Saint Petersburg đã thi đấu cho những CLB nào?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "club": "FC Zenit Saint Petersburg"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "players_coached",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(c0n0:Person)<-[:PLAYED_UNDER]-(c0n1:Person)-[:PLAYS_FOR]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_064",
+  "split": "test_v2",
+  "question": "Đồng đội của những người từng chơi cho Trabzonspor được những HLV nào huấn luyện?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "club": "Trabzonspor"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(c0n0:Person)-[:TEAMMATE_OF]-(c0n1:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_065",
+  "split": "test_v2",
+  "question": "Đi từ Dominik Szoboszlai qua đồng đội, tới HLV của đồng đội đó: các HLV ấy từng dẫn dắt CLB nào?",
+  "kind": "multihop3",
+  "category": "multihop",
+  "hops": 3,
+  "params": {
+   "person": "Dominik Szoboszlai"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(c0n1:Person)-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_066",
+  "split": "test_v2",
+  "question": "Đếm số cầu thủ khác nhau từng khoác áo Grimsby Town F.C..",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "club": "Grimsby Town F.C."
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_067",
+  "split": "test_v2",
+  "question": "Jérémy Doku có bao nhiêu đồng đội trong đồ thị?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Jérémy Doku"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_068",
+  "split": "test_v2",
+  "question": "Kolo Touré đã huấn luyện tổng cộng bao nhiêu cầu thủ?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Kolo Touré"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_069",
+  "split": "test_v2",
+  "question": "Douglas Luiz từng chơi cho bao nhiêu CLB?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Douglas Luiz"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYS_FOR]->(ans:Club) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_070",
+  "split": "test_v2",
+  "question": "Số HLV từng dẫn dắt Parma Calcio 1913 là bao nhiêu?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "club": "Parma Calcio 1913"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_071",
+  "split": "test_v2",
+  "question": "Đồng đội của Willy Caballero đã chơi dưới quyền tổng cộng bao nhiêu HLV?",
+  "kind": "count",
+  "category": "count",
+  "hops": 2,
+  "params": {
+   "person": "Willy Caballero"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_072",
+  "split": "test_v2",
+  "question": "Có bao nhiêu người từng thi đấu cho AC Milan?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "club": "AC Milan"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_073",
+  "split": "test_v2",
+  "question": "Laurent Koscielny có bao nhiêu đồng đội trong đồ thị?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Laurent Koscielny"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_074",
+  "split": "test_v2",
+  "question": "Álvaro Arbeloa đã huấn luyện tổng cộng bao nhiêu cầu thủ?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Álvaro Arbeloa"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_075",
+  "split": "test_v2",
+  "question": "Demarai Gray từng chơi cho bao nhiêu CLB?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Demarai Gray"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYS_FOR]->(ans:Club) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_076",
+  "split": "test_v2",
+  "question": "Số HLV từng dẫn dắt Nottingham Forest là bao nhiêu?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "club": "Nottingham Forest"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_077",
+  "split": "test_v2",
+  "question": "Đồng đội của Armando Broja đã chơi dưới quyền tổng cộng bao nhiêu HLV?",
+  "kind": "count",
+  "category": "count",
+  "hops": 2,
+  "params": {
+   "person": "Armando Broja"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(c0n0:Person)-[:PLAYED_UNDER]->(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_078",
+  "split": "test_v2",
+  "question": "Đếm số cầu thủ khác nhau từng khoác áo Millwall F.C..",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "club": "Millwall F.C."
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_079",
+  "split": "test_v2",
+  "question": "Luka Modrić có bao nhiêu đồng đội trong đồ thị?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Luka Modrić"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_080",
+  "split": "test_v2",
+  "question": "Robin van Persie đã huấn luyện tổng cộng bao nhiêu cầu thủ?",
+  "kind": "count",
+  "category": "count",
+  "hops": 1,
+  "params": {
+   "person": "Robin van Persie"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans:Person) RETURN count(DISTINCT ans) AS count LIMIT 10"
+ },
+ {
+  "id": "v2_081",
+  "split": "test_v2",
+  "question": "HLV nào từng dẫn dắt cả Wolverhampton Wanderers và West Ham United?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "club": "Wolverhampton Wanderers",
+   "other": "West Ham United"
+  },
+  "param_types": {
+   "club": "Club",
+   "other": "Club"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(ans:Person), (:Club {canonical_name: $other})<-[:MANAGES]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_082",
+  "split": "test_v2",
+  "question": "Ai là đồng đội chung của Darren Fletcher và Jamie Vardy?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Darren Fletcher",
+   "other": "Jamie Vardy"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person), (:Person {canonical_name: $other})-[:TEAMMATE_OF]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_083",
+  "split": "test_v2",
+  "question": "HLV nào từng huấn luyện cả Fraser Forster lẫn Ryan Mason?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Fraser Forster",
+   "other": "Ryan Mason"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(ans:Person), (:Person {canonical_name: $other})-[:PLAYED_UNDER]->(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_084",
+  "split": "test_v2",
+  "question": "Trong số cầu thủ của Crystal Palace, ai từng được Brendan Rodgers huấn luyện?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "club": "Crystal Palace",
+   "person": "Brendan Rodgers"
+  },
+  "param_types": {
+   "club": "Club",
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    },
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person), (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_085",
+  "split": "test_v2",
+  "question": "Ai là đồng đội chung của Jack Colback và Joël Matip?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Jack Colback",
+   "other": "Joël Matip"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person), (:Person {canonical_name: $other})-[:TEAMMATE_OF]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_086",
+  "split": "test_v2",
+  "question": "HLV nào từng huấn luyện cả Anthony Martial lẫn Daniel James?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Anthony Martial",
+   "other": "Daniel James"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(ans:Person), (:Person {canonical_name: $other})-[:PLAYED_UNDER]->(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_087",
+  "split": "test_v2",
+  "question": "Những học trò của Sean Dyche từng chơi cho Watford là ai?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "club": "Watford",
+   "person": "Sean Dyche"
+  },
+  "param_types": {
+   "club": "Club",
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    },
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person), (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_088",
+  "split": "test_v2",
+  "question": "Ai là đồng đội chung của Ángel Di María và Bryan Mbeumo?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Ángel Di María",
+   "other": "Bryan Mbeumo"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person), (:Person {canonical_name: $other})-[:TEAMMATE_OF]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_089",
+  "split": "test_v2",
+  "question": "HLV nào từng huấn luyện cả Aaron Lennon lẫn Gareth Barry?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Aaron Lennon",
+   "other": "Gareth Barry"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(ans:Person), (:Person {canonical_name: $other})-[:PLAYED_UNDER]->(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_090",
+  "split": "test_v2",
+  "question": "Trong số cầu thủ của West Bromwich Albion, ai từng được Roy Hodgson huấn luyện?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "club": "West Bromwich Albion",
+   "person": "Roy Hodgson"
+  },
+  "param_types": {
+   "club": "Club",
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    },
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person), (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_091",
+  "split": "test_v2",
+  "question": "Ai là đồng đội chung của Fred và Paul Pogba?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Fred",
+   "other": "Paul Pogba"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person), (:Person {canonical_name: $other})-[:TEAMMATE_OF]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_092",
+  "split": "test_v2",
+  "question": "HLV nào từng huấn luyện cả Romelu Lukaku lẫn Reece James?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Romelu Lukaku",
+   "other": "Reece James"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(ans:Person), (:Person {canonical_name: $other})-[:PLAYED_UNDER]->(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_093",
+  "split": "test_v2",
+  "question": "Trong số cầu thủ của Brighton and Hove Albion, ai từng được David Moyes huấn luyện?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "club": "Brighton and Hove Albion",
+   "person": "David Moyes"
+  },
+  "param_types": {
+   "club": "Club",
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    },
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(ans:Person), (:Person {canonical_name: $person})<-[:PLAYED_UNDER]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_094",
+  "split": "test_v2",
+  "question": "Ai là đồng đội chung của Hugo Lloris và Jack Wilshere?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Hugo Lloris",
+   "other": "Jack Wilshere"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(ans:Person), (:Person {canonical_name: $other})-[:TEAMMATE_OF]-(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_095",
+  "split": "test_v2",
+  "question": "HLV nào từng huấn luyện cả Eden Hazard lẫn Martin Ødegaard?",
+  "kind": "intersection",
+  "category": "intersection",
+  "hops": 1,
+  "params": {
+   "person": "Eden Hazard",
+   "other": "Martin Ødegaard"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(ans:Person), (:Person {canonical_name: $other})-[:PLAYED_UNDER]->(ans) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_096",
+  "split": "test_v2",
+  "question": "Đồ thị ghi Samuel Eto'o đại diện cho những cầu thủ nào?",
+  "kind": "empty",
+  "category": "empty",
+  "hops": 1,
+  "params": {
+   "person": "Samuel Eto'o"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clients_of_agent"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_097",
+  "split": "test_v2",
+  "question": "Có CLB nào được David Silva dẫn dắt trong dữ liệu không?",
+  "kind": "empty",
+  "category": "empty",
+  "hops": 1,
+  "params": {
+   "person": "David Silva"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_098",
+  "split": "test_v2",
+  "question": "Đồ thị ghi Gary Neville đại diện cho những cầu thủ nào?",
+  "kind": "empty",
+  "category": "empty",
+  "hops": 1,
+  "params": {
+   "person": "Gary Neville"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clients_of_agent"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_099",
+  "split": "test_v2",
+  "question": "Có CLB nào được Juan Mata dẫn dắt trong dữ liệu không?",
+  "kind": "empty",
+  "category": "empty",
+  "hops": 1,
+  "params": {
+   "person": "Juan Mata"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:MANAGES]->(ans:Club) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "v2_100",
+  "split": "test_v2",
+  "question": "Đồ thị ghi Georginio Wijnaldum đại diện cho những cầu thủ nào?",
+  "kind": "empty",
+  "category": "empty",
+  "hops": 1,
+  "params": {
+   "person": "Georginio Wijnaldum"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "oracle_plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clients_of_agent"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(ans:Person) RETURN DISTINCT ans.canonical_name AS name ORDER BY name LIMIT 10"
+ }
+]

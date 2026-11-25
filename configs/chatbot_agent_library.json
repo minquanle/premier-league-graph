@@ -1,0 +1,1162 @@
+[
+ {
+  "id": "example_01",
+  "question": "Những cầu thủ nào từng khoác áo Arsenal theo đồ thị?",
+  "params": {
+   "club": "Arsenal"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (p:Person)-[:PLAYS_FOR]->(:Club {canonical_name: $club}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_02",
+  "question": "Kể tên các huấn luyện viên từng dẫn dắt Liverpool.",
+  "params": {
+   "club": "Liverpool"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (p:Person)-[:MANAGES]->(:Club {canonical_name: $club}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_03",
+  "question": "Cristiano Ronaldo từng thi đấu cho những câu lạc bộ nào?",
+  "params": {
+   "person": "Cristiano Ronaldo"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYS_FOR]->(c:Club) RETURN DISTINCT c.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_04",
+  "question": "Ai từng chuyển nhượng đến Tottenham Hotspur trong dữ liệu?",
+  "params": {
+   "club": "Tottenham Hotspur"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (p:Person)-[:TRANSFERRED_TO]->(:Club {canonical_name: $club}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_05",
+  "question": "Liệt kê những người từng đến Newcastle United theo dạng cho mượn.",
+  "params": {
+   "club": "Newcastle United"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_loaned_in"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (p:Person)-[:LOANED_TO]->(:Club {canonical_name: $club}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_06",
+  "question": "Cho biết các đồng đội của Steven Gerrard được ghi nhận trong đồ thị.",
+  "params": {
+   "person": "Steven Gerrard"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(p:Person) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_07",
+  "question": "Frank Lampard từng là học trò của những huấn luyện viên nào?",
+  "params": {
+   "person": "Frank Lampard"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:PLAYED_UNDER]->(p:Person) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_08",
+  "question": "Jorge Mendes là người đại diện cho những ai theo dữ liệu?",
+  "params": {
+   "person": "Jorge Mendes"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clients_of_agent"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(p:Person) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_09",
+  "question": "Roy Keane đã chỉ trích những người nào trong đồ thị?",
+  "params": {
+   "person": "Roy Keane"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "criticized_targets"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:CRITICIZES]->(p:Person) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_10",
+  "question": "Những đồng đội của Steven Gerrard từng thi đấu cho các CLB nào?",
+  "params": {
+   "person": "Steven Gerrard"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(mate:Person)-[:PLAYS_FOR]->(c:Club) RETURN DISTINCT c.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_11",
+  "question": "Các cầu thủ từng khoác áo Arsenal đã từng được những HLV nào dẫn dắt?",
+  "params": {
+   "club": "Arsenal"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Club {canonical_name: $club})<-[:PLAYS_FOR]-(player:Person)-[:PLAYED_UNDER]->(coach:Person) RETURN DISTINCT coach.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_12",
+  "question": "Các đồng đội của những người do Jorge Mendes đại diện từng được những HLV nào dẫn dắt?",
+  "params": {
+   "person": "Jorge Mendes"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clients_of_agent",
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(client:Person)-[:TEAMMATE_OF]-(mate:Person)-[:PLAYED_UNDER]->(coach:Person) RETURN DISTINCT coach.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_13",
+  "question": "Những người từng bị José Mourinho chỉ trích đã thi đấu cho những câu lạc bộ nào?",
+  "params": {
+   "person": "José Mourinho"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "criticized_targets",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:CRITICIZES]->(p:Person)-[:PLAYS_FOR]->(c:Club) RETURN DISTINCT c.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_14",
+  "question": "Có bao nhiêu cầu thủ khác nhau từng thi đấu cho Everton?",
+  "params": {
+   "club": "Everton"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "reference_cypher": "MATCH (p:Person)-[:PLAYS_FOR]->(:Club {canonical_name: $club}) RETURN count(DISTINCT p) AS count LIMIT 10"
+ },
+ {
+  "id": "example_15",
+  "question": "Đồ thị ghi nhận Alex Ferguson từng dẫn dắt bao nhiêu cầu thủ khác nhau?",
+  "params": {
+   "person": "Alex Ferguson"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "reference_cypher": "MATCH (p:Person)-[:PLAYED_UNDER]->(:Person {canonical_name: $person}) RETURN count(DISTINCT p) AS count LIMIT 10"
+ },
+ {
+  "id": "example_16",
+  "question": "Tổng số người khác nhau từng chuyển nhượng đến Tottenham Hotspur là bao nhiêu?",
+  "params": {
+   "club": "Tottenham Hotspur"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in"
+     ]
+    }
+   ],
+   "output": "count"
+  },
+  "reference_cypher": "MATCH (p:Person)-[:TRANSFERRED_TO]->(:Club {canonical_name: $club}) RETURN count(DISTINCT p) AS count LIMIT 10"
+ },
+ {
+  "id": "example_17",
+  "question": "Ai được ghi nhận là đồng đội của cả Frank Lampard lẫn Steven Gerrard?",
+  "params": {
+   "person": "Frank Lampard",
+   "other": "Steven Gerrard"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "teammates"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:TEAMMATE_OF]-(p:Person)-[:TEAMMATE_OF]-(:Person {canonical_name: $other}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_18",
+  "question": "Những HLV nào từng dẫn dắt cả Liverpool và Newcastle United?",
+  "params": {
+   "club": "Liverpool",
+   "other": "Newcastle United"
+  },
+  "param_types": {
+   "club": "Club",
+   "other": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Club {canonical_name: $club})<-[:MANAGES]-(p:Person)-[:MANAGES]->(:Club {canonical_name: $other}) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_19",
+  "question": "Theo quan hệ người đại diện trong đồ thị, José Mourinho đại diện cho ai?",
+  "params": {
+   "person": "José Mourinho"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clients_of_agent"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:REPRESENTS]->(p:Person) RETURN DISTINCT p.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "example_20",
+  "question": "Arsène Wenger từng được cho mượn đến những câu lạc bộ nào theo dữ liệu?",
+  "params": {
+   "person": "Arsène Wenger"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "loan_destinations"
+     ]
+    }
+   ],
+   "output": "list"
+  },
+  "reference_cypher": "MATCH (:Person {canonical_name: $person})-[:LOANED_TO]->(c:Club) RETURN DISTINCT c.canonical_name AS name ORDER BY name LIMIT 10"
+ },
+ {
+  "id": "lib_21",
+  "question": "Arsène Wenger từng làm HLV ở những câu lạc bộ nào?",
+  "params": {
+   "person": "Arsène Wenger"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_22",
+  "question": "David Beckham đã chuyển sang những đội nào trong sự nghiệp?",
+  "params": {
+   "person": "David Beckham"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "transfer_destinations"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_23",
+  "question": "Harry Kane có từng được đem cho mượn ở đâu không?",
+  "params": {
+   "person": "Harry Kane"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "loan_destinations"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_24",
+  "question": "Ai đứng sau Cristiano Ronaldo với tư cách người đại diện?",
+  "params": {
+   "person": "Cristiano Ronaldo"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "agents_of"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_25",
+  "question": "Có những ai từng phê phán Roy Keane?",
+  "params": {
+   "person": "Roy Keane"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "critics_of"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_26",
+  "question": "José Mourinho từng mâu thuẫn với những người nào?",
+  "params": {
+   "person": "José Mourinho"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "conflicts_with"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_27",
+  "question": "Chelsea đã cho thôi việc những HLV nào?",
+  "params": {
+   "club": "Chelsea"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_dismissed"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_28",
+  "question": "José Mourinho từng bị những đội nào sa thải?",
+  "params": {
+   "person": "José Mourinho"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_dismissed_by"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_29",
+  "question": "Tottenham Hotspur đã bổ nhiệm những ai vào ghế HLV?",
+  "params": {
+   "club": "Tottenham Hotspur"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_appointed"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_30",
+  "question": "Frank Lampard được những CLB nào mời về làm HLV?",
+  "params": {
+   "person": "Frank Lampard"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_appointed_by"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_31",
+  "question": "Những cầu thủ nào đã ký gia hạn với Liverpool?",
+  "params": {
+   "club": "Liverpool"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_extended_by"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_32",
+  "question": "Wayne Rooney từng gia hạn hợp đồng với đội nào?",
+  "params": {
+   "person": "Wayne Rooney"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "contract_extended_with"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_33",
+  "question": "Arsenal từng đàm phán để chiêu mộ những ai?",
+  "params": {
+   "club": "Arsenal"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "negotiation_targets"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_34",
+  "question": "Những CLB nào từng muốn đàm phán mua Harry Kane?",
+  "params": {
+   "person": "Harry Kane"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_negotiating_for"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_35",
+  "question": "Arsène Wenger từng xin từ chức ở CLB nào?",
+  "params": {
+   "person": "Arsène Wenger"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_resigned_from"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_36",
+  "question": "Cầu thủ rời Everton hay sang những câu lạc bộ nào?",
+  "params": {
+   "club": "Everton"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "transfer_flow_to"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_37",
+  "question": "Newcastle United thường nhận cầu thủ từ những CLB nào?",
+  "params": {
+   "club": "Newcastle United"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "transfer_flow_from"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_38",
+  "question": "Những ai từng là học trò của Arsène Wenger?",
+  "params": {
+   "person": "Arsène Wenger"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_39",
+  "question": "Các HLV của Liverpool từng huấn luyện những cầu thủ nào?",
+  "params": {
+   "club": "Liverpool"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_40",
+  "question": "Những người chuyển đến Chelsea trước đó chơi cho các CLB nào?",
+  "params": {
+   "club": "Chelsea"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_transferred_in",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_41",
+  "question": "Người đại diện của các đồng đội Wayne Rooney là ai?",
+  "params": {
+   "person": "Wayne Rooney"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "agents_of"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_42",
+  "question": "Các HLV từng dẫn dắt Arsenal còn huấn luyện những đội nào?",
+  "params": {
+   "club": "Arsenal"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_of_club",
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_43",
+  "question": "Học trò của Alex Ferguson sau đó chơi cho những đội nào?",
+  "params": {
+   "person": "Alex Ferguson"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_44",
+  "question": "Từ Harry Kane qua đồng đội, tới các CLB đồng đội đó khoác áo, rồi tới HLV của các CLB ấy: là những ai?",
+  "params": {
+   "person": "Harry Kane"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "clubs_played_for",
+      "managers_of_club"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_45",
+  "question": "Đồng đội của học trò José Mourinho được những HLV nào huấn luyện?",
+  "params": {
+   "person": "José Mourinho"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "players_coached",
+      "teammates",
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_46",
+  "question": "Tổng số CLB mà Arsène Wenger từng dẫn dắt là mấy?",
+  "params": {
+   "person": "Arsène Wenger"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_managed"
+     ]
+    }
+   ],
+   "output": "count"
+  }
+ },
+ {
+  "id": "lib_47",
+  "question": "Đồng đội của Steven Gerrard đã thi đấu cho tổng cộng bao nhiêu CLB?",
+  "params": {
+   "person": "Steven Gerrard"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "teammates",
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "count"
+  }
+ },
+ {
+  "id": "lib_48",
+  "question": "Chelsea từng sa thải bao nhiêu HLV?",
+  "params": {
+   "club": "Chelsea"
+  },
+  "param_types": {
+   "club": "Club"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "managers_dismissed"
+     ]
+    }
+   ],
+   "output": "count"
+  }
+ },
+ {
+  "id": "lib_49",
+  "question": "HLV nào từng huấn luyện cả Wayne Rooney lẫn Cristiano Ronaldo?",
+  "params": {
+   "person": "Wayne Rooney",
+   "other": "Cristiano Ronaldo"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "coaches_of_player"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "coaches_of_player"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_50",
+  "question": "Trong số học trò của Alex Ferguson, những ai từng thi đấu cho Everton?",
+  "params": {
+   "club": "Everton",
+   "person": "Alex Ferguson"
+  },
+  "param_types": {
+   "club": "Club",
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "club",
+     "hops": [
+      "players_of_club"
+     ]
+    },
+    {
+     "from": "person",
+     "hops": [
+      "players_coached"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_51",
+  "question": "CLB nào có cả Frank Lampard và David Beckham từng khoác áo?",
+  "params": {
+   "person": "Frank Lampard",
+   "other": "David Beckham"
+  },
+  "param_types": {
+   "person": "Person",
+   "other": "Person"
+  },
+  "plan": {
+   "chains": [
+    {
+     "from": "person",
+     "hops": [
+      "clubs_played_for"
+     ]
+    },
+    {
+     "from": "other",
+     "hops": [
+      "clubs_played_for"
+     ]
+    }
+   ],
+   "output": "list"
+  }
+ },
+ {
+  "id": "lib_52",
+  "question": "Cristiano Ronaldo cao bao nhiêu mét?",
+  "params": {
+   "person": "Cristiano Ronaldo"
+  },
+  "param_types": {
+   "person": "Person"
+  },
+  "plan": {
+   "chains": [],
+   "output": "unsupported"
+  }
+ }
+]

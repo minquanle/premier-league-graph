@@ -93,3 +93,101 @@ def test_provenance_direct_only_for_single_news_hop():
         'kind': 'direct', 'relation': 'MANAGES', 'anchor_param': 'club', 'anchor_side': 'object'}
     assert agent.provenance(plan(('person', ['teammates'])), PERSON)['kind'] == 'aggregate'
     assert agent.provenance(plan(('person', ['teammates', 'coaches_of_player'])), PERSON)['kind'] == 'derived'
+
+
+# ---- planner v2: structured decoding, dynamic few-shot, voting ----
+
+def scripted(by_seed, thinking=None, repair=None):
+    """Mock client whose reply depends on the sample seed (thread order does not matter)."""
+    def complete(msgs, thinking_flag=False, **kw):
+        if kw.get('thinking') or thinking_flag:
+            return response(thinking)
+        if repair is not None and 'Fix this problem' in msgs[-1]['content']:
+            return response(repair)
+        return response(by_seed[kw.get('seed', 42) - 42])
+    client = Mock()
+    client.complete = Mock(side_effect=lambda msgs, **kw: complete(msgs, **kw))
+    return client
+
+
+TEAM = json.dumps(plan(('person', ['teammates'])))
+COACH = json.dumps(plan(('person', ['coaches_of_player'])))
+BAD = json.dumps(plan(('person', ['players_of_club'])))
+
+
+@pytest.fixture
+def graph(monkeypatch):
+    monkeypatch.setattr(agent, 'param_types', lambda graph, params: PERSON)
+    agent._ROLES.clear()
+
+    def run(query, params=None):
+        if 'labels(n)' in query:
+            return [{'name': n, 'labels': ['FootballEntity', 'Person', 'Player']} for n in params['names']]
+        return [{'name': 'Bob'}]
+    return Mock(run=Mock(side_effect=run))
+
+
+def test_schema_closes_hop_and_parameter_names():
+    schema = agent.plan_schema({'person': 'Person', 'club': 'Club'})
+    chain = schema['properties']['chains']['items']['properties']
+    assert chain['from']['enum'] == ['club', 'person']
+    assert set(chain['hops']['items']['enum']) == set(agent.HOPS)
+    assert chain['hops']['maxItems'] == agent.MAX_HOPS
+
+
+def test_select_examples_prefers_matching_words_and_types():
+    picked = agent.select_examples('Đồng đội của Bob là ai?', PERSON, k=5)
+    assert len(picked) == 5
+    assert any('teammates' in c['hops'] for e in picked for c in e['plan']['chains'])
+    assert all(sorted(e['param_types'].values()) == ['Person'] for e in picked[:3])
+
+
+def test_majority_vote_wins(graph):
+    client = scripted([TEAM, COACH, TEAM])
+    result = agent.generate_v2(client, graph, 'q', {'person': 'A'})
+    assert result['ok'] and result['plan']['chains'][0]['hops'] == ['teammates']
+    assert not result['thinking'] and client.complete.call_count == 3
+
+
+def test_tie_is_broken_by_one_thinking_call(graph):
+    client = scripted([TEAM, COACH, BAD], thinking=COACH)
+    result = agent.generate_v2(client, graph, 'q', {'person': 'A'})
+    assert result['ok'] and result['thinking'] and result['plan']['chains'][0]['hops'] == ['coaches_of_player']
+
+
+def test_tie_without_thinking_falls_back_to_greedy(graph):
+    client = scripted([TEAM, COACH, BAD])
+    result = agent.generate_v2(client, graph, 'q', {'person': 'A'}, adaptive_thinking=False)
+    assert result['ok'] and result['plan']['chains'][0]['hops'] == ['teammates']
+
+
+def test_all_invalid_triggers_one_repair(graph):
+    client = scripted([BAD, BAD, BAD], thinking=BAD, repair=TEAM)
+    result = agent.generate_v2(client, graph, 'q', {'person': 'A'})
+    assert result['ok'] and result['attempts'][-1].get('repair')
+
+
+def test_unsupported_majority(graph):
+    unsupported = '{"chains": [], "output": "unsupported"}'
+    client = scripted([unsupported, unsupported, TEAM])
+    result = agent.generate_v2(client, graph, 'q', {'person': 'A'})
+    assert not result['ok'] and result['unsupported']
+
+
+def test_structured_decoding_is_requested(graph):
+    client = scripted([TEAM, TEAM, TEAM])
+    agent.generate_v2(client, graph, 'q', {'person': 'A'})
+    kwargs = client.complete.call_args_list[0][1]
+    assert kwargs['schema']['required'] == ['chains', 'output']
+
+
+def test_roles_are_shown_for_people_only():
+    assert agent.describe({'person': 'A', 'club': 'X'}, {'person': 'Person', 'club': 'Club'},
+                          {'A': ['Coach', 'Player'], 'X': []}) == {'person': 'Person (Coach, Player)', 'club': 'Club'}
+
+
+def test_planner_prompt_carries_roles(graph):
+    client = scripted([TEAM, TEAM, TEAM])
+    agent.generate_v2(client, graph, 'q', {'person': 'A'})
+    last = json.loads(client.complete.call_args_list[0][0][0][-1]['content'])
+    assert last['params'] == {'person': 'Person (Player)'}

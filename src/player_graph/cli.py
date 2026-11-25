@@ -6,7 +6,7 @@ import json
 
 def main():
     parser = argparse.ArgumentParser(description="Player Graph: local, no-API pilot")
-    parser.add_argument("command", choices=["discover", "collect", "refresh", "extract", "llm-extract", "build-graph", "graph-stats", "review-teacher", "export-sft", "export-chunks", "import-student", "ner-check", "review-list", "derive-networks", "network-analysis", "import-derived", "discover-v2", "extend-vnexpress", "discover-v3", "collect-v2", "collect-v3", "collect-v4", "collect-v5", "collect-v6", "screen", "report", "import-neo4j"])
+    parser.add_argument("command", choices=["discover", "collect", "refresh", "extract", "llm-extract", "build-graph", "graph-stats", "review-teacher", "export-sft", "export-chunks", "import-student", "ner-check", "review-list", "derive-networks", "network-analysis", "core-analysis", "import-derived", "discover-v2", "extend-vnexpress", "discover-v3", "collect-v2", "collect-v3", "collect-v4", "collect-v5", "collect-v6", "screen", "report", "import-neo4j"])
     parser.add_argument("--per-language", type=int, default=150)
     parser.add_argument("--reuse-candidates", action="store_true")
     parser.add_argument("--run-name", default=None)
@@ -41,6 +41,9 @@ def main():
     elif args.command == "network-analysis":
         from .algorithms import run as analyse
         output = analyse(args.run_name)
+    elif args.command == "core-analysis":
+        from .algorithms import core_report
+        output = core_report(args.run_name)
     elif args.command == "review-list":
         from .review_list import export
         output = export(args.run_name)

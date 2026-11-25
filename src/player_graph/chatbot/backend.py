@@ -53,14 +53,17 @@ class KaggleClient:
             time.sleep(10)
         raise TimeoutError('No healthy Kaggle Qwen endpoint found')
 
-    def complete(self, messages, thinking=False, json_output=False):
+    def complete(self, messages, thinking=False, json_output=False, schema=None, temperature=None, seed=42):
         start = time.monotonic()
         body = {'model': self.model, 'messages': messages,
                 'max_tokens': 3072 if thinking else 1400,
-                'temperature': 0.6 if thinking else 0,
-                'top_p': 0.95, 'seed': 42,
+                'temperature': temperature if temperature is not None else (0.6 if thinking else 0),
+                'top_p': 0.95, 'seed': seed,
                 'chat_template_kwargs': {'enable_thinking': thinking}}
-        if json_output:
+        if schema is not None:
+            # vLLM structured output: decoding can only produce JSON matching this schema.
+            body['response_format'] = {'type': 'json_schema', 'json_schema': {'name': 'plan', 'schema': schema}}
+        elif json_output:
             body['response_format'] = {'type': 'json_object'}
         # Do not return chain-of-thought text, credentials, or endpoint addresses in reports.
         data = fetch(self.base_url + '/v1/chat/completions', self.key, body, timeout=150)

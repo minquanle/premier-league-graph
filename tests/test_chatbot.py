@@ -379,3 +379,35 @@ def test_unknown_analytics_tool_never_executes_graph():
     with pytest.raises(ValueError, match="Unknown analytics tool"):
         analytics.tools(graph, "__import__", {})
     graph.run.assert_not_called()
+
+
+def _mates(edges):
+    graph = Mock()
+    rows = []
+    for a, b in edges:
+        rows += [{"p": a, "q": b, "name": a.upper()}, {"p": b, "q": a, "name": b.upper()}]
+    graph.run.return_value = rows
+    return graph
+
+
+def test_network_core_returns_densest_shell():
+    # a-b-c-d form a 4-clique (3-core); e hangs off with one edge.
+    edges = [("a", "b"), ("a", "c"), ("a", "d"), ("b", "c"), ("b", "d"), ("c", "d"), ("d", "e")]
+    rows = analytics.tools(_mates(edges), "network_core", {})
+    assert {r["name"] for r in rows} == {"A", "B", "C", "D"} and all(r["count"] == 3 for r in rows)
+
+
+def test_path_between_orders_names_by_step():
+    graph = Mock()
+    graph.run.return_value = [{"names": ["A", "B", "C"]}]
+    rows = analytics.tools(graph, "path_between", {"person": "A", "other": "C"})
+    assert rows == [{"name": "A", "count": 0}, {"name": "B", "count": 1}, {"name": "C", "count": 2}]
+    assert "shortestPath" in graph.run.call_args.args[0]
+
+
+def test_new_tools_require_supplied_entities():
+    params = {"person": "A", "other": "B"}
+    name, args, _ = analytics.choose_tool(client_for(json.dumps({"tool": "path_between", "args": params})), "q", params)
+    assert name == "path_between" and args == params
+    with pytest.raises(ValueError):
+        analytics.choose_tool(client_for(json.dumps({"tool": "network_core", "args": {}})), "q", {"person": "A"})

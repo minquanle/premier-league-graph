@@ -87,6 +87,91 @@ def _nmi(groups, truth):
     return mutual / denom if denom else 0.0
 
 
+def cores(graph, name, truth=None, seed=42, top=8):
+    """k-core decomposition: the network's nucleus, and the nucleus of each large Leiden community.
+
+    A node's core number k is the largest k such that it belongs to a subgraph where every node has at
+    least k neighbours inside it. The main core (largest k) is the densest, most interconnected group.
+    """
+    g = nx.Graph(graph)
+    g.remove_edges_from(nx.selfloop_edges(g))
+    core = nx.core_number(g)
+    k_max = max(core.values())
+    main = [n for n, k in core.items() if k == k_max]
+    degree = dict(g.degree())
+    by_degree = lambda nodes: sorted(nodes, key=lambda n: (-degree[n], str(name(n))))
+    shells = Counter(core.values())
+    thresholds = sorted({1, 5, 10, 20, 30, 40, 50, k_max // 2, k_max})
+    pagerank = nx.pagerank(g)
+    top_pr = {n for n, _ in sorted(pagerank.items(), key=lambda x: -x[1])[:20]}
+    main_sub = g.subgraph(main)
+    out = {"nodes": g.number_of_nodes(), "k_max": k_max,
+           "main_core": {"size": len(main), "density": round(nx.density(main_sub), 3),
+                         "members_by_degree": [name(n) for n in by_degree(main)[:15]],
+                         "main_clubs": [(name(c), v) for c, v in Counter(truth[n] for n in main if truth and n in truth).most_common(5)]},
+           "nodes_with_core_at_least": {k: sum(1 for v in core.values() if v >= k) for k in thresholds},
+           "shell_sizes_largest": sorted(shells.items(), key=lambda kv: -kv[0])[:10],
+           "top20_pagerank_in_main_core": len(top_pr & set(main)),
+           "core_degree_spearman": round(_spearman([core[n] for n in g], [degree[n] for n in g]), 3)}
+    groups = sorted(leiden(largest_component(g), seed), key=len, reverse=True)[:6]
+    community_cores = []
+    for group in groups:
+        sub = g.subgraph(group)
+        inner = nx.core_number(sub)
+        k = max(inner.values())
+        nucleus = [n for n, v in inner.items() if v == k]
+        clubs = Counter(truth[p] for p in group if truth and p in truth).most_common(2)
+        community_cores.append({"community_size": len(group), "nucleus_k": k, "nucleus_size": len(nucleus),
+                                "nucleus_share": round(len(nucleus) / len(group), 3),
+                                "nucleus_members": [name(n) for n in sorted(nucleus, key=lambda n: (-sub.degree(n), str(name(n))))[:top]],
+                                "main_clubs": [(name(c), v) for c, v in clubs]})
+    out["leiden_community_nuclei"] = community_cores
+    return out
+
+
+def _spearman(a, b):
+    def ranks(values):
+        order = sorted(range(len(values)), key=lambda i: values[i])
+        r = [0.0] * len(values)
+        i = 0
+        while i < len(order):
+            j = i
+            while j + 1 < len(order) and values[order[j + 1]] == values[order[i]]:
+                j += 1
+            for t in range(i, j + 1):
+                r[order[t]] = (i + j) / 2
+            i = j + 1
+        return r
+    ra, rb = ranks(a), ranks(b)
+    ma, mb = statistics.mean(ra), statistics.mean(rb)
+    cov = sum((x - ma) * (y - mb) for x, y in zip(ra, rb))
+    var = math.sqrt(sum((x - ma) ** 2 for x in ra) * sum((y - mb) ** 2 for y in rb))
+    return cov / var if var else 0.0
+
+
+def core_report(run_name):
+    """k-core analysis only (fast), written to reports/cores_<run>.json."""
+    folder = DATA / "graph" / run_name
+    entities = {e["entity_id"]: e for e in read_jsonl(folder / "entities.jsonl")}
+    name = lambda i: entities.get(i, {}).get("canonical_name", i)
+    mates = read_jsonl(folder / "derived/teammate_of.jsonl")
+    under = read_jsonl(folder / "derived/played_under.jsonl")
+    teammate = nx.Graph()
+    teammate.add_edges_from((e["subject_id"], e["object_id"]) for e in mates)
+    club_years = {}
+    for e in mates:
+        for person in (e["subject_id"], e["object_id"]):
+            for club in e["clubs"]:
+                club_years.setdefault(person, Counter())[club] += 1
+    main_club = {p: c.most_common(1)[0][0] for p, c in club_years.items()}
+    people = nx.Graph(teammate)
+    people.add_edges_from((e["subject_id"], e["object_id"]) for e in under)
+    report = {"created_at": now(), "run_name": run_name,
+              "teammate": cores(teammate, name, main_club), "teammate_and_played_under": cores(people, name, main_club)}
+    write_json(REPORTS / f"cores_{run_name}.json", report)
+    return report
+
+
 def central(graph, name, top=10, seed=42):
     pagerank = nx.pagerank(graph)
     degree = dict(graph.degree())
@@ -124,7 +209,7 @@ def run(run_name):
     report = {"created_at": now(), "run_name": run_name,
               "extracted_graph": {"nodes": base.number_of_nodes(), "edges_undirected": base.number_of_edges(), "average_clustering": round(nx.average_clustering(base), 4),
                                   "note": "Gần như hai phía (người nối CLB), nên không đo small-world trên mạng này"},
-              "teammate": {"small_world": small_world(teammate), "communities": communities(teammate, main_club, name), "central": central(teammate, name)},
+              "teammate": {"small_world": small_world(teammate), "communities": communities(teammate, main_club, name), "central": central(teammate, name), "cores": cores(teammate, name, main_club)},
               "teammate_and_played_under": {"small_world": small_world(people), "communities": communities(people, main_club, name), "central": central(people, name)}}
     undirected_clubs = nx.Graph()
     for a, b, d in clubs.edges(data=True):

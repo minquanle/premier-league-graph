@@ -1,0 +1,21 @@
+{
+  "judge_model": "Claude Opus 5.5 (claude-opus-5-5), chạy trong Claude Code",
+  "date": "2026-11-26",
+  "seed": 2026,
+  "n": 400,
+  "counts": {
+    "D": 345,
+    "S": 55,
+    "K": 0
+  },
+  "error_types": {
+    "sai_clb": 23,
+    "sai_loai": 11,
+    "sai_nguoi": 10,
+    "khac": 10,
+    "khong_phai_su_that": 1
+  },
+  "articles_opened": 637,
+  "articles_failed": 0,
+  "notes": "Dữ liệu lấy từ bản clone local của repo, đã kiểm tra trùng origin/main; kiểm tra 4924 cạnh, 217 PLAYS_FOR, 61 TRANSFERRED_TO đều khớp. Với mỗi cạnh, tải tối đa 3 URL đầu tiên theo thứ tự trong edge_sources.csv (637 URL duy nhất, tất cả mở được; 1 URL bị 429 lần đầu, thử lại thành công). Bài được trích văn bản tự động; judge đọc các câu nhắc tới chủ thể/đối tượng, và đọc toàn văn khi cạnh còn mơ hồ. Quy tắc tự quyết: (1) PLAYS_FOR/MANAGES chấp nhận quan hệ trong quá khứ ('cựu cầu thủ', 'từng dẫn dắt') theo định nghĩa 'đang/đã'. (2) HLV tạm quyền tính là MANAGES; trợ lý HLV, HLV đội trẻ bị ghi MANAGES là sai_loai. (3) Thỏa thuận chuyển nhượng đã chốt hoặc 'sắp gia nhập' với phí xác định tính là TRANSFERRED_TO đúng; CLB bán bị ghi là CLB nhận là sai_clb. (4) Cầu thủ được mua rồi cho CLB cũ mượn lại mà bị ghi LOANED_TO CLB mua là sai_clb. (5) CRITICIZES chỉ đúng khi chủ thể chỉ trích chính đối tượng; người bị chỉ trích bị ghi làm chủ thể, hoặc sai người bị chỉ trích, là sai_nguoi; khen, trung lập, chỉ thích bài đăng, trọng tài rút thẻ là khac. (6) Tên chỉ có họ trong đội hình (Cannavaro 2013, Marshall 2016, Maddison 2019, Silva 2022) nhưng thực thể trong đồ thị là người khác cùng họ thì gán sai_nguoi; đây là chỗ duy nhất dùng hiểu biết ngoài bài để phân định thực thể. (7) Lỗi phổ biến nhất là gán cầu thủ đội đối thủ trong bài tường thuật trận đấu cho CLB còn lại (sai_clb). Không có nhãn K vì mọi bài đều đọc được."
+}

@@ -37,7 +37,7 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-We build a knowledge graph of players, coaches, agents and clubs around the English Premier League from 6,158 Vietnamese and English news articles, and an application that answers multi-hop questions over it. Relations are extracted by Qwen3-4B, fine-tuned with LoRA on labels from a larger teacher model on two free T4 GPUs. Every person is linked to Wikidata, and an edge that has a single piece of evidence and is not confirmed by Wikidata is dropped. The resulting graph has 2,046 nodes and 4,924 evidence-backed edges of 12 relation types. Its estimated precision is 93\%, close to the 94.0\% of a graph extracted with Qwen3-14B, although the 4B model trails by 7--9 F1 points at the extraction step. The teammate network derived from career dates is a small world ($\sigma = 9.23$). Its Leiden communities follow clubs (NMI 0.62), and its 41-core contains all of the 20 highest-PageRank players. For question answering, the model plans a path over a typed catalogue of 29 hops instead of writing Cypher. Deterministic checks then inspect the plan, and the model re-plans with reasoning only when a check fires. On 100 held-out questions this answers 95\% correctly, against 89\% for three-vote self-consistency and 94\% for always-on reasoning, at a median of 1.8\,s per question. Self-consistency voting did not change a single answer, because the planner's mistakes are systematic. Data and code: \url{https://github.com/minquanle/premier-league-graph}.
+We build a knowledge graph of players, coaches, agents and clubs around the English Premier League from 6,158 Vietnamese and English news articles, and an application that answers multi-hop questions over it. Relations are extracted by Qwen3-4B, fine-tuned with LoRA on labels from a larger teacher model on two free T4 GPUs. Every person is linked to Wikidata, and an edge that has a single piece of evidence and is not confirmed by Wikidata is dropped. The resulting graph has 2,046 nodes and 4,924 evidence-backed edges of 12 relation types. An LLM judge that reads the source articles of 400 random edges finds 86.2\% of them correct (95\% interval 82.5--89.3\%), and 92.6\% of the edges with two or more pieces of evidence. The 4B model trails a 14B model by 7--9 F1 points at the extraction step, and the gap in the graph lies in edges that only the 4B model finds. The teammate network derived from career dates is a small world ($\sigma = 9.23$). Its Leiden communities follow clubs (NMI 0.62), and its 41-core contains all of the 20 highest-PageRank players. For question answering, the model plans a path over a typed catalogue of 29 hops instead of writing Cypher. Deterministic checks then inspect the plan, and the model re-plans with reasoning only when a check fires. On 100 held-out questions this answers 95\% correctly, against 89\% for three-vote self-consistency and 94\% for always-on reasoning, at a median of 1.8\,s per question. Self-consistency voting did not change a single answer, because the planner's mistakes are systematic. Data and code: \url{https://github.com/minquanle/premier-league-graph}.
 \end{abstract}
 \textbf{\textit{Keywords}}\enspace Knowledge graph $\cdot$ Relation extraction $\cdot$ Knowledge distillation $\cdot$ Social network analysis $\cdot$ GraphRAG $\cdot$ Small language models
 
@@ -47,7 +47,7 @@ Football news is a dense record of social relations: who plays for whom, which c
 
 This work asks how far a single 4-billion-parameter model can carry the whole system, from extraction to question answering, and where it needs help. Our contributions are:
 \begin{itemize}
-\item A bilingual Premier League social network built from news, in which every edge keeps its evidence sentences and source articles. Qwen3-4B, distilled from a teacher model, does the extraction. A Wikidata confirmation filter brings graph precision to within about one point of a 14B model.
+\item A bilingual Premier League social network built from news, in which every edge keeps its evidence sentences and source articles. Qwen3-4B, distilled from a teacher model, does the extraction. A Wikidata confirmation filter removes most unsupported single-evidence edges. Judged against the source articles, the graph is 86.2\% precise, and 92.6\% on edges with two or more pieces of evidence.
 \item A social network analysis of three derived networks: small-world tests, centrality, community detection and k-core nuclei. The conclusions hold across the 4B and 14B graphs.
 \item A question-answering method for small models. The model plans over typed hops, deterministic checks inspect the plan, and reasoning is used only when a check fires. An ablation shows why voting does not help.
 \item An interface that combines a whole-picture portrait of each node with multi-hop question answering. It shows each step of the reasoning and the subgraph that supports the answer.
@@ -162,12 +162,14 @@ They are counted separately from the 4,924 extracted edges. The graph is stored 
 % =====================================================================
 \section{Graph Quality}
 \subsection{Precision}
-We graded a random sample of 150 edges of the 14B graph by hand, labelling each edge correct, wrong or unsure against its evidence and our knowledge of the facts. The 14B graph is 94.0\% correct (Wilson 95\% interval 89.0--96.8\%) when unsure edges count as wrong, and 97.2\% when they are left out.
+\paragraph{LLM judge.} We drew 400 edges of the 4B graph uniformly at random (seed 2026) and had an LLM judge, Claude Opus 5.5, grade each edge against its source articles. For every edge, the judge opened up to three of the linked articles (637 articles in total, all reachable) and labelled the edge correct when the article states or clearly implies the relation, with the right people, clubs, relation type and direction. The judge belongs to neither model family used in the pipeline (Gemini as teacher, Qwen3 as student), which avoids grading a model with itself. Labels, short justifications and the grading rules are released with the dataset.
 
-The two graphs share 3,901 edges, which make up 79\% of the 4B graph; these edges are 97.1\% correct in the 14B sample. To estimate the precision of the 4B graph, we additionally graded 60 random edges that appear only in the 4B graph. 47 of them are correct (78.3\%, Wilson interval 66.4--86.9\%). Weighting the two parts by their size gives an estimated precision of 93.2\% for the 4B graph. Edges found only by the 14B model are more reliable (86.7\% in its sample). The difference between the two graphs is thus concentrated in the edges each model finds alone. % NOTE: the 60-edge 4B-only sample must be graded by both authors before submission.
+The 4B graph is 86.2\% correct (345 of 400, Wilson 95\% interval 82.5--89.3\%). Precision rises with evidence: 92.6\% for edges with two or more pieces of evidence (200 of 216) against 78.8\% for edges with a single one (145 of 184). The 312 sampled edges that the 14B graph also contains are 94.6\% correct, whereas the 88 edges found only by the 4B model are 56.8\% correct. The two most frequent relations are reliable (\texttt{PLAYS\_FOR} 91.2\%, \texttt{TRANSFERRED\_TO} 93.4\%), while \texttt{CRITICIZES} is the weakest (9 of 23).
+
+\paragraph{14B graph.} We graded 150 random edges of the 14B graph ourselves, labelling each edge correct, wrong or unsure against its evidence and our knowledge of the facts. It is 94.0\% correct (Wilson interval 89.0--96.8\%) when unsure edges count as wrong. Because the two graphs were graded by different procedures, the two figures are not directly comparable. On the edges both graphs share, however, the two procedures agree closely (97.1\% and 94.6\%). The 4B model therefore loses precision in the edges it finds alone, whereas edges found only by the 14B model are 86.7\% correct in its sample.
 
 \begin{table}[t]\centering\small
-\caption{The 4B and 14B graphs. Precision of the 4B graph is estimated from shared and 4B-only edges.}
+\caption{The 4B and 14B graphs. Precision is graded on 400 random edges by an LLM judge (4B) and on 150 random edges by the authors (14B).}
 \label{tab:graphs}
 \begin{tabular}{@{}lrr@{}}\toprule
 & Qwen3-4B (final) & Qwen3-14B\\\midrule
@@ -177,21 +179,20 @@ Edges with $\geq 2$ evidence sentences & 57.0\% & 56.9\%\\
 Edges with evidence in both languages & 19.8\% & 19.9\%\\
 Edges removed by the Wikidata filter & 1,795 & 980\\
 Shared edges & \multicolumn{2}{c}{3,901 (Jaccard 0.64)}\\
-Precision & $\approx$93.2\% (estimated) & 94.0\% (89.0--96.8)\\\bottomrule
+Precision (95\% interval) & 86.2\% (82.5--89.3) & 94.0\% (89.0--96.8)\\\bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Error analysis}
-The 13 wrong edges in the 4B-only sample fall into a few patterns:
+The 55 wrong edges in the judged sample fall into a few patterns:
 \begin{itemize}
-\item \textbf{The opponent's club (4).} ``Brentford beat Man Utd'' led to Brentford players being attached to Manchester United.
-\item \textbf{Confused roles (3).} A goalkeeper ``managing'' his club, a club co-owner ``playing for'' it, and a former player under Guardiola ``managing'' Bayern Munich.
-\item \textbf{Reversed transfers or loans (2).} ``West Ham sold Rice'' became a transfer to West Ham.
-\item \textbf{Events that did not happen (1).} A player who ``almost joined'' a club.
-\item \textbf{A wrongly linked person (1).} ``Pedro Mendes'' was written for the agent Jorge Mendes.
-\item \textbf{Unrelated evidence (2).}
+\item \textbf{The wrong club (23).} Most often, a player of the opposing team in a match report is attached to the other club: Brentford's Igor Thiago ``playing for'' Manchester United after scoring against them. The selling club is also taken for the buying one (Quansah ``joining'' Liverpool when Leverkusen bought him from Liverpool), and a club that buys a player and loans him back is recorded as the loan destination.
+\item \textbf{The wrong relation type (11).} Assistant and youth coaches are recorded as managing the first team (Carlos Queiroz, Rui Faria), former players as managers, and a club negotiating to sell a player as negotiating to sign him.
+\item \textbf{The wrong person (10).} Players mentioned by surname alone are linked to a namesake (Paolo Cannavaro to Fabio Cannavaro), and in criticism the person criticised becomes the critic.
+\item \textbf{Not a criticism (9) and other errors (1).} Praise, neutral comments, liking a post, or a referee booking a player were recorded as \texttt{CRITICIZES}.
+\item \textbf{An event that did not happen (1).} A transfer that collapsed was recorded as playing for the club.
 \end{itemize}
-Three further edges are true facts, but their sentence states the opposite direction. Two of the patterns, reading the sentence in the wrong direction and confusing roles, reappear in question answering (Section~\ref{sec:qa}).
+Two of the patterns, reading the sentence in the wrong direction and confusing roles, reappear in question answering (Section~\ref{sec:qa}).
 
 % =====================================================================
 \section{Social Network Analysis}
@@ -354,11 +355,11 @@ Always reasoning & 92 & 30.6 & 94 & 28.6\\
 \textbf{Remaining errors.} On the held-out set, the final system still fails five questions. Two are existence questions answered with a count of zero instead of an empty list; the meaning is the same, so a lenient score would give 97\%. Two read ``who criticised X'' in the wrong direction; no check can catch this, since both directions return rows. The last one chooses ``appointed by'' instead of ``managed''.
 
 \subsection{Limitations}
-The v2 and v2b benchmarks come from the same phrasing templates, so v2b is held out in entities but not in phrasing. Because the checks were designed from errors on v2, the scores on generated questions are optimistic. A benchmark written by people, evaluated end to end including entity linking, is needed for a realistic estimate. Graph precision is estimated from samples graded by the authors, without an independent annotator. Derived networks depend on the completeness of career dates in Wikidata.
+The v2 and v2b benchmarks come from the same phrasing templates, so v2b is held out in entities but not in phrasing. Because the checks were designed from errors on v2, the scores on generated questions are optimistic. A benchmark written by people, evaluated end to end including entity linking, is needed for a realistic estimate. Precision of the 4B graph is graded by an LLM judge without human verification, and that of the 14B graph by the authors, so the two figures come from different procedures. Derived networks depend on the completeness of career dates in Wikidata.
 
 % =====================================================================
 \section{Conclusion}
-We built a bilingual, evidence-backed Premier League social network of 2,046 nodes and 4,924 edges, with a 4B model doing all of the language work. Distillation and a Wikidata confirmation filter keep graph precision within about a point of a 14B model. The derived networks are small worlds whose communities and $k$-core nuclei follow squads, and these conclusions do not depend on which model extracted the graph. For question answering, a small model plans much better than it writes queries. Its remaining mistakes are systematic, so deterministic checks with selective reasoning work where self-consistency voting does not, reaching 95\% on held-out questions at interactive speed. Future work includes a human-written, end-to-end benchmark, independent annotation of graph quality, and checks for relation direction that do not rely on roles.
+We built a bilingual, evidence-backed Premier League social network of 2,046 nodes and 4,924 edges, with a 4B model doing all of the language work. Judged against the source articles, the graph is 86.2\% precise and 92.6\% on edges with at least two pieces of evidence; edges shared with a 14B model are 94.6\% correct, and the gap lies in edges only the smaller model finds. The derived networks are small worlds whose communities and $k$-core nuclei follow squads, and these conclusions do not depend on which model extracted the graph. For question answering, a small model plans much better than it writes queries. Its remaining mistakes are systematic, so deterministic checks with selective reasoning work where self-consistency voting does not, reaching 95\% on held-out questions at interactive speed. Future work includes a human-written, end-to-end benchmark, human verification of the LLM judge, a stricter filter for single-evidence and \texttt{CRITICIZES} edges, and checks for relation direction that do not rely on roles.
 
 \section*{Data and Code Availability}
 Code, the graph (nodes, edges, source-article links, derived networks), network-analysis results, graded samples and benchmarks are available at \url{https://github.com/minquanle/premier-league-graph}. Article texts and evidence sentences are not redistributed, for copyright reasons. Every edge links to its source articles.

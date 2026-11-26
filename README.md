@@ -14,9 +14,9 @@ Graph chính do Qwen3-4B đã fine-tune trích xuất, rồi lọc bằng Wikida
 | Nút có mã Wikidata | 2.001/2.046 |
 | Cạnh suy diễn, đếm riêng | 41.262 `TEAMMATE_OF`, 5.427 `PLAYED_UNDER`, 2.674 `TRANSFER_FLOW` |
 | Mạng đồng đội | 1.433 người; thế giới nhỏ σ = 9,23 (L = 2,44 so với 2,05 ngẫu nhiên; C = 0,44 so với 0,04); lõi chính 41-core gồm 563 người |
-| Độ chính xác (ước lượng) | ≈ 93%: 79% số cạnh trùng với graph 14B (97,1% đúng trên mẫu đã chấm), 21% còn lại chỉ có ở graph 4B (78,3% đúng trên mẫu 60 cạnh chấm sơ bộ, `reports/sample_student_4b_v1_only.csv`) |
+| Độ chính xác | 86,2% (KTC 95%: 82,5–89,3%) trên 400 cạnh ngẫu nhiên, chấm bằng LLM-as-judge (Claude Opus 5.5) đối chiếu bài báo gốc (`dataset/evaluation/llm_judge_400.csv`). Cạnh có ≥2 bằng chứng: 92,6%; cạnh trùng với graph 14B: 94,6%; cạnh chỉ graph 4B tìm ra: 56,8% |
 
-**So sánh với graph do Qwen3-14B trích xuất** (`student_v4`): 2.147 nút, 5.111 cạnh, độ chính xác 94,0% (KTC 95%: 89,0–96,8%) trên mẫu 150 cạnh chấm nội bộ. F1 trích xuất trên 200 câu test của 14B là 0,695/0,775 (strict/lenient), của 4B là 0,629/0,681. Bộ lọc Wikidata kéo khoảng cách này xuống còn khoảng 1 điểm độ chính xác ở mức graph. Bản `main_v7` (nhãn của mô hình thầy) chỉ dùng để so sánh: 2.225 nút, 5.199 cạnh.
+**So sánh với graph do Qwen3-14B trích xuất** (`student_v4`): 2.147 nút, 5.111 cạnh, độ chính xác 94,0% (KTC 95%: 89,0–96,8%) trên mẫu 150 cạnh chấm nội bộ. F1 trích xuất trên 200 câu test của 14B là 0,695/0,775 (strict/lenient), của 4B là 0,629/0,681. Hai con số độ chính xác được chấm theo hai cách khác nhau nên không so trực tiếp được; trên phần cạnh chung, hai cách cho kết quả gần nhau (97,1% và 94,6%), và phần thua kém của 4B nằm ở các cạnh chỉ 4B tìm ra. Bản `main_v7` (nhãn của mô hình thầy) chỉ dùng để so sánh: 2.225 nút, 5.199 cạnh.
 
 12 loại quan hệ: `PLAYS_FOR`, `MANAGES`, `TRANSFERRED_TO`, `LOANED_TO`, `EXTENDED_CONTRACT_WITH`, `NEGOTIATES_TO_SIGN`, `APPOINTED_MANAGER_OF`, `DISMISSED_MANAGER`, `RESIGNED_FROM`, `REPRESENTS`, `CRITICIZES`, `CONFLICTS_WITH`. Mỗi cạnh lưu câu bằng chứng nguyên văn, bài báo nguồn, ngôn ngữ và trạng thái (đã xảy ra, tin đồn, phủ định, giả định).
 

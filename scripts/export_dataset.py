@@ -83,8 +83,12 @@ def main():
     p.add_argument('--out', default='dataset')
     args = p.parse_args()
     out = ROOT / args.out
+    readme = (out / 'README.md').read_text(encoding='utf-8') if (out / 'README.md').exists() else None
     if out.exists():
         shutil.rmtree(out)
+    if readme is not None:  # hand-written, not generated
+        out.mkdir(parents=True)
+        (out / 'README.md').write_text(readme, encoding='utf-8')
     summary = {'main_graph': args.run, 'main': export_graph(args.run, out / 'graph'),
                'comparison_graph': args.compare, 'comparison': export_graph(args.compare, out / 'comparison_14b', with_articles=False)}
     reports = ROOT / 'reports'
@@ -97,6 +101,10 @@ def main():
         name: strip_quotes(reports / src, out / 'evaluation' / name)
         for src, name in [('sample_student_v4.csv', 'graded_sample_14b_150.csv'),
                           ('sample_student_4b_v1_only.csv', 'graded_sample_4b_only_60.csv')] if (reports / src).exists()}
+    # LLM-as-judge: 400 random edges of the main graph (seed 2026), graded against the source articles.
+    for name in ['cham_llm_judge_400.csv', 'cham_llm_judge_400_meta.json']:
+        if (reports / name).exists():
+            shutil.copy(reports / name, out / 'evaluation' / name.replace('cham_', ''))
     (out / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding='utf-8')
     print(json.dumps(summary, ensure_ascii=False, indent=1))
 

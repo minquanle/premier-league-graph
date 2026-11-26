@@ -15,7 +15,7 @@ Mạng xã hội cầu thủ, huấn luyện viên, người đại diện và c
 | `graph/derived/transfer_flow.csv` | 2.674 | Dòng cầu thủ giữa hai CLB liên tiếp trong sự nghiệp, kèm số lượt |
 | `comparison_14b/` | 2.147 nút / 5.111 cạnh | Graph do Qwen3-14B trích xuất, dùng làm đối chứng |
 | `analysis/` | | Kết quả phân tích mạng (thế giới nhỏ, cộng đồng, nhân vật trung tâm, k-core) và thống kê graph |
-| `evaluation/` | 150 + 60 | Mẫu cạnh đã chấm đúng/sai; mẫu 60 cạnh của graph 4B mới được chấm sơ bộ |
+| `evaluation/` | 150 + 60 + 400 | Mẫu cạnh đã chấm đúng/sai. `llm_judge_400.csv`: 400 cạnh ngẫu nhiên của graph chính (seed 2026), chấm bằng LLM-as-judge (Claude Opus 5.5) đối chiếu bài báo gốc; thông tin cách chấm trong `llm_judge_400_meta.json` |
 
 Các bộ câu hỏi đánh giá chatbot nằm trong `configs/chatbot_benchmark*.json` ở gốc repository.
 
